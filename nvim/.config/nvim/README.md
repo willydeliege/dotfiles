@@ -1,3 +1,3 @@
-# This is the my neovim configuration
+# This is my neovim configuration
 
 Configured for java development
