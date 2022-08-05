@@ -208,7 +208,7 @@ local mappings = {
   s = {
     name = "Search",
     b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "In current Buffer"},
-    p = { "<cmd>Telescope live_grep theme=ivy<cr>", "In Project" },
+    p = { "<cmd>Telescope live_grep theme=ivy hidden=true<cr>", "In Project" },
 
   },
 
