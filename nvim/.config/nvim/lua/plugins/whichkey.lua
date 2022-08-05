@@ -144,7 +144,7 @@ local mappings = {
     name = "Find",
     c = { "<cmd>Telescope colorscheme<cr>", "Colorschemes" },
     f = {
-      "<cmd>Telescope find_files hidden=false no_ignore=true<cr>",
+      "<cmd>Telescope find_files hidden=true no_ignore=true<cr>",
       "Files",
     },
     b = { "<cmd>Telescope buffers<cr>", "Buffers"},
