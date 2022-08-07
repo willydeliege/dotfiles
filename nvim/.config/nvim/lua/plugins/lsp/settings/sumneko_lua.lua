@@ -1,4 +1,4 @@
-return {
+eeturn {
   settings = {
     Lua = {
       diagnostics = {
