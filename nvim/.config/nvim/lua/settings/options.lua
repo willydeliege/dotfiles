@@ -24,7 +24,7 @@ local options = {
     expandtab = true, -- convert tabs to spaces
     shiftwidth = 4, -- the number of spaces inserted for each indentation
     tabstop = 4, -- insert 4 spaces for a tab
-    cursorline = false, -- disable highlight the current line
+    cursorline = true, -- disable highlight the current line
     number = true, -- disable showing the numbers of the code lines
     relativenumber = true, -- set relative numbered lines
     numberwidth = 4, -- set number column width to 2 {default 4}
@@ -42,7 +42,6 @@ local options = {
 for k, v in pairs(options) do
     vim.opt[k] = v
 end
-
 local disabled_built_ins = {
     "2html_plugin",
     "getscript",

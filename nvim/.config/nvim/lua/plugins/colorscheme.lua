@@ -1,9 +1,10 @@
-local colorscheme = "everforest"
-
-local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
-if not status_ok then
-  vim.notify("colorscheme " .. colorscheme .. " not found!")
-  return
-end
+require('colorbuddy').colorscheme('cobalt2')
+-- local colorscheme = "sonokai"
+--
+-- local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
+-- if not status_ok then
+--   vim.notify("colorscheme " .. colorscheme .. " not found!")
+--   return
+-- end
 
 

@@ -97,10 +97,8 @@ return packer.startup(function(use)
     -----------------------------------------------
 
     -- Colorschemes
-    use "RRethy/nvim-base16"
-    use "NTBBloodbath/doom-one.nvim"
     use "LunarVim/Colorschemes"
-    use "sainnhe/everforest"
+    use { 'lalitmee/cobalt2.nvim', requires = 'tjdevries/colorbuddy.nvim' }
     -- Buffer (Tab) line
     use "akinsho/bufferline.nvim" --
     use "moll/vim-bbye"
@@ -142,8 +140,13 @@ return packer.startup(function(use)
 
     -- Find projects
     use "ahmedkhalf/project.nvim"
+    use { "rainbowhxch/beacon.nvim",
+        config = function()
+            require("plugins.beacon")
+        end
+    }
 
-    --------------------------------------
+    -- --------------------------------------
     -- Autocompletion --
     --------------------------------------
     use "hrsh7th/nvim-cmp" -- Completion (cmp) plugin
@@ -168,7 +171,7 @@ return packer.startup(function(use)
     use "williamboman/nvim-lsp-installer" -- Language server installer
     use "antoinemadec/FixCursorHold.nvim" -- Fix lsp doc highlight
     use "tamago324/nlsp-settings.nvim" -- Configure LSP settings with json
-
+    use "folke/lua-dev.nvim"
     -- Java
     use { "mfussenegger/nvim-jdtls" }
 
