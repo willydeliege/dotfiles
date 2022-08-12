@@ -84,7 +84,7 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-    -- vim.notify(client.name .. " starting...")
+    vim.notify(client.name .. " starting...")
     -- TODO: refactor this into a method that checks if string in list
 
     if client.name == "jdt.ls" then
@@ -92,6 +92,11 @@ M.on_attach = function(client, bufnr)
         require("jdtls.dap").setup_dap_main_class_configs()
         vim.lsp.codelens.refresh()
     end
+
+    if client.name == "lua-language-server" then
+        require("lspconfig").sumneko_lua.setup()
+    end
+
     lsp_keymaps(bufnr)
     lsp_highlight_document(client)
 end

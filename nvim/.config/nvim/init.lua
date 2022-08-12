@@ -8,6 +8,7 @@ require "settings.keymaps"
 --Plugins
 require "plugins"
 
+
 --Plugin settings
 require "plugins.lsp"
 require "plugins.cmp"

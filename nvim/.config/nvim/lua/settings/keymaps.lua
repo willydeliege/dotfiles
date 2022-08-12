@@ -31,7 +31,8 @@ keymap("n", "<S-TAB>", ":bprevious<CR>", opts)
 -- easy safe
 keymap("n", "<C-S>", "<CMD>w<CR>", opts)
 keymap("i", "<C-S>", "<ESC><CMD>w<CR>", opts)
-
+-- easy quit
+keymap("n", "<C-q>", "<CMD>qa<cr>", opts)
 -- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)

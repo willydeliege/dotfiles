@@ -1,3 +1,4 @@
+---@diagnostic disable: missing-parameter
 local fn = vim.fn
 
 -- Automatically install packer
@@ -99,9 +100,10 @@ return packer.startup(function(use)
     -- Colorschemes
     use "LunarVim/Colorschemes"
     use { 'lalitmee/cobalt2.nvim', requires = 'tjdevries/colorbuddy.nvim' }
+    use {"adisen99/codeschool.nvim", requires = {"rktjmp/lush.nvim"}}
     -- Buffer (Tab) line
     use "akinsho/bufferline.nvim" --
-    use "moll/vim-bbye"
+    use "kazhala/close-buffers.nvim"
     -- Status Line
     use 'nvim-lualine/lualine.nvim'
 
@@ -140,6 +142,16 @@ return packer.startup(function(use)
 
     -- Find projects
     use "ahmedkhalf/project.nvim"
+  
+     -- session management
+    use { "stevearc/dressing.nvim" }
+    use { "nvim-telescope/telescope-ui-select.nvim" }
+    use { "Shatur/neovim-session-manager",
+        config = function ()
+            require("plugins.session-manager")
+        end
+    }
+    -- show cursor 
     use { "rainbowhxch/beacon.nvim",
         config = function()
             require("plugins.beacon")
@@ -168,13 +180,34 @@ return packer.startup(function(use)
 
     -- LSP
     use "neovim/nvim-lspconfig" -- Enable native LSP
-    use "williamboman/nvim-lsp-installer" -- Language server installer
+    -- use "williamboman/nvim-lsp-installer"
+    use { "williamboman/mason.nvim",
+            config = function ()
+                require ("mason").setup{}
+            end
+    }
+    use { "williamboman/mason-lspconfig.nvim",
+         config = function ()
+            require("mason-lspconfig").setup({
+                ensure_installed = { "sumneko_lua" },
+                automatic_installation = true,
+            })
+            require'lspconfig'.sumneko_lua.setup{}
+         end
+    }
     use "antoinemadec/FixCursorHold.nvim" -- Fix lsp doc highlight
     use "tamago324/nlsp-settings.nvim" -- Configure LSP settings with json
     use "folke/lua-dev.nvim"
     -- Java
     use { "mfussenegger/nvim-jdtls" }
-
+    use { "https://gitlab.com/schrieveslaach/nvim-jdtls-bundles",
+        run = "./install-bundles.py"
+    }
+    use { "j-hui/fidget.nvim",
+        config = function()
+        require("fidget").setup()
+    end
+    }
     --  Formatters
     use "jose-elias-alvarez/null-ls.nvim" -- Inject LSP diagnostics, code actions, formatters ...
 
