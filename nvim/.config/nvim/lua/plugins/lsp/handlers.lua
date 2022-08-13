@@ -10,6 +10,7 @@ M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 
 M.setup = function()
+    vim.notify("handlers setup")
     local signs = {
         { name = "DiagnosticSignError", text = "" },
         { name = "DiagnosticSignWarn", text = "" },
@@ -94,9 +95,7 @@ M.on_attach = function(client, bufnr)
         vim.lsp.codelens.refresh()
     end
 
-    if client.name == "lua-language-server" then
-        require("lspconfig").sumneko_lua.setup()
-    end
+    --     require("lspconfig").sumneko_lua.setup()
 
     lsp_keymaps(bufnr)
     lsp_highlight_document(client)

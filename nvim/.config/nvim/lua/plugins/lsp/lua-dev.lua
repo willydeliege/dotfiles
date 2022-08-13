@@ -1,5 +1,4 @@
-local M = {}
-M.setup{
+require("lua-dev").setup{
   library = {
     vimruntime = true, -- runtime path
     types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
@@ -11,8 +10,8 @@ M.setup{
   -- pass any additional options that will be merged in the final lsp config
   lspconfig = {
     cmd = {"lua-language-server"},
-    on_attach = require("plugins.lsp.handlers").on_attach()
+    on_attach = require("plugins.lsp.handlers").on_attach,
+    capabilities = require("plugins.lsp.handlers").capabilities
     },
 }
 
-return M
