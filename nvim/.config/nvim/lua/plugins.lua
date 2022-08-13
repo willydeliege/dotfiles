@@ -142,8 +142,8 @@ return packer.startup(function(use)
 
     -- Find projects
     use "ahmedkhalf/project.nvim"
-  
-     -- session management
+
+    -- session management
     use { "stevearc/dressing.nvim" }
     use { "nvim-telescope/telescope-ui-select.nvim" }
     use { "Shatur/neovim-session-manager",

@@ -4,7 +4,7 @@ if not status_ok then
 end
 -- this is a comment
 local actions = require "telescope.actions"
--- local trouble = require "trouble.providers.telescope"
+local trouble = require "trouble.providers.telescope"
 telescope.setup {
     defaults = {
 
@@ -42,7 +42,7 @@ telescope.setup {
                 ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
                 ["<S-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
                 ["<C-l>"] = actions.complete_tag,
-                -- ["<C-a>"] = trouble.open_with_trouble,
+                ["<C-a>"] = trouble.open_with_trouble,
                 ["<C-->"] = actions.which_key, -- keys from pressing <C-/>
             },
 
@@ -66,7 +66,7 @@ telescope.setup {
 
                 ["<S-k>"] = actions.preview_scrolling_up,
                 ["<S-j>"] = actions.preview_scrolling_down,
-                -- ["<C-a>"] = trouble.open_with_trouble,
+                ["<C-a>"] = trouble.open_with_trouble,
                 ["?"] = actions.which_key,
             },
         },

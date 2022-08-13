@@ -26,28 +26,7 @@ function M.setup(servers, options)
   }
 
 
-  require("mason-lspconfig").setup_handlers {
-    function(server_name)
-      local opts = vim.tbl_deep_extend("force", options, servers[server_name] or {})
-      lspconfig[server_name].setup { opts }
-    end,
-    ["jdtls"] = function()
-      -- print "jdtls is handled by nvim-jdtls"
-    end,
-    ["sumneko_lua"] = function()
-      local opts = vim.tbl_deep_extend("force", options, servers["sumneko_lua"] or {})
-      lspconfig.sumneko_lua.setup(require("lua-dev").setup { opts })
-            require("lsp.handlers").on_attach("sumneko_lua")
-    end,
-    ["tsserver"] = function()
-      local opts = vim.tbl_deep_extend("force", options, servers["tsserver"] or {})
-      require("typescript").setup {
-        disable_commands = false,
-        debug = false,
-        server = opts,
-      }
-    end,
-  }
-end
+        local luadev = require("plugins.lsp.lua-dev").setup()
 
-return M
+lspconfig.sumneko_lua.setup(luadev)
+end

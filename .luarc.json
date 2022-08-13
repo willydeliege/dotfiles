@@ -4,7 +4,8 @@
         "redundant-value"
     ],
     "Lua.diagnostics.globals": [
-        "ngx"
+        "ngx",
+        "on_attach"
     ],
     "Lua.workspace.checkThirdParty": false,
     "Lua.workspace.library": [

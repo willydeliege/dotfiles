@@ -84,7 +84,6 @@ plugins=(archlinux
         bundler
         docker
         jsontools
-        vscode
         web-search
         tig
         gitfast
