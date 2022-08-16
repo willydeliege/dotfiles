@@ -1,5 +1,5 @@
 ---@diagnostic disable: missing-parameter
-local fn = vim.fn
+ local fn = vim.fn
 
 -- Automatically install packer
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
@@ -240,9 +240,9 @@ return packer.startup(function(use)
     --------------------------------------
 
     --Commenting
-    use { 'numToStr/Comment.nvim',
+    use { 'b3nj5m1n/kommentary',
         config = function()
-            require('Comment').setup()
+            require("plugins.kommentary").setup()
         end
     }
     use { "unblevable/quick-scope" }
