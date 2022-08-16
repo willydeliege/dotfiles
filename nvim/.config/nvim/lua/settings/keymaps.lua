@@ -9,7 +9,7 @@ local keymap = vim.api.nvim_set_keymap
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
--- Show cursor 
+-- Show cursor
 keymap("n", "<leader><leader>", "<cmd>Beacon<cr>", opts)
 keymap("n", "<C-µ>", "<C-]>", opts)
 -- Better window navigation
@@ -42,10 +42,9 @@ keymap("v", ">", ">gv", opts)
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-
 -- Custom
--- keymap("n", "<esc><esc>", "<cmd>nohlsearch<cr>", opts)
-keymap("n", "Q", "<cmd>Bdelete!<CR>", opts)
+keymap("n", "<esc><esc>", "<cmd>nohlsearch<cr>", opts)
+keymap("n", "Q", "<cmd>BDelete this<CR>", opts)
 
 --Search for visually selected word
 keymap("v", "//", [[y/\V<C-R>=escape(@",'/\')<CR><CR>]], opts)

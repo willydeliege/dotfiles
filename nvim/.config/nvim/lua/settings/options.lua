@@ -70,7 +70,7 @@ end
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.opt.fillchars:append { eob = " " } -- hide tildes at the end of buffers
 vim.opt.fillchars:append { vert = " " } -- hide borders of split vertical windows (nvim tree)
-
+vim.notify = require("notify")
 vim.cmd "highlight EndOfBuffer ctermfg=NONE ctermbg=NONE guibg=NONE"
 vim.cmd "highlight VertSplit ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE"
 

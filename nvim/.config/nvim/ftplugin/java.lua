@@ -71,10 +71,10 @@ local config = {
             configuration = {
                 updateBuildConfiguration = "interactive",
                 runtimes = {
-                    {
-                        name = "JavaSE-11",
-                        path = "/home/willefi/.sdkman/candidates/java/11.0.16-librca/"
-                    }
+--                    {
+--                        name = "JavaSE-11",
+--                        path = "/home/willefi/.sdkman/candidates/java/11.0.16-librca/"
+--                    }
                 }
             },
             maven = {

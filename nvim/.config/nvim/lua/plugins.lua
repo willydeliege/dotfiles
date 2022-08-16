@@ -167,7 +167,7 @@ return packer.startup(function(use)
     use "hrsh7th/cmp-nvim-lsp" -- Cmp source for LSP client
     use "hrsh7th/cmp-nvim-lua" -- Cmp source for nvim lua
     use "saadparwaiz1/cmp_luasnip" -- Luasnip completion source
-
+    use "glepnir/lspsaga.nvim"
     -- Snippets
     use "L3MON4D3/LuaSnip" -- Snippet engine
     use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
@@ -194,9 +194,6 @@ return packer.startup(function(use)
         end }
     -- Java
     use { "mfussenegger/nvim-jdtls" }
-    use { "https://gitlab.com/schrieveslaach/nvim-jdtls-bundles",
-        run = "./install-bundles.py"
-    }
     use { "j-hui/fidget.nvim",
         config = function()
             require("fidget").setup()
@@ -274,15 +271,16 @@ return packer.startup(function(use)
     }
     use { "f-person/git-blame.nvim", cmd = "GitBlameToggle" }
     use { "https://github.com/rhysd/conflict-marker.vim", event = "BufRead" }
+    use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
+
 
 
     --------------------------------------
     -- DAP --
     --------------------------------------
     use { "mfussenegger/nvim-dap", event = "BufRead" }
-    -- use "theHamsta/nvim-dap-virtual-text"
-    -- use "rcarriga/nvim-dap-ui"
-    use { "Pocco81/DAPInstall.nvim", event = "BufRead" }
+    use "theHamsta/nvim-dap-virtual-text"
+    use "rcarriga/nvim-dap-ui"
 
 
     -----------------------------------

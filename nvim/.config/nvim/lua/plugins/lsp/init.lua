@@ -5,12 +5,8 @@ if not status_ok then
 end
 local handlers = require("plugins.lsp.handlers")
 local installer = require("plugins.lsp.installer")
-local opts = {
-    on_attach = handlers.on_attach,
-    capabilities = handlers.capabilities,
-}
+local nullls = require("plugins.lsp.null-ls")
 installer.setup()
 handlers.setup()
-
-require "plugins.lsp.null-ls"
+nullls.setup()
 
