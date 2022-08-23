@@ -103,6 +103,7 @@ cmp.setup {
             -- NOTE: order matters
             vim_item.menu = ({
                 nvim_lsp = "[LSP]",
+                nvim_lsp_signature_help = "[Signature]",
                 nvim_lua = "[Lua]",
                 luasnip = "[LUASNIP]",
                 buffer = "[BUFFER]",
@@ -113,6 +114,7 @@ cmp.setup {
     },
     sources = {
         { name = "nvim_lsp" },
+        { name = "nvim_lsp_signature_help"},
         { name = "nvim_lua", max_item_count = 2 }, -- Adjust max item counts to your preference
         { name = "luasnip", max_item_count = 2 },
         { name = "buffer", max_item_count = 2 },
@@ -131,3 +133,6 @@ cmp.setup {
         ghost_text = true,
     },
 }
+
+local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })

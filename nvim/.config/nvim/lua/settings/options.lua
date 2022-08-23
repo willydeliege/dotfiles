@@ -67,7 +67,7 @@ for _, plugin in pairs(disabled_built_ins) do
 end
 
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
+vim.cmd "set whichwrap+=<,>,h,l"
 vim.opt.fillchars:append { eob = " " } -- hide tildes at the end of buffers
 vim.opt.fillchars:append { vert = " " } -- hide borders of split vertical windows (nvim tree)
 vim.notify = require("notify")

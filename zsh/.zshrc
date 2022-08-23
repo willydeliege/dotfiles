@@ -8,7 +8,7 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/.local/bin:$HOME/bin:/usr/local/bin:$PATH
-
+export CLASSPATH=$HOME/.install/lemminx-maven-0.6.0/lemminx-maven/target/*
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -94,8 +94,10 @@ plugins=(archlinux
         dirhistory
         autojump
         sudo
+        zsh-fzf-history-search
         zsh-autosuggestions
         zsh-syntax-highlighting)
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration

@@ -5,7 +5,8 @@
     ],
     "Lua.diagnostics.globals": [
         "ngx",
-        "on_attach"
+        "on_attach",
+        "test"
     ],
     "Lua.workspace.checkThirdParty": false,
     "Lua.workspace.library": [

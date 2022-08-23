@@ -5,7 +5,7 @@ end
 lualine.setup {
     options = {
         icons_enabled = true,
-        theme = 'everforest',
+        theme = 'dracula-nvim',
         component_separators = { '', '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {},

@@ -1,5 +1,5 @@
 ---@diagnostic disable: missing-parameter
- local fn = vim.fn
+local fn = vim.fn
 
 -- Automatically install packer
 local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
@@ -101,6 +101,9 @@ return packer.startup(function(use)
     use "LunarVim/Colorschemes"
     use { 'lalitmee/cobalt2.nvim', requires = 'tjdevries/colorbuddy.nvim' }
     use { "adisen99/codeschool.nvim", requires = { "rktjmp/lush.nvim" } }
+    use { "catppuccin/nvim", as = "catppuccin" }
+    use { "Mofiqul/dracula.nvim" }
+    use { "marko-cerovac/material.nvim" }
     -- Buffer (Tab) line
     use "akinsho/bufferline.nvim" --
     use "kazhala/close-buffers.nvim"
@@ -113,10 +116,6 @@ return packer.startup(function(use)
     --------------------------------------
     -- File Navigation and Fuzzy Search --
     --------------------------------------
-
-    -- Nvim Tree
-    use "kyazdani42/nvim-tree.lua"
-
 
     use {
         "nvim-neo-tree/neo-tree.nvim",
@@ -161,13 +160,26 @@ return packer.startup(function(use)
     -- --------------------------------------
     -- Autocompletion --
     --------------------------------------
-    use "hrsh7th/nvim-cmp" -- Completion (cmp) plugin
+    use { "hrsh7th/nvim-cmp",
+        config = function()
+            require("plugins.cmp")
+        end
+    } -- Completion (cmp) plugin
     use "hrsh7th/cmp-buffer" -- Cmp source for buffer words
     use "hrsh7th/cmp-path" -- Cmp source for path
     use "hrsh7th/cmp-nvim-lsp" -- Cmp source for LSP client
     use "hrsh7th/cmp-nvim-lua" -- Cmp source for nvim lua
     use "saadparwaiz1/cmp_luasnip" -- Luasnip completion source
-    use "glepnir/lspsaga.nvim"
+    use "hrsh7th/cmp-nvim-lsp-signature-help" -- signature help completion
+    use({
+        "glepnir/lspsaga.nvim",
+        branch = "main",
+        config = function()
+            local saga = require("lspsaga")
+
+            saga.init_lsp_saga()
+        end,
+    })
     -- Snippets
     use "L3MON4D3/LuaSnip" -- Snippet engine
     use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
@@ -175,15 +187,18 @@ return packer.startup(function(use)
     --------------------------------------
     -- LSP --
     --------------------------------------
-    --  Copilot
-    use "zbirenbaum/copilot.lua" -- Github Copilot in lua
 
     -- LSP
     use "neovim/nvim-lspconfig" -- Enable native LSP
-    -- use "williamboman/nvim-lsp-installer"
     use { "williamboman/mason.nvim",
         config = function()
             require("mason").setup {}
+        end
+    }
+    use {
+        "williamboman/mason-lspconfig.nvim",
+        config = function()
+            require("mason-lspconfig").setup()
         end
     }
     use "antoinemadec/FixCursorHold.nvim" -- Fix lsp doc highlight
@@ -245,7 +260,14 @@ return packer.startup(function(use)
             require("plugins.kommentary").setup()
         end
     }
-    use { "unblevable/quick-scope" }
+    use {
+        'phaazon/hop.nvim',
+        branch = 'v2', -- optional but strongly recommended
+        config = function()
+            -- you can configure Hop the way you like here; see :h hop-config
+            require 'hop'.setup { keys = 'qsdfghjklmazertyuiop' }
+        end
+    }
     --------------------------------------
     -- File type specific --
     --------------------------------------
@@ -290,9 +312,10 @@ return packer.startup(function(use)
     -- Treesitter
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" } -- Syntax highlighting
     use { "windwp/nvim-ts-autotag" } -- Auto close tags
-    use { "windwp/nvim-autopairs" } -- Autoclose quotes, parentheses etc.
-
-
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if PACKER_BOOTSTRAP then

@@ -67,7 +67,6 @@ local function lsp_highlight_document(client)
 end
 
 local function lsp_keymaps(bufnr)
-    vim.notify("lsp_keymaps")
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- Mappings.

@@ -11,7 +11,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 -- Show cursor
 keymap("n", "<leader><leader>", "<cmd>Beacon<cr>", opts)
-keymap("n", "<C-µ>", "<C-]>", opts)
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -24,7 +23,20 @@ keymap("n", "<C-Up>", ":resize -2<CR>", opts)
 keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
-
+-- Hop
+-- place this in one of your configuration file(s)
+keymap('', 'f',
+    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true })<cr>"
+    , opts)
+keymap('', 'F',
+    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true })<cr>"
+    , opts)
+keymap('', 't',
+    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })<cr>"
+    , opts)
+keymap('', 'T',
+    "<cmd>lua require'hop'.hint_char1({ direction = require'hop.hint'.HintDirection.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })<cr>"
+    , opts)
 -- Navigate buffers
 keymap("n", "<TAB>", ":bnext<CR>", opts)
 keymap("n", "<S-TAB>", ":bprevious<CR>", opts)

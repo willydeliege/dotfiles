@@ -8,16 +8,12 @@ require "settings.keymaps"
 --Plugins
 require "plugins"
 
-
 --Plugin settings
 require "plugins.lsp"
-require "plugins.cmp"
 require "plugins.colorscheme"
 require "plugins.autocommands"
 require "plugins.telescope"
 require "plugins.treesitter"
-require "plugins.autopairs"
-require "plugins.nvim-tree"
 require "plugins.bufferline"
 require "plugins.lualine"
 require "plugins.toggleterm"
