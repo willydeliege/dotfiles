@@ -1,0 +1,3 @@
+[submodule "oh_my_zsh/.oh-my-zsh/custom/plugins/zsh-exa"]
+	path = oh_my_zsh/.oh-my-zsh/custom/plugins/zsh-exa
+	url = https://github.com/TwoPizza9621536/zsh-exa.git

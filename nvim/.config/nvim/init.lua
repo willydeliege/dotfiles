@@ -2,8 +2,7 @@
 require "plugins.impatient"
 
 --Nvim Settings
-require "settings.options"
-require "settings.keymaps"
+require "settings"
 
 --Plugins
 require "plugins"
