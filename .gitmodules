@@ -1,3 +1,12 @@
 [submodule "oh_my_zsh/.oh-my-zsh/custom/plugins/zsh-exa"]
 	path = oh_my_zsh/.oh-my-zsh/custom/plugins/zsh-exa
 	url = https://github.com/TwoPizza9621536/zsh-exa.git
+[submodule "oh_my_zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+	path = oh_my_zsh/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "oh_my_zsh/.oh-my-zsh/custom/plugins/zsh-fzf-history-search"]
+	path = oh_my_zsh/.oh-my-zsh/custom/plugins/zsh-fzf-history-search
+	url = https://github.com/joshskidmore/zsh-fzf-history-search
+[submodule "oh_my_zsh/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
+	path = oh_my_zsh/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
