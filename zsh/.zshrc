@@ -1,0 +1,1 @@
+/home/willefi/Oh-My-Termux/.zshrc
