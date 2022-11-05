@@ -431,6 +431,7 @@ sensible-utils
 session-migration
 silversearcher-ag
 software-properties-common
+stow
 sudo
 systemd
 systemd-hwe-hwdb
