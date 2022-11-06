@@ -377,11 +377,11 @@ local config = {
     --         The rest of the fields are passed to the function as the "config" argument.
     filtered_items = {
       visible = false, -- when true, they will just be displayed differently than normal items
-      force_visible_in_empty_folder = false, -- when true, hidden files will be shown if the root folder is otherwise empty
+      force_visible_in_empty_folder = true, -- when true, hidden files will be shown if the root folder is otherwise empty
       show_hidden_count = true, -- when true, the number of hidden items in each folder will be shown as the last entry
-      hide_dotfiles = true,
+      hide_dotfiles = false,
       hide_gitignored = true,
-      hide_hidden = true, -- only works on Windows for hidden files/directories
+      hide_hidden = false, -- only works on Windows for hidden files/directories
       hide_by_name = {
         ".DS_Store",
         "thumbs.db",
@@ -493,6 +493,7 @@ local config = {
 }
 function M.setup()
   require("neo-tree").setup(config)
+  vim.cmd [[hi NeoTreeNormal guibg=#000000]]
 end
 
 return M
