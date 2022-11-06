@@ -1,4 +1,4 @@
-# [Created by task 2.6.1 11/2/2022 21:43:32]
+# [Created by task 2.6.1 11/6/2022 09:02:14]
 # Taskwarrior program configuration file.
 # For more documentation, see https://taskwarrior.org or try 'man task', 'man task-color',
 # 'man task-sync' or 'man taskrc'
@@ -15,7 +15,8 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-data.location=/home/willefi/.task
+data.location=~/willydeliege/.task
+
 
 # To use the default location of the XDG directories,
 # move this configuration file from ~/.taskrc to ~/.config/task/taskrc and uncomment below
