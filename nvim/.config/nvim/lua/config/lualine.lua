@@ -5,19 +5,6 @@ local lualine = require "lualine"
 -- local api = vim.api
 
 -- Color table for highlights
-local colors = {
-  bg = "#202328",
-  fg = "#bbc2cf",
-  yellow = "#ECBE7B",
-  cyan = "#008080",
-  darkblue = "#081633",
-  green = "#98be65",
-  orange = "#FF8800",
-  violet = "#a9a1e1",
-  magenta = "#c678dd",
-  blue = "#51afef",
-  red = "#ec5f67",
-}
 
 local function separator()
   return "%="
@@ -125,8 +112,8 @@ function M.setup()
       theme = "catppuccin",
       -- component_separators = { left = "", right = "" },
       component_separators = {},
-      section_separators = { left = " ", right = "" },
-      -- section_separators = {},
+      -- section_separators = { left = " ", right = "" },
+      section_separators = {},
       disabled_filetypes = {
         statusline = {},
         winbar = {
@@ -151,7 +138,7 @@ function M.setup()
       lualine_a = { "mode" },
       lualine_b = { "branch" },
       lualine_c = {
-        { "diff", colored = false },
+        { "diff", colored = true },
         {
           "diagnostics",
           sources = { "nvim_diagnostic" },
@@ -169,7 +156,7 @@ function M.setup()
           fmt = show_macro_recording,
         },
         { separator },
-        { lsp_client, icon = icons.ui.Gear, color = { fg = colors.violet, gui = "bold" } },
+        { lsp_client, icon = icons.ui.Gear },
         -- { lsp_progress },
         -- {
         --   gps.get_location,
