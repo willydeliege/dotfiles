@@ -29,7 +29,7 @@ local mappings = {
 		name = "Zettelkasten",
 		l = { "<cmd>ZkLinks<cr>", "Links"},
 		b = { "<cmd>ZkBacklinks<cr>", "BackLink" },
-		N = { "<cmd>ZkNotes<cr>", "List notes" },
+		n = { "<cmd>ZkNotes<cr>", "List notes" },
 		d = {
 			name = "Diary",
 			d = { "<cmd>ZkNew { dir = 'diary' }<cr>","Today"},
@@ -41,7 +41,7 @@ local mappings = {
 local v_mappings = {
 	z = {
 		name = "Zettelkasten",
-		t = { ":'<,'>ZkNewFromTitleSelection { dir = vim.fn.expand('%:p:h') <CR>", "New note from title" },
+		t = { ":'<,'>ZkNewFromTitleSelection<CR>", "New note from title" },
 		c = { ":'<,'>ZkNewFromContentSelection { title = vim.fn.input('Title: ') }<CR>", "New note from selection" }
 	}
 }

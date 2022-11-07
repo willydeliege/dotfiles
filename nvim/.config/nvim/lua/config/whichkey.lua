@@ -123,7 +123,7 @@ local function normal_keymap()
     },
 	z = {
 		name = "Zettelkasten",
-		N = { "<cmd>ZkNotes {sort = {'modified'} }<cr>", "List notes" },
+		n = { "<cmd>ZkNotes {sort = {'modified'} }<cr>", "List notes" },
 	},
 
 
