@@ -18,6 +18,7 @@ export PATH=$GOBIN:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/.gem/ruby/3.0.0/bin:$PATH
 export PATH=$HOME/.npm/bin:$PATH
+export TZ="Europe/Brussels"
 #export PATH="$HOME/.pyenv/bin:$PATH"
 #eval "$(pyenv init --path)"
 
