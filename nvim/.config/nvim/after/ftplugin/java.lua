@@ -18,7 +18,7 @@ local SYSTEM = "linux"
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = WORKSPACE_PATH .. project_name
 
-local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
+local root_markers = { "mvnw", "gradlew", "pom.xml", "build.gradle" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
 if root_dir == "" then
   return
@@ -62,7 +62,7 @@ local config = {
           },
           {
             name = "JavaSE-17",
-            path = "/home/willefi/.sdkman/candidates/java/17.0.4.1-tem/",
+            path = "/home/willefi/.sdkman/candidates/java/17.0.5-tem/",
           },
         },
       },
