@@ -3,7 +3,7 @@
 # Setup script for Oh-My-Termux
 function install_packages {
     echo -e "\u001b[7m Installing required packages... \u001b[0m"
-    xargs sudo apt install < list.txt
+    xargs sudo apt install -y < list.txt
 }
 
 function install_zsh_plugins {
