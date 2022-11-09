@@ -740,6 +740,7 @@ function M.setup()
     }
 
     use { "ThePrimeagen/vim-be-good" }
+    use { "neomutt/neomutt.vim" }
     -- Markdown
 
     use { "willydeliege/markdowntasks", ft = "markdown", event = "BufRead" }
