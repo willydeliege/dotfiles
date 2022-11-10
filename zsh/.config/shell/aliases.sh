@@ -49,6 +49,7 @@ alias ln="ln -sv"
 alias ls='ls --color=auto'
 alias lsda="lsd -A --group-dirs first --classify"
 alias lsdo="lsd -A --group-dirs first --classify --recursive --depth=2"
+alias nm="neomutt"
 alias me="README.md"
 alias mv="mv -iv"
 alias ncdu="ncdu --color=dark -x"
