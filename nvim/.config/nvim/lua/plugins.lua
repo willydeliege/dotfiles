@@ -63,7 +63,7 @@ function M.setup()
       config = function()
         require("config.noice").setup()
       end,
-      wants = {"nui.nvim","nvim-notify"},
+      wants = { "nui.nvim", "nvim-notify" },
       disable = true,
     }
     use {
@@ -264,31 +264,15 @@ function M.setup()
       module = "neogen",
       disable = false,
     }
-
-    use { "AndrewRadev/splitjoin.vim", keys = { "gS", "gJ" }, disable = false }
     use {
-      "ggandor/leap.nvim",
-      event = "BufReadPre",
+      "https://gitlab.com/madyanov/svart.nvim",
       config = function()
-        require("leap").add_default_mappings()
-      end,
-    }
-    use {
-      "ggandor/flit.nvim",
-      event = "BufReadPre",
-      config = function()
-        require("flit").setup {
-          keys = { f = "f", F = "F", t = "t", T = "T" },
-          -- A string like "nv", "nvo", "o", etc.
-          labeled_modes = "v",
-          multiline = true,
-          -- Like `leap`s similar argument (call-specific overrides).
-          -- E.g.: opts = { equivalence_classes = {} }
-          opts = {},
+        require("svart").configure {
+          label_atoms = "jfkdlsqhgnuvrbytmiceoxwpaz", -- allowed label chars
+          label_location = "start",
         }
       end,
     }
-
     -- Status line
     use {
       "nvim-lualine/lualine.nvim",
@@ -743,6 +727,21 @@ function M.setup()
     use { "neomutt/neomutt.vim" }
     -- Markdown
 
+    use {
+      "andrewferrier/wrapping.nvim",
+      config = function()
+        require("wrapping").setup {}
+      end,
+      event = "BufReadPre",
+      disable = false,
+    }
+    use {
+      "uga-rosa/translate.nvim",
+      ft = "markdown",
+      config = function()
+        require("translate").setup {}
+      end,
+    }
     use { "willydeliege/markdowntasks", ft = "markdown", event = "BufRead" }
     use { "powerman/vim-plugin-AnsiEsc", ft = "markdown" }
     use {
@@ -756,6 +755,7 @@ function M.setup()
     use {
       "mickael-menu/zk-nvim",
       ft = "markdown",
+      cmd = "ZkNotes",
       config = function()
         require("zk").setup {
           picker = "telescope",
@@ -764,7 +764,7 @@ function M.setup()
     }
     use { "godlygeek/tabular", ft = "markdown" }
     use { "preservim/vim-markdown", ft = "markdown" }
-    use {"ellisonleao/glow.nvim"}
+    use { "ellisonleao/glow.nvim" }
     -- Bootstrap Neovim
     if packer_bootstrap then
       print "Neovim restart is required after installation!"
