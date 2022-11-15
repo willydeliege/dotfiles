@@ -1,0 +1,20 @@
+[database]
+path=/home/willefi/.local/share/mail/frederic.willem@gmail.com
+
+
+[user]
+name=Frédéric Willem
+primary_email=frederic.willem@gmail.com
+
+[new]
+ignore=.mbsyncstate;.uidvalidity
+tags=N
+
+[search]
+exclude_tags=D;S;
+
+[maildir]
+synchronize_flags=true
+
+[crypto]
+gpg_path=gpg

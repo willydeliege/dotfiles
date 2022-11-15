@@ -1,0 +1,28 @@
+
+# Global config -- will be overwritten below
+Expunge None
+Create Near
+SyncState *
+
+IMAPStore frederic.willem@gmail.com-remote
+Host imap.gmail.com
+Port 993
+User frederic.willem@gmail.com
+PassCmd "pass frederic.willem@gmail.com"
+AuthMechs LOGIN
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+MaildirStore frederic.willem@gmail.com-local
+Subfolders Verbatim
+Path ~/.local/share/mail/frederic.willem@gmail.com/
+Inbox ~/.local/share/mail/frederic.willem@gmail.com/INBOX
+
+Channel frederic.willem@gmail.com
+Far ":frederic.willem@gmail.com-remote:"
+Near ":frederic.willem@gmail.com-local:"
+Create Both
+Expunge Both
+Patterns * ![Gmail]/Spam ![Gmail]/Trash
+SyncState *
+Sync All
