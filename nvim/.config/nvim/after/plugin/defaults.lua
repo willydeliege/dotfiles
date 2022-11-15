@@ -31,7 +31,7 @@ opt.joinspaces = false -- No double spaces with join after a dot
 opt.smartindent = true --Smart indent
 opt.expandtab = true
 opt.smarttab = true
-opt.textwidth = 0
+opt.textwidth = 80
 opt.autoindent = true
 opt.shiftwidth = 2
 opt.tabstop = 2
@@ -48,7 +48,7 @@ opt.scrollback = 100000
 
 -- go to previous/next line with h,l,left arrow and right arrow when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
-opt.wrap = false
+opt.wrap = true
 
 -- disable nvim intro
 -- opt.shortmess:append "sI"
