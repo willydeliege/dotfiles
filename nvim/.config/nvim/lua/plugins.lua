@@ -730,7 +730,9 @@ function M.setup()
     use {
       "andrewferrier/wrapping.nvim",
       config = function()
-        require("wrapping").setup {}
+        require("wrapping").setup {
+          softener = { markdown = 1.3 },
+        }
       end,
       event = "BufReadPre",
       disable = false,
