@@ -24,9 +24,5 @@ set record =+Sent"
 set trash = "+Trash"
 mailboxes =INBOX =[Gmail]/Starred  =[Gmail]/Important  =[Gmail]/Drafts =[Gmail]/All\ Mail # =[Gmail]/Sent
 set nm_default_url = "notmuch:///home/willefi/.local/share/mail/frederic.willem@gmail.com"
-virtual-mailboxes "My INBOX" "notmuch://?query=tag:inbox" "My Unread" "notmuch://?query=tag:unread tag:inbox"\
-                  "My Starred"   "notmuch://?query=tag:*" "My Sent" "notmuch://?query=tag:sent"\
-                  "Important" "notmuch://?query=tag:important"
-
 
 
