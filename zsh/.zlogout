@@ -9,3 +9,5 @@ cd ~/.dotfiles/
 git add .
 git commit -am 'save anyway'
 git push
+cd 
+
