@@ -1,3 +1,4 @@
+# zmodload zsh/zprof
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -7,7 +8,8 @@ fi
 
 # Path to oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export TERM="xterm-256color"
+# export TERM="xterm-256color"
+# export ZSH_TMUX_AUTOSTART=true
 
 # Options
 setopt hist_ignore_dups
@@ -20,7 +22,8 @@ COMPLETION_WAITING_DOTS="false"
 SAVEHIST=99999
 
 # Plugins
-plugins=(zsh-autocomplete
+plugins=(tmux
+    zsh-autocomplete
     alias-tips
     catimg
     colorize
@@ -140,8 +143,9 @@ function color_picker() {
 # Local configurations
 [ -f ~/.local.sh ] && source ~/.local.sh
 
-source /etc/profile
+# source /etc/profile
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
+# zprof
