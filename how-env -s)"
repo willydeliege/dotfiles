@@ -1,0 +1,389 @@
+[1mdiff --git a/tmux/.tmux/renew_env.sh b/tmux/.tmux/renew_env.sh[m
+[1mdeleted file mode 100755[m
+[1mindex 31a4b7c..0000000[m
+[1m--- a/tmux/.tmux/renew_env.sh[m
+[1m+++ /dev/null[m
+[36m@@ -1,12 +0,0 @@[m
+[31m-#!/usr/bin/env bash[m
+[31m-[m
+[31m-set -eu[m
+[31m-[m
+[31m-pane_fmt="#{pane_id} #{pane_in_mode} #{pane_input_off} #{pane_dead} #{pane_current_command}"[m
+[31m-tmux list-panes -s -F "$pane_fmt" | awk '[m
+[31m-  $2 == 0 && $3 == 0 && $4 == 0 && $5 ~ /(bash|zsh|ksh|fish)/ { print $1 }[m
+[31m-' | while read -r pane_id; do[m
+[31m-  # renew environment variables according to update-environment tmux option[m
+[31m-  # also clear screen[m
+[31m-  tmux send-keys -t "$pane_id" 'Enter' 'eval "$(tmux show-env -s)"' 'Enter' 'C-l'[m
+[31m-done;[m
+\ No newline at end of file[m
+[1mdiff --git a/tmux/.tmux/tmux.conf b/tmux/.tmux/tmux.conf[m
+[1mdeleted file mode 100644[m
+[1mindex ad77eb3..0000000[m
+[1m--- a/tmux/.tmux/tmux.conf[m
+[1m+++ /dev/null[m
+[36m@@ -1,274 +0,0 @@[m
+[31m-# .tmux.conf[m
+[31m-#[m
+[31m-# Maintained by Byungjin Park <posquit0.bj@gmail.com>[m
+[31m-# http://www.posquit0.com/[m
+[31m-[m
+[31m-[m
+[31m-### General {{{[m
+[31m-  # Use UTF-8 encoding[m
+[31m-  set-option -gq utf8[m
+[31m-  set-window-option -gq utf8 on[m
+[31m-  # set-option scrollback history to 10000 (10k)[m
+[31m-  set-option -g history-limit 10000[m
+[31m-  # Visual notification of activity in other windows[m
+[31m-  set-window-option -g monitor-activity on[m
+[31m-  set-option -g visual-activity on[m
+[31m-  # No automatic renaming of windows (from commands on execution)[m
+[31m-  set-window-option -g automatic-rename on[m
+[31m-  # set-option title, which is also showed at iTerm tab[m
+[31m-  # #T      = standard window title (last command, see ~/.bash_profile)[m
+[31m-  # #h      = short hostname[m
+[31m-  # #S      = session name[m
+[31m-  # #I      = tmux window index[m
+[31m-  # #W      = tmux window name[m
+[31m-  # Attempt to set the window title using xterm code if tmux detects using xterm[m
+[31m-  set-option -g set-titles on[m
+[31m-  set-option -g set-titles-string "#I:#W"[m
+[31m-[m
+[31m-  # Fix `pbcopy` and `pbpaste` bug on Mac OS X[m
+[31m-  # INFO: Need to install `reattach-to-user-namespace`[m
+[31m-  # if-shell "which reattach-to-user-namespace 2>/dev/null" \[m
+[31m-  #   "set-option -g default-command 'reattach-to-user-namespace -l $SHELL'" \[m
+[31m-  #   "set-option -g default-command '$SHELL'"[m
+[31m-  # set-option -g default-command '$SHELL'[m
+[31m-[m
+[31m-  # set-option the terminal color to 256color[m
+[31m-  # set-option -g default-terminal "screen-256color"[m
+[31m-  set-option -g default-terminal "xterm-256color"[m
+[31m-  set-option -ga terminal-overrides ',xterm-256color:Tc'[m
+[31m-  set-option -as terminal-overrides ',xterm*:sitm=\E[3m'[m
+[31m-### }}}[m
+[31m-[m
+[31m-### Key Bindings {{{[m
+[31m-    # Key combination prefix is <C-Sapce>, not <C-b>[m
+[31m-    set-option -g prefix C-Space[m
+[31m-  unbind-key C-b[m
+[31m-  # Use send-prefix to pass C-a through to application[m
+[31m-  bind C-Space send-prefix[m
+[31m-[m
+[31m-  # Reload ~/.tmux.conf using PREFIX r[m
+[31m-  bind r source-file ~/.tmux.conf \; display "TMUX configuration is reloaded!"[m
+[31m-[m
+[31m-  # Reduce the command delay time to something a bit shorter[m
+[31m-  set-option -sg escape-time 0[m
+[31m-  # Disallow multiple commands to be entered without pressing the prefix-key again[m
+[31m-  set-option -sg repeat-time 0[m
+[31m-[m
+[31m-  # Use vi-style key bindings in copy and choice modes[m
+[31m-  set-window-option -g mode-keys vi[m
+[31m-  # Use vi-style key bindings in the status line (command mode)[m
+[31m-  set-option -g status-keys vi[m
+[31m-  # Setup 'v' to begin selection as in Vim[m
+[31m-  tmux_version="`tmux -V | cut -d' ' -f2`"[m
+[31m-  if-shell "[ $tmux_version -ge 2.4 ]" \[m
+[31m-    "bind-key -T copy-mode-vi 'v' send -X begin-selection"[m
+[31m-  if-shell "[ $tmux_version -lt 2.4 ]" \[m
+[31m-    'bind-key -t vi-copy v begin-selection'[m
+[31m-  if-shell "[ $tmux_version -ge 2.4 ]" \[m
+[31m-    "bind-key -T copy-mode-vi 'y' send -X copy-selection"[m
+[31m-  if-shell "[ $tmux_version -lt 2.4 ]" \[m
+[31m-    'bind-key -t vi-copy y copy-selection'[m
+[31m-  bind P paste-buffer[m
+[31m-  # Smart pane switching with awareness of vim splits[m
+[31m-  is_vim='echo "#{pane_current_command}" | grep -iqE "(^|\/)g?(view|n?vim?)(diff)?$"'[m
+[31m-  # bind -n C-h if-shell "$is_vim" "send-keys C-h" "select-pane -L"[m
+[31m-  # bind -n C-j if-shell "$is_vim" "send-keys C-j" "select-pane -D"[m
+[31m-  # bind -n C-k if-shell "$is_vim" "send-keys C-k" "select-pane -U"[m
+[31m-  # bind -n C-l if-shell "$is_vim" "send-keys C-l" "select-pane -R"[m
+[31m-  # bind -n C-\ if-shell "$is_vim" "send-keys C-\\" "select-pane -l"[m
+[31m-  # Map Vi movement keys as pane movement keys[m
+[31m-  bind h select-pane -L[m
+[31m-  bind j select-pane -D[m
+[31m-  bind k select-pane -U[m
+[31m-  bind l select-pane -R[m
+[31m-  # Resize panes using PREFIX H, J, K, L[m
+[31m-  bind H resize-pane -L 5[m
+[31m-  bind J resize-pane -D 5[m
+[31m-  bind K resize-pane -U 5[m
+[31m-  bind L resize-pane -R 5[m
+[31m-[m
+[31m-  # Open window with currrent path[m
+[31m-  bind c new-window -c '#{pane_current_path}'[m
+[31m-  # Use PREFIX | to split window horizontally and PREFIX - to split vertically[m
+[31m-  bind | split-window -h -c '#{pane_current_path}'[m
+[31m-  bind - split-window -v -c '#{pane_current_path}'[m
+[31m-[m
+[31m-  # Make the current window the first window[m
+[31m-  bind T swap-window -t 1[m
+[31m-[m
+[31m-  # If enabled, request mouse input as UTF-8 on UTF-8 terminals[m
+[31m-  set-option -gq mouse-utf8 on[m
+[31m-  # If enabled, use mouse control in TMUX[m
+[31m-  set-window-option -g mouse on[m
+[31m-### }}}[m
+[31m-[m
+[31m-### Appereance {{{[m
+[31m-  # Let window numbers be 1-indexed[m
+[31m-  set-option -g base-index 1[m
+[31m-  # Automatically renumber window numbers on closing a pane (tmux >= 1.7)[m
+[31m-  set-option -g renumber-windows on[m
+[31m-  # Enable focus events for terminal that support them[m
+[31m-  set-option -g focus-events on[m
+[31m-  # set-option window notifications[m
+[31m-  set-window-option -g monitor-activity on[m
+[31m-  # Display a status line message when activity occurs in a window[m
+[31m-  set-option -g visual-activity on[m
+[31m-  # Display tmux messages for 2 seconds[m
+[31m-  set-option -g display-time 2000[m
+[31m-  # Enable aggressive-resize that is super useful when using grouped sessions and multi-monitor[m
+[31m-  set-window-option -g aggressive-resize on[m
+[31m-[m
+[31m-  ## Window {{[m
+[31m-    set-window-option -g mode-style fg=colour254,bg=colour4,bold[m
+[31m-[m
+[31m-    # Clock Mode {{[m
+[31m-      # Set the clock colors[m
+[31m-      set-window-option -g clock-mode-colour colour160[m
+[31m-      # Set clock hour format[m
+[31m-      set-window-option -g clock-mode-style 24[m
+[31m-    # }}[m
+[31m-[m
+[31m-    # Display Panes {{[m
+[31m-      # Set the indicator colors for the active pane[m
+[31m-      set-option -g display-panes-active-colour colour4[m
+[31m-      # Set the indicator colors for the inactive pane[m
+[31m-      set-option -g display-panes-colour colour245[m
+[31m-    # }}[m
+[31m-  ## }}[m
+[31m-[m
+[31m-  ## Pane {{[m
+[31m-    # Let pane numbers be 1-indexed[m
+[31m-    set-option -g pane-base-index 1[m
+[31m-[m
+[31m-    # Set border colors for the inactive pane[m
+[31m-    set-option -g pane-border-style fg=colour235,bg=default[m
+[31m-    # Set border colors for the active pane[m
+[31m-    set-option -g pane-active-border-style fg=colour59,bg=default[m
+[31m-  ## }}[m
+[31m-[m
+[31m-  ## Status Line {{[m
+[31m-    # Turn the status line on[m
+[31m-    set-option -g status on[m
+[31m-    # Treat top-bit-set characters in the status-left and status-right as UTF-8[m
+[31m-    set-option -gq status-utf8 on[m
+[31m-[m
+[31m-    # Update status every 5 seconds[m
+[31m-    set-option -g status-interval 5[m
+[31m-    # Set colors and attributes for the status line[m
+[31m-    set-option -g status-style fg=colour15,bg=default,none[m
+[31m-[m
+[31m-    # Window List {{[m
+[31m-      ## Window List[m
+[31m-      # Center window list for clarity[m
+[31m-      set-option -g status-justify centre[m
+[31m-[m
+[31m-      # Configure contents in window status[m
+[31m-      set-window-option -g window-status-format "[#I/#{pane_current_command}]"[m
+[31m-      # Set colors and attributes for the window status text[m
+[31m-      set-window-option -g window-status-style fg=colour244,bg=default,dim[m
+[31m-[m
+[31m-      # Configure contents in current window status[m
+[31m-      set-window-option -g window-status-current-format "#I/#{pane_current_command}"[m
+[31m-      # Set colors and attributes for the current window status text[m
+[31m-      set-window-option -g window-status-current-style fg=colour254,bg=default,bold[m
+[31m-[m
+[31m-      # Set colors and attributes for the status text of window which have an activity[m
+[31m-      set-window-option -g window-status-activity-style fg=colour64,bg=default,bold[m
+[31m-    # }[m
+[31m-[m
+[31m-    # Left {{[m
+[31m-      # Configure elemnts to show on left side of the status line[m
+[31m-      set-option -g status-left-length 70[m
+[31m-      set-option -g status-left "#[fg=colour1] #H"[m
+[31m-      set-option -ga status-left "#[fg=colour243,bold] » #[default]"[m
+[31m-      set-option -ga status-left "#[fg=colour35]#(whoami)"[m
+[31m-      set-option -ga status-left "#[fg=colour243,bold] » #[default]"[m
+[31m-      set-option -ga status-left "#[fg=colour38]#S"[m
+[31m-      set-option -ga status-left "#[fg=colour243,bold] » #[default]"[m
+[31m-      set-option -ga status-left "#[fg=colour249]#I:#P"[m
+[31m-      set-option -ga status-left "#[fg=colour243,bold] » #[default]"[m
+[31m-      # set-option -g status-left-fg colour243[m
+[31m-      set-option -g status-left-style bg=default,none[m
+[31m-    # }[m
+[31m-[m
+[31m-    # Right {{[m
+[31m-      # Configure elemnts to show on right side of the status line[m
+[31m-      set-option -g status-right-length 48[m
+[31m-      set-option -g status-right "#[fg=colour243,bold] « #[default]"[m
+[31m-      set-option -ga status-right "#{prefix_highlight}"[m
+[31m-      set-option -ga status-right "#[fg=white,bg=colour29,bold] #{d_day_icon} #{d_day_remain}(#{d_day_percentage}) #[default]"[m
+[31m-      set-option -ga status-right "#[fg=white,bg=colour64,bold]#{cpu_percentage} #[default]"[m
+[31m-      set-option -ga status-right "#[fg=colour233,bg=colour15] %Y-%m-%d %a %H:%M #[default]"[m
+[31m-      # set-option -g status-right-fg colour243[m
+[31m-      set-option -g status-right-style bg=default,none[m
+[31m-    # }[m
+[31m-[m
+[31m-    # Message {{[m
+[31m-      # Set colors and attributes for status line messages[m
+[31m-      set-option -g message-style fg=white,bg=colour65,bright[m
+[31m-    # }[m
+[31m-  ## }}[m
+[31m-### }}}[m
+[31m-[m
+[31m-### Plugins {{{[m
+[31m-  # List of plugins[m
+[31m-  # Supports `github_username/repo` or full URL[m
+[31m-  # Examples:[m
+[31m-  # github_username/plugin_name[m
+[31m-  # git@github.com/user/plugin[m
+[31m-  # git@bitbucket.cmo/user/plugin[m
+[31m-  set-option -g @plugin 'tmux-plugins/tpm'[m
+[31m-  set-option -g @plugin 'tmux-plugins/tmux-battery'[m
+[31m-  set-option -g @plugin 'tmux-plugins/tmux-cpu'[m
+[31m-  set-option -g @plugin 'tmux-plugins/tmux-copycat'[m
+[31m-  set-option -g @plugin 'tmux-plugins/tmux-open'[m
+[31m-  set-option -g @plugin 'tmux-plugins/tmux-resurrect'[m
+[31m-  set-option -g @plugin 'tmux-plugins/tmux-prefix-highlight'[m
+[31m-  set-option -g @plugin 'posquit0/tmux-d-day'[m
+[31m-[m
+[31m-  ## Shortcuts of plugins[m
+[31m-  # TPM[m
+[31m-  # <prefix> + I: installs new plugins from GitHub or any other git repository[m
+[31m-  # <prefix> + U: updates plugins[m
+[31m-  # <prefix> + alt-u: remove/uninstall plugins not on the plugin list[m
+[31m-  # Copycat[m
+[31m-  # <prefix> + /: regex search[m
+[31m-  # <prefix> + ctrl-f : simple file search[m
+[31m-  # <prefix> + ctrl-g : jumping over git status files (used after `git status` command)[m
+[31m-  # <prefix> + alt-h: jumping over SHA-1 hashes (used after `git log` command)[m
+[31m-  # <prefix> + ctrl-u : url search (http, ftp and git urls)[m
+[31m-  # <prefix> + ctrl-d : number search (mnemonic d, as digit)[m
+[31m-  # <prefix> + alt-i : ip address search[m
+[31m-  # n, N: jumps to the next/previous match[m
+[31m-  # Enter: To copy a highlighted match (vi mode)[m
+[31m-  # ctrl-w / alt-w: To copy a highlighted match (emacs mode)[m
+[31m-  # <prefix> + ]: To paste (this is Tmux default paste)[m
+[31m-  # Open[m
+[31m-  # o: open a highlighted selection with the system default program (open for OS X)[m
+[31m-  # ctrl-o: open a highlighted selection with the $EDITOR[m
+[31m-  # Resurrect[m
+[31m-  # <prefix> + ctrl-s: save[m
+[31m-  # <prefix> + ctrl-r: restore[m
+[31m-[m
+[31m-  ## Plugin: Resurrect {{[m
+[31m-    # set-option directory to save TMUX environments[m
+[31m-    set-option -g @resurrect-dir '~/.tmux-resurrect'[m
+[31m-    # Enable saving and restoring tmux pane contents[m
+[31m-    set-option -g @resurrect-capture-pane-contents 'on'[m
+[31m-    # Configuration for advanced restoring[m
+[31m-    set-option -g @resurrect-processes '          \[m
+[31m-      vi vim nvim gvim emacs man less more tail   \[m
+[31m-      top htop glances iotop iftop sudo           \[m
+[31m-      ssh irssi weechat weechat-curses mutt       \[m
+[31m-      python ipython git tig mysql sqlite3 psql   \[m
+[31m-    '[m
+[31m-  ## }}[m
+[31m-  ## Plugin: D-Day {{[m
+[31m-    set-option -g @d_day_start_date '2018-01-01'[m
+[31m-    set-option -g @d_day_end_date '2019-02-22'[m
+[31m-    set-option -g @d_day_icon '✓'[m
+[31m-  ## }}[m
+[31m-  # Initializes TMUX plugin manager.[m
+[31m-  # Keep this line at the very bottom of tmux.conf[m
+[31m-  run '~/.tmux/plugins/tpm/tpm'[m
+[31m-### }}}[m
+[1mdiff --git a/tmux/.tmux/tmux.remote.conf b/tmux/.tmux/tmux.remote.conf[m
+[1mdeleted file mode 100644[m
+[1mindex ea385bc..0000000[m
+[1m--- a/tmux/.tmux/tmux.remote.conf[m
+[1m+++ /dev/null[m
+[36m@@ -1,10 +0,0 @@[m
+[31m-# show status bar at bottom for remote session, [m
+[31m-# so it do not stack together with local session's one[m
+[31m-set -g status-position bottom[m
+[31m-[m
+[31m-# Set port of SSH remote tunnel, where tmux will pipe buffers to transfer on local machine for copy[m
+[31m-set -g @copy_backend_remote_tunnel_port 11988[m
+[31m-[m
+[31m-# In remote mode we don't show "clock" and "battery status" widgets[m
+[31m-set -g status-left "$wg_session"[m
+[31m-set -g status-right "#{prefix_highlight} $wg_is_keys_off $wg_is_zoomed #{sysstat_cpu} | #{sysstat_mem} | #{sysstat_loadavg} | $wg_user_host | #{online_status}"[m
+[1mdiff --git a/tmux/.tmux/yank.sh b/tmux/.tmux/yank.sh[m
+[1mdeleted file mode 100755[m
+[1mindex 83686c6..0000000[m
+[1m--- a/tmux/.tmux/yank.sh[m
+[1m+++ /dev/null[m
+[36m@@ -1,68 +0,0 @@[m
+[31m-#!/usr/bin/env bash[m
+[31m-[m
+[31m-set -eu[m
+[31m-[m
+[31m-is_app_installed() {[m
+[31m-  type "$1" &>/dev/null[m
+[31m-}[m
+[31m-[m
+[31m-# get data either form stdin or from file[m
+[31m-buf=$(cat "$@")[m
+[31m-[m
+[31m-copy_backend_remote_tunnel_port=$(tmux show-option -gvq "@copy_backend_remote_tunnel_port")[m
+[31m-copy_use_osc52_fallback=$(tmux show-option -gvq "@copy_use_osc52_fallback")[m
+[31m-[m
+[31m-# Resolve copy backend: pbcopy (OSX), reattach-to-user-namespace (OSX), xclip/xsel (Linux)[m
+[31m-copy_backend=""[m
+[31m-if is_app_installed pbcopy; then[m
+[31m-  copy_backend="pbcopy"[m
+[31m-elif is_app_installed reattach-to-user-namespace; then[m
+[31m-  copy_backend="reattach-to-user-namespace pbcopy"[m
+[31m-elif [ -n "${DISPLAY-}" ] && is_app_installed xsel; then[m
+[31m-  copy_backend="xsel -i --clipboard"[m
+[31m-elif [ -n "${DISPLAY-}" ] && is_app_installed xclip; then[m
+[31m-  copy_backend="xclip -i -f -selection primary | xclip -i -selection clipboard"[m
+[31m-elif [ -n "${copy_backend_remote_tunnel_port-}" ] \[m
+[31m-    && (netstat -f inet -nl 2>/dev/null || netstat -4 -nl 2>/dev/null) \[m
+[31m-      | grep -q "[.:]$copy_backend_remote_tunnel_port"; then[m
+[31m-  copy_backend="nc localhost $copy_backend_remote_tunnel_port"[m
+[31m-fi[m
+[31m-[m
+[31m-# if copy backend is resolved, copy and exit[m
+[31m-if [ -n "$copy_backend" ]; then[m
+[31m-  printf "%s" "$buf" | eval "$copy_backend"[m
+[31m-  exit;[m
+[31m-fi[m
+[31m-[m
+[31m-[m
+[31m-# If no copy backends were eligible, decide to fallback to OSC 52 escape sequences[m
+[31m-# Note, most terminals do not handle OSC[m
+[31m-if [ "$copy_use_osc52_fallback" == "off" ]; then[m
+[31m-  exit;[m
+[31m-fi[m
+[31m-[m
+[31m-# Copy via OSC 52 ANSI escape sequence to controlling terminal[m
+[31m-buflen=$( printf %s "$buf" | wc -c )[m
+[31m-[m
+[31m-# https://sunaku.github.io/tmux-yank-osc52.html[m
+[31m-# The maximum length of an OSC 52 escape sequence is 100_000 bytes, of which[m
+[31m-# 7 bytes are occupied by a "\033]52;c;" header, 1 byte by a "\a" footer, and[m
+[31m-# 99_992 bytes by the base64-encoded result of 74_994 bytes of copyable text[m
+[31m-maxlen=74994 [m
+[31m-[m
+[31m-# warn if exceeds maxlen[m
+[31m-if [ "$buflen" -gt "$maxlen" ]; then[m
+[31m-  printf "input is %d bytes too long" "$(( buflen - maxlen ))" >&2[m
+[31m-fi[m
+[31m-[m
+[31m-# build up OSC 52 ANSI escape sequence[m
+[31m-esc="\033]52;c;$( printf %s "$buf" | head -c $maxlen | base64 | tr -d '\r\n' )\a"[m
+[31m-esc="\033Ptmux;\033$esc\033\\"[m
+[31m-[m
+[31m-# resolve target terminal to send escape sequence[m
+[31m-# if we are on remote machine, send directly to SSH_TTY to transport escape sequence[m
+[31m-# to terminal on local machine, so data lands in clipboard on our local machine[m
+[31m-pane_active_tty=$(tmux list-panes -F "#{pane_active} #{pane_tty}" | awk '$1=="1" { print $2 }')[m
+[31m-target_tty="${SSH_TTY:-$pane_active_tty}"[m
+[31m-[m
+[31m-printf "$esc" > "$target_tty"[m
