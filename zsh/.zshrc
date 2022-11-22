@@ -88,7 +88,7 @@ zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
     esac'
 
 # Theme
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="robbyrussel"
 
 if [[ $TERM == "linux" ]]; then
     ZSH_THEME="ys"
