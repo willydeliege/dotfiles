@@ -88,7 +88,6 @@ zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
     esac'
 
 # Theme
-ZSH_THEME="robbyrussel"
 
 if [[ $TERM == "linux" ]]; then
     ZSH_THEME="ys"
@@ -96,6 +95,7 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
+ZSH_THEME="robbyrussel"
 # powerlevel2k
 [ -f ~/.p10k.zsh ] && source ~/.p10k.zsh
 
