@@ -144,6 +144,8 @@ function color_picker() {
 # Local configurations
 [ -f ~/.local.sh ] && source ~/.local.sh
 
+# Termux paths
+[ -f /etc/profile.d/termux-proot.sh ] && source /etc/profile.d/termux-proot.sh
 # source /etc/profile
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
