@@ -23,6 +23,6 @@ Far ":frederic.willem@gmail.com-remote:"
 Near ":frederic.willem@gmail.com-local:"
 Create Both
 Expunge Both
-Patterns * ![Gmail]/Spam ![Gmail]/Trash
+Patterns * ![Gmail]/Spam ![Gmail]/Trash ![Gmail]/Important
 SyncState *
 Sync All
