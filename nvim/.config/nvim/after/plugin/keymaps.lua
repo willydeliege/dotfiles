@@ -23,9 +23,6 @@ keymap("n", "<C-q>", ":qa<CR>", default_opts)
 keymap("n", "n", "nzz", default_opts)
 keymap("n", "N", "Nzz", default_opts)
 
-vim.keymap.set({ "n", "x", "o" }, "s", "<Cmd>Svart<CR>") -- begin exact search
-vim.keymap.set({ "n", "x", "o" }, "S", "<Cmd>SvartRegex<CR>") -- begin regex search
-vim.keymap.set({ "n", "x", "o" }, "gs", "<Cmd>SvartRepeat<CR>") -- repeat with last searched query
 -- Visual line wraps
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", expr_opts)
 keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", expr_opts)
@@ -33,7 +30,6 @@ keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", expr_opts)
 -- -- Always center
 -- keymap("n", "k", "kzz", default_opts)
 -- keymap("n", "j", "jzz", default_opts)
--- keymap("n", "G", "Gzz", default_opts)
 
 -- Better indent
 keymap("v", "<", "<gv", default_opts)
