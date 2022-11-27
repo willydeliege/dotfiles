@@ -58,15 +58,6 @@ function M.setup()
     -- Packer
     -- Packer
     use {
-      "folke/noice.nvim",
-      event = "BufReadPre",
-      config = function()
-        require("config.noice").setup()
-      end,
-      wants = { "nui.nvim", "nvim-notify" },
-      disable = true,
-    }
-    use {
       "rcarriga/nvim-notify",
       event = "BufReadPre",
       config = function()
@@ -103,14 +94,6 @@ function M.setup()
         require "color-picker"
       end,
     }
-    -- Startup screen
-    use {
-      "goolord/alpha-nvim",
-      config = function()
-        require("config.alpha").setup()
-      end,
-      disable = true,
-    }
 
     -- Git
     use {
@@ -119,6 +102,7 @@ function M.setup()
       config = function()
         require("config.neogit").setup()
       end,
+      disable = true,
     }
     use {
       "lewis6991/gitsigns.nvim",
@@ -127,25 +111,6 @@ function M.setup()
       requires = { "nvim-lua/plenary.nvim" },
       config = function()
         require("config.gitsigns").setup()
-      end,
-    }
-    use {
-      "tpope/vim-fugitive",
-      opt = true,
-      cmd = { "Git", "GBrowse", "Gdiffsplit", "Gvdiffsplit" },
-      requires = {
-        "tpope/vim-rhubarb",
-        "idanarye/vim-merginal",
-        --[[ "rhysd/committia.vim", ]]
-      },
-      -- wants = { "vim-rhubarb" },
-    }
-    use {
-      "ruifm/gitlinker.nvim",
-      requires = "nvim-lua/plenary.nvim",
-      module = "gitlinker",
-      config = function()
-        require("gitlinker").setup { mappings = nil }
       end,
     }
     use {
@@ -162,15 +127,9 @@ function M.setup()
       config = function()
         require("git-conflict").setup()
       end,
+      disable = true,
     }
     use { "f-person/git-blame.nvim", cmd = { "GitBlameToggle" } }
-    use {
-      "tanvirtin/vgit.nvim",
-      config = function()
-        require("vgit").setup()
-      end,
-      cmd = { "VGit" },
-    }
 
     -- WhichKey
     use {
@@ -211,20 +170,6 @@ function M.setup()
       disable = false,
     }
 
-    -- Better surround
-    use { "tpope/vim-surround", event = "BufReadPre" }
-    use {
-      "Matt-A-Bennett/vim-surround-funk",
-      event = "BufReadPre",
-      config = function()
-        require("config.surroundfunk").setup()
-      end,
-      disable = true,
-    }
-
-    -- Motions
-    use { "unblevable/quick-scope", event = "CursorMoved", disable = true }
-
     -- Buffer
     use { "kazhala/close-buffers.nvim", cmd = { "BDelete", "BWipeout" } }
     -- IDE
@@ -245,14 +190,7 @@ function M.setup()
       config = function()
         require("config.neoscroll").setup()
       end,
-      disable = true,
-    }
-    use {
-      "Djancyp/regex.nvim",
-      config = function()
-        require("regex-nvim").Setup()
-      end,
-      disable = true,
+      disable = false,
     }
     -- Code documentation
     use {
@@ -264,14 +202,12 @@ function M.setup()
       module = "neogen",
       disable = false,
     }
+    --easy motions
+    use {"ggandor/lightspeed.nvim"}
     use {
-      "https://gitlab.com/madyanov/svart.nvim",
-      config = function()
-        require("svart").configure {
-          label_atoms = "jfkdlsqhgnuvrbytmiceoxwpaz", -- allowed label chars
-          label_location = "start",
-        }
-      end,
+      "gukz/ftFT.nvim",
+      -- This will turn on all functions, if you don't like some of them, add more config to disable/change them
+      config = function() require("ftFT").setup() end
     }
     -- Status line
     use {
@@ -306,7 +242,7 @@ function M.setup()
         --     require("spellsitter").setup()
         --   end,
         -- },
-        { "nvim-treesitter/nvim-treesitter-context", event = "BufReadPre", disable = true },
+        { "nvim-treesitter/nvim-treesitter-context", event = "BufReadPre", disable = false },
         {
           "m-demare/hlargs.nvim",
           config = function()
@@ -364,7 +300,7 @@ function M.setup()
             require("config.project").setup()
           end,
         },
-        "nvim-telescope/telescope-dap.nvim",
+        "telescope-dap.nvim",
         {
           "AckslD/nvim-neoclip.lua",
           requires = {
@@ -725,6 +661,20 @@ function M.setup()
 
     use { "ThePrimeagen/vim-be-good" }
     use { "neomutt/neomutt.vim" }
+    -- Incremaent and decrement booleans, days, numbers....
+    use {
+      "nat-418/boole.nvim",
+      config = function()
+        require("boole").setup({
+          mappings = {
+            increment = "<C-a>",
+            decrement = "<C-x>",
+          },
+        })
+      end,
+    }
+    -- plantuml
+    use { 'aklt/plantuml-syntax' }
     -- Markdown
 
     use {
