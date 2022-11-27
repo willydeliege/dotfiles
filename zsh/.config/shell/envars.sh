@@ -24,6 +24,7 @@ export TZ="Europe/Brussels"
 
 export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
 
+export ZK_NOTEBOOK_DIR=~/willydeliege/
 #eval "$(dircolors ~/.dircolors)";
 # eval "$(thefuck --alias)"
 
