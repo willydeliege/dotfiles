@@ -24,13 +24,13 @@ SAVEHIST=99999
 
 # Plugins
 plugins=(tmux
+  autojump
     zsh-autocomplete
     alias-tips
     colorize
     direnv
     dirhistory
     extract
-    fasd
     F-Sy-H
     fzf-tab
     globalias
@@ -113,9 +113,6 @@ alias -g wcc="| wc -m"
 alias -g wcl="| wc -l"
 alias -g wcw="| wc -w"
 
-# Commands
-eval "$(fasd --init posix-alias zsh-hook zsh-ccomp-install zsh-wcomp-install zsh-ccomp zsh-wcomp)"
-#eval "$(pyenv virtualenv-init -)"
 
 # Functions
 function color_picker() {

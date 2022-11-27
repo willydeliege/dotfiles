@@ -39,16 +39,17 @@ alias gmv="git mv"
 alias gsv="git status -v"
 alias gtop='cd "$(git rev-parse --show-toplevel)"'
 alias grep="grep --color=auto"
-alias icat="kitty +kitten icat"
-alias java8="export JAVA_HOME=/usr/lib/jvm/java-8-openjdk/jre"
-alias java11="export JAVA_HOME=/usr/lib/jvm/java-11-openjdk/"
 alias jupn="jupyter notebook"
-alias la="ls -AXb --group-directories-first --sort=extension"
-alias ldir="ls -d */"
 alias ln="ln -sv"
-alias ls='ls --color=auto'
-alias lsda="lsd -A --group-dirs first --classify"
-alias lsdo="lsd -A --group-dirs first --classify --recursive --depth=2"
+alias ls='exa -a --icons --git --group-directories-first --time-style=long-iso'
+alias lz='exa --icons --git --group-directories-first --time-style=long-iso'
+alias l='ls -lbF'
+alias ll='ls -la'
+alias llm='ll --sort=modified'
+alias la='ls -lbhHigUmuSa'
+alias lx='ls -lbhHigUmuSa@'
+alias tree='exa --tree'
+
 alias nm="neomutt"
 alias me="README.md"
 alias mv="mv -iv"
@@ -100,7 +101,6 @@ alias bashrc="$EDITOR ~/.bashrc"
 alias alia="$EDITOR ~/.config/shell/aliases.sh"
 alias enva="$EDITOR ~/.config/shell/envars.sh"
 alias func="$EDITOR ~/.config/shell/functions.sh"
-alias meow="$EDITOR ~/.config/kitty/kitty.conf"
 alias p2k="$EDITOR ~/.config/shell/powerlevel2k.zsh"
 
 # Causes Issues
