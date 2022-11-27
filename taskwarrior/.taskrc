@@ -1,42 +1,50 @@
-# [Created by task 2.6.1 11/6/2022 09:02:14]
+# [Created by task 2.2.0 4/22/2016 20:33:26]
 # Taskwarrior program configuration file.
-# For more documentation, see https://taskwarrior.org or try 'man task', 'man task-color',
-# 'man task-sync' or 'man taskrc'
+# For more documentation, see http://taskwarrior.org or try 'man task', 'man task-faq',
+# 'man task-tutorial', 'man task-color', 'man task-sync' or 'man taskrc'
 
 # Here is an example of entries that use the default, override and blank values
 #   variable=foo   -- By specifying a value, this overrides the default
 #   variable=      -- By specifying no value, this means no default
 #   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
 
-# You can also refence environment variables:
-#   variable=$HOME/task
-#   variable=$VALUE
-
 # Use the command 'task show' to see all defaults and overrides
-
 # Files
 data.location=~/willydeliege/.task
 
+# By default, the week starts on Sunday, let's fix that.
+weekstart=monday
 
-# To use the default location of the XDG directories,
-# move this configuration file from ~/.taskrc to ~/.config/task/taskrc and uncomment below
+# Make searches case insensitive, personal preference
+search.case.sensitive=no
 
-#data.location=~/.local/share/task
-#hooks.location=~/.config/task/hooks
+# Daily burndown
+alias.burndown=burndown.daily
+
+active.indicator=>
+
+# Sort the columns a little differently
+report.list.columns=start.active,id,project,priority,due,description,entry.age
+report.list.labels= , ,Project,Pri,Due,Description,Age
+
+list.all.projects=yes
+#undo.style=diff
+default.command=list
+
+
 
 # Color theme (uncomment one to use)
-#include light-16.theme
-#include light-256.theme
-#include dark-16.theme
-#include dark-256.theme
-#include dark-red-256.theme
-#include dark-green-256.theme
-#include dark-blue-256.theme
-#include dark-violets-256.theme
-#include dark-yellow-green.theme
-#include dark-gray-256.theme
-#include dark-gray-blue-256.theme
-#include solarized-dark-256.theme
-#include solarized-light-256.theme
-#include no-color.theme
+#include /usr/share/task/light-16.theme
+#include /usr/share/task/light-256.theme
+#include /usr/share/task/dark-16.theme
+#include /usr/share/task/dark-256.theme
+#include /usr/share/task/dark-red-256.theme
+#include /usr/share/task/dark-green-256.theme
+#include /usr/share/task/dark-blue-256.theme
+#include /usr/share/task/dark-violets-256.theme
+#include /usr/share/task/dark-yellow-green.theme
+#include /usr/share/task/dark-gray-256.theme
 
+# Include the solarized themes, enable solarized dark
+include /usr/share/task/solarized-dark-256.theme  
+#include /usr/share/task/solarized-light-256.theme
