@@ -26,23 +26,16 @@ SAVEHIST=99999
 plugins=(tmux
     zsh-autocomplete
     alias-tips
-    catimg
     colorize
     direnv
     dirhistory
     extract
-    fancy-ctrl-z
     fasd
     F-Sy-H
     fzf-tab
-    gh
-    git
-    git-extra-commands
     globalias
-    magic-enter
     timer
     web-search
-    z
     zsh-autopair
     zsh-autosuggestions
     zsh-completions
