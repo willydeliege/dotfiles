@@ -65,12 +65,14 @@ function M.setup()
       end,
       disable = false,
     }
-    -- If you are using Packer
     -- Colorscheme
     use {
-      "catppuccin/nvim",
+      "navarasu/onedark.nvim",
       config = function()
-        require("config.catpuccin").setup()
+        require("onedark").setup {
+          style = "deep",
+        }
+        require("onedark").load()
       end,
     }
     use {
@@ -203,11 +205,13 @@ function M.setup()
       disable = false,
     }
     --easy motions
-    use {"ggandor/lightspeed.nvim"}
+    use { "ggandor/lightspeed.nvim" }
     use {
       "gukz/ftFT.nvim",
       -- This will turn on all functions, if you don't like some of them, add more config to disable/change them
-      config = function() require("ftFT").setup() end
+      config = function()
+        require("ftFT").setup()
+      end,
     }
     -- Status line
     use {
@@ -300,7 +304,7 @@ function M.setup()
             require("config.project").setup()
           end,
         },
-        "telescope-dap.nvim",
+        "nvim-telescope/telescope-dap.nvim",
         {
           "AckslD/nvim-neoclip.lua",
           requires = {
@@ -665,16 +669,16 @@ function M.setup()
     use {
       "nat-418/boole.nvim",
       config = function()
-        require("boole").setup({
+        require("boole").setup {
           mappings = {
             increment = "<C-a>",
             decrement = "<C-x>",
           },
-        })
+        }
       end,
     }
     -- plantuml
-    use { 'aklt/plantuml-syntax' }
+    use { "aklt/plantuml-syntax" }
     -- Markdown
 
     use {
