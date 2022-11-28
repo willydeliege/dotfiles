@@ -23,8 +23,10 @@ COMPLETION_WAITING_DOTS="false"
 SAVEHIST=99999
 
 # Plugins
-plugins=(tmux
-  autojump
+plugins=(
+    vi-mode
+    tmux
+    autojump
     zsh-autocomplete
     alias-tips
     colorize
@@ -33,7 +35,9 @@ plugins=(tmux
     extract
     F-Sy-H
     fzf-tab
+    git
     globalias
+    ubuntu
     timer
     web-search
     zsh-autopair
