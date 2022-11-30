@@ -33,6 +33,7 @@ plugins=(
     zsh-autocomplete
     alias-tips
     colorize
+    exa
     extract
     F-Sy-H
     fzf-tab

@@ -37,7 +37,7 @@ default.command=list
 #include /usr/share/task/light-16.theme
 #include /usr/share/task/light-256.theme
 #include /usr/share/task/dark-16.theme
-include /usr/share/task/dark-256.theme
+# include /usr/share/task/dark-256.theme
 #include /usr/share/task/dark-red-256.theme
 #include /usr/share/task/dark-green-256.theme
 #include /usr/share/task/dark-blue-256.theme
@@ -46,5 +46,5 @@ include /usr/share/task/dark-256.theme
 #include /usr/share/task/dark-gray-256.theme
 
 # Include the solarized themes, enable solarized dark
-# include /usr/share/task/solarized-dark-256.theme  
+include /usr/share/task/solarized-dark-256.theme  
 # include /usr/share/task/solarized-light-256.theme
