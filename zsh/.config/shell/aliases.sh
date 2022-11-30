@@ -14,6 +14,7 @@ alias cat="bat"
 alias bat="batcat" # only usefull on ubuntu
 alias ccp="clipcopy"
 alias cdx='cd $(xplr)'
+alias cl='clear'
 alias cless='colorize_less -N'
 alias cols='spectrum_ls'
 alias cp="cp -irv"
@@ -32,8 +33,6 @@ alias ghrv="gh repo edit --visibility public"
 alias gtop='cd "$(git rev-parse --show-toplevel)"'
 alias grep="grep --color=auto"
 alias ln="ln -sv"
-alias ls='exa -a --icons --git --group-directories-first --time-style=long-iso'
-alias lz='exa --icons --git --group-directories-first --time-style=long-iso'
 alias l='ls -lbF'
 alias ll='ls -la'
 alias llm='ll --sort=modified'
@@ -47,7 +46,7 @@ alias mv="mv -iv"
 alias ncdu="ncdu --color=dark -x"
 alias npi="npm install"
 alias npr="npm run"
-alias open="open_command"
+alias open="xdg_open"
 alias plasmar="kquitapp5 plasmashell && kstart5 plasmashell"
 alias pp="prettyping --nolegend"
 alias q="exit"
@@ -73,11 +72,11 @@ alias ytdl="youtube-dl"
 
 alias vimrc="vim ~/.vimrc"
 alias nvimrc="nvim ~/.config/nvim/init.vim"
-alias zshrc="$EDITOR ~/.zshrc"
-alias bashrc="$EDITOR ~/.bashrc"
-alias alia="$EDITOR ~/.config/shell/aliases.sh"
-alias enva="$EDITOR ~/.config/shell/envars.sh"
-alias func="$EDITOR ~/.config/shell/functions.sh"
-alias p2k="$EDITOR ~/.config/shell/powerlevel2k.zsh"
-alias taskrc="$EDITOR ~/.taskrc"
+alias zshrc='$EDITOR ~/.zshrc'
+alias bashrc='$EDITOR ~/.bashrc'
+alias alia='$EDITOR ~/.config/shell/aliases.sh'
+alias enva='$EDITOR ~/.config/shell/envars.sh'
+alias func='$EDITOR ~/.config/shell/functions.sh'
+alias p2k='$EDITOR ~/.config/shell/powerlevel2k.zsh'
+alias taskrc='$EDITOR ~/.taskrc'
 alias sourcez="source ~/.zshrc"

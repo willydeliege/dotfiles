@@ -1,3 +1,7 @@
+# start tmux
+if command -v tmux>/dev/null; then
+ [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && tmux
+fi
 # zmodload zsh/zprof
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -21,7 +25,6 @@ DISABLE_AUTO_TITLE="false"
 ENABLE_CORRECTION="false"
 COMPLETION_WAITING_DOTS="false"
 SAVEHIST=99999
-
 # Plugins
 plugins=(
     vi-mode
@@ -30,16 +33,12 @@ plugins=(
     zsh-autocomplete
     alias-tips
     colorize
-    direnv
-    dirhistory
     extract
     F-Sy-H
     fzf-tab
     git
     globalias
     ubuntu
-    timer
-    web-search
     zsh-autopair
     zsh-autosuggestions
     zsh-completions
@@ -140,9 +139,9 @@ function color_picker() {
 
 # Termux paths
 [ -f /etc/profile.d/termux-proot.sh ] && source /etc/profile.d/termux-proot.sh
+
 # source /etc/profile
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# zprof
