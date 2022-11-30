@@ -38,6 +38,15 @@ opt.tabstop = 2
 opt.softtabstop = 2
 opt.splitbelow = true
 opt.splitright = true
+opt.fillchars = {
+  horiz     = '━',
+  horizup   = '┻',
+  horizdown = '┳',
+  vert      = '┃',
+  vertleft  = '┫',
+  vertright = '┣',
+  verthoriz = '╋',
+}
 opt.laststatus = 3 -- Global statusline
 opt.cmdheight = 0 -- 0
 opt.scrollback = 100000
