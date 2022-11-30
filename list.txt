@@ -192,7 +192,7 @@ libgstreamer1.0-0
 libgudev-1.0-0
 libhogweed6
 libhttp-parser2.9
-libicu70
+libicu71
 libid3tag0
 libidn2-0
 libimlib2
