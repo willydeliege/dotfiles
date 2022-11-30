@@ -338,7 +338,13 @@ function M.setup()
       end,
       disable = false,
     }
-
+    -- tmux navigation
+    use {
+      "alexghergh/nvim-tmux-navigation",
+      config = function()
+        require("config.tmux").setup()
+      end,
+    }
     -- Buffer line
     use {
       "akinsho/nvim-bufferline.lua",
@@ -669,12 +675,7 @@ function M.setup()
     use {
       "nat-418/boole.nvim",
       config = function()
-        require("boole").setup {
-          mappings = {
-            increment = "<C-a>",
-            decrement = "<C-x>",
-          },
-        }
+        require("config.boole").setup()
       end,
     }
     -- plantuml

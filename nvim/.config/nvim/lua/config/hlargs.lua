@@ -3,7 +3,7 @@ local M = {}
 function M.setup()
   require("hlargs").setup {
     color = "#ef9062",
-    use_colorpalette = false,
+    use_colorpalette = true,
     -- highlight = { "TSParameter" },
     colorpalette = {
       { fg = "#ef9062" },

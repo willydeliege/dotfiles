@@ -46,6 +46,9 @@ local servers = {
   sumneko_lua = {
     settings = {
       Lua = {
+        hint = {
+          enable = true,
+        },
         runtime = {
           -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
           version = "Lua 5.3",
@@ -55,8 +58,10 @@ local servers = {
           globals = { "vim" },
         },
         workspace = {
-          -- Make the server aware of Neovim runtime files
-          library = vim.api.nvim_get_runtime_file("", true),
+          library = {
+            [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+            [vim.fn.stdpath "config" .. "/lua"] = true,
+          },
         },
         -- Do not send telemetry data containing a randomized but unique identifier
         telemetry = {
@@ -114,7 +119,7 @@ local servers = {
     jdtls = {},
     dockerls = {},
     -- graphql = {},
-     bashls = {},
+    bashls = {},
     -- omnisharp = {},
     -- kotlin_language_server = {},
     -- emmet_ls = {},
@@ -190,8 +195,7 @@ function M.on_attach(client, bufnr)
     -- require("aerial").on_attach(client, bufnr)
 
     -- inlay-hints
-    local ih = require "inlay-hints"
-    ih.on_attach(client, bufnr)
+    -- ih.on_attach(client, bufnr)
 
     -- semantic highlighting
     if caps.semanticTokensProvider and caps.semanticTokensProvider.full then

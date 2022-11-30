@@ -19,6 +19,7 @@ function M.setup()
 
   require("nvim-treesitter.configs").setup {
     -- One of "all", "maintained" (parsers with maintainers), or a list of languages
+    ensure_installed = "all",
 
     ignore_install = { "phpdoc" },
     -- Install languages synchronously (only applied to `ensure_installed`)
@@ -27,7 +28,7 @@ function M.setup()
     highlight = {
       -- `false` will disable the whole extension
       enable = true,
-      additional_vim_regex_highlighting = false,
+      additional_vim_regex_highlighting = true,
     },
 
     rainbow = {
@@ -46,7 +47,7 @@ function M.setup()
       },
     },
 
-    indent = { enable = false, disable = { "python", "java", "rust", "lua" } },
+    indent = { enable = true },
 
     -- vim-matchup
     matchup = {
@@ -164,9 +165,9 @@ function M.setup()
     -- markid
     -- markid = { enable = true },
   }
-  -- require("treesitter-context").setup {
-  --   enable = true,
-  -- }
+  require("treesitter-context").setup {
+    enable = true,
+  }
 end
 
 return M
