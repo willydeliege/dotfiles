@@ -1,10 +1,9 @@
 local M = {}
 
 vim.o.completeopt = "menu,menuone,noselect"
-local mapping = require("cmp.config.mapping")
+local mapping = require "cmp.config.mapping"
 local compare = require "cmp.config.compare"
 local lspkind = require "lspkind"
-
 
 local source_mapping = {
   nvim_lsp_signature_help = "[Sig]",
@@ -20,10 +19,9 @@ local source_mapping = {
 }
 
 function M.setup()
-
   local luasnip = require "luasnip"
   local cmp = require "cmp"
-local select_opts = {behavior = cmp.SelectBehavior.Select}
+  local neogen = require "neogen"
 
   cmp.setup {
     completion = { completeopt = "menu,menuone,noinsert", keyword_length = 1 },
@@ -47,53 +45,86 @@ local select_opts = {behavior = cmp.SelectBehavior.Select}
       end,
     },
     mapping = {
-      ["<Up>"] = mapping.select_prev_item(select_opts),
-      ["<Down>"] = mapping.select_next_item(select_opts),
-
-      ["<C-p>"] = mapping.select_prev_item(select_opts),
-      ["<C-n>"] = mapping.select_next_item(select_opts),
-
-      ["<C-u>"] = mapping.scroll_docs(-4),
-      ["<C-f>"] = mapping.scroll_docs(4),
-
-      ["<C-e>"] = mapping.abort(),
-      ["<CR>"] = mapping.confirm { select = false },
-
-      ["<C-d>"] = mapping(function(fallback)
-        if luasnip.jumpable(1) then
-          luasnip.jump(1)
+      -- ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+      ["<C-l>"] = cmp.mapping {
+        i = function(fallback)
+          if luasnip.choice_active() then
+            luasnip.change_choice(1)
+          else
+            fallback()
+          end
+        end,
+      },
+      ["<C-u>"] = cmp.mapping {
+        i = function(fallback)
+          if luasnip.choice_active() then
+            require "luasnip.extras.select_choice"()
+          else
+            fallback()
+          end
+        end,
+      },
+      -- ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
+      ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
+      ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+      ["<C-e>"] = cmp.mapping(function(fallback)
+        cmp.close()
+        cmp.mapping.close()
+        if luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
         else
           fallback()
         end
-      end, { "i", "s" }),
-
-      ["<C-b>"] = mapping(function(fallback)
-        if luasnip.jumpable(-1) then
-          luasnip.jump(-1)
-        else
-          fallback()
-        end
-      end, { "i", "s" }),
-
-      ["<Tab>"] = mapping(function(fallback)
-        local col = vim.fn.col "." - 1
-
+      end, {
+        "i",
+        "s",
+        "c",
+      }),
+      ["<CR>"] = cmp.mapping {
+        i = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false },
+      },
+      ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          cmp.select_next_item(select_opts)
-        elseif col == 0 or vim.fn.getline("."):sub(col, col):match "%s" then
-          fallback()
-        else
+          cmp.select_next_item()
+        elseif luasnip.expand_or_jumpable() then
+          luasnip.expand_or_jump()
+        elseif neogen.jumpable() then
+          neogen.jump_next()
+        elseif has_words_before() then
           cmp.complete()
-        end
-      end, { "i", "s" }),
-
-      ["<S-Tab>"] = mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item(select_opts)
         else
           fallback()
         end
-      end, { "i", "s" }),
+      end, {
+        "i",
+        "s",
+        "c",
+      }),
+      ["<S-Tab>"] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        elseif luasnip.jumpable(-1) then
+          luasnip.jump(-1)
+        elseif neogen.jumpable(true) then
+          neogen.jump_prev()
+        else
+          fallback()
+        end
+      end, {
+        "i",
+        "s",
+        "c",
+      }),
+      ["<C-y>"] = {
+        i = cmp.mapping.confirm { select = false },
+      },
+      ["<C-n>"] = {
+        i = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+      },
+      ["<C-p>"] = {
+        i = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+      },
     },
     formatting = {
       format = lspkind.cmp_format {
