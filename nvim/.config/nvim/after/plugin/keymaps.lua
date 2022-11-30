@@ -6,15 +6,9 @@ local expr_opts = { noremap = true, expr = true, silent = true }
 -- Better escape using jk in insert and terminal mode
 keymap("i", "jk", "<ESC>", default_opts)
 keymap("t", "jk", "<C-\\><C-n>", default_opts)
-keymap("t", "<C-h>", "<C-\\><C-n><C-w>h", default_opts)
-keymap("t", "<C-j>", "<C-\\><C-n><C-w>j", default_opts)
-keymap("t", "<C-k>", "<C-\\><C-n><C-w>k", default_opts)
-keymap("t", "<C-l>", "<C-\\><C-n><C-w>l", default_opts)
-
-keymap("n", "<C-h>", "<C-w>h", default_opts)
-keymap("n", "<C-j>", "<C-w>j", default_opts)
-keymap("n", "<C-k>", "<C-w>k", default_opts)
-keymap("n", "<C-l>", "<C-w>l", default_opts)
+-- split
+keymap("n", "<leader>|", ":vsplit<cr>", default_opts)
+keymap("n", "<leader>-", ":split<cr>", default_opts)
 
 keymap("i", "<C-s>", "<ESC>:w<CR>", default_opts)
 keymap("n", "<C-s>", ":w<CR>", default_opts)
