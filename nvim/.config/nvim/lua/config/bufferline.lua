@@ -4,7 +4,7 @@ function M.setup()
   require("bufferline").setup {
     options = {
       mode = "buffers",
-      numbers = "buffer_id",
+      numbers = "ordinal",
       diagnostics = "nvim_lsp",
       separator_style = "slant" or "padded_slant",
       show_tab_indicators = true,

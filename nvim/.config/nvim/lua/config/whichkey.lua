@@ -46,6 +46,7 @@ local function normal_keymap()
     k = { "<cmd>lua require('telescope.builtin').keymaps()<cr>", "Keymaps" },
     r = { "<cmd>lua require'telescope'.extensions.file_browser.file_browser()<cr>", "File Browser" },
     w = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Current Buffer" },
+    p = { "<cmd>lua require'telescope'.extensions.projects.projects()<cr>", "Projects" },
     e = { "<cmd>Neotree toggle reveal_force_cwd<cr>", "Explorer" },
   }
 
@@ -53,7 +54,6 @@ local function normal_keymap()
     ["w"] = { "<cmd>update!<CR>", "Save" },
     ["e"] = { "<cmd>Neotree toggle reveal_force_cwd<cr>", "Explorer" },
     ["q"] = { "<cmd>lua require('utils').quit()<CR>", "Quit" },
-    ["p"] = { "<cmd>Telescope projects<cr>", "Projects" },
     ["n"] = { ":e!<cr>", "Reload buffer"},
     ["i"] = { ":edit " .. os.getenv("HOME") .."/willydeliege/index.md<CR><bar><cmd>e!<cr>", "PKM Index"},
 
