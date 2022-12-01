@@ -33,6 +33,8 @@ alias ghrv="gh repo edit --visibility public"
 alias gtop='cd "$(git rev-parse --show-toplevel)"'
 alias grep="grep --color=auto"
 alias ln="ln -sv"
+alias ls='exa -a --icons --git --group-directories-first --time-style=long-iso'
+alias lz='exa --icons --git --group-directories-first --time-style=long-iso'
 alias l='ls -lbF'
 alias ll='ls -la'
 alias llm='ll --sort=modified'
