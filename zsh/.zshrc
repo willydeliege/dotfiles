@@ -30,7 +30,7 @@ plugins=(
     vi-mode
     tmux
     autojump
-    zsh-autocomplete
+    # zsh-autocomplete
     alias-tips
     colorize
     extract
