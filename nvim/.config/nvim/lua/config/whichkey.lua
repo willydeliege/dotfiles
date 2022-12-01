@@ -37,6 +37,7 @@ local function normal_keymap()
     name = "Find",
     f = { "<cmd>lua require('utils.finder').find_files()<cr>", "Files" },
     d = { "<cmd>lua require('utils.finder').find_dotfiles()<cr>", "Dotfiles" },
+    w = { "<cmd>lua require('utils.finder').find_pkm()<cr>", "PKM" },
     b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers" },
     h = { "<cmd>lua require('telescope.builtin').help_tags()<cr>", "Help" },
     m = { "<cmd>lua require('telescope.builtin').marks()<cr>", "Marks" },
@@ -45,7 +46,6 @@ local function normal_keymap()
     c = { "<cmd>lua require('telescope.builtin').commands()<cr>", "Commands" },
     k = { "<cmd>lua require('telescope.builtin').keymaps()<cr>", "Keymaps" },
     r = { "<cmd>lua require'telescope'.extensions.file_browser.file_browser()<cr>", "File Browser" },
-    w = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "Current Buffer" },
     p = { "<cmd>lua require'telescope'.extensions.projects.projects()<cr>", "Projects" },
     e = { "<cmd>Neotree toggle reveal_force_cwd<cr>", "Explorer" },
   }
