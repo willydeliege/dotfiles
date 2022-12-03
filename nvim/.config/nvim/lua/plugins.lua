@@ -67,9 +67,10 @@ function M.setup()
     }
     -- Colorscheme
     use {
-      "navarasu/onedark.nvim",
+-- Using Packer:
+      "Mofiqul/dracula.nvim",
       config = function()
-        require("config.onedark").setup()
+        require("config.theme").setup()
       end,
     }
     use {
