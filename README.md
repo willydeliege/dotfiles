@@ -23,17 +23,6 @@ curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 ### List of fish plugins
 to install through
 ```bash
-fisher install jorgebucaran/fisher\ 
-               gazorby/fish-exa \
-               ilancosman/tide@v5 \
-               edc/bass \
-               dracula/fish \
-               decors/fish-colored-man \
-               jorgebucaran/autopair.fish \
-               budimanjojo/tmux.fish \
-               jhillyerd/plugin-git \
-               patrickf1/fzf.fish \
-               reitzig/sdkman-for-fish@v1.4.0 \
-               gazorby/fish-abbreviation-tips
-```
+fisher install jorgebucaran/fisher gazorby/fish-exa ilancosman/tide@v5 edc/bass dracula/fish decors/fish-colored-man jorgebucaran/autopair.fish budimanjojo/tmux.fish jhillyerd/plugin-git patrickf1/fzf.fish reitzig/sdkman-for-fish@v1.4.0 gazorby/fish-abbreviation-tips
 
+```

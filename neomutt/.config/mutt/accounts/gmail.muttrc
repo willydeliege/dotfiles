@@ -1,4 +1,3 @@
-# vim: filetype=neomuttrc
 set pipe_decode = yes
 set ssl_force_tls = yes
 set ssl_starttls = yes
@@ -10,7 +9,7 @@ set from = "frederic.willem@gmail.com"
 set realname = "Frédéric Willem"
 
 # Imap settings
-# Manage by mbsync
+# Managed by mbsync
 
 # Smtp settings
 set ssl_starttls = yes
@@ -22,7 +21,7 @@ set spoolfile = "+INBOX"
 set postponed = "+[Gmail]/Drafts"
 set record =+Sent"
 set trash = "+Trash"
-mailboxes =INBOX =[Gmail]/Starred  =[Gmail]/Important  =[Gmail]/Drafts =[Gmail]/All\ Mail # =[Gmail]/Sent
+mailboxes =INBOX =[Gmail]/Starred  =[Gmail]/Drafts =[Gmail]/All\ Mail  # =[Gmail]/Sent
 set nm_default_url = "notmuch:///home/willefi/.local/share/mail/frederic.willem@gmail.com"
 
-
+# vim: filetype=neomuttrc

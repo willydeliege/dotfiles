@@ -6,6 +6,7 @@ function M.setup(servers, server_options)
 
   require("mason").setup {
     ui = {
+      border = "single",
       icons = {
         package_installed = icons.lsp.server_installed,
         package_pending = icons.lsp.server_pending,
@@ -16,15 +17,15 @@ function M.setup(servers, server_options)
 
   require("mason-tool-installer").setup {
     ensure_installed = { "codelldb", "stylua", "shfmt", "shellcheck", "prettierd" },
-    auto_update = false,
+    auto_update = true,
     run_on_start = true,
   }
 
   require("mason-lspconfig").setup {
-    -- ensure_installed = vim.tbl_keys(servers),
-    automatic_installation = false,
+    ensure_installed = vim.tbl_keys(servers),
+    automatic_installation = true,
   }
-
+  -- local install_root_dir = vim.fn.stdpath "data" .. "/mason"
   -- Package installation folder
 
   require("mason-lspconfig").setup_handlers {
@@ -40,37 +41,37 @@ function M.setup(servers, server_options)
       require("neodev").setup {}
       lspconfig.sumneko_lua.setup(opts)
     end,
-    ["rust_analyzer"] = function()
-      local opts = vim.tbl_deep_extend("force", server_options, servers["rust_analyzer"] or {})
+    -- ["rust_analyzer"] = function()
+    --   local opts = vim.tbl_deep_extend("force", server_options, servers["rust_analyzer"] or {})
 
-      -- DAP settings - https://github.com/simrat39/rust-tools.nvim#a-better-debugging-experience
-      local extension_path = install_root_dir .. "/packages/codelldb/extension/"
-      local codelldb_path = extension_path .. "adapter/codelldb"
-      local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
-      local ih = require "inlay-hints"
-      require("rust-tools").setup {
-        tools = {
-          -- executor = require("rust-tools/executors").toggleterm,
-          hover_actions = { border = "solid" },
-          on_initialized = function()
-            vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
-              pattern = { "*.rs" },
-              callback = function()
-                vim.lsp.codelens.refresh()
-              end,
-            })
-            ih.set_all()
-          end,
-          inlay_hints = {
-            auto = false,
-          },
-        },
-        server = opts,
-        dap = {
-          adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
-        },
-      }
-    end,
+    --   -- DAP settings - https://github.com/simrat39/rust-tools.nvim#a-better-debugging-experience
+    --   local extension_path = install_root_dir .. "/packages/codelldb/extension/"
+    --   local codelldb_path = extension_path .. "adapter/codelldb"
+    --   local liblldb_path = extension_path .. "lldb/lib/liblldb.so"
+    --   local ih = require "inlay-hints"
+    --   require("rust-tools").setup {
+    --     tools = {
+    --       -- executor = require("rust-tools/executors").toggleterm,
+    --       hover_actions = { border = "solid" },
+    --       on_initialized = function()
+    --         vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "CursorHold", "InsertLeave" }, {
+    --           pattern = { "*.rs" },
+    --           callback = function()
+    --             vim.lsp.codelens.refresh()
+    --           end,
+    --         })
+    --         ih.set_all()
+    --       end,
+    --       inlay_hints = {
+    --         auto = false,
+    --       },
+    --     },
+    --     server = opts,
+    --     dap = {
+    --       adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
+    --     },
+    --   }
+    -- end,
     ["tsserver"] = function()
       local opts = vim.tbl_deep_extend("force", server_options, servers["tsserver"] or {})
       require("typescript").setup {

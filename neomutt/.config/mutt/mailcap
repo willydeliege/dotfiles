@@ -1,4 +1,4 @@
-text/plain; $EDITOR +'set filetype=markdown' %s ;
+text/plain; $EDITOR +'set filetype=markdown' %s ; nametemplate=%s.hml;
 text/html; "$BROWSER" %s &; test=test -n "$DISPLAY"; nametemplate=%s.htm; lneedsterminal;
 text/html; w3m -I %{charset} -T text/html; 
 # text/html; /usr/local/lib/mutt-wizard/openfile %s ; nametemplate=%s.html
