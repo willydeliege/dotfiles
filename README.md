@@ -4,7 +4,17 @@ To list installed files:
 apt list --manual-installed | sed 's/\// /' | awk '{print $1}' > list.txt
 ```
 ## Fish
-Install fisher
+### Install Fish
+https://github.com/fish-shell/fish-shell
+```bash
+cd fihser-shell
+mkdir build; cd build
+cmake ..
+make
+sudo make install
+```
+
+### Install Fisher
 https://github.com/jorgebucaran/fisher
 
 ```bash
