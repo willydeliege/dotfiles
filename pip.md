@@ -1,4 +1,3 @@
-```
 pip install black
 blinker
 chardet
@@ -52,4 +51,3 @@ unattended-upgrades
 wadllib
 wheel
 zipp
-```
