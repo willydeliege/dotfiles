@@ -55,8 +55,6 @@ function M.setup()
     use { "nvim-lua/plenary.nvim", module = "plenary" }
 
     -- Notification
-    -- Packer
-    -- Packer
     use {
       "rcarriga/nvim-notify",
       event = "BufReadPre",
@@ -67,12 +65,13 @@ function M.setup()
     }
     -- Colorscheme
     use {
--- Using Packer:
       "Mofiqul/dracula.nvim",
       config = function()
         require("config.theme").setup()
       end,
     }
+    use { "khaveesh/vim-fish-syntax", ft = { "fish" } }
+    use { "ericpruitt/tmux.vim", ft = { "tmux" } }
     use {
       "nvchad/nvim-colorizer.lua",
       cmd = "ColorizerToggle",
@@ -206,6 +205,7 @@ function M.setup()
     use { "ggandor/lightspeed.nvim" }
     use {
       "gukz/ftFT.nvim",
+      event = "BufReadPre",
       -- This will turn on all functions, if you don't like some of them, add more config to disable/change them
       config = function()
         require("ftFT").setup()
@@ -437,6 +437,10 @@ function M.setup()
     }
 
     -- LSP
+    use {
+      event = "BufReadPre",
+      "joechrisellis/lsp-format-modifications.nvim",
+    }
     use {
       "neovim/nvim-lspconfig",
       opt = true,
@@ -672,12 +676,13 @@ function M.setup()
     -- Incremaent and decrement booleans, days, numbers....
     use {
       "nat-418/boole.nvim",
+      envent = "BufReadPre",
       config = function()
         require("config.boole").setup()
       end,
     }
     -- plantuml
-    use { "aklt/plantuml-syntax" }
+    use { "aklt/plantuml-syntax", ft = { "plantuml" } }
     -- Markdown
 
     use {

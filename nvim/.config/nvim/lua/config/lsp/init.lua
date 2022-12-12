@@ -165,7 +165,8 @@ function M.on_attach(client, bufnr)
 
   -- Configure formatting
   require("config.lsp.null-ls.formatters").setup(client, bufnr)
-
+local lsp_format_modifications = require"lsp-format-modifications"
+  lsp_format_modifications.attach(client, bufnr, { format_on_save = false })
   -- tagfunc
   if caps.definitionProvider then
     vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
