@@ -6,9 +6,6 @@ local expr_opts = { noremap = true, expr = true, silent = true }
 -- Better escape using jk in insert and terminal mode
 keymap("i", "jk", "<ESC>", default_opts)
 keymap("t", "jk", "<C-\\><C-n>", default_opts)
--- split
-keymap("n", "<leader>|", ":vsplit<cr>", default_opts)
-keymap("n", "<leader>-", ":split<cr>", default_opts)
 
 keymap("i", "<C-s>", "<ESC>:w<CR>", default_opts)
 keymap("n", "<C-s>", ":w<CR>", default_opts)
@@ -31,23 +28,29 @@ keymap("v", ">", ">gv", default_opts)
 
 -- Paste over currently selected text without yanking it
 keymap("v", "p", '"_dP', default_opts)
+keymap("n", "[p", ":pu!<cr>")
+keymap("n", "]p", ":pu<cr>")
 
 -- Switch buffer
-keymap("n", "<S-h>", ":BufferLineCyclePrev<CR>", default_opts)
-keymap("n", "<S-l>", ":BufferLineCycleNext<CR>", default_opts)
+keymap("n", "<left>", ":BufferLineCyclePrev<CR>", default_opts)
+keymap("n", "<right>", ":BufferLineCycleNext<CR>", default_opts)
 
 -- Cancel search highlighting with ESC
 keymap("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", default_opts)
 
 -- Move selected line / block of text in visual mode
-keymap("x", "K", ":move '<-2<CR>gv=gv", default_opts)
-keymap("x", "J", ":move '>+1<CR>gv=gv", default_opts)
+keymap("n", "<A-j>", ":m .+1<CR>==", default_opts)
+keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", default_opts)
+keymap("i", "<A-j>", "<Esc>:m .+1<CR>==gi", default_opts)
+keymap("n", "<A-k>", ":m .-2<CR>==", default_opts)
+keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", default_opts)
+keymap("i", "<A-k>", "<Esc>:m .-2<CR>==gi", default_opts)
 
 -- Resizing panes
-keymap("n", "<Left>", ":vertical resize +1<CR>", default_opts)
-keymap("n", "<Right>", ":vertical resize -1<CR>", default_opts)
-keymap("n", "<Up>", ":resize -1<CR>", default_opts)
-keymap("n", "<Down>", ":resize +1<CR>", default_opts)
+keymap("n", "<S-Left>", ":vertical resize +2<CR>", default_opts)
+keymap("n", "<S-Right>", ":vertical resize -2<CR>", default_opts)
+keymap("n", "<S-Up>", ":resize +2<CR>", default_opts)
+keymap("n", "<S-Down>", ":resize -2<CR>", default_opts)
 
 -- Insert blank line
 keymap("n", "]<Space>", "o<Esc>", default_opts)
@@ -60,5 +63,3 @@ keymap("x", "gx", "<Plug>(openbrowser-smart-search)", default_opts)
 -- windows.nvim
 -- keymap("n", "<C-w>z", "<Cmd>WindowsMaximize<CR>", default_opts)
 
--- focus.nvim
-keymap("n", "<C-w>z", "<Cmd>FocusMaxOrEqual<CR>", default_opts)

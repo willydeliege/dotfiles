@@ -91,8 +91,6 @@ function M.setup()
           luasnip.expand_or_jump()
         elseif neogen.jumpable() then
           neogen.jump_next()
-        elseif has_words_before() then
-          cmp.complete()
         else
           fallback()
         end
@@ -142,7 +140,7 @@ function M.setup()
     },
     sources = {
       { name = "luasnip" },
-      { name = "nvim_lsp", max_item_count = 15 },
+      { name = "nvim_lsp"},
       { name = "nvim_lsp_signature_help" },
       -- { name = "cmp_tabnine" },
       { name = "treesitter", max_item_count = 5 },

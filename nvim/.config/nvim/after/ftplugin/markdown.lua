@@ -1,5 +1,4 @@
 local whichkey = require("which-key")
-whichkey.setup()
 
 local opts = {
 	mode = "n", -- NORMAL mode

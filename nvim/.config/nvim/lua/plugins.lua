@@ -250,7 +250,7 @@ function M.setup()
           config = function()
             require("config.hlargs").setup()
           end,
-          disable = false,
+          disable = true,
         },
       },
     }
@@ -503,7 +503,7 @@ function M.setup()
           config = function()
             require("config.semantictokens").setup()
           end,
-          disable = false,
+          disable = true,
         },
       },
     }
@@ -715,7 +715,7 @@ function M.setup()
     use {
       "mickael-menu/zk-nvim",
       ft = "markdown",
-      cmd = "ZkNotes",
+      event = "VimEnter",
       config = function()
         require("zk").setup {
           picker = "telescope",

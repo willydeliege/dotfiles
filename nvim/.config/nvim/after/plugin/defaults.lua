@@ -5,7 +5,8 @@ local opt = vim.opt
 -- Remap leader and local leader to <Space>
 -- api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("", "<Space>", "<Nop>", { noremap = true, silent = true })
--- g.python3_host_prog = "/data/data/com.termux/files/usr/bin/python3"
+g.python3_host_prog = "/usr/bin/python3"
+g.loaded_perl_provider = 0
 g.mapleader = " "
 g.maplocalleader = ","
 g.vimsyn_embed = "lPr" -- Syntax embedding for Lua, Python and Ruby
@@ -21,7 +22,7 @@ opt.ignorecase = true --Case insensitive searching unless /C or capital in searc
 opt.smartcase = true -- Smart case
 opt.updatetime = 250 --Decrease update time
 opt.signcolumn = "yes:2" -- Always show sign column
--- opt.clipboard = "unnamedplus" -- Access system clipboard
+opt.clipboard = "unnamedplus" -- Access system clipboard
 opt.timeoutlen = 300 --	Time in milliseconds to wait for a mapped sequence to complete.
 opt.showmode = false -- Do not need to show the mode. We use the statusline instead.
 opt.scrolloff = 8 -- Lines of context
