@@ -133,7 +133,7 @@ function M.setup()
     },
     project = {
       hidden_files = true,
-      theme = "dropdown",
+      theme = "ivy",
     },
     -- aerial = {
     --   show_nesting = true,

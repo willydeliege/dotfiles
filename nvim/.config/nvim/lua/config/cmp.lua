@@ -45,8 +45,8 @@ function M.setup()
       end,
     },
     mapping = {
-      -- ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-      ["<C-l>"] = cmp.mapping {
+      -- ["<C-k>"] = mapping(mapping.select_prev_item(), { "i", "c" }),
+      ["<C-l>"] = mapping {
         i = function(fallback)
           if luasnip.choice_active() then
             luasnip.change_choice(1)
@@ -55,7 +55,7 @@ function M.setup()
           end
         end,
       },
-      ["<C-u>"] = cmp.mapping {
+      ["<C-u>"] = mapping {
         i = function(fallback)
           if luasnip.choice_active() then
             require "luasnip.extras.select_choice"()
@@ -64,13 +64,13 @@ function M.setup()
           end
         end,
       },
-      -- ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-      ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-      ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-      ["<C-e>"] = cmp.mapping(function(fallback)
+      -- ["<C-j>"] = mapping(mapping.select_next_item(), { "i", "c" }),
+      ["<C-b>"] = mapping(mapping.scroll_docs(-4), { "i", "c" }),
+      ["<C-f>"] = mapping(mapping.scroll_docs(4), { "i", "c" }),
+      ["<C-Space>"] = mapping(mapping.complete(), { "i", "c" }),
+      ["<C-e>"] = mapping(function(fallback)
         cmp.close()
-        cmp.mapping.close()
+        mapping.close()
         if luasnip.expand_or_jumpable() then
           luasnip.expand_or_jump()
         else
@@ -81,10 +81,10 @@ function M.setup()
         "s",
         "c",
       }),
-      ["<CR>"] = cmp.mapping {
-        i = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false },
+      ["<CR>"] = mapping {
+        i = mapping.confirm { behavior = cmp.ConfirmBehavior.Replace, select = false },
       },
-      ["<Tab>"] = cmp.mapping(function(fallback)
+      ["<Tab>"] = mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
         elseif luasnip.expand_or_jumpable() then
@@ -99,7 +99,7 @@ function M.setup()
         "s",
         "c",
       }),
-      ["<S-Tab>"] = cmp.mapping(function(fallback)
+      ["<S-Tab>"] = mapping(function(fallback)
         if cmp.visible() then
           cmp.select_prev_item()
         elseif luasnip.jumpable(-1) then
@@ -115,13 +115,13 @@ function M.setup()
         "c",
       }),
       ["<C-y>"] = {
-        i = cmp.mapping.confirm { select = false },
+        i = mapping.confirm { select = false },
       },
       ["<C-n>"] = {
-        i = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+        i = mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
       },
       ["<C-p>"] = {
-        i = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+        i = mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
       },
     },
     formatting = {

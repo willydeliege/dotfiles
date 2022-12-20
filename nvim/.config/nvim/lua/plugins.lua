@@ -112,6 +112,7 @@ function M.setup()
         require("config.gitsigns").setup()
       end,
     }
+    use { "tpope/vim-fugitive" }
     use {
       "akinsho/git-conflict.nvim",
       cmd = {
@@ -703,6 +704,7 @@ function M.setup()
       end,
     }
     use { "willydeliege/markdowntasks", ft = "markdown", event = "BufRead" }
+    use { "preservim/tagbar", ft= "markdown" }
     use { "powerman/vim-plugin-AnsiEsc", ft = "markdown" }
     use {
       "jakewvincent/mkdnflow.nvim",

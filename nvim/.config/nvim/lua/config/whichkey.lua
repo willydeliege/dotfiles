@@ -86,12 +86,11 @@ local function normal_keymap()
       l = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers list" },
     },
     q = {
-      name = "+quit/session",
+      name = "Quit/session",
       q = { "<cmd>qa<cr>", "Quit" },
       ["!"] = { "<cmd>:qa!<cr>", "Quit without saving" },
-      s = { [[<cmd>lua require("persistence").load()<cr>]], "Restore Session" },
-      l = { [[<cmd>lua require("persistence").load({last=true})<cr>]], "Restore Last Session" },
-      d = { [[<cmd>lua require("persistence").stop()<cr>]], "Stop Current Session" },
+      s = { "<cmd>lua require('utils.session').toggle_session()<cr>", "Toggle Workspace Saving" },
+      h = { "<cmd>lua require('utils.session').list_session()<cr>", "Restore Workspace" },
     },
     s = {
       name = "Search",
@@ -120,6 +119,7 @@ local function normal_keymap()
       h = { "<cmd>lua require('telescope.builtin').help_tags()<cr>", "Help" },
       c = { "<cmd>lua require('telescope.builtin').commands()<cr>", "Commands" },
       k = { "<cmd>lua require('telescope.builtin').keymaps()<cr>", "Keymaps" },
+      p = { "<cmd>lua require'telescope'.extensions.projects.projects{}<cr>", "Projects" }, 
     },
     ["h"] = {
       name = "Help",
@@ -192,15 +192,11 @@ local function normal_keymap()
 
     Z = {
       name = "System",
-      -- c = { "<cmd>PackerCompile<cr>", "Compile" },
       c = { "<cmd>Telescope neoclip<cr>", "Clipboard" },
       d = { "<cmd>DiffviewOpen<cr>", "Diff View Open" },
       D = { "<cmd>DiffviewClose<cr>", "Diff View Close" },
-      i = { "<cmd>PackerInstall<cr>", "Install" },
       m = { "<cmd>lua require('telescope').extensions.macroscope.default()<cr>", "Macros" },
       e = { "!!$SHELL<CR>", "Execute line" },
-      W = { "<cmd>lua require('utils.session').toggle_session()<cr>", "Toggle Workspace Saving" },
-      w = { "<cmd>lua require('utils.session').list_session()<cr>", "Restore Workspace" },
     },
     g = {
       name = "Git",
