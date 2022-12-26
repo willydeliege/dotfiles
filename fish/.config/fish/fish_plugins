@@ -1,8 +1,6 @@
 jorgebucaran/fisher
 gazorby/fish-exa
-ilancosman/tide@v5
 edc/bass
-dracula/fish
 decors/fish-colored-man
 jorgebucaran/autopair.fish
 jhillyerd/plugin-git
@@ -10,3 +8,7 @@ patrickf1/fzf.fish
 reitzig/sdkman-for-fish@v1.4.0
 gazorby/fish-abbreviation-tips
 budimanjojo/tmux.fish
+ilancosman/tide@v5
+benc/pkg-mvn
+dracula/fish
+jorgebucaran/nvm.fish
