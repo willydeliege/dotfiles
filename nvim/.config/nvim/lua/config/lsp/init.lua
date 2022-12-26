@@ -144,9 +144,8 @@ function M.on_attach(client, bufnr)
 
   -- Enable completion triggered by <C-X><C-O>
   -- See `:help omnifunc` and `:help ins-completion` for more information.
-  if caps.completionProvider then
-    vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-  end
+  -- if caps.completionProvider then
+  --   vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
 
   -- Use LSP as the handler for formatexpr.
   -- See `:help formatexpr` for more information.

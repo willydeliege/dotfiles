@@ -1,10 +1,10 @@
 local M = {}
 
 local whichkey = require "which-key"
-
+local picker = require "window-picker"
 local conf = {
   window = {
-    border = "double", -- none, single, double, shadow
+    border = "single", -- none, single, double, shadow
     position = "bottom", -- bottom, top
   },
 }
@@ -44,7 +44,7 @@ local function normal_keymap()
   local keymap = {
     ["e"] = { "<cmd>Neotree toggle reveal_force_cwd<cr>", "Explorer" },
     ["n"] = { ":e!<cr>", "Reload buffer" },
-    ["i"] = { ":edit " .. os.getenv "HOME" .. "/willydeliege/index.md<CR><bar><cmd>e!<cr>", "PKM Index" },
+    ["i"] = { ":edit " .. os.getenv("HOME")  .. "/willydeliege/index.md<CR><bar><cmd>e!<cr>", "PKM Index" },
 
     ["<tab>"] = {
       name = "Tabs",
@@ -73,14 +73,28 @@ local function normal_keymap()
       ["="] = { "<C-W>=", "balance-window" },
       ["s"] = { "<C-W>s", "split-window-below" },
       ["v"] = { "<C-W>v", "split-window-right" },
+      ["p"] = {
+        function()
+          local picked_window_id = picker.pick_window() or vim.api.nvim_get_current_win()
+          vim.api.nvim_set_current_win(picked_window_id)
+        end,
+        "Pick a window"
+      },
+      ["P"] = {
+        function ()
+          local picked_window_id = picker.pick_window() or vim.api.nvim_get_current_win()
+          vim.api.nvim_win_close(picked_window_id,true)
+        end,
+        "Pick and close window"
+      }
     },
     b = {
       name = "Buffer",
       c = { "<Cmd>BDelete this<Cr>", "Close Buffer" },
       f = { "<Cmd>BDelete! this<Cr>", "Force Close Buffer" },
       D = { "<Cmd>BWipeout other<Cr>", "Delete All Buffers" },
-      ["["] = { "<cmd>:BufferLineCyclePrev<CR>", "Previous Buffer" },
-      ["]"] = { "<cmd>:BufferLineCycleNext<CR>", "Next Buffer" },
+      ["("] = { "<cmd>:BufferLineCyclePrev<CR>", "Previous Buffer" },
+      [")"] = { "<cmd>:BufferLineCycleNext<CR>", "Next Buffer" },
       b = { "<Cmd>BufferLinePick<Cr>", "Pick a Buffer" },
       p = { "<Cmd>BufferLinePickClose<Cr>", "Pick & Close a Buffer" },
       l = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "Buffers list" },
@@ -119,7 +133,7 @@ local function normal_keymap()
       h = { "<cmd>lua require('telescope.builtin').help_tags()<cr>", "Help" },
       c = { "<cmd>lua require('telescope.builtin').commands()<cr>", "Commands" },
       k = { "<cmd>lua require('telescope.builtin').keymaps()<cr>", "Keymaps" },
-      p = { "<cmd>lua require'telescope'.extensions.projects.projects{}<cr>", "Projects" }, 
+      p = { "<cmd>lua require'telescope'.extensions.projects.projects{}<cr>", "Projects" },
     },
     ["h"] = {
       name = "Help",

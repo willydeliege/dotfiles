@@ -46,3 +46,4 @@ local v_mappings = {
 }
 whichkey.register(mappings, opts)
 whichkey.register(v_mappings,v_opts)
+vim.cmd[[setlocal omnifunc=taskwiki#CompleteOmni]]

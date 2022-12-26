@@ -320,6 +320,21 @@ function M.setup()
       },
     }
 
+    -- Packer
+    use {
+      "jackMort/ChatGPT.nvim",
+      event = "BufReadPre",
+      config = function()
+        require("chatgpt").setup {
+          -- optional configuration
+        }
+      end,
+      requires = {
+        "MunifTanjim/nui.nvim",
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim",
+      },
+    }
     -- Unless you are still migrating, remove the deprecated commands from v1.x
     vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
 
@@ -336,6 +351,13 @@ function M.setup()
         require("config.neotree").setup()
       end,
       disable = false,
+    }
+    use {
+      "s1n7ax/nvim-window-picker",
+      tag = "v1.*",
+      config = function()
+        require("window-picker").setup()
+      end,
     }
     -- tmux navigation
     use {
@@ -706,7 +728,7 @@ function M.setup()
     use { "willydeliege/markdowntasks", ft = "markdown", event = "BufRead" }
     use { "preservim/tagbar", ft= "markdown" }
     use { "powerman/vim-plugin-AnsiEsc", ft = "markdown" }
-    use {
+    use  {
       "jakewvincent/mkdnflow.nvim",
       config = function()
         require "config.mkdnflow"

@@ -1,6 +1,18 @@
 local g = vim.g
 local opt = vim.opt
 -- local cmd = vim.cmd
+vim.cmd [[let g:clipboard = {
+  \   'name': 'xclip-clipboard',
+  \   'copy': {
+  \      '+': 'xclip -selection clipboard',
+  \      '*': 'xclip -selection clipboard',
+  \    },
+  \   'paste': {
+  \      '+': 'xclip -selection clipboard -o',
+  \      '*': 'xclip -selection clipboard -o',
+  \   },
+  \   'cache_enabled': 0,
+  \ }]]
 
 -- Remap leader and local leader to <Space>
 -- api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })

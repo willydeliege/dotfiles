@@ -12,12 +12,11 @@ function M.setup(client, buffer)
         name = "+code",
         {
           cond = client.name == "jdtls",
-        o = { "<cmd>lua require'jdtls'.organize_imports()<cr>", "Organize Imports" },
-        v = { "<cmd>lua require('jdtls').extract_variable()<cr>", "Extract Variable" },
-        c = { "<cmd>lua require('jdtls').extract_constant()<cr>", "Extract Constant" },
-        t = { "<cmd>lua require('jdtls').test_class()<cr>", "Test Class" },
-        n = { "<cmd>lua require('jdtls').test_nearest_method()<cr>", "Test Nearest Method" },
-
+          o = { "<cmd>lua require'jdtls'.organize_imports()<cr>", "Organize Imports" },
+          v = { "<cmd>lua require('jdtls').extract_variable()<cr>", "Extract Variable" },
+          c = { "<cmd>lua require('jdtls').extract_constant()<cr>", "Extract Constant" },
+          t = { "<cmd>lua require('jdtls').test_class()<cr>", "Test Class" },
+          n = { "<cmd>lua require('jdtls').test_nearest_method()<cr>", "Test Nearest Method" },
         },
         -- r = {
         --   function()
@@ -32,19 +31,19 @@ function M.setup(client, buffer)
           { vim.lsp.buf.code_action, "Code Action" },
           { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action", mode = "v" },
         },
-        -- f = {
-        --   {
-        --     require("config.plugins.lsp.formatting").format,
-        --     "Format Document",
-        --     cond = cap.documentFormatting,
-        --   },
-        --   {
-        --     require("config.plugins.lsp.formatting").format,
-        --     "Format Range",
-        --     cond = cap.documentRangeFormatting,
-        --     mode = "v",
-        --   },
-        -- },
+        f = {
+          {
+            "<cmd>FormatModifications<cr>",
+            "Format Document",
+            cond = cap.documentFormatting,
+          },
+          {
+            "<cmd>lua vim.lsp.buf.format()<cr>",
+            "Format Range",
+            cond = cap.documentRangeFormatting,
+            mode = "v",
+          },
+        },
         d = { vim.diagnostic.open_float, "Line Diagnostics" },
         l = {
           name = "+lsp",
@@ -68,16 +67,17 @@ function M.setup(client, buffer)
       t = { "<cmd>Telescope lsp_type_definitions<cr>", "Goto Type Definition" },
     },
     ["<C-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help", mode = { "n", "i" } },
+    -- on azerty keyboard () is easier to access than []
     ["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
-    ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Next Diagnostic" },
-    ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Prev Diagnostic" },
-    ["[e"] = { "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>", "Next Error" },
-    ["]e"] = { "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>", "Prev Error" },
-    ["[w"] = {
+    ["(d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Next Diagnostic" },
+    [")d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Prev Diagnostic" },
+    ["(e"] = { "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>", "Next Error" },
+    [")e"] = { "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>", "Prev Error" },
+    ["(w"] = {
       "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.WARNING})<CR>",
       "Next Warning",
     },
-    ["]w"] = {
+    [")w"] = {
       "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.WARNING})<CR>",
       "Prev Warning",
     },

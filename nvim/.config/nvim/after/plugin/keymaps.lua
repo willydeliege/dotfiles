@@ -34,8 +34,8 @@ keymap("v", ">", ">gv", default_opts)
 -- Paste over currently selected text without yanking it
 keymap("v", "p", '"_dP', default_opts)
 -- Paste line above or below
-keymap("n", "[p", ":pu!<cr>")
-keymap("n", "]p", ":pu<cr>")
+keymap("n", "(p", ":pu!<cr>")
+keymap("n", ")p", ":pu<cr>")
 
 -- Switch buffer
 keymap("n", "<right>", ":BufferLineCycleNext<CR>", default_opts)
@@ -58,12 +58,9 @@ keymap("n", "<S-Up>", ":resize +2<CR>", default_opts)
 keymap("n", "<S-Down>", ":resize -2<CR>", default_opts)
 
 -- Insert blank line
-keymap("n", "]<Space>", "o<Esc>", default_opts)
-keymap("n", "[<Space>", "O<Esc>", default_opts)
+keymap("n", ")<Space>", "o<Esc>", default_opts)
+keymap("n", "(<Space>", "O<Esc>", default_opts)
 
--- Browser search
-keymap("n", "gx", "<Plug>(openbrowser-smart-search)", default_opts)
-keymap("x", "gx", "<Plug>(openbrowser-smart-search)", default_opts)
 
 -- windows.nvim
 -- keymap("n", "<C-w>z", "<Cmd>WindowsMaximize<CR>", default_opts)
