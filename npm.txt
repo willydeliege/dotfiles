@@ -1,0 +1,1 @@
+npm install -g tsc neovim npm@9.2.0
