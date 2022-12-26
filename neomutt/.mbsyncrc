@@ -18,11 +18,59 @@ Subfolders Verbatim
 Path ~/.local/share/mail/frederic.willem@gmail.com/
 Inbox ~/.local/share/mail/frederic.willem@gmail.com/INBOX
 
-Channel frederic.willem@gmail.com
+Channel frederic.willem@gmail.com-default
 Far ":frederic.willem@gmail.com-remote:"
 Near ":frederic.willem@gmail.com-local:"
 Create Both
 Expunge Both
-Patterns * ![Gmail]/Spam ![Gmail]/Trash ![Gmail]/Important
+Patterns INBOX
 SyncState *
 Sync All
+
+Channel frederic.willem@gmail.com-sent
+far :frederic.willem@gmail.com-remote:"[Gmail]/Sent Mail"
+near :frederic.willem@gmail.com-local:sent
+Create Both
+Expunge Both
+SyncState *
+Sync All
+
+Channel frederic.willem@gmail.com-all
+far :frederic.willem@gmail.com-remote:"[Gmail]/All Mail"
+near :frederic.willem@gmail.com-local:all
+Create Both
+Expunge Both
+SyncState *
+Sync All
+
+Channel frederic.willem@gmail.com-starred
+far :frederic.willem@gmail.com-remote:"[Gmail]/Starred"
+near :frederic.willem@gmail.com-local:starred
+Create Both
+Expunge Both
+SyncState *
+Sync All
+
+Channel frederic.willem@gmail.com-drafs
+far :frederic.willem@gmail.com-remote:"[Gmail]/Drafts"
+near :frederic.willem@gmail.com-local:draft
+Create Both
+Expunge Both
+SyncState *
+Sync All
+
+Channel frederic.willem@gmail.com-trash
+far :frederic.willem@gmail.com-remote:"[Gmail]/Trash"
+near :frederic.willem@gmail.com-local:trash
+Create Both
+Expunge Both
+SyncState *
+Sync All
+
+Group gmail
+Channel frederic.willem@gmail.com-default
+Channel frederic.willem@gmail.com-sent
+Channel frederic.willem@gmail.com-trash
+Channel frederic.willem@gmail.com-all
+Channel frederic.willem@gmail.com-drafs
+Channel frederic.willem@gmail.com-starred

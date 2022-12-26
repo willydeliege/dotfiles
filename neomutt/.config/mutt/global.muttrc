@@ -10,7 +10,7 @@ set query_command = "abook --mutt-query '%s'"
 set rfc2047_parameters = yes
 set sleep_time = 0		# Pause 0 seconds for informational messages
 set markers = no		# Disables the `+` displayed at line wraps
-set mark_old = yes		# Unread mail stay unread until read
+set mark_old = no		# Unread mail stay unread until read
 set mime_forward = yes		# attachments are forwarded with mail
 set wait_key = no		# mutt won't ask "press key to continue"
 set fast_reply			# skip to compose when replying
@@ -31,5 +31,6 @@ set sidebar_short_path = yes
 set sidebar_next_new_wrap = yes
 set mail_check_stats
 set sidebar_format = '%D%?F? [%F]?%* %?N?%N/? %?S?%S?'
-
+set pager_format="%n %T %s%*  %{!%d %b · %H:%M} %?X? %X?%P"
+set status_format = " %D %?u? %u ?%?R? %R ?%?d? %d ?%?t? %t ?%?F? %F ?%?p? %p? \n  \n"
 # vim: filetype=neomuttrc

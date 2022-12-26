@@ -18,10 +18,10 @@ set hidden_tags = "unread,draft,flagged,passed,replied,attachment,signed,encrypt
 # Remote gmail folders
 set folder = "~/.local/share/mail/frederic.willem@gmail.com"
 set spoolfile = "+INBOX"
-set postponed = "+[Gmail]/Drafts"
-set record =+Sent"
-set trash = "+Trash"
-mailboxes =INBOX =[Gmail]/Starred  =[Gmail]/Drafts =[Gmail]/All\ Mail  # =[Gmail]/Sent
+set postponed = "+draft"
+set record =+sent"
+set trash = "+trash"
+mailboxes =INBOX =starred =all =sent =draft =trash 
 set nm_default_url = "notmuch:///home/willefi/.local/share/mail/frederic.willem@gmail.com"
 
 # vim: filetype=neomuttrc
