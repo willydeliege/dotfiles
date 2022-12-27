@@ -71,6 +71,7 @@ opt.scrollback = 100000
 -- go to previous/next line with h,l,left arrow and right arrow when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
 opt.wrap = true
+opt.swapfile=false
 
 -- disable nvim intro
 -- opt.shortmess:append "sI"
