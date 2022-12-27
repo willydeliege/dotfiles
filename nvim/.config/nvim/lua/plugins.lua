@@ -227,6 +227,7 @@ function M.setup()
     use {
       "nvim-treesitter/nvim-treesitter",
       opt = true,
+      commit = "a2d7e78b0714a0dc066416100b7398d3f0941c23",
       event = "BufReadPre",
       run = ":TSUpdate",
       config = function()
@@ -675,6 +676,7 @@ function M.setup()
         --[[ "abenz1267/nvim-databasehelper", ]]
       },
       --[[ wants = { "nvim-databasehelper" }, ]]
+      --[[ wants = { "nvim-databasehelper" }, ]]
       config = function()
         require("config.dadbod").setup()
       end,
@@ -747,7 +749,6 @@ function M.setup()
       end,
     }
     use { "godlygeek/tabular", ft = "markdown" }
-    use { "preservim/vim-markdown", ft = "markdown" }
     use { "ellisonleao/glow.nvim" }
     -- Bootstrap Neovim
     if packer_bootstrap then
