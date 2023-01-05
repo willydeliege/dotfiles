@@ -23,13 +23,9 @@ alias.burndown=burndown.daily
 
 active.indicator=>
 
-# Sort the columns a little differently
-report.list.columns=start.active,id,project,priority,due,description,entry.age
-report.list.labels= , ,Project,Pri,Due,Description,Age
-
 list.all.projects=yes
 #undo.style=diff
-default.command=list
+# default.command=list
 
 
 
@@ -48,3 +44,9 @@ default.command=list
 # Include the solarized themes, enable solarized dark
 include /usr/share/task/solarized-dark-256.theme  
 # include /usr/share/task/solarized-light-256.theme
+uda.reviewed.type=date
+uda.reviewed.label=Reviewed
+report._reviewed.description=Tasksh review report.  Adjust the filter to your needs.
+report._reviewed.columns=uuid
+report._reviewed.sort=reviewed+,modified+
+report._reviewed.filter=( reviewed.none: or reviewed.before:now-6days ) and ( +PENDING or +WAITING )

@@ -481,15 +481,12 @@ function M.setup()
         "schemastore.nvim",
         "typescript.nvim",
         "nvim-navic",
-        "inlay-hints.nvim",
         -- "goto-preview",
       },
       config = function()
         require("config.lsp").setup()
       end,
       requires = {
-        -- "williamboman/nvim-lsp-installer",
-        -- { "lvimuser/lsp-inlayhints.nvim", branch = "readme" },
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -517,10 +514,7 @@ function M.setup()
           module = { "nvim-navic" },
         },
         {
-          "simrat39/inlay-hints.nvim",
-          config = function()
-            require("inlay-hints").setup()
-          end,
+          "lvimuser/lsp-inlayhints.nvim",
         },
         {
           "theHamsta/nvim-semantic-tokens",
@@ -727,7 +721,7 @@ function M.setup()
         require("translate").setup {}
       end,
     }
-    use { "willydeliege/markdowntasks", ft = "markdown", event = "BufRead" }
+    use { "willydeliege/markdowntasks", event = "VimEnter" }
     use { "preservim/tagbar", ft= "markdown" }
     use { "powerman/vim-plugin-AnsiEsc", ft = "markdown" }
     use  {

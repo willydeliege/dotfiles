@@ -19,13 +19,13 @@ local servers = {
     },
   },
   html = {},
-  jsonls = {
-    settings = {
-      json = {
-        schemas = require("schemastore").json.schemas(),
-      },
-    },
-  },
+  -- jsonls = {
+  --   settings = {
+  --     json = {
+  --       schemas = require("schemastore").json.schemas(),
+  --     },
+  --   },
+  -- },
   pyright = {
     analysis = {
       typeCheckingMode = "off",
@@ -104,15 +104,17 @@ local servers = {
     vimls = {},
     -- tailwindcss = {},
     yamlls = {
-      schemastore = {
-        enable = true,
-      },
+      -- schemastore = {
+      --   enable = true,
+      -- },
       settings = {
         yaml = {
           hover = true,
           completion = true,
           validate = true,
-          schemas = require("schemastore").json.schemas(),
+          schemas = {
+            ["https://raw.githubusercontent.com/imochoa/alacritty/adding-yaml-schema/extra/alacritty-config-schema.json"] = "/*.yml"
+          },
         },
       },
     },
@@ -144,9 +146,9 @@ function M.on_attach(client, bufnr)
 
   -- Enable completion triggered by <C-X><C-O>
   -- See `:help omnifunc` and `:help ins-completion` for more information.
-  -- if caps.completionProvider then
-  --   vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-
+  if caps.completionProvider then
+    vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+  end
   -- Use LSP as the handler for formatexpr.
   -- See `:help formatexpr` for more information.
   if caps.documentFormattingProvider then
@@ -190,7 +192,9 @@ local lsp_format_modifications = require"lsp-format-modifications"
     navic.attach(client, bufnr)
   end
 
-  if client.name ~= "null-ls" then
+  -- Inlay hints
+  require("lsp-inlayhints").on_attach(client, bufnr)
+  -- if client.name ~= "null-ls" then
     -- aerial.nvim
     -- require("aerial").on_attach(client, bufnr)
 
@@ -210,7 +214,7 @@ local lsp_format_modifications = require"lsp-format-modifications"
     --   -- fire it first time on load as well
     --   vim.lsp.buf.semantic_tokens_full()
     -- end
-  end
+  -- end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -245,8 +249,6 @@ function M.setup()
   -- Installer
   require("config.lsp.installer").setup(servers, opts)
 
-  -- Inlay hints
-  -- require("config.lsp.inlay-hints").setup()
 end
 
 local diagnostics_active = true
