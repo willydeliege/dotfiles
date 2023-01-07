@@ -2,14 +2,14 @@ local g = vim.g
 local opt = vim.opt
 -- local cmd = vim.cmd
 vim.cmd [[let g:clipboard = {
-  \   'name': 'xclip-clipboard',
+  \   'name': 'xsel-clipboard',
   \   'copy': {
-  \      '+': 'xclip -selection clipboard',
-  \      '*': 'xclip -selection clipboard',
+  \      '+': 'xsel -ib',
+  \      '*': 'xsel -ib',
   \    },
   \   'paste': {
-  \      '+': 'xclip -selection clipboard -o',
-  \      '*': 'xclip -selection clipboard -o',
+  \      '+': 'xsel -ob',
+  \      '*': 'xsel -ob',
   \   },
   \   'cache_enabled': 0,
   \ }]]

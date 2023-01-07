@@ -3,8 +3,6 @@ local keymap = vim.keymap.set
 local default_opts = { noremap = true, silent = true }
 local expr_opts = { noremap = true, expr = true, silent = true }
 
--- azerty mapping"
-keymap("n", "<c-$>", "c-]", default_opts) -- jumpto to tag in help 
 -- deactiate arrow keys
 keymap("n", "<up>", "", default_opts)
 keymap("n", "<down>", "", default_opts)
@@ -20,12 +18,12 @@ keymap("n", "n", "nzz", default_opts)
 keymap("n", "N", "Nzz", default_opts)
 
 -- Visual line wraps
--- keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", expr_opts)
--- keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", expr_opts)
+keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", expr_opts)
+keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", expr_opts)
 
 -- -- Always center
--- keymap("n", "k", "kzz", default_opts)
--- keymap("n", "j", "jzz", default_opts)
+keymap("n", "k", "kzz", default_opts)
+keymap("n", "j", "jzz", default_opts)
 
 -- Better indent
 keymap("v", "<", "<gv", default_opts)
@@ -34,8 +32,8 @@ keymap("v", ">", ">gv", default_opts)
 -- Paste over currently selected text without yanking it
 keymap("v", "p", '"_dP', default_opts)
 -- Paste line above or below
-keymap("n", "(p", ":pu!<cr>")
-keymap("n", ")p", ":pu<cr>")
+keymap("n", "[p", ":pu!<cr>")
+keymap("n", "]p", ":pu<cr>")
 
 -- Switch buffer
 keymap("n", "<right>", ":BufferLineCycleNext<CR>", default_opts)
@@ -58,9 +56,8 @@ keymap("n", "<S-Up>", ":resize +2<CR>", default_opts)
 keymap("n", "<S-Down>", ":resize -2<CR>", default_opts)
 
 -- Insert blank line
-keymap("n", ")<Space>", "o<Esc>", default_opts)
-keymap("n", "(<Space>", "O<Esc>", default_opts)
-
+keymap("n", "]<Space>", "o<Esc>", default_opts)
+keymap("n", "[<Space>", "O<Esc>", default_opts)
 
 -- windows.nvim
 -- keymap("n", "<C-w>z", "<Cmd>WindowsMaximize<CR>", default_opts)
