@@ -1,0 +1,14 @@
+
+{
+  "name": "c4plantuml",
+  "version": "1.0.0",
+  "description": "c4 plantuml code snippets",
+  "contributes": {
+    "snippets": [
+      {
+        "language": "plantuml",
+        "path": "./c4.json"
+      }
+    ]
+  }
+}

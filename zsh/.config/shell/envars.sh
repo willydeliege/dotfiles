@@ -24,10 +24,12 @@ export TZ="Europe/Brussels"
 
 export CHROME_EXECUTABLE=/usr/bin/google-chrome-stable
 
+export ZK_NOTEBOOK_DIR=~/willydeliege/
 #eval "$(dircolors ~/.dircolors)";
 # eval "$(thefuck --alias)"
 
-# Node Version Manager
+# export ZSH_TMUX_AUTOSTART=true
+ #Node Version Manager
 [ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
 
 # broot file explorer

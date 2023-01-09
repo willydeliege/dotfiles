@@ -33,8 +33,16 @@ end
 -- Find dotfiles
 function M.find_dotfiles()
   require("telescope.builtin").find_files {
-    prompt_title = "<Dotfiles>",
-    cwd = "$HOME/workspace/alpha2phi/dotfiles/",
+    prompt_title = "Dotfiles",
+    cwd = "$HOME/.dotfiles/",
+  }
+end
+
+-- Find dotfiles
+function M.find_pkm()
+  require("telescope.builtin").find_files {
+    prompt_title = "Willydeliege",
+    cwd = "$HOME/willydeliege/"
   }
 end
 

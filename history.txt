@@ -1,0 +1,193 @@
+sudo apt show lazygal
+lazygit
+cd .dotfiles/
+neomutt
+mbsync -a
+notmuch new
+notmuch
+sudo apt install notmuch
+exit
+nvim .pam-gnupg
+gpg -K --with-keygrip
+nvim .gnupg/gpg-agent.conf
+cd
+sudo nvim /etc/pam.d/login
+sudo make install
+make
+./configure
+sudo apt install libpam0g-dev
+./autogen.sh
+sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen build-essential
+./autogen.sh
+./configure
+make
+make install
+cd pam-gnupg/
+git clone https://github.com/cruegge/pam-gnupg.git
+meteo_full
+meteo
+test
+idea.sh &> /dev/null &
+fish_add_path /home/willefi/.local/opt/idea-IC-223.7571.182/bin/
+tar xzvf ideaIC-2022.3.tar.gz
+cd .local/opt/
+mv -iv ideaIC-2022.3.tar.gz .local/opt/
+md .local/opt
+rm -irv ideaIC-2022.3.exe
+mv -iv /mnt/c/Users/User/Downloads/ideaIC-2022.3.tar.gz .
+mv -iv /mnt/c/Users/User/Downloads/ideaIC-2022.3.exe .
+wget https://download.jetbrains.com/idea/ideaIC-2022.3.tar.gz?_gl=1*1o7ww63*_ga*ODgyNzc5MTU5LjE2NzA2Njg1MTM.*_ga_9J976DJZ68*MTY3MDg3MDU0MS44LjEuMTY3MDg3MDU3OS4wLjAuMA..&_ga=2.174583842.1298344305.1670668513-882779159.1670668513
+pass show frederic.willem@gmail.com
+pass shox frederic.willem@gmail.com
+pass insert frederic.willem@gmail.com
+nvim willydeliege/Configure\ mutt\ for\ gmail.md
+pass insert
+pass init frederic.willem@gmail.com
+sudo apt install pass
+md /home/willefi/.local/share/mail/frederic.willem@gmail.com
+sudo apt install isync
+gpg --import p.k
+git checkout develop
+git restore .
+cd willydeliege/
+ls
+sudo apt install neomutt  msmtp
+sudo apt install neomutt mbsync msmtp
+stow neomutt/
+xdg-open http://google.be
+pip install --user git+https://github.com/cpbotha/xdg-open-wsl.git
+df -h --total
+df -h totol
+du
+rm -rf gitsign_0.3.0_linux_amd64.deb
+ll
+install --help  &| less
+install --help
+install
+htop
+dictionary --version
+dictionary -v
+dictionary -h
+dictionary --help
+dictionary word
+cargo install dictionary
+sudo apt install libssl-dev
+nvimrc
+fishrc
+gitsign --help
+gitsign
+sudo dpkg -S dictionary
+sudo dpkg -S dictionnary
+wget https://github.com/sigstore/gitsign/releases/download/v0.3.0/gitsign_0.3.0_linux_amd64.deb
+sudo dpkg -i gitsign_0.3.0_linux_amd64.deb
+cargo install shellharden
+sudo apt install zsh
+shellharden
+sudo apt install black isort
+isort
+black
+flake8
+sudo apt install python3-proselint
+sudo apt install pythoon3-proselint
+proselint
+sudo apt install node-typescript
+tsc
+npm install tsc
+pip install flake8
+nvim .config/nvim/lua/plugins.lua
+sudo apt remove xclip
+sudo apt install xclip
+sudo nvim willefi
+whoami
+sudo mv -iv `whoami` willefi
+mv -iv `whoami` xillefi
+cd /etc/sudoers.d/
+echo "`whoami` ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/`whoami` && sudo chmod 0440 /etc/sudoers.d/`whoami`
+sudo nvim /etc/sudoers
+apt install cpanminus
+history
+git status
+j wil
+sudo apt install golang
+sudo gem install neovim
+gem install neovim
+sudo cpanm -n Neovim::Ext
+sudo apt install fzf
+cpanm -n Neovim::Ext
+sudo apt install cpanminus
+sudo apt install ruby-dev
+sudo npm install -g neovim
+npm install -g neovim
+nvim
+zk index
+zk
+sudo cp -irv zk /usr/local/bin/
+cp -irv zk /usr/local/bin/
+tar xzvf zk-v0.12.0-linux-amd64.tar.gz
+sudo cp -irv bin/exa /usr/local/bin/
+cp -irv bin/exa /usr/local/bin/
+man exa
+unzip exa-linux-x86_64-v0.10.1.zip
+sudo apt install unzip
+apt install unzip
+tar xzvf exa-linux-x86_64-v0.10.1.zip
+cd .dotfiles/librairies/
+cd node_modules/
+sdk install java
+sdk
+nvim +PackerSync
+sudo apt install taskwarrior
+apt install taskwarrior
+pip install tasklib
+pip install pynvim
+npm --version
+sudo npm install -g npm@9.2.0
+npm install -g npm@9.2.0
+npm install §g npm@9.2.0
+npm install neovim
+apt show npm
+npm -version
+sudo apt install nodejs
+sudo apt remove npm nodejs
+sudo apt install npm
+apt install npm
+sudo apt autoremove
+sudo apt remove nodejs
+curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - &&\
+sudo apt-get install -y nodejs
+nodejs --version
+nodejs -version
+nodejs =version
+env
+sudo apt install cargo ruby
+sudo apt install python3-pip
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+sudo apt install nodejs npm
+sudo apt install neovim
+tmuxrc
+sudo apt install zoxide fortunes cowsay
+fisher list
+fisher install
+stow tmux
+stow fish
+stow nvim
+rm -rf .tmux
+rm -rf .config/fish/
+sudo apt install stow
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt update
+curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+chsh -s /usr/bin/fish
+gh repo clone willydeliege/dotfiles .dotfiles
+sudo apt install tmux
+sudo apt install fish
+sudo apt install fish xdg-utils
+sudo apt-add-repository ppa:fish-shell/release-3
+sudo apt install fish  tmux
+sudo apt install fish fisher tmux
+gh repo clone willydeliege/willydeliege
+gh auth login
+sudo apt install gh
+xdg-open
+sudo apt install wslu
+sudo apt update && sudo apt-upgrade -y

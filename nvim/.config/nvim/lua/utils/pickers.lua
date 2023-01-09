@@ -2,8 +2,6 @@ local M = {}
 
 -- Themes to use
 local dropdown_theme = require("telescope.themes").get_dropdown {}
-local ivy_theme = require("telescope.themes").get_ivy {}
-local cursor_theme = require("telescope.themes").get_cursor {}
 local custom_theme = require("telescope.themes").get_dropdown {
   results_height = 20,
   winblend = 20,

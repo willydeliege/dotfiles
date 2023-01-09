@@ -2,7 +2,7 @@ local g = vim.g
 
 -- Disable some builtin vim plugins
 local disabled_built_ins = {
-  "2html_plugin",
+  -- "2html_plugin",
   "getscript",
   "getscriptPlugin",
   "gzip",

@@ -1,0 +1,27 @@
+set pipe_decode = yes
+set ssl_force_tls = yes
+set ssl_starttls = yes
+set abort_nosubject = yes
+set mail_check = 60
+set timeout = 10
+set sort = "reverse-date-received"
+set from = "frederic.willem@gmail.com"
+set realname = "Frédéric Willem"
+
+# Imap settings
+# Managed by mbsync
+
+# Smtp settings
+set ssl_starttls = yes
+set sendmail = "/usr/bin/msmtp -a gmail.com"
+set hidden_tags = "unread,draft,flagged,passed,replied,attachment,signed,encrypted,important"
+# Remote gmail folders
+set folder = "~/.local/share/mail/frederic.willem@gmail.com"
+set spoolfile = "+INBOX"
+set postponed = "+draft"
+set record =+sent"
+set trash = "+trash"
+mailboxes =INBOX =starred =all =sent =draft =trash 
+set nm_default_url = "notmuch:///home/willefi/.local/share/mail/frederic.willem@gmail.com"
+
+# vim: filetype=neomuttrc

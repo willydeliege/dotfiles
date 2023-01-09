@@ -1,13 +1,20 @@
+# start tmux
+# if command -v tmux>/dev/null; then
+#  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && tmux
+# fi
+# zmodload zsh/zprof
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # Path to oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 # export TERM="xterm-256color"
+# export ZSH_TMUX_AUTOSTART=true
 
 # Options
 setopt hist_ignore_dups
@@ -18,27 +25,20 @@ DISABLE_AUTO_TITLE="false"
 ENABLE_CORRECTION="false"
 COMPLETION_WAITING_DOTS="false"
 SAVEHIST=99999
-
 # Plugins
-plugins=(zsh-autocomplete
+plugins=(
+    vi-mode
+    tmux
+    autojump
+    zsh-autocomplete
     alias-tips
-    catimg
     colorize
-    direnv
-    dirhistory
     extract
-    fancy-ctrl-z
-    fasd
     F-Sy-H
     fzf-tab
-    gh
     git
-    git-extra-commands
     globalias
-    magic-enter
-    timer
-    web-search
-    z
+    ubuntu
     zsh-autopair
     zsh-autosuggestions
     zsh-completions
@@ -116,9 +116,6 @@ alias -g wcc="| wc -m"
 alias -g wcl="| wc -l"
 alias -g wcw="| wc -w"
 
-# Commands
-eval "$(fasd --init posix-alias zsh-hook zsh-ccomp-install zsh-wcomp-install zsh-ccomp zsh-wcomp)"
-#eval "$(pyenv virtualenv-init -)"
 
 # Functions
 function color_picker() {
@@ -140,8 +137,11 @@ function color_picker() {
 # Local configurations
 [ -f ~/.local.sh ] && source ~/.local.sh
 
-source /etc/profile
+# Termux paths
+[ -f /etc/profile.d/termux-proot.sh ] && source /etc/profile.d/termux-proot.sh
 
+# source /etc/profile
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+

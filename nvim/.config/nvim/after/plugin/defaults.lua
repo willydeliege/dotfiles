@@ -1,11 +1,24 @@
 local g = vim.g
 local opt = vim.opt
 -- local cmd = vim.cmd
+vim.cmd [[let g:clipboard = {
+  \   'name': 'xsel-clipboard',
+  \   'copy': {
+  \      '+': 'xsel -ib',
+  \      '*': 'xsel -ib',
+  \    },
+  \   'paste': {
+  \      '+': 'xsel -ob',
+  \      '*': 'xsel -ob',
+  \   },
+  \   'cache_enabled': 0,
+  \ }]]
 
 -- Remap leader and local leader to <Space>
 -- api.nvim_set_keymap("", "<Space>", "<Nop>", { noremap = true, silent = true })
 vim.keymap.set("", "<Space>", "<Nop>", { noremap = true, silent = true })
--- g.python3_host_prog = "/data/data/com.termux/files/usr/bin/python3"
+g.python3_host_prog = "/usr/bin/python3"
+g.loaded_perl_provider = 0
 g.mapleader = " "
 g.maplocalleader = ","
 g.vimsyn_embed = "lPr" -- Syntax embedding for Lua, Python and Ruby
@@ -21,7 +34,7 @@ opt.ignorecase = true --Case insensitive searching unless /C or capital in searc
 opt.smartcase = true -- Smart case
 opt.updatetime = 250 --Decrease update time
 opt.signcolumn = "yes:2" -- Always show sign column
--- opt.clipboard = "unnamedplus" -- Access system clipboard
+opt.clipboard = "unnamedplus" -- Access system clipboard
 opt.timeoutlen = 300 --	Time in milliseconds to wait for a mapped sequence to complete.
 opt.showmode = false -- Do not need to show the mode. We use the statusline instead.
 opt.scrolloff = 8 -- Lines of context
@@ -31,13 +44,22 @@ opt.joinspaces = false -- No double spaces with join after a dot
 opt.smartindent = true --Smart indent
 opt.expandtab = true
 opt.smarttab = true
-opt.textwidth = 0
+opt.textwidth = 80
 opt.autoindent = true
 opt.shiftwidth = 2
 opt.tabstop = 2
 opt.softtabstop = 2
 opt.splitbelow = true
 opt.splitright = true
+opt.fillchars = {
+  horiz     = '━',
+  horizup   = '┻',
+  horizdown = '┳',
+  vert      = '┃',
+  vertleft  = '┫',
+  vertright = '┣',
+  verthoriz = '╋',
+}
 opt.laststatus = 3 -- Global statusline
 opt.cmdheight = 0 -- 0
 opt.scrollback = 100000
@@ -48,7 +70,8 @@ opt.scrollback = 100000
 
 -- go to previous/next line with h,l,left arrow and right arrow when cursor reaches end/beginning of line
 opt.whichwrap:append "<>[]hl"
-opt.wrap = false
+opt.wrap = true
+opt.swapfile=false
 
 -- disable nvim intro
 -- opt.shortmess:append "sI"

@@ -1,0 +1,17 @@
+defaults
+protocol smtp
+auth on
+tls on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+syslog LOG_USER
+logfile ~/.msmtp.log
+timeout 60
+
+#### account 1 ------------------------------------
+account gmail.com
+host           smtp.gmail.com
+port           465
+tls_starttls   off
+from           frederic.willem@gmail.com
+user           frederic.willem
+passwordeval   "pass frederic.willem@gmail.com | head -n1"

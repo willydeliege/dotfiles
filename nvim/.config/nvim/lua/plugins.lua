@@ -55,17 +55,6 @@ function M.setup()
     use { "nvim-lua/plenary.nvim", module = "plenary" }
 
     -- Notification
-    -- Packer
-    -- Packer
-    use {
-      "folke/noice.nvim",
-      event = "BufReadPre",
-      config = function()
-        require("config.noice").setup()
-      end,
-      wants = {"nui.nvim","nvim-notify"},
-      disable = true,
-    }
     use {
       "rcarriga/nvim-notify",
       event = "BufReadPre",
@@ -74,14 +63,15 @@ function M.setup()
       end,
       disable = false,
     }
-    -- If you are using Packer
     -- Colorscheme
     use {
-      "catppuccin/nvim",
+      "Mofiqul/dracula.nvim",
       config = function()
-        require("config.catpuccin").setup()
+        require("config.theme").setup()
       end,
     }
+    use { "khaveesh/vim-fish-syntax", ft = { "fish" } }
+    use { "ericpruitt/tmux.vim", ft = { "tmux" } }
     use {
       "nvchad/nvim-colorizer.lua",
       cmd = "ColorizerToggle",
@@ -103,14 +93,6 @@ function M.setup()
         require "color-picker"
       end,
     }
-    -- Startup screen
-    use {
-      "goolord/alpha-nvim",
-      config = function()
-        require("config.alpha").setup()
-      end,
-      disable = true,
-    }
 
     -- Git
     use {
@@ -119,6 +101,7 @@ function M.setup()
       config = function()
         require("config.neogit").setup()
       end,
+      disable = true,
     }
     use {
       "lewis6991/gitsigns.nvim",
@@ -129,25 +112,7 @@ function M.setup()
         require("config.gitsigns").setup()
       end,
     }
-    use {
-      "tpope/vim-fugitive",
-      opt = true,
-      cmd = { "Git", "GBrowse", "Gdiffsplit", "Gvdiffsplit" },
-      requires = {
-        "tpope/vim-rhubarb",
-        "idanarye/vim-merginal",
-        --[[ "rhysd/committia.vim", ]]
-      },
-      -- wants = { "vim-rhubarb" },
-    }
-    use {
-      "ruifm/gitlinker.nvim",
-      requires = "nvim-lua/plenary.nvim",
-      module = "gitlinker",
-      config = function()
-        require("gitlinker").setup { mappings = nil }
-      end,
-    }
+    use { "tpope/vim-fugitive" }
     use {
       "akinsho/git-conflict.nvim",
       cmd = {
@@ -162,15 +127,9 @@ function M.setup()
       config = function()
         require("git-conflict").setup()
       end,
+      disable = true,
     }
     use { "f-person/git-blame.nvim", cmd = { "GitBlameToggle" } }
-    use {
-      "tanvirtin/vgit.nvim",
-      config = function()
-        require("vgit").setup()
-      end,
-      cmd = { "VGit" },
-    }
 
     -- WhichKey
     use {
@@ -211,20 +170,6 @@ function M.setup()
       disable = false,
     }
 
-    -- Better surround
-    use { "tpope/vim-surround", event = "BufReadPre" }
-    use {
-      "Matt-A-Bennett/vim-surround-funk",
-      event = "BufReadPre",
-      config = function()
-        require("config.surroundfunk").setup()
-      end,
-      disable = true,
-    }
-
-    -- Motions
-    use { "unblevable/quick-scope", event = "CursorMoved", disable = true }
-
     -- Buffer
     use { "kazhala/close-buffers.nvim", cmd = { "BDelete", "BWipeout" } }
     -- IDE
@@ -245,14 +190,7 @@ function M.setup()
       config = function()
         require("config.neoscroll").setup()
       end,
-      disable = true,
-    }
-    use {
-      "Djancyp/regex.nvim",
-      config = function()
-        require("regex-nvim").Setup()
-      end,
-      disable = true,
+      disable = false,
     }
     -- Code documentation
     use {
@@ -264,31 +202,16 @@ function M.setup()
       module = "neogen",
       disable = false,
     }
-
-    use { "AndrewRadev/splitjoin.vim", keys = { "gS", "gJ" }, disable = false }
+    --easy motions
+    use { "ggandor/lightspeed.nvim" }
     use {
-      "ggandor/leap.nvim",
+      "gukz/ftFT.nvim",
       event = "BufReadPre",
+      -- This will turn on all functions, if you don't like some of them, add more config to disable/change them
       config = function()
-        require("leap").add_default_mappings()
+        require("ftFT").setup()
       end,
     }
-    use {
-      "ggandor/flit.nvim",
-      event = "BufReadPre",
-      config = function()
-        require("flit").setup {
-          keys = { f = "f", F = "F", t = "t", T = "T" },
-          -- A string like "nv", "nvo", "o", etc.
-          labeled_modes = "v",
-          multiline = true,
-          -- Like `leap`s similar argument (call-specific overrides).
-          -- E.g.: opts = { equivalence_classes = {} }
-          opts = {},
-        }
-      end,
-    }
-
     -- Status line
     use {
       "nvim-lualine/lualine.nvim",
@@ -304,6 +227,7 @@ function M.setup()
     use {
       "nvim-treesitter/nvim-treesitter",
       opt = true,
+      commit = "a2d7e78b0714a0dc066416100b7398d3f0941c23",
       event = "BufReadPre",
       run = ":TSUpdate",
       config = function()
@@ -322,13 +246,13 @@ function M.setup()
         --     require("spellsitter").setup()
         --   end,
         -- },
-        { "nvim-treesitter/nvim-treesitter-context", event = "BufReadPre", disable = true },
+        { "nvim-treesitter/nvim-treesitter-context", event = "BufReadPre", disable = false },
         {
           "m-demare/hlargs.nvim",
           config = function()
             require("config.hlargs").setup()
           end,
-          disable = false,
+          disable = true,
         },
       },
     }
@@ -397,6 +321,21 @@ function M.setup()
       },
     }
 
+    -- Packer
+    use {
+      "jackMort/ChatGPT.nvim",
+      event = "BufReadPre",
+      config = function()
+        require("chatgpt").setup {
+          -- optional configuration
+        }
+      end,
+      requires = {
+        "MunifTanjim/nui.nvim",
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim",
+      },
+    }
     -- Unless you are still migrating, remove the deprecated commands from v1.x
     vim.cmd [[ let g:neo_tree_remove_legacy_commands = 1 ]]
 
@@ -414,7 +353,20 @@ function M.setup()
       end,
       disable = false,
     }
-
+    use {
+      "s1n7ax/nvim-window-picker",
+      tag = "v1.*",
+      config = function()
+        require("window-picker").setup()
+      end,
+    }
+    -- tmux navigation
+    use {
+      "alexghergh/nvim-tmux-navigation",
+      config = function()
+        require("config.tmux").setup()
+      end,
+    }
     -- Buffer line
     use {
       "akinsho/nvim-bufferline.lua",
@@ -510,6 +462,10 @@ function M.setup()
 
     -- LSP
     use {
+      event = "BufReadPre",
+      "joechrisellis/lsp-format-modifications.nvim",
+    }
+    use {
       "neovim/nvim-lspconfig",
       opt = true,
       event = { "BufReadPre" },
@@ -525,15 +481,12 @@ function M.setup()
         "schemastore.nvim",
         "typescript.nvim",
         "nvim-navic",
-        "inlay-hints.nvim",
         -- "goto-preview",
       },
       config = function()
         require("config.lsp").setup()
       end,
       requires = {
-        -- "williamboman/nvim-lsp-installer",
-        -- { "lvimuser/lsp-inlayhints.nvim", branch = "readme" },
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -561,17 +514,14 @@ function M.setup()
           module = { "nvim-navic" },
         },
         {
-          "simrat39/inlay-hints.nvim",
-          config = function()
-            require("inlay-hints").setup()
-          end,
+          "lvimuser/lsp-inlayhints.nvim",
         },
         {
           "theHamsta/nvim-semantic-tokens",
           config = function()
             require("config.semantictokens").setup()
           end,
-          disable = false,
+          disable = true,
         },
       },
     }
@@ -720,6 +670,7 @@ function M.setup()
         --[[ "abenz1267/nvim-databasehelper", ]]
       },
       --[[ wants = { "nvim-databasehelper" }, ]]
+      --[[ wants = { "nvim-databasehelper" }, ]]
       config = function()
         require("config.dadbod").setup()
       end,
@@ -741,11 +692,39 @@ function M.setup()
 
     use { "ThePrimeagen/vim-be-good" }
     use { "neomutt/neomutt.vim" }
+    -- Incremaent and decrement booleans, days, numbers....
+    use {
+      "nat-418/boole.nvim",
+      envent = "BufReadPre",
+      config = function()
+        require("config.boole").setup()
+      end,
+    }
+    -- plantuml
+    use { "aklt/plantuml-syntax", ft = { "plantuml" } }
     -- Markdown
 
-    use { "willydeliege/markdowntasks", ft = "markdown", event = "BufRead" }
-    use { "powerman/vim-plugin-AnsiEsc", ft = "markdown" }
     use {
+      "andrewferrier/wrapping.nvim",
+      config = function()
+        require("wrapping").setup {
+          softener = { markdown = 1.3 },
+        }
+      end,
+      event = "BufReadPre",
+      disable = false,
+    }
+    use {
+      "uga-rosa/translate.nvim",
+      ft = "markdown",
+      config = function()
+        require("translate").setup {}
+      end,
+    }
+    use { "willydeliege/markdowntasks", event = "VimEnter" }
+    use { "preservim/tagbar", ft= "markdown" }
+    use { "powerman/vim-plugin-AnsiEsc", ft = "markdown" }
+    use  {
       "jakewvincent/mkdnflow.nvim",
       config = function()
         require "config.mkdnflow"
@@ -756,6 +735,7 @@ function M.setup()
     use {
       "mickael-menu/zk-nvim",
       ft = "markdown",
+      event = "VimEnter",
       config = function()
         require("zk").setup {
           picker = "telescope",
@@ -763,8 +743,7 @@ function M.setup()
       end,
     }
     use { "godlygeek/tabular", ft = "markdown" }
-    use { "preservim/vim-markdown", ft = "markdown" }
-    use {"ellisonleao/glow.nvim"}
+    use { "ellisonleao/glow.nvim" }
     -- Bootstrap Neovim
     if packer_bootstrap then
       print "Neovim restart is required after installation!"

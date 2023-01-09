@@ -1,94 +1,89 @@
+--- [TODO:description]
+local wk = require "which-key"
 local M = {}
 
-local whichkey = require "which-key"
+function M.setup(client, buffer)
+  local cap = client.server_capabilities
 
--- local keymap = vim.api.nvim_set_keymap
--- local buf_keymap = vim.api.nvim_buf_set_keymap
-local keymap = vim.keymap.set
-
-local function keymappings(client, bufnr)
-  local opts = { noremap = true, silent = true }
-
-  -- Key mappings
-  -- buf_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  -- vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
-  keymap("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
-
-  keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-  keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-  keymap("n", "[e", "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>", opts)
-  keymap("n", "]e", "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>", opts)
-
-  -- Whichkey
-  local keymap_l = {
-    l = {
-      name = "LSP",
+  local keymap = {
+    buffer = buffer,
+    ["<leader>"] = {
+      c = {
+        name = "+code",
+        {
+          cond = client.name == "jdtls",
+          o = { "<cmd>lua require'jdtls'.organize_imports()<cr>", "Organize Imports" },
+          v = { "<cmd>lua require('jdtls').extract_variable()<cr>", "Extract Variable" },
+          c = { "<cmd>lua require('jdtls').extract_constant()<cr>", "Extract Constant" },
+          t = { "<cmd>lua require('jdtls').test_class()<cr>", "Test Class" },
+          n = { "<cmd>lua require('jdtls').test_nearest_method()<cr>", "Test Nearest Method" },
+        },
+        -- r = {
+        --   function()
+        --     require "inc_rename"
+        --     return ":IncRename " .. vim.fn.expand "<cword>"
+        --   end,
+        --   "Rename",
+        --   cond = cap.renameProvider,
+        --   expr = true,
+        -- },
+        a = {
+          { vim.lsp.buf.code_action, "Code Action" },
+          { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action", mode = "v" },
+        },
+        f = {
+          {
+            "<cmd>FormatModifications<cr>",
+            "Format Document",
+            cond = cap.documentFormatting,
+          },
+          {
+            "<cmd>lua vim.lsp.buf.format()<cr>",
+            "Format Range",
+            cond = cap.documentRangeFormatting,
+            mode = "v",
+          },
+        },
+        d = { vim.diagnostic.open_float, "Line Diagnostics" },
+        l = {
+          name = "+lsp",
+          i = { "<cmd>LspInfo<cr>", "Lsp Info" },
+          a = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "Add Folder" },
+          r = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "Remove Folder" },
+          l = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "List Folders" },
+        },
+      },
+      x = {
+        d = { "<cmd>Telescope diagnostics<cr>", "Search Diagnostics" },
+      },
+    },
+    g = {
+      name = "+goto",
+      d = { "<cmd>Telescope lsp_definitions<cr>", "Goto Definition" },
+      r = { "<cmd>Telescope lsp_references<cr>", "References" },
       R = { "<cmd>Trouble lsp_references<cr>", "Trouble References" },
-      a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
-      d = { "<cmd>lua require('telescope.builtin').diagnostics()<CR>", "Diagnostics" },
-      f = { "<cmd>Lspsaga lsp_finder<CR>", "Finder" },
-      i = { "<cmd>LspInfo<CR>", "Lsp Info" },
-      n = { "<cmd>lua require('renamer').rename()<CR>", "Rename" },
-      r = { "<cmd>lua require('telescope.builtin').lsp_references()<CR>", "References" },
-      s = { "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", "Document Symbols" },
-      t = { "<cmd>TroubleToggle document_diagnostics<CR>", "Trouble" },
-      L = { "<cmd>lua vim.lsp.codelens.refresh()<CR>", "Refresh CodeLens" },
-      l = { "<cmd>lua vim.lsp.codelens.run()<CR>", "Run CodeLens" },
-      D = { "<cmd>lua require('config.lsp').toggle_diagnostics()<CR>", "Toggle Inline Diagnostics" },
+      D = { "<cmd>Telescope lsp_declarations<CR>", "Goto Declaration" },
+      I = { "<cmd>Telescope lsp_implementations<CR>", "Goto Implementation" },
+      t = { "<cmd>Telescope lsp_type_definitions<cr>", "Goto Type Definition" },
     },
-  }
-  if client.server_capabilities.documentFormattingProvider then
-    keymap_l.l.F = { "<cmd>lua vim.lsp.buf.format({async = true})<CR>", "Format Document" }
-  end
-
-  local keymap_g = {
-    name = "Goto",
-    d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
-    -- d = { "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", "Definition" },
-    D = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
-    h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
-    I = { "<cmd>Telescope lsp_implementations<CR>", "Goto Implementation" },
-    b = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition" },
-    -- b = { "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", "Goto Type Definition" },
-  }
-
-  local keymap_v_l = {
-    l = {
-      name = "LSP",
-      a = { "<cmd>'<,'>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
+    ["<C-k>"] = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help", mode = { "n", "i" } },
+    -- on azerty keyboard () is easier to access than []
+    ["K"] = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
+    ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Next Diagnostic" },
+    ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Prev Diagnostic" },
+    ["[e"] = { "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>", "Next Error" },
+    ["]e"] = { "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>", "Prev Error" },
+    ["[w"] = {
+      "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.WARNING})<CR>",
+      "Next Warning",
+    },
+    ["]w"] = {
+      "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.WARNING})<CR>",
+      "Prev Warning",
     },
   }
 
-  local o = { buffer = bufnr, prefix = "<leader>" }
-  whichkey.register(keymap_l, o)
-
-  o = { mode = "v", buffer = bufnr, prefix = "<leader>" }
-  whichkey.register(keymap_v_l, o)
-
-  o = { buffer = bufnr, prefix = "g" }
-  whichkey.register(keymap_g, o)
-end
-
--- local function signature_help(client, bufnr)
---   local trigger_chars = client.server_capabilities.signatureHelpProvider.triggerCharacters
---   for _, char in ipairs(trigger_chars) do
---     vim.keymap.set("i", char, function()
---       vim.defer_fn(function()
---         pcall(vim.lsp.buf.signature_help)
---       end, 0)
---       return char
---     end, {
---       buffer = bufnr,
---       noremap = true,
---       silent = true,
---       expr = true,
---     })
---   end
--- end
-
-function M.setup(client, bufnr)
-  keymappings(client, bufnr)
-  -- signature_help(client, bufnr) -- use cmp-nvim-lsp-signature-help
+  wk.register(keymap)
 end
 
 return M

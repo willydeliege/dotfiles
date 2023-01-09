@@ -19,13 +19,13 @@ local servers = {
     },
   },
   html = {},
-  jsonls = {
-    settings = {
-      json = {
-        schemas = require("schemastore").json.schemas(),
-      },
-    },
-  },
+  -- jsonls = {
+  --   settings = {
+  --     json = {
+  --       schemas = require("schemastore").json.schemas(),
+  --     },
+  --   },
+  -- },
   pyright = {
     analysis = {
       typeCheckingMode = "off",
@@ -46,6 +46,9 @@ local servers = {
   sumneko_lua = {
     settings = {
       Lua = {
+        hint = {
+          enable = true,
+        },
         runtime = {
           -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
           version = "Lua 5.3",
@@ -55,8 +58,10 @@ local servers = {
           globals = { "vim" },
         },
         workspace = {
-          -- Make the server aware of Neovim runtime files
-          library = vim.api.nvim_get_runtime_file("", true),
+          library = {
+            [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+            [vim.fn.stdpath "config" .. "/lua"] = true,
+          },
         },
         -- Do not send telemetry data containing a randomized but unique identifier
         telemetry = {
@@ -99,22 +104,24 @@ local servers = {
     vimls = {},
     -- tailwindcss = {},
     yamlls = {
-      schemastore = {
-        enable = true,
-      },
+      -- schemastore = {
+      --   enable = true,
+      -- },
       settings = {
         yaml = {
           hover = true,
           completion = true,
           validate = true,
-          schemas = require("schemastore").json.schemas(),
+          schemas = {
+            ["https://raw.githubusercontent.com/imochoa/alacritty/adding-yaml-schema/extra/alacritty-config-schema.json"] = "/*.yml"
+          },
         },
       },
     },
     jdtls = {},
     dockerls = {},
     -- graphql = {},
-     bashls = {},
+    bashls = {},
     -- omnisharp = {},
     -- kotlin_language_server = {},
     -- emmet_ls = {},
@@ -142,7 +149,6 @@ function M.on_attach(client, bufnr)
   if caps.completionProvider then
     vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
   end
-
   -- Use LSP as the handler for formatexpr.
   -- See `:help formatexpr` for more information.
   if caps.documentFormattingProvider then
@@ -160,7 +166,8 @@ function M.on_attach(client, bufnr)
 
   -- Configure formatting
   require("config.lsp.null-ls.formatters").setup(client, bufnr)
-
+local lsp_format_modifications = require"lsp-format-modifications"
+  lsp_format_modifications.attach(client, bufnr, { format_on_save = false })
   -- tagfunc
   if caps.definitionProvider then
     vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
@@ -185,28 +192,29 @@ function M.on_attach(client, bufnr)
     navic.attach(client, bufnr)
   end
 
-  if client.name ~= "null-ls" then
+  -- Inlay hints
+  require("lsp-inlayhints").on_attach(client, bufnr)
+  -- if client.name ~= "null-ls" then
     -- aerial.nvim
     -- require("aerial").on_attach(client, bufnr)
 
     -- inlay-hints
-    local ih = require "inlay-hints"
-    ih.on_attach(client, bufnr)
+    -- ih.on_attach(client, bufnr)
 
     -- semantic highlighting
-    if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
-      local augroup = vim.api.nvim_create_augroup("SemanticTokens", {})
-      vim.api.nvim_create_autocmd("TextChanged", {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.semantic_tokens_full()
-        end,
-      })
-      -- fire it first time on load as well
-      vim.lsp.buf.semantic_tokens_full()
-    end
-  end
+    -- if caps.semanticTokensProvider and caps.semanticTokensProvider.full then
+    --   local augroup = vim.api.nvim_create_augroup("SemanticTokens", {})
+    --   vim.api.nvim_create_autocmd("TextChanged", {
+    --     group = augroup,
+    --     buffer = bufnr,
+    --     callback = function()
+    --       vim.lsp.buf.semantic_tokens_full()
+    --     end,
+    --   })
+    --   -- fire it first time on load as well
+    --   vim.lsp.buf.semantic_tokens_full()
+    -- end
+  -- end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -241,8 +249,6 @@ function M.setup()
   -- Installer
   require("config.lsp.installer").setup(servers, opts)
 
-  -- Inlay hints
-  -- require("config.lsp.inlay-hints").setup()
 end
 
 local diagnostics_active = true

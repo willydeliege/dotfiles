@@ -31,7 +31,7 @@ require("mkdnflow").setup {
     conceal = true,
     implicit_extension = nil,
     transform_implicit = function(input)
-      if input:match "%d%d%d%d%-%d%d%-%d%d" then
+      if input:match "^%d%d%d%d%-%d%d%-%d%d" then
         return ("diary/" .. input)
       else
         return ("" .. input)
@@ -62,8 +62,8 @@ require("mkdnflow").setup {
     MkdnSTab = false,
     MkdnNextLink = { "n", "<Tab>" },
     MkdnPrevLink = { "n", "<S-Tab>" },
-    MkdnNextHeading = { "n", "]]" },
-    MkdnPrevHeading = { "n", "[[" },
+    MkdnNextHeading = { "n", "))" },
+    MkdnPrevHeading = { "n", "((" },
     MkdnGoBack = false,
     MkdnGoForward = false,
     MkdnFollowLink = false, -- see MkdnEnter
@@ -74,7 +74,7 @@ require("mkdnflow").setup {
     MkdnYankFileAnchorLink = { "n", "yfa" },
     MkdnIncreaseHeading = { "n", "+" },
     MkdnDecreaseHeading = { "n", "-" },
-    MkdnToggleToDo = { "n", "<c-space>" },
+    MkdnToggleToDo = { "n", "<c-t>" },
     MkdnNewListItem = { "i", "<CR>" },
     MkdnNewListItemBelowInsert = { "n", "o" },
     MkdnNewListItemAboveInsert = { "n", "O" },

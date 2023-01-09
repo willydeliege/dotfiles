@@ -5,7 +5,8 @@ if not jdtls_ok then
 end
 
 -- Installation location of jdtls by nvim-lsp-installer
-local JDTLS_BIN = vim.fn.stdpath "data" .. "/mason/bin/jdtls"
+local mason_path = vim.fn.stdpath "data" .. "/mason/" 
+local JDTLS_BIN = mason_path .. "/bin/jdtls"
 -- Data directory - change it to your liking
 local HOME = os.getenv "HOME"
 local WORKSPACE_PATH = HOME .. "/workspace/java/"
@@ -19,11 +20,8 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = WORKSPACE_PATH .. project_name
 
 local root_markers = { "mvnw", "gradlew", "pom.xml", "build.gradle" }
-local root_dir = require("jdtls.setup").find_root(root_markers)
-if root_dir == "" then
-  return
-end
-
+local root_dir = vim.fs.dirname(vim.fs.find(root_markers, { upward = true })[1])
+local lombok_path = mason_path .. "/packages/jdtls/lombok.jar"
 
 -- -- Debugging
 -- local bundles = {
@@ -36,7 +34,7 @@ end
 local config = {
   cmd = {
     JDTLS_BIN,
-    "--jvm-arg=-javaagent:/home/willefi/.lombok/lombok.jar",
+    "--jvm-arg=-javaagent:" .. lombok_path,
     "-data",
     workspace_dir,
   },

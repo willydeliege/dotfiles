@@ -493,7 +493,6 @@ local config = {
 }
 function M.setup()
   require("neo-tree").setup(config)
-  vim.cmd [[hi NeoTreeNormal guibg=#000000]]
 end
 
 return M

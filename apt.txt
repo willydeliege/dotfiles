@@ -1,0 +1,29 @@
+ apt install notmuch/
+ libpam0g-dev/
+ jjninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen build-essential/
+ pass/
+ isync/
+ neomutt  msmtp/
+ neomutt mbsync msmtp/
+ libssl-dev/
+ zsh/
+ black isort/
+ python3-proselint/
+ pythoon3-proselint/
+ node-typescript/
+ xclip/
+ golang/
+ fzf/
+ cpanminus/
+ ruby-dev/
+ unzip/
+ taskwarrior/
+ nodejs/
+ cargo ruby/
+ python3-pip/
+ nodejs npm/
+ zoxide fortunes cowsay/
+ stow/
+ tmux/
+ gh/
+ wslu/

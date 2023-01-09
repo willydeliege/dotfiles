@@ -1,0 +1,5 @@
+# vim: filetype=neomuttrc
+source ./global.muttrc
+source ./colors.muttrc
+source ./keybinds.muttrc
+source ./accounts/gmail.muttrc
