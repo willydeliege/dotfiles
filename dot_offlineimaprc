@@ -1,0 +1,45 @@
+[general]
+# List of accounts to be synced, separated by a comma.
+accounts = Gmail-mine
+[Account Gmail-mine]
+localrepository = Gmaillocal-mine
+remoterepository = Gmailserver-mine
+synclabels = yes
+# This header is where labels go.  Usually you will be fine
+# with default value (X-Keywords), but in case you want it
+# different, here we go:
+labelsheader = X-Keywords
+
+[Repository Gmailserver-mine]
+#This is the remote repository
+type = Gmail
+remotepass = rqspftsuczmvhrdb
+remoteuser = frederic.willem@gmail.com
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+[Repository Gmaillocal-mine]
+#This is the 'local' repository
+type = GmailMaildir
+localfolders = ~/.local/share/mail/frederic
+
+
+# [Account Gmail-maman]
+# localrepository = Gmaillocal-maman
+# remoterepository = Gmailserver-maman
+# synclabels = yes
+# # This header is where labels go.  Usually you will be fine
+# # with default value (X-Keywords), but in case you want it
+# # different, here we go:
+# labelsheader = X-Keywords
+
+# [Repository Gmailserver-maman]
+# #This is the remote repository
+# type = Gmail
+# remotepass = pfsdbzqeggjplapp
+# remoteuser = michellelambert1202@gmail.com
+# sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+# [Repository Gmaillocal-maman]
+# #This is the 'local' repository
+# type = GmailMaildir
+# localfolders = ~/.local/share/mail/maman
