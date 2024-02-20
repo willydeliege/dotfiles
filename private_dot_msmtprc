@@ -1,0 +1,8 @@
+account gmail
+tls on
+auth on
+host smtp.gmail.com
+port 587
+user frederic.willem@gmail.com
+from frederic.willem@gmail.com
+password rqspftsuczmvhrdb
