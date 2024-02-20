@@ -6,6 +6,7 @@
 ** AUR helper
 #+begin_src shell
   sudo pacman -S --needed git base-devel
+  cd $HOME
   git clone https://aur.archlinux.org/yay.git
   cd yay && makepkg -si
 #+end_src
