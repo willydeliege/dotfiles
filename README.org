@@ -1,7 +1,12 @@
 * Sudoers
+Add willefi to the group wheel
 #+begin_src shell
-
+usermod -a -G wheel willefi
 #+end_src
+Then un-comment the line in "/etc/sudoers"
+* Add github-cli
+and connect
+* clone org and emacs
 * Packages
 ** AUR helper
 #+begin_src shell
