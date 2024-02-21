@@ -5,7 +5,7 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "wir/taskbar", "custom/media"],
+    "modules-left": ["hyprland/workspaces", "wlr/taskbar", "custom/media"],
     "modules-center": ["hyprland/window"],
     "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "clock", "custom/notification", "tray"],
     // Modules configuration
