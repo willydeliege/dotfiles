@@ -155,7 +155,7 @@ zstyle ':fzf-tab:complete:(\\|*/|)man:*' fzf-preview 'man $word'
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
-export EDITOR='emacs'
+export EDITOR='emacs -c -a='
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -183,7 +183,7 @@ alias grep="grep --color=auto"
 alias mv="mv -iv"
 alias rm="rm -irv"
 alias rmf="rm -rf"
-
+alias cd="z"
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
