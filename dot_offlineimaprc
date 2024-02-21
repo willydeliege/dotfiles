@@ -16,13 +16,11 @@ type = Gmail
 remotepass = {{ pass "gmail/frederic" }}
 remoteuser = frederic.willem@gmail.com
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-
+ 
 [Repository Gmaillocal-mine]
 #This is the 'local' repository
 type = GmailMaildir
 localfolders = ~/.local/share/mail/frederic
-
-
 # [Account Gmail-maman]
 # localrepository = Gmaillocal-maman
 # remoterepository = Gmailserver-maman
