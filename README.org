@@ -3,10 +3,40 @@ Add willefi to the group wheel
 #+begin_src shell
 usermod -a -G wheel willefi
 #+end_src
+
 Then un-comment the line in "/etc/sudoers"
 * Add github-cli
 and connect
 * clone org and emacs
+sudo pacman -Syu
+sudo pacman -S hyprland
+sudo pacman -S kitty
+sudo pacman -S rofi
+sudo pacman -S github-cli
+
+sudo pacman -S git fontconfig xorg-mkfontscale xorg-bdftopcf xorg-font-util
+
+sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+yay -S chezmoi
+yay -S brave-bin
+
+yay -S otf-nerd-fonts-fira-code
+
+yay -S enchant
+yay -S meson
+yay -S gmime
+
+
+
+yay -S gmime3
+yay -S xapian-core libvterm
+yay -S cmake
+yay -S starship nwg-bar fzf bat bluez bluez-tools
+yay -S man
+yay -S pkgfile
+yay -S pass
+yay -S bluez
+yay -S bluez-tools
 * Packages
 ** AUR helper
 #+begin_src shell
