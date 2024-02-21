@@ -22,7 +22,6 @@ sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 type = GmailMaildir
 localfolders = ~/.local/share/mail/frederic
 
-
 # [Account Gmail-maman]
 # localrepository = Gmaillocal-maman
 # remoterepository = Gmailserver-maman
