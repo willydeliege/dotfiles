@@ -152,7 +152,7 @@ bindkey '^[s' sudo-command-line
 # #############################################################
 
 source /usr/share/zsh/plugins/fzf-tab-source/*.plugin.zsh 
-
+$ echo $LESSOPEN |/usr/bin/lesspipe.sh %s
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
