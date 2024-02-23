@@ -110,44 +110,44 @@ bindkey '^[s' sudo-command-line
 
 # fzf-tab config ########################################3####
 
-# set descriptions format to enable group support
-zstyle ':completion:*:descriptions' format '[%d]'
-# preview directory's content with exa when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
-# switch group using `,` and `.`
-zstyle ':fzf-tab:*' switch-group ',' '.'
-# give a preview of commandline arguments when completing `kill`
-zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
-zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
-zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
-export LESSOPEN='|~/.lessfilter %s'
-zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
-       fzf-preview 'echo ${(P)word}'
-# it is an example. you can change it
-zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview \
-	'git diff $word | delta'
-zstyle ':fzf-tab:complete:git-log:*' fzf-preview \
-	'git log --color=always $word'
-zstyle ':fzf-tab:complete:git-help:*' fzf-preview \
-	'git help $word | bat -plman --color=always'
-zstyle ':fzf-tab:complete:git-show:*' fzf-preview \
-	'case "$group" in
-	"commit tag") git show --color=always $word ;;
-	*) git show --color=always $word | delta ;;
-	esac'
-zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
-	'case "$group" in
-	"modified file") git diff $word | delta ;;
-	"recent commit object name") git show --color=always $word | delta ;;
-	*) git log --color=always $word ;;
-	esac'
- zstyle ':fzf-tab:complete:-command-:*' fzf-preview \
-   ' (out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || (source ~/.aliases ; whence -av $word) || echo "${(P)word}"'
+# # set descriptions format to enable group support
+# zstyle ':completion:*:descriptions' format '[%d]'
+# # preview directory's content with exa when completing cd
+# zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+# # switch group using `,` and `.`
+# zstyle ':fzf-tab:*' switch-group ',' '.'
+# # give a preview of commandline arguments when completing `kill`
+# zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
+# zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
+# zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
+# export LESSOPEN='|~/.lessfilter %s'
+# zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
+#        fzf-preview 'echo ${(P)word}'
+# # it is an example. you can change it
+# zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview \
+# 	'git diff $word | delta'
+# zstyle ':fzf-tab:complete:git-log:*' fzf-preview \
+# 	'git log --color=always $word'
+# zstyle ':fzf-tab:complete:git-help:*' fzf-preview \
+# 	'git help $word | bat -plman --color=always'
+# zstyle ':fzf-tab:complete:git-show:*' fzf-preview \
+# 	'case "$group" in
+# 	"commit tag") git show --color=always $word ;;
+# 	*) git show --color=always $word | delta ;;
+# 	esac'
+# zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
+# 	'case "$group" in
+# 	"modified file") git diff $word | delta ;;
+# 	"recent commit object name") git show --color=always $word | delta ;;
+# 	*) git log --color=always $word ;;
+# 	esac'
+#  zstyle ':fzf-tab:complete:-command-:*' fzf-preview \
+#    ' (out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || (source ~/.aliases ; whence -av $word) || echo "${(P)word}"'
  
-# this is an example
-zstyle ':fzf-tab:complete:(\\|)run-help:*' fzf-preview 'run-help $word'
-zstyle ':fzf-tab:complete:(\\|*/|)man:*' fzf-preview 'man $word' 
-#############################################################
+# # this is an example
+# zstyle ':fzf-tab:complete:(\\|)run-help:*' fzf-preview 'run-help $word'
+# zstyle ':fzf-tab:complete:(\\|*/|)man:*' fzf-preview 'man $word' 
+# #############################################################
 
 source /usr/share/zsh/plugins/fzf-tab-source/fzf-tab.plugin.zsh 
 
