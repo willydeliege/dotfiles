@@ -90,7 +90,8 @@ plugins=(
     sudo
     git command-not-found emacs
     archlinux
-    globalias alias-tips
+    # globalias
+    alias-tips
     # fzf-tab-source
     fzf-tab  fzf
     zsh-autopair zsh-syntax-highlighting zsh-autosuggestions
