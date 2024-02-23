@@ -151,7 +151,7 @@ bindkey '^[s' sudo-command-line
 # zstyle ':fzf-tab:complete:(\\|*/|)man:*' fzf-preview 'man $word' 
 # #############################################################
 
-source /usr/share/zsh/plugins/fzf-tab-source/fzf-tab.plugin.zsh 
+source /usr/share/zsh/plugins/fzf-tab-source/*.plugin.zsh 
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
