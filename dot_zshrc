@@ -149,7 +149,7 @@ zstyle ':fzf-tab:complete:(\\|)run-help:*' fzf-preview 'run-help $word'
 zstyle ':fzf-tab:complete:(\\|*/|)man:*' fzf-preview 'man $word' 
 #############################################################
 
-
+source /usr/share/zsh/plugins/fzf-tab-source/fzf-tab.plugin.zsh 
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
