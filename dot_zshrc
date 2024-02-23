@@ -87,12 +87,13 @@ eval "$(zoxide init zsh)"
 # Add wisely, as too many plugins slow down shell startup.
 
 plugins=(
+    fzf-tab
     sudo
     git command-not-found emacs
     archlinux
     # globalias
     alias-tips
-    # fzf-tab-source
+    fzf-tab-source
     fzf
     zsh-autopair zsh-syntax-highlighting zsh-autosuggestions
     cp fd
@@ -150,7 +151,7 @@ bindkey '^[s' sudo-command-line
 # zstyle ':fzf-tab:complete:(\\|*/|)man:*' fzf-preview 'man $word' 
 # #############################################################
 
-$ echo $LESSOPEN |/usr/bin/lesspipe.sh %s
+echo $LESSOPEN |/usr/bin/lesspipe.sh %s
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
