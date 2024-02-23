@@ -93,7 +93,8 @@ plugins=(
     # globalias
     alias-tips
     # fzf-tab-source
-    fzf-tab  fzf
+    # fzf-tab
+    fzf
     zsh-autopair zsh-syntax-highlighting zsh-autosuggestions
     cp fd
     exa-zsh
