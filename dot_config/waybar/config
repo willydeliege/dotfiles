@@ -3,7 +3,7 @@
     "height": 30, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
 
-    "modules-left": ["hyprland/workspaces", "wlr/taskbar", "custom/media"],
+    "modules-left": ["hyprland/workspaces", "wlr/taskbar", "custom/media", "mpris"],
     "modules-center": ["hyprland/window"],
     "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "clock", "custom/notification", "tray"],
     "keyboard-state": {
