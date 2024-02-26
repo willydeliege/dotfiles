@@ -97,7 +97,7 @@ plugins=(
     zsh-autopair zsh-syntax-highlighting zsh-autosuggestions
     cp fd
     exa-zsh
-    zoxide
+    z
 )
 
 
