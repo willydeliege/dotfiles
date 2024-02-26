@@ -43,7 +43,7 @@
   "notification-visibility": {
     "example-name": {
       "state": "muted",
-      "urgency": "Normal",
+      "urgency": "Hign",
       "app-name": "Spotify"
     }
   },
