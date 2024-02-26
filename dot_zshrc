@@ -16,7 +16,6 @@ vterm_printf() {
 		printf "\e]%s\e\\" "$1"
 	fi
 }
-eval "$(zoxide init zsh)"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -193,5 +192,6 @@ alias cd="z"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+eval "$(zoxide init zsh)"
 
 eval "$(starship init zsh)"
