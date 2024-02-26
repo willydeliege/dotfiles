@@ -186,7 +186,7 @@ alias rm="rm -irv"
 alias rmf="rm -rf"
 alias ca="chezmoi add"
 alias ce="chezmoi edit --apply"
-alias cd ="z" 
+alias cd="z" 
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
