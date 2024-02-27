@@ -172,7 +172,6 @@ export EDITOR='/usr/bin/emacs'
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -185,7 +184,7 @@ alias mv="mv -iv"
 alias rm="rm -irv"
 alias rmf="rm -rf"
 alias ca="chezmoi add"
-alias ce="chezmoi edit --apply"
+alias ce="chezmoi edit"
 alias cd="z" 
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
