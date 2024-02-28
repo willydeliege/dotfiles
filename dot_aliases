@@ -15,6 +15,7 @@ alias 9='cd -9'
 alias _='sudo '
 alias ca='chezmoi add'
 alias cat=bat
+alias cd=z
 alias ce='chezmoi edit --apply'
 alias cp='cp -irv'
 alias e=emacs
