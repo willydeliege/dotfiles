@@ -1,11 +1,6 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
-include _keyboard
-include _variables
-include _autostart
+include autostart
+include keyboard
+include variables
 
 gaps inner 10
 gaps outer 10
