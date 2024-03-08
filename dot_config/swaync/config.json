@@ -36,15 +36,14 @@
     },
     "example-action-script": {
       "exec": "echo 'Do something actionable!'",
-      "urgency": "Normal",
+      "urgency": "High",
       "run-on": "action"
     }
   },
   "notification-visibility": {
     "example-name": {
-      "state": "muted",
-      "urgency": "Low",
-      "app-name": "Spotify"
+      "urgency": "High",
+      "App-Name": "Spotify"
     }
   },
   "widgets": [
@@ -78,7 +77,7 @@
     "buttons-grid": {
       "actions": [
         {
-          "label": "直",
+          "label": "\ufaa8",
           "type": "toggle",
           "active": true,
           "command": "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli radio wifi on || nmcli radio wifi off'",
