@@ -8,7 +8,7 @@ include _variables
 include _autostart
 
 gaps inner 10
-gaps outer 30
+gaps outer 10
 default_border pixel 3
 # class                 border      backgr.     text    indicator child_border
 client.focused          $blue       $green      $black  $black    $green
