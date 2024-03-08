@@ -3,34 +3,25 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
+include _keyboard
+include _variables
+include _autostart
 
-### Variables
-#
-# Logo key. Use Mod1 for Alt.
-set $mod Mod4
-# Your preferred terminal emulator
-set $term foot
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-# set $menu dmenu_path | wmenu | xargs swaymsg exec --
-set $menu rofi -show drun
+gaps inner 10
+gaps outer 30
+default_border pixel 3
+# class                 border      backgr.     text    indicator child_border
+client.focused          $blue       $green      $black  $black    $green
+client.focused_inactive $black      $black      $white  $black    $black
+client.unfocused        $black      $black      $white  $black    $black
+client.urgent           $black      $black      $white  $black    $black
+client.placeholder      $black      $black      $white  $black    $black
+client.background       $black
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+bindsym Control+mod1+delete exec ~/.config/rofi/scripts/powermenu_t5
 
+focus_follows_mouse no
 
-### Autostart
-exec_always autotiling # -w 1 3 5 7 9
-  
 ### Idle configuration
 #
 # Example configuration:
@@ -57,11 +48,6 @@ exec_always autotiling # -w 1 3 5 7 9
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
-input * {
-    xkb_layout "us,fr"
-    xkb_variant "colemak_dh_wide,azerty"
-    xkb_options "ctrl:nocaps,shift:both_capslock,grp:ctrls_toggle"
-}
 
 ### Key bindings
 #
@@ -69,12 +55,15 @@ input * {
 #
     # Start a terminal
     bindsym $mod+Return exec $term
-
+    bindsym $mod+m exec $editor
+    bindsym $mod+w exec $browser
+    
     # Kill focused window
     bindsym $mod+Shift+q kill
+    bindsym mod1+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+d exec $launcher
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -86,8 +75,12 @@ input * {
     # Reload the configuration file
     bindsym $mod+Shift+c reload
 
+    # skow notification panel
+    bindsym $mod+c exec swaync-client -t -swb
+    
+
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+k exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #
 # Moving around:
 #
@@ -126,17 +119,24 @@ input * {
     bindsym $mod+8 workspace number 8
     bindsym $mod+9 workspace number 9
     bindsym $mod+0 workspace number 10
+    bindsym $mod+mod1+$right workspace next
+    bindsym $mod+mod1+$left  workspace prev
+    bindsym $mod+mod1+right workspace next
+    bindsym $mod+mod1+left  workspace prev
+
+
+
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
+    bindsym $mod+Shift+1 move container to workspace number 1, workspace 1
+    bindsym $mod+Shift+2 move container to workspace number 2, workspace 2
+    bindsym $mod+Shift+3 move container to workspace number 3, workspace 3
+    bindsym $mod+Shift+4 move container to workspace number 4, workspace 4
+    bindsym $mod+Shift+5 move container to workspace number 5, workspace 5
+    bindsym $mod+Shift+6 move container to workspace number 6, workspace 6
+    bindsym $mod+Shift+7 move container to workspace number 7, workspace 7
+    bindsym $mod+Shift+8 move container to workspace number 8, workspace 8
+    bindsym $mod+Shift+9 move container to workspace number 9, workspace 9
+    bindsym $mod+Shift+0 move container to workspace number 10, workspace 0
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
@@ -149,9 +149,9 @@ input * {
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    # bindsym $mod+s layout stacking	
+    # bindsym $mod+w layout tabbed
+    bindsym $mod+k layout toggle split
 
     # Make the current focus fullscreen
     bindsym $mod+f fullscreen
@@ -161,6 +161,8 @@ input * {
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
+
+    bindsym $mod+o sticky toggle
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
@@ -201,24 +203,32 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+
+# bindsym $mod+Shift+W mode "swap"
+bindsym $mod+Shift+W exec swayr swap-focused-with
+
+
+#
+## Sseclai keys bindings
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
 #
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-      swaybar_command waybar
-
-#     position top
-
-#     # When the status_command prints a new line to stdout, swaybar updates.
-#     # The default just shows the current date and time.
-#     status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-
-#     colors {
-#         statusline #ffffff
-#         background #323232
-#         inactive_workspace #32323200 #32323200 #5c5c5c
-#     }
+    swaybar_command waybar
 }
+
+for_window [title="Picture in picture"] floating enable,sticky enable, resize set width 350 , move position 1550 850
+
 
 include /etc/sway/config.d/*
