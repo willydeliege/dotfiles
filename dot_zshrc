@@ -6,15 +6,15 @@ export PATH=$HOME/.cargo/bin:$HOME/.ghcup/bin:$HOME/.local/bin:/usr/local/bin:$P
 export ZSH="$HOME/.oh-my-zsh"
 ## Fmacs integration
 vterm_printf() {
-	if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ]); then
-		# Tell tmux to pass the escape sequences through
-		printf "\ePtmux;\e\e]%s\007\e\\" "$1"
-	elif [ "${TERM%%-*}" = "screen" ]; then
-		# GNU screen (screen, screen-256color, screen-256color-bce)
-		printf "\eP\e]%s\007\e\\" "$1"
-	else
-		printf "\e]%s\e\\" "$1"
-	fi
+    if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ]); then
+        # Tell tmux to pass the escape sequences through
+        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+    elif [ "${TERM%%-*}" = "screen" ]; then
+        # GNU screen (screen, screen-256color, screen-256color-bce)
+        printf "\eP\e]%s\007\e\\" "$1"
+    else
+        printf "\e]%s\e\\" "$1"
+    fi
 }
 
 # Set name of the theme to load --- if set to "random", it will
@@ -22,7 +22,7 @@ vterm_printf() {
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # use starsh;p see last line
-# ZSH_THEME="robbyrussell" 
+# ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -124,31 +124,31 @@ bindkey '^[s' sudo-command-line
 # zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
 # export LESSOPEN='|~/.lessfilter %s'
 # zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' \
-#        fzf-preview 'echo ${(P)word}'
+    #        fzf-preview 'echo ${(P)word}'
 # # it is an example. you can change it
 # zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview \
-# 	'git diff $word | delta'
+    # 	'git diff $word | delta'
 # zstyle ':fzf-tab:complete:git-log:*' fzf-preview \
-# 	'git log --color=always $word'
+    # 	'git log --color=always $word'
 # zstyle ':fzf-tab:complete:git-help:*' fzf-preview \
-# 	'git help $word | bat -plman --color=always'
+    # 	'git help $word | bat -plman --color=always'
 # zstyle ':fzf-tab:complete:git-show:*' fzf-preview \
-# 	'case "$group" in
+    # 	'case "$group" in
 # 	"commit tag") git show --color=always $word ;;
 # 	*) git show --color=always $word | delta ;;
 # 	esac'
 # zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
-# 	'case "$group" in
+    # 	'case "$group" in
 # 	"modified file") git diff $word | delta ;;
 # 	"recent commit object name") git show --color=always $word | delta ;;
 # 	*) git log --color=always $word ;;
 # 	esac'
 #  zstyle ':fzf-tab:complete:-command-:*' fzf-preview \
-#    ' (out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || (source ~/.aliases ; whence -av $word) || echo "${(P)word}"'
- 
+    #    ' (out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || (source ~/.aliases ; whence -av $word) || echo "${(P)word}"'
+
 # # this is an example
 # zstyle ':fzf-tab:complete:(\\|)run-help:*' fzf-preview 'run-help $word'
-# zstyle ':fzf-tab:complete:(\\|*/|)man:*' fzf-preview 'man $word' 
+# zstyle ':fzf-tab:complete:(\\|*/|)man:*' fzf-preview 'man $word'
 # #############################################################
 
 echo $LESSOPEN |/usr/bin/lesspipe.sh %s
