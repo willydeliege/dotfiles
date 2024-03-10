@@ -1,5 +1,6 @@
 include autostart
 include keyboard
+include touchpad
 include variables
 
 gaps inner 10
@@ -52,7 +53,7 @@ focus_follows_mouse no
     bindsym $mod+Return exec $term
     bindsym $mod+m exec $editor
     bindsym $mod+w exec $browser
-    
+    bindsym $mod++Shift+v exec "clipman pick -t rofi"
     # Kill focused window
     bindsym $mod+Shift+q kill
     bindsym mod1+q kill

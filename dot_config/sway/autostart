@@ -3,14 +3,18 @@ exec wlsunset -t 4500 -T 6500 -l 50.8464 -L 4.3555 -g 1.0
 exec swaync
 exec nm-applet --indicator
 exec blueman-applet
-exec wl-paste --type text --watch cliphist store
-exec wl-paste --type image --watch cliphist store
+exec wl-paste --type text --watch clipman store
+exec wl-paste --type image --watch clipman store
 exec_always autotiling
 exec_always nwg-dock -d -p bottom -l overlay -f -a start -i 42 -hd 20 -x -s preset-3.css
 exec swayidle -w \
-	timeout 30 'scripts/my-lock.sh' \
-	timeout 35 'swaymsg "output * power off"' \
-	resume 'swaymsg "output * power on"'
+    timeout 300 'systemctl suspend"' \
+    resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -C ~/.config/swaylock/config' \
+    lock 'swaylock -f'
+set $mod Mod4
+
+bindsym --release $mod+Escape exec systemctl suspend
 exec_always nwg-screenshot-applet
 exec /usr/bin/emacs --daemon
 exec /usr/lib/kdeconnectd
