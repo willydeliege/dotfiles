@@ -1,0 +1,70 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+export ZSH="$HOME/.oh-my-zsh"
+export ZOXIDE_CMD_OVERRIDE="cd"
+# ZSH_THEME="crunch"
+
+plugins=(
+    sudo zoxide
+    git
+    archlinux
+    globalias alias-tips
+    fzf-tab-source
+    fzf-tab  fzf
+    zsh-autopair
+    zsh-syntax-highlighting zsh-autosuggestions
+    cp fd
+    exa-zsh
+    colored-man-pages
+)
+source /usr/share/doc/find-the-command/ftc.zsh
+
+
+
+
+source $ZSH/oh-my-zsh.sh
+zstyle ':fzf-tab:sources' config-directory ~/.zsh-sources/
+zstyle ':fzf-tab:complete:-command-:*' fzf-preview \
+  ¦ '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}"'
+# Ctrl+Backspace: kill the word backward
+bindkey -M emacs '^H' backward-kill-word
+bindkey -M viins '^H' backward-kill-word
+bindkey -M vicmd '^H' backward-kill-word
+
+# Ctrl+Delete: kill the word forward
+bindkey -M emacs '^[[3;5~' kill-word
+bindkey -M viins '^[[3;5~' kill-word
+bindkey -M vicmd '^[[3;5~' kill-word
+
+
+# Display Pokemon-colorscripts
+# Project page: https://gitlab.com/phoneybadger/pokemon-colorscripts#on-other-distros-and-macos
+# pokemon-colorscripts --no-title -s -r
+
+
+### From this line is for pywal-colors
+# Import colorscheme from 'wal' asynchronously
+# &   # Run the process in the background.
+# ( ) # Hide shell job control messages.
+# Not supported in the "fish" shell.
+# (cat ~/.cache/wal/sequences &)
+
+# Alternative (blocks terminal for 0-3ms)
+#cat ~/.cache/wal/sequences
+
+# To add support for TTYs this line can be optionally added.
+#source ~/.cache/wal/colors-tty.sh
+eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Created by `pipx` on 2024-04-23 05:20:45
+export PATH="$PATH:/home/willefi/.local/bin"
+eval "$(register-python-argcomplete pipx)"
+gpg-connect-agent updatestartuptty /bye > /dev/null 
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
