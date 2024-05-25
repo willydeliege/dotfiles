@@ -43,6 +43,8 @@ primary_email=frederic.willem@gmail.com
 #		in the mail store.
 #
 [new]
+tags=new
+ignore=/.*[.](json|lock|bak)$/
 # Search configuration
 #
 # The following option is supported here:
