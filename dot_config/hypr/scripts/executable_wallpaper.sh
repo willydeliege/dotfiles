@@ -11,9 +11,6 @@
 
 # Cache file for holding the current wallpaper
 wallpaper_folder="$HOME/wallpaper"
-if [ -f ~/.config/.settings/wallpaper-folder.sh ] ;then
-    source ~/.config/.settings/wallpaper-folder.sh
-fi
 echo $wallpaper_folder
 
 cache_file="$HOME/.cache/current_wallpaper"
@@ -21,7 +18,7 @@ blurred="$HOME/.cache/blurred_wallpaper.png"
 square="$HOME/.cache/square_wallpaper.png"
 rasi_file="$HOME/.cache/current_wallpaper.rasi"
 blur_file="$HOME/.config/.settings/blur.sh"
-
+wallpaper=""
 blur="50x30"
 blur=$(cat $blur_file)
 
@@ -45,9 +42,12 @@ case $1 in
     "init")
         sleep 1
         if [ -f $cache_file ]; then
-            wal --cols16 -q -s -i $current_wallpaper
+	    wallpaper=$current_wallpaper
+            wallust run -s $current_wallpaper
         else
-            wal --cols16 -q -s -i $wallpaper_folder/
+	    wallpaper=$wallpaper_folder/$(ls ~/wallpaper -1 | shuf -n 1)
+            wallust run -s $wallpaper
+            
         fi
     ;;
 
@@ -62,24 +62,22 @@ case $1 in
             echo "No wallpaper selected"
             exit
         fi
-        wal --cols16 -q -s -i $wallpaper_folder/$selected
-	echo $wallpaper_folder/$selected
+	wallpaper=$wallpaper_folder/$selected
+        wallust run -s $wallpaper
+	echo $wallpaper
     ;;
 
     # Randomly select wallpaper 
     *)
-        wal --cols16 -q -s -i $wallpaper_folder/
+	wallpaper=$wallpaper_folder/$(ls ~/wallpaper -1 | shuf -n 1)
+        wallust run -s $wallpaper
     ;;
 
 esac
 
-# ----------------------------------------------------- 
-# Load current pywal color scheme
-# ----------------------------------------------------- 
 
-source "$HOME/.cache/wal/colors.sh"
 echo ":: Wallpaper: $wallpaper"
-wallust -s run $wallpaper
+
 # ----------------------------------------------------- 
 # get wallpaper image name
 # ----------------------------------------------------- 
@@ -97,8 +95,8 @@ swaync-client -rs
 # transition_type="outer"
 transition_type="random"
 
-wallpaper_engine=$(cat $HOME/.config/.settings/wallpaper-engine.sh)
-if [ "$wallpaper_engine" == "swww" ] ;then
+wallpaper_engin=swww    
+
     # swww
     echo ":: Using swww"
     swww img $wallpaper \
@@ -108,28 +106,13 @@ if [ "$wallpaper_engine" == "swww" ] ;then
         --transition-duration=0.7 \
         --transition-pos "$( hyprctl cursorpos )"
    
-elif [ "$wallpaper_engine" == "hyprpaper" ] ;then
-    # hyprpaper
-    echo ":: Using hyprpaper"
-    killall hyprpaper
-    wal_tpl=$(cat $HOME/.config/.settings/hyprpaper.tpl)
-    output=${wal_tpl//WALLPAPER/$wallpaper}
-    echo "$output" > $HOME/.config/hypr/hyprpaper.conf
-    hyprpaper &
-else
-    echo ":: Wallpaper Engine disabled"
-fi
 
 if [ "$1" == "init" ] ;then
     echo ":: Init"
 else
     sleep 1
-    dunstify "Changing wallpaper ..." "with image $newwall" -h int:value:25 -h string:x-dunst-stack-tag:wallpaper
+    notify-send "Changing wallpaper ..." "with image $newwall" -h int:value:25
     
-    # ----------------------------------------------------- 
-    # Reload Hyprctl.sh
-    # -----------------------------------------------------
-    $HOME/.config/ml4w-hyprland-settings/hyprctl.sh &
 fi
 
 # ----------------------------------------------------- 
@@ -138,7 +121,7 @@ fi
 if [ "$1" == "init" ] ;then
     echo ":: Init"
 else
-    dunstify "Creating blurred version ..." "with image $newwall" -h int:value:50 -h string:x-dunst-stack-tag:wallpaper
+    notify-send "Creating blurred version ..." "with image $newwall" -h int:value:50
 fi
 
 magick $wallpaper -resize 75% $blurred
@@ -154,7 +137,7 @@ fi
 if [ "$1" == "init" ] ;then
     echo ":: Init"
 else
-    dunstify "Creating square version ..." "with image $newwall" -h int:value:75 -h string:x-dunst-stack-tag:wallpaper
+    notify-send "Creating square version ..." "with image $newwall" -h int:value:75
 fi
 magick $wallpaper -gravity Center -extent 1:1 $square
 echo ":: Square version created"
@@ -172,7 +155,7 @@ echo "* { current-image: url(\"$blurred\", height); }" > "$rasi_file"
 if [ "$1" == "init" ] ;then
     echo ":: Init"
 else
-    dunstify "Wallpaper procedure complete!" "with image $newwall" -h int:value:100 -h string:x-dunst-stack-tag:wallpaper
+    notify-send "Wallpaper procedure complete!" "with image $newwall" -h int:value:100
 fi
 
 echo "DONE!"

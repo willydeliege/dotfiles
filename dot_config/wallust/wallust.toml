@@ -17,7 +17,7 @@ color_space = "lch"
 #  * softdark16  - softdark with 16 color variation
 #  * softlight   - Light with soft pastel colors, counterpart of `harddark`
 #  * softlight16 - softlight with 16 color variation
-palette = "harddarkcomp16"
+palette = "softdarkcomp"
 
 # Difference between similar colors, used by the colorspace:
 #  1          Not perceptible by human eyes.
@@ -30,18 +30,22 @@ palette = "harddarkcomp16"
 [templates]
 hypr.template = 'templates/colors-hyprland.conf'
 hypr.target = '~/.cache/wal/colors-hyprland.conf'
+hypr.pywal = true
 
 rofi.template = 'templates/colors-rofi.rasi'
 rofi.target = '~/.cache/wal/colors-rofi.rasi'
+rofi.pywal = true
 
 waybar.template = 'templates/colors-waybar.css'
 waybar.target = '~/.cache/wal/colors-waybar.css'
+waybar.pywal = true
 
 #kitty.template = 'templates/colors-kitty.conf'
 #kitty.target = '~/.config/kitty/kitty.conf'
 
-swaync.template = 'templates/colors-swaync.css'
-swaync.target = '~/.cache/wal/colors-wallust.css'
+# swaync.template = 'templates/colors-swaync.css'
+# swaync.target = '~/.cache/wal/colors-wallust.css'
+# swaync.pywal = true
 
 #macchina.template = 'templates/colors-macchina.toml'
 #macchina.target = '~/.config/macchina/themes/wallust.toml'
