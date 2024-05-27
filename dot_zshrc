@@ -47,6 +47,7 @@ bindkey -M emacs "^ " globalias
 bindkey -M viins "^ " globalias
 
 
+export EDITOR=emacs
 # Display Pokemon-colorscripts
 # Project page: https://gitlab.com/phoneybadger/pokemon-colorscripts#on-other-distros-and-macos
 # pokemon-colorscripts --no-title -s -r

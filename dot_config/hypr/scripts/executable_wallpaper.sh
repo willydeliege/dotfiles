@@ -95,7 +95,6 @@ swaync-client -rs
 # transition_type="outer"
 transition_type="random"
 
-wallpaper_engin=swww    
 
     # swww
     echo ":: Using swww"
@@ -103,7 +102,7 @@ wallpaper_engin=swww
         --transition-bezier .43,1.19,1,.4 \
         --transition-fps=60 \
         --transition-type=$transition_type \
-        --transition-duration=0.7 \
+        --transition-duration=0.5 \
         --transition-pos "$( hyprctl cursorpos )"
    
 
