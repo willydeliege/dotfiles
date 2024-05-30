@@ -40,13 +40,21 @@ bindkey -M vicmd '^[[3;5~' kill-word
 
 
 export EDITOR=emacs
-# Display Pokemon-colorscripts
-# Project page: https://gitlab.com/phoneybadger/pokemon-colorscripts#on-other-distros-and-macos
-# pokemon-colorscripts --no-title -s -r
 
 # Aliases
 alias ce='chezmoi edit'
 alias ca='chezmoi apply'
+# Get the error messages from journalctl
+alias jctl="journalctl -p 3 -xb"
+# Safer remove
+alias rm='rm -iv'
+alias rmf='rm -rf'
+# Recent installed packages
+alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
+# Cleanup orphaned packages
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
+# Better cat
+alias cat="bat"
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
@@ -56,7 +64,7 @@ eval "$(starship init zsh)"
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# Created by `pipx` on 2024-04-23 05:20:45
+# Created by `pipx`
 export PATH="$PATH:/home/willefi/.local/bin"
 eval "$(register-python-argcomplete pipx)"
 gpg-connect-agent updatestartuptty /bye > /dev/null 
