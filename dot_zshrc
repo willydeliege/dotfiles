@@ -9,6 +9,7 @@ export ZOXIDE_CMD_OVERRIDE="cd"
 plugins=(
     sudo zoxide
     git
+    emacs
     archlinux
     globalias alias-tips
     fzf-tab-source
