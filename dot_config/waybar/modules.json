@@ -230,7 +230,7 @@
     // CPU
     "cpu": {
         "format": "/ C {usage}% ",
-        "on-click": "alacritty -e htop"
+        "on-click": "kity -e htop"
     },
 
     // Memory
