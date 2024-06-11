@@ -8,12 +8,12 @@ import os
 # original code https://gist.github.com/Surendrajat/ff3876fd2166dd86fb71180f4e9342d7
 # weather icons
 weather_icons = {
-    "sunnyDay": "",
-    "clearNight": "",
-    "cloudyFoggyDay": "",
-    "cloudyFoggyNight": "",
-    "rainyDay": "",
-    "rainyNight": "",
+    "sunnyDay": "󰖙",
+    "clearNight": "󰖔",
+    "cloudyFoggyDay": "",
+    "cloudyFoggyNight": "",
+    "rainyDay": "",
+    "rainyNight": "",
     "snowyIcyDay": "",
     "snowyIcyNight": "",
     "severe": "",
@@ -77,7 +77,7 @@ temp_min_max = f"  {temp_min}\t\t  {temp_max}"
 
 # wind speed
 wind_speed = html_data("span[data-testid='Wind']").text().split("\n")[1]
-wind_text = f"煮  {wind_speed}"
+wind_text = f"  {wind_speed}"
 # print(wind_text)
 
 # humidity
@@ -117,7 +117,7 @@ tooltip_text = str.format(
 
 # print waybar module data
 out_data = {
-    "text": f"{icon} {temp}",
+    "text": f"{icon}  {temp}",
     "alt": status,
     "tooltip": tooltip_text,
     "class": status_code,
