@@ -57,6 +57,9 @@ alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 # Better cat
 alias cat="bat"
 
+# yay is funnier to type
+alias yay="paru"
+
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
