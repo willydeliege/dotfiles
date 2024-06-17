@@ -60,6 +60,27 @@ alias cat="bat"
 # yay is funnier to type
 alias yay="paru"
 
+
+alias yaconf='paru -P --stats'
+alias yaclean='paru -Sc'
+alias yaclr='paru -Scc'
+alias yaupg='paru -Syu'
+alias yasu='paru -Syu --noconfirm'
+alias yain='paru -S'
+alias yains='paru -U'
+alias yare='paru -R'
+alias yarem='paru -Rns'
+alias yarep='paru -Si'
+alias yareps='paru -Ss'
+alias yaloc='paru -Qi'
+alias yalocs='paru -Qs'
+alias yalst='paru -Qe'
+alias yaorph='paru -Qtd'
+alias yainsd='paru -S --asdeps'
+alias yamir='paru -Syy'
+alias yaupd="paru -Sy"
+
+
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
