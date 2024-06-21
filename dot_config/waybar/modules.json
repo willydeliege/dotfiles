@@ -369,7 +369,7 @@
             "deactivated": ""
         },
 	
-        "on-click": "~/.config/hypr/scripts/toggle-hypridle.sh",
+        
         "on-click-right": "hyprlock"        
     },
 

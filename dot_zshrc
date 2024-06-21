@@ -25,7 +25,7 @@ source /usr/share/doc/find-the-command/ftc.zsh
 
 
 
-source $ZSH/oh-my-zsh.sh
+source /usr/share/oh-my-zsh/oh-my-zsh.sh 
 zstyle ':fzf-tab:sources' config-directory ~/.zsh-sources/
 zstyle ':fzf-tab:complete:-command-:*' fzf-preview \
   ¦ '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}"'
@@ -79,18 +79,17 @@ alias yaorph='paru -Qtd'
 alias yainsd='paru -S --asdeps'
 alias yamir='paru -Syy'
 alias yaupd="paru -Sy"
-
+alias zshrc="source ~/.zshrc"
 
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
-
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # Created by `pipx`
-export PATH="$PATH:/home/willefi/.local/bin"
+export PATH="$PATH:/home/willefi/.local/bin:/home/willefi/.config/emacs/bin"
 eval "$(register-python-argcomplete pipx)"
 gpg-connect-agent updatestartuptty /bye > /dev/null 
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
