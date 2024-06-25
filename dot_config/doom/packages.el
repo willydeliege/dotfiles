@@ -8,14 +8,6 @@
 
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;; (package! some-package)
-(package! denote)
-(package! ef-themes)
-(package! evil-colemak-basics)
-(package! chezmoi :recipe (:files ("*.el" "extensions/*.el")))
-(package! doom-snippets :ignore t)
-;; If you want to replace it with yasnippet's default snippets
-(package! yasnippet-snippets)
-
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
@@ -56,3 +48,12 @@
 ;; (unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
+
+                                        ;
+(package! denote)
+(package! ef-themes)
+(package! jinx)
+(package! chezmoi)
+(package! calfw :disable t
+  :recipe (:host github :files ("*.el") :repo "willydeliege/emacs-calfw" ))
+(unpin! org-gcal)

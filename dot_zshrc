@@ -1,4 +1,3 @@
-# -*- mode: sh -*-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -41,6 +40,7 @@ bindkey -M vicmd '^[[3;5~' kill-word
 
 
 export EDITOR=emacs
+export WAYLAND_DISPLAY=:1
 
 # Aliases
 alias ce='chezmoi edit'
