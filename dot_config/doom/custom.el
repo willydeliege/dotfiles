@@ -3,12 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(lsp-warn-no-matched-clients nil)
- '(org-agenda-custom-commands
-   '(("n" "Agenda and all TODOs"
-      ((agenda "" nil)
-       (todo "NEXT" nil))
-      nil))))
+ '(lsp-warn-no-matched-clients nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
