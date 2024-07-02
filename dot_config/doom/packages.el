@@ -49,11 +49,8 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 
-                                        ;
 (package! denote)
 (package! ef-themes)
+(package! modus-themes)
 (package! jinx)
 (package! chezmoi)
-(package! calfw :disable t
-  :recipe (:host github :files ("*.el") :repo "willydeliege/emacs-calfw" ))
-(unpin! org-gcal)

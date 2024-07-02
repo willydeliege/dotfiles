@@ -1,13 +1,13 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; Wmo ao I
+;; Who ao I
 (setq user-full-name "Frédéric Willem"
       user-mail-address "frederic.willem@gmail.com")
 
-(setq doom-font "FiraCode Nerd Font-11"
-      doom-symbol-font "Symbols Nerd Font")
+(setq doom-font "FiraCode Nerd Font-11")
+;; doom-symbol-font "Nerd Font Symbol")
 
-(setq doom-theme 'ef-duo-dark)
+(setq doom-theme 'ef-dark)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -21,26 +21,72 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 (setq org-agenda-files (list "~/org/gtd"))
+(setq bookmark-default-file "~/.config/doom/bookmarks" )
 (setq denote-directory org-directory)
+(setq org-hide-emphasis-markers t)
 (after! org
+  ;; for org capture chrome extension
+  (require 'org-protocol)
+  ;; needed by org-contacts
+  (require 'ol)
+  (setq org-todo-keywords
+        '((sequence "PROJECT(p)" "|" "KILLED(k@)")
+          (sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "|" "DONE(d)" "CNCLD(c@)")))
+  (setq org-tag-alist '(("@work") ("@home") ("@phone") ("@computer") ("@online") ("@errand")))
   (setq org-gtd-inbox-file "~/org/gtd/0-inbox.org")
-  (setq org-capture-templates
-        '(("i" "Inbox" entry
-           (file org-gtd-inbox-file)
-           "* %?\n%i\n%a"))))
+  (add-to-list 'org-capture-templates
+               '("i" "Inbox" entry
+                 (file org-gtd-inbox-file)
+                 "* %?\n%i\n%a"))
+  (add-to-list 'org-capture-templates
+               '("p" "Protocol" entry (file org-gtd-inbox-file)
+                 "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?") t)
+  (add-to-list 'org-capture-templates
+               '("L" "Protocol Link" entry (file org-gtd-inbox-file)
+                 "* %? [[%:link][%:description]] \nCaptured On: %U") t)
 
+  (delete '("p" "Templates for projects")
+          org-capture-templates)
+  (delete '("pn" "Project-local notes" entry
+            (file+headline +org-capture-project-notes-file "Inbox")
+            "* %U %?\n%i\n%a" :prepend t)
+          org-capture-templates)
+  (delete '("n" "Personal notes" entry
+            (file+headline +org-capture-notes-file "Inbox")
+            "* %u %?\n%i\n%a" :prepend t)
+          org-capture-templates)
+  (delete '("pt" "Project-local todo" entry
+            (file+headline +org-capture-project-todo-file "Inbox")
+            "* TODO %?\n%i\n%a" :prepend t)
+          org-capture-templates)
+  (delete '("oc" "Project changelog" entry #'+org-capture-central-project-changelog-file "* %U %?\n %i\n %a" :heading "Changelog" :prepend t)
+          org-capture-templates)
+  (delete '("on" "Project notes" entry #'+org-capture-central-project-notes-file "* %U %?\n %i\n %a" :heading "Notes" :prepend t)
+          org-capture-templates)
+  (delete '("o" "Centralized templates for projects")
+          org-capture-templates)
+  (delete '("t" "Personal todo" entry
+            (file+headline +org-capture-todo-file "Inbox")
+            "* [ ] %?\n%i\n%a" :prepend t)
+          org-capture-templates)
+  (delete  '("pc" "Project-local changelog" entry
+             (file+headline +org-capture-project-changelog-file "Unreleased")
+             "* %U %?\n%i\n%a" :prepend t)
+           org-capture-templates)
+  (delete '("ot" "Project todo" entry #'+org-capture-central-project-todo-file "* TODO %?\n %i\n %a" :heading "Tasks" :prepend nil)
+          org-capture-templates))
 (setq org-agenda-custom-commands
       '(("n" "Agenda and all NEXT tasks"
          ((agenda "" nil)
           (todo "NEXT" nil))
          nil)))
-
-(add-hook! dired-mode #'dired-hide-details-mode)
-
-(add-hook! dired-mode #'dired-hide-details-mode)
+(add-hook 'after-save-hook
+          'executable-make-buffer-file-executable-if-script-p)
 (defvar org-gtd-archive-file "~/org/gtd/_gtd_archive_2024")
 (setq org-archive-location (concat org-gtd-archive-file "::datetree/"))
 (setq org-log-done 'time)
+(setq corfu-preselect 'directory)
+
 ;;
 ;;; Colemak almost friendly
 
@@ -85,7 +131,20 @@
            (or states '(normal motion visual))
            keymaps
            evil-colemak-dh-translations))
-  (add-hook 'evil-collection-setup-hook #'evil-colemak-dh-translate-keys))
+  (add-hook 'evil-collection-setup-hook #'evil-colemak-dh-translate-keys)
+  (defun evil-collection-notmuch-search-toggle-trash ()
+    "Toggle trash tag for message."
+    (interactive)
+    (save-excursion
+      (notmuch-search-archive-thread)
+      (evil-collection-notmuch-toggle-tag "trash" "search" 'notmuch-search-next-thread)))
+  (defun evil-collection-notmuch-show-toggle-trash ()
+    "Toggle trash tag for message."
+    (interactive)
+    (evil-collection-notmuch-toggle-tag "trash" "show"))
+  (after! notmuch
+    (global-set-key [remap evil-collection-notmuch-search-toggle-delete] #'+notmuch/search-delete)
+    (global-set-key [remap evil-collection-notmuch-show-toggle-delete] #'+notmuch/show-delete)))
 
 ;;
 ;;; Email config
@@ -154,3 +213,12 @@
    :map evil-normal-state-map
    "[ p" #'+evil-paste-above
    "] p" #'+evil-paste-below ))
+
+;; (require 'ol)
+(setq org-contacts-files `(,(expand-file-name (concat org-directory "contacts.org"))))
+
+(add-load-path! "~/.config/doom/lisp/")
+(require 'gtd)
+
+;; (map! :gi "TAB"   #'yasnippet-capf
+;;       :gi "<tab>" #'yasnippet-capf)
