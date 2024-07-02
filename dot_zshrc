@@ -24,7 +24,7 @@ source /usr/share/doc/find-the-command/ftc.zsh
 
 
 
-source /usr/share/oh-my-zsh/oh-my-zsh.sh 
+source /home/willefi/.oh-my-zsh/oh-my-zsh.sh
 zstyle ':fzf-tab:sources' config-directory ~/.zsh-sources/
 zstyle ':fzf-tab:complete:-command-:*' fzf-preview \
   ¦ '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}"'
@@ -38,9 +38,7 @@ bindkey -M emacs '^[[3;5~' kill-word
 bindkey -M viins '^[[3;5~' kill-word
 bindkey -M vicmd '^[[3;5~' kill-word
 
-
 export EDITOR=emacs
-export WAYLAND_DISPLAY=:1
 
 # Aliases
 alias ce='chezmoi edit'
@@ -50,6 +48,8 @@ alias jctl="journalctl -p 3 -xb"
 # Safer remove
 alias rm='rm -iv'
 alias rmf='rm -rf'
+alias mv='mv -iv'
+alias cp='cp -iv'
 # Recent installed packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 # Cleanup orphaned packages
