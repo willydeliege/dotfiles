@@ -14,10 +14,7 @@
 (setq doom-font "FiraCode Nerd Font-11")
 ;; doom-symbol-font "Nerd Font Symbol")
 
-;; (setq doom-theme 'ef-dark)
-(use-package! theme-changer
-  :config
-  (change-theme 'modus-operandi-tinted 'modus-vivendi-tinted))
+(setq doom-theme 'modus-vivendi-tinted)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -160,7 +157,7 @@
   (after! evil
     (global-set-key [remap evil-next-flyspell-error] #'jinx-next)
     (global-set-key [remap evil-prev-flyspell-error] #'jinx-previous))
-  (setq jinx-languages "fr_FR en_US en_GB"))
+  (setq jinx-languages "fr_FR en_US"))
 
 (add-hook! (prog-mode text-mode) #'jinx-mode )
 

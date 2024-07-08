@@ -52,4 +52,3 @@
 (package! denote)
 (package! modus-themes)
 (package! jinx)
-(package! theme-changer)
