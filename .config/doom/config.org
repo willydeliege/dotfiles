@@ -1,4 +1,5 @@
 #+title: Doom literate config
+
 * File Headline
 #+begin_src emacs-lisp :tangle yes
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
@@ -202,18 +203,6 @@ Faster and support multiple dictionaries out-of-the-box
 (add-hook! (prog-mode text-mode) #'jinx-mode )
 #+end_src
 
-* Dotfiles
-Chezmoi
-dotfiles management
-
-#+begin_src emacs-lisp :tangle yes
-(use-package! chezmoi
-  :commands chezmoi-find
-  :init
-  (map! :leader
-        :desc "Dotfiles" "f m" #'chezmoi-find)
-  (add-to-list 'auto-minor-mode-alist '(".*chezmoi.*" . chezmoi-mode)))
-#+end_src
 * Evil
 #+begin_src emacs-lisp :tangle yes
 (after! evil

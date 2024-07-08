@@ -50,8 +50,6 @@
 ;; (unpin! t)
 
 (package! denote)
-;; (package! ef-themes)
 (package! modus-themes)
 (package! jinx)
-(package! chezmoi)
 (package! theme-changer)

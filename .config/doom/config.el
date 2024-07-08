@@ -164,13 +164,6 @@
 
 (add-hook! (prog-mode text-mode) #'jinx-mode )
 
-(use-package! chezmoi
-  :commands chezmoi-find
-  :init
-  (map! :leader
-        :desc "Dotfiles" "f m" #'chezmoi-find)
-  (add-to-list 'auto-minor-mode-alist '(".*chezmoi.*" . chezmoi-mode)))
-
 (after! evil
   (defun +evil-paste-above ()
     "Paste the line above."
