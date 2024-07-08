@@ -4,3 +4,4 @@
 /.local/share/user-places.xbel.bak
 /.local/share/user-places.xbel.tbcache
 /.local/share/zoxide/
+/.local/share/*.xbel
