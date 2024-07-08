@@ -1,0 +1,95 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+export ZSH="$HOME/.oh-my-zsh"
+export ZOXIDE_CMD_OVERRIDE="cd"
+# ZSH_THEME="crunch"
+
+plugins=(
+    sudo zoxide
+    git
+    emacs
+    archlinux
+    globalias alias-tips
+    fzf-tab-source
+    fzf-tab  fzf
+    zsh-autopair
+    zsh-syntax-highlighting zsh-autosuggestions
+    cp fd
+    exa-zsh
+    colored-man-pages
+)
+source /usr/share/doc/find-the-command/ftc.zsh
+
+
+
+
+source /home/willefi/.oh-my-zsh/oh-my-zsh.sh
+zstyle ':fzf-tab:sources' config-directory ~/.zsh-sources/
+zstyle ':fzf-tab:complete:-command-:*' fzf-preview \
+  ¦ '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}"'
+# Ctrl+Backspace: kill the word backward
+bindkey -M emacs '^H' backward-kill-word
+bindkey -M viins '^H' backward-kill-word
+bindkey -M vicmd '^H' backward-kill-word
+
+# Ctrl+Delete: kill the word forward
+bindkey -M emacs '^[[3;5~' kill-word
+bindkey -M viins '^[[3;5~' kill-word
+bindkey -M vicmd '^[[3;5~' kill-word
+
+export EDITOR=emacs
+
+# Aliases
+alias ce='chezmoi edit'
+alias ca='chezmoi apply'
+# Get the error messages from journalctl
+alias jctl="journalctl -p 3 -xb"
+# Safer remove
+alias rm='rm -iv'
+alias rmf='rm -rf'
+alias mv='mv -iv'
+alias cp='cp -iv'
+# Recent installed packages
+alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
+# Cleanup orphaned packages
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
+# Better cat
+alias cat="bat"
+
+# yay is funnier to type
+alias yay="paru"
+
+
+alias yaconf='paru -P --stats'
+alias yaclean='paru -Sc'
+alias yaclr='paru -Scc'
+alias yaupg='paru -Syu'
+alias yasu='paru -Syu --noconfirm'
+alias yain='paru -S'
+alias yains='paru -U'
+alias yare='paru -R'
+alias yarem='paru -Rns'
+alias yarep='paru -Si'
+alias yareps='paru -Ss'
+alias yaloc='paru -Qi'
+alias yalocs='paru -Qs'
+alias yalst='paru -Qe'
+alias yaorph='paru -Qtd'
+alias yainsd='paru -S --asdeps'
+alias yamir='paru -Syy'
+alias yaupd="paru -Sy"
+alias zshrc="source ~/.zshrc"
+
+eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Created by `pipx`
+export PATH="$PATH:/home/willefi/.local/bin:/home/willefi/.config/emacs/bin"
+eval "$(register-python-argcomplete pipx)"
+gpg-connect-agent updatestartuptty /bye > /dev/null 
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
