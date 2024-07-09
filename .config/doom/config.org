@@ -27,7 +27,31 @@
 (setq doom-font "FiraCode Nerd Font-11")
 ;; doom-symbol-font "Nerd Font Symbol")
 
-(setq doom-theme 'modus-vivendi-tinted)
+;; (setq doom-theme 'modus-vivendi-tinted)
+(setq light-theme 'modus-operandi-tinted)
+(setq dark-theme  'modus-vivendi-tinted)
+
+(defun night-mode ()
+  (interactive)
+  (load-theme dark-theme t)
+  (doom/reload-theme))
+
+(defun day-mode ()
+  (interactive)
+  (load-theme light-theme t)
+  (doom/reload-theme))
+
+(defun auto-theme ()
+  "Select the theme automatically based on the time of day."
+  (require 'solar)
+  (let* ((cur-hour (string-to-number (substring (current-time-string) 11 13)))
+         (sun-events (solar-sunrise-sunset (calendar-current-date)))
+         (sunrise (caar sun-events))
+         (sunset  (caadr sun-events)))
+    (if (and (> cur-hour sunrise) (< cur-hour sunset))
+        (day-mode)
+      (night-mode))))
+(add-hook! 'doom-after-init-hook 'auto-theme)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
