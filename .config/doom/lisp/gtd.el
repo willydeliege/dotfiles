@@ -38,7 +38,7 @@
   (interactive)
   (let ((org-refile-targets '(("projects.org" :level . 0))))
     (org-todo "PROJECT")
-    (org-set-property "CATEGORY" (completing-read "Select area" gtd-area-of-focus))
+    (org-set-property "CATEGORY" (org-entry-get nil "ITEM"))
     (org-refile)))
 
 (defun gtd-new-task-in-project ()
