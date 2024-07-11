@@ -82,7 +82,7 @@
        :checkers
        (syntax  +childframe)             ; tasing you for every semicolon you forget
        ;; (spell +flyspell +everywhere +hunspell) ; tasing you for misspelling mispelling
-       ;;grammar           ; tasing grammar mistake every you make
+       grammar           ; tasing grammar mistake every you make
 
        :tools
        ;;ansible
@@ -94,9 +94,9 @@
        ;;editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
-       (lookup +dictionary  +offline)             ; navigate your code and its documentation
-       (lsp +peek)               ; M-x vscode
-       (magit +forge)             ; a git porcelain for Emacs
+       (lookup +dictionary)             ; navigate your code and its documentation
+       (lsp +peek)         ; M-x vscode
+       (magit +forge)      ; a git porcelain for Emacs
        ;;make              ; run make tasks from Emacs
        (pass +oauth)              ; password manager for nerds
        pdf               ; PDF enhancements
