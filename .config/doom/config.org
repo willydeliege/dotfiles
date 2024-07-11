@@ -147,8 +147,7 @@ paru -S goobook
   (setq notmuch-address-command "~/.scripts/gook")
   (map!
    :map (notmuch-search-mode-map notmuch-tree-mode-map notmuch-show-mode-map)
-   :nv [remap evil-undo] #'notmuch-tag-undo
-   :nv [remap evil-ex-search-next] #'notmuch-tag-jump)
+   :nv [remap evil-undo] #'notmuch-tag-undo)
 
   (defun +notmuch/search-trash ()
     "Flag the message."
@@ -239,6 +238,60 @@ Faster and support multiple dictionaries out-of-the-box
 ;;  :gi "TAB"   #'yasnippet-capf
 ;;  :gi "<tab>" #'yasnippet-capf)
 (map!
- :map (doom-leader-open-map)
- :desc "Org contacts" "c" #'org-contacts-agenda)
+ :leader
+ :desc "Org contacts" "o c" #'org-contacts-agenda)
+#+end_src
+
+#+begin_src emacs-lisp :tangle yes
+
+;; Bind your key
+(map! :map notmuch-search-mode-map
+      :n "K" #'notmuch-tag-jump)
+(map! :map dired-mode-map
+      :n "K" #'dired-do-kill-lines)
+;; Optionally re-bind documentation to different key:
+(map! :nv "gK"  #'+lookup/documentation)
+(defhydra hydra-smartparens ()
+  "Smartparens"
+  ("q" nil)
+
+  ;; Wrapping
+  ("(" (lambda (_) (interactive "P") (sp-wrap-with-pair "(")))
+  ("{" (lambda (_) (interactive "P") (sp-wrap-with-pair "{")))
+  ("'" (lambda (_) (interactive "P") (sp-wrap-with-pair "'")))
+  ("\"" (lambda (_) (interactive "P") (sp-wrap-with-pair "\"")))
+
+  ("w" (lambda (_) (interactive "P") (sp-wrap-with-pair "(")) "wrap")
+  ("W" sp-unwrap-sexp)
+
+  ;; Movement
+  ("l" sp-next-sexp)
+  ("h" sp-backward-sexp)
+  ("j" sp-down-sexp)
+  ("k" sp-backward-up-sexp)
+
+  ("L" sp-forward-symbol)
+  ("H" sp-backward-symbol)
+
+  ("^" sp-beginning-of-sexp)
+  ("$" sp-end-of-sexp)
+
+  ("t" sp-transpose-sexp "transpose")
+  ("u" undo-tree-undo "undo")
+
+  ("y" sp-copy-sexp "copy")
+  ("d" sp-kill-sexp "delete")
+
+  ("s" sp-forward-slurp-sexp "slurp")
+  ("S" sp-backward-slurp-sexp)
+
+  ("b" sp-forward-barf-sexp "barf")
+  ("B" sp-backward-barf-sexp)
+
+  ("v" sp-select-next-thing "select")
+  ("V" sp-select-previous-thing))
+(map! :localleader
+        :mode writegood-mode
+        "g" #'writegood-grade-level
+        "r" #'writegood-reading-ease)
 #+end_src

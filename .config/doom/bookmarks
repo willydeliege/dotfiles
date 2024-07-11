@@ -3,11 +3,11 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-refile-last-stored"
- (filename . "~/org/gtd/tasks.org")
- (front-context-string . "* NEXT annuler B")
- (rear-context-string . "ORT:   1h\n:END:\n")
- (position . 1077)
- (last-modified 26251 17519 46484 922000))
+ (filename . "~/org/gtd/someday.org")
+ (front-context-string . "**  [[https://ww")
+ (rear-context-string . "e - YouTube]]\n\n\n")
+ (position . 316)
+ (last-modified 26254 46375 690842 782000))
 ("0 Inbox"
  (filename . "~/org/gtd/0-inbox.org")
  (front-context-string . "#+title: Inbox\n#")
@@ -16,8 +16,8 @@
  (last-modified 26235 7872 747788 867000))
 ("org-capture-last-stored"
  (filename . "~/org/gtd/0-inbox.org")
- (front-context-string . "* appeler l'huis")
- (rear-context-string)
- (position . 16)
- (last-modified 26252 1196 106192 917000))
+ (front-context-string)
+ (rear-context-string . ": Inbox\n\n* tsxt\n")
+ (position . 24)
+ (last-modified 26255 25399 155309 356000))
 )
