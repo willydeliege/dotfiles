@@ -1,5 +1,4 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$PATH:/home/willefi/.local/bin:/home/willefi/.config/emacs/bin"
 
 export ZSH="$HOME/.oh-my-zsh"
 export ZOXIDE_CMD_OVERRIDE="cd"
@@ -89,7 +88,6 @@ export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # Created by `pipx`
-export PATH="$PATH:/home/willefi/.local/bin:/home/willefi/.config/emacs/bin"
 eval "$(register-python-argcomplete pipx)"
 gpg-connect-agent updatestartuptty /bye > /dev/null 
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
