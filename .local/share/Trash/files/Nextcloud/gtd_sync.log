@@ -1,0 +1,26 @@
+/home/willefi/org/gtd/
+# timestamp | duration | file | instruction | dir | modtime | etag | size | fileId | status | errorString | http result code | other size | other modtime | X-Request-ID
+#=#=#=# Syncrun started 2024-07-11T09:59:25Z
+#=#=#=#=# Propagation starts 2024-07-11T09:59:25Z (last step: 180 msec, total: 180 msec)
+#=#=#=# Syncrun finished 2024-07-11T09:59:25Z (last step: 10 msec, total: 191 msec)
+#=#=#=# Syncrun started 2024-07-11T17:22:19Z
+#=#=#=#=# Propagation starts 2024-07-11T17:22:20Z (last step: 1036 msec, total: 1036 msec)
+||Talk|8|2|1720716607|66900d3fbea92|0|13707767ocyjqe0alo4v|13||0|0|0||
+17:22:21||0-inbox.org|64|1|1720712814|ec1b15c039c9f176f75e6bfa2ab5686c|15|13347290ocyjqe0alo4v|13||204|30|1720673079|1ece1345-dd7c-4b64-a0d8-4d7b97769420|
+#=#=#=# Syncrun finished 2024-07-11T17:22:21Z (last step: 948 msec, total: 1985 msec)
+#=#=#=# Syncrun started 2024-07-11T17:22:23Z
+#=#=#=#=# Propagation starts 2024-07-11T17:22:23Z (last step: 278 msec, total: 278 msec)
+#=#=#=# Syncrun finished 2024-07-11T17:22:23Z (last step: 7 msec, total: 286 msec)
+#=#=#=# Syncrun started 2024-07-11T17:30:00Z
+#=#=#=#=# Propagation starts 2024-07-11T17:30:00Z (last step: 317 msec, total: 317 msec)
+#=#=#=# Syncrun finished 2024-07-11T17:30:00Z (last step: 19 msec, total: 337 msec)
+#=#=#=# Syncrun started 2024-07-11T17:31:16Z
+#=#=#=#=# Propagation starts 2024-07-11T17:31:17Z (last step: 406 msec, total: 406 msec)
+#=#=#=# Syncrun finished 2024-07-11T17:31:17Z (last step: 7 msec, total: 414 msec)
+#=#=#=# Syncrun started 2024-07-11T17:31:55Z
+#=#=#=#=# Propagation starts 2024-07-11T17:31:55Z (last step: 329 msec, total: 329 msec)
+||Talk|2|2|1720716607|_invalid_|0|13707767ocyjqe0alo4v|13||0|0|0||
+#=#=#=# Syncrun finished 2024-07-11T17:31:55Z (last step: 31 msec, total: 361 msec)
+#=#=#=# Syncrun started 2024-07-11T17:31:57Z
+#=#=#=#=# Propagation starts 2024-07-11T17:31:58Z (last step: 358 msec, total: 358 msec)
+#=#=#=# Syncrun finished 2024-07-11T17:31:58Z (last step: 10 msec, total: 369 msec)

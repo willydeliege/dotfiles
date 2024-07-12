@@ -1,31 +1,37 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; Who ao I
 (setq user-full-name "Frédéric Willem"
       user-mail-address "frederic.willem@gmail.com")
 
-(setq doom-font "FiraCode Nerd Font-11")
+(setq calendar-location-name "Saint-Nicolas, BE"
+      calendar-latitude 50.628
+      calendar-longitude 5.516)
+(custom-set-variables
+ '(holiday-bahai-holidays nil)
+ '(holiday-hebrew-holidays nil)
+ '(holiday-islamic-holidays nil))
+
+(setq doom-font "FiraCode Nerd Font-12")
 ;; doom-symbol-font "Nerd Font Symbol")
 
-(setq doom-theme 'ef-dark)
+(setq doom-theme 'modus-vivendi-tinted)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
 
 (+global-word-wrap-mode +1)
-(setq projectile-project-search-path '(( "~/Repos/" . 1 )))
-(after! orderless
-  (add-to-list 'completion-styles 'flex t))
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
+
 (setq org-directory "~/org/")
 (setq org-agenda-files (list "~/org/gtd"))
-(setq bookmark-default-file "~/.config/doom/bookmarks" )
 (setq denote-directory org-directory)
+(setq org-passwords-file "~/org/password.org.gpg")
+(map!
+ :leader
+ :desc "Org passwords" "o p" #'org-passwords)
 (setq org-hide-emphasis-markers t)
 (after! org
-  ;; for org capture chrome extension
+  ;; for org capture extension
   (require 'org-protocol)
   ;; needed by org-contacts
   (require 'ol)
@@ -81,63 +87,22 @@
          ((agenda "" nil)
           (todo "NEXT" nil))
          nil)))
-(add-hook 'after-save-hook
-          'executable-make-buffer-file-executable-if-script-p)
 (defvar org-gtd-archive-file "~/org/gtd/_gtd_archive_2024")
 (setq org-archive-location (concat org-gtd-archive-file "::datetree/"))
 (setq org-log-done 'time)
-(setq corfu-preselect 'directory)
 
-;;
-;;; Colemak almost friendly
+(add-hook 'after-save-hook
+          'executable-make-buffer-file-executable-if-script-p)
+(setq bookmark-default-file "~/.config/doom/bookmarks" )
 
-(after! evil-collection
-  (defvar evil-colemak-dh-translations
-    '("n" "j"  "N" "J"
-      "e" "k"  "E" "K"
-      "m" "h"  "M" "H"
-      "i" "l"  "I" "L"
-      "k" "n"  "K" "N"
-      "h" "m"  "H" "M"
-      "u" "i"  "U" "I"
-      "l" "u"  "L" "U"
-      "j" "e"  "J" "E"
+(setq projectile-project-search-path '(( "~/Repos/" . 1 )))
+(after! orderless
+  (add-to-list 'completion-styles 'flex t))
+(after! corfu
+  (setq corfu-preselect 'directory))
 
-      "gn" "gj"  "gN" "gJ"
-      "ge" "gk"  "gE" "gK"
-      "gm" "gh"  "gM" "gH"
-      "gi" "gl"  "gI" "gL"
-      "gk" "gn"  "gK" "gN"
-      "gh" "gm"  "gH" "gM"
-      "gu" "gi"  "gU" "gI"
-      "gl" "gu"  "gL" "gU"
-      "gj" "ge"  "gJ" "gE")
-    "Evil keys to translate for the Colemak-DH keyboard layout.")
-
-  ;; Translate the main evil-mode bindings.
-  (apply #'evil-collection-translate-key
-         nil
-         '(evil-normal-state-map
-           evil-motion-state-map
-           evil-operator-state-map
-           evil-visual-state-map
-           evil-window-map)
-         evil-colemak-dh-translations)
-
-  ;; Install a hook to translate bindings from evil-collection.
-
-  (defun evil-colemak-dh-translate-keys (mode keymaps &optional states &rest _rest)
-    "Translate bindings for MODE in KEYMAPS for the Colemak-DH layout in STATES."
-    (message mode)
-    (apply #'evil-collection-translate-key
-           (or states '(normal motion visual))
-           keymaps
-           evil-colemak-dh-translations))
-  (add-hook 'evil-collection-setup-hook #'evil-colemak-dh-translate-keys))
-
-;;
-;;; Email config
-
+(require 'notmuch-mua)
+(global-set-key [remap compose-mail] #'+notmuch/compose)
 (after! notmuch
   (set-popup-rule! "^\\*notmuch-hello" :ignore t)
   (setq notmuch-multipart/alternative-discouraged '("text/plain" "multipart/related"))
@@ -150,27 +115,23 @@
   (setq notmuch-address-command "~/.scripts/gook")
   (map!
    :map (notmuch-search-mode-map notmuch-tree-mode-map notmuch-show-mode-map)
-   :nv [remap evil-undo] #'notmuch-tag-undo
-   :nv [remap evil-ex-search-next] #'notmuch-tag-jump)
+   :nv [remap evil-undo] #'notmuch-tag-undo)
 
   (defun +notmuch/search-trash ()
     "Flag the message."
     (interactive)
     (notmuch-search-remove-tag '("-inbox" "-unread"))
-    (evil-collection-notmuch-toggle-tag "trash" "search")
-    (notmuch-tree-next-message))
+    (evil-collection-notmuch-toggle-tag "trash" "search" #'notmuch-tree-next-message))
   (defun +notmuch/show-trash ()
     "Flag the message."
     (interactive)
     (notmuch-show-remove-tag'("-inbox" "-unread"))
-    (evil-collection-notmuch-toggle-tag "trash" "show")
-    (notmuch-show-next-thread-show))
+    (evil-collection-notmuch-toggle-tag "trash" "show" #'notmuch-show-next-thread-show))
   (defun +notmuch/tree-trash ()
     "Flag the message."
     (interactive)
     (notmuch-tree-remove-tag '("-inbox" "-unread"))
-    (evil-collection-notmuch-toggle-tag "trash" "tree")
-    (notmuch-tree-next-message))
+    (evil-collection-notmuch-toggle-tag "trash" "tree"))
   (global-set-key [remap evil-collection-notmuch-tree-toggle-delete] #'+notmuch/tree-trash)
   (global-set-key [remap evil-collection-notmuch-show-toggle-delete] #'+notmuch/show-trash)
   (global-set-key [remap evil-collection-notmuch-search-toggle-delete] #'+notmuch/search-trash)
@@ -178,57 +139,30 @@
     "Flag the message."
     (interactive)
     (notmuch-search-remove-tag '("-inbox" "-unread"))
-    (evil-collection-notmuch-toggle-tag "flagged" "search")
-    (notmuch-tree-next-message))
+    (evil-collection-notmuch-toggle-tag "flagged" "search" #'notmuch-tree-next-message))
   (defun +notmuch/show-flagged ()
     "Flag the message."
     (interactive)
     (notmuch-show-remove-tag'("-inbox" "-unread"))
-    (evil-collection-notmuch-toggle-tag "flagged" "show")
-    (notmuch-show-next-thread-show))
+    (evil-collection-notmuch-toggle-tag "flagged" "show" #'notmuch-show-next-thread-show))
   (defun +notmuch/tree-flagged ()
     "Flag the message."
     (interactive)
     (notmuch-tree-remove-tag '("-inbox" "-unread"))
-    (evil-collection-notmuch-toggle-tag "flagged" "tree")
-    (notmuch-tree-next-message))
+    (evil-collection-notmuch-toggle-tag "flagged" "tree"))
   (global-set-key [remap evil-collection-notmuch-tree-toggle-flagged] #'+notmuch/tree-flagged)
   (global-set-key [remap evil-collection-notmuch-show-toggle-flagged] #'+notmuch/show-flagged)
   (global-set-key [remap evil-collection-notmuch-search-toggle-flagged] #'+notmuch/search-flagged))
 
-;;
-;;; Spelling: avoid tis
-
-;; https://github.com/minad/jinx/
-;; Faster and support multiple dictionaries out-of-the-box
 (use-package! jinx
   :general ([remap ispell-word] #'jinx-correct)
   :init
   (after! evil
     (global-set-key [remap evil-next-flyspell-error] #'jinx-next)
     (global-set-key [remap evil-prev-flyspell-error] #'jinx-previous))
-  (setq jinx-languages "fr_FR en_US en_GB"))
+  (setq jinx-languages "fr_FR en_US"))
 
 (add-hook! (prog-mode text-mode) #'jinx-mode )
-
-;;
-;;; Chezmoi
-
-;; dotfiles management
-(use-package! chezmoi
-  :commands chezmoi-find
-  :init
-  (map! :leader
-        :desc "Dotfiles" "f m" #'chezmoi-find)
-  (add-to-list 'auto-minor-mode-alist '(".*chezmoi.*" . chezmoi-mode)))
-
-;;
-;;; Calendar
-
-;; (setq      org-gcal-fetch-file-alist '(("frederic.willem@gmail.com" .  "~/org/gtd/calendar.org")))
-
-;;
-;;; Evil
 
 (after! evil
   (defun +evil-paste-above ()
@@ -247,13 +181,80 @@
    "[ p" #'+evil-paste-above
    "] p" #'+evil-paste-below ))
 
-;; (require 'ol)
-(setq org-contacts-files `(,(expand-file-name (concat org-directory "contacts.org"))))
-
+(setq org-contacts-files `(,(expand-file-name (concat org-directory "contacts.org"))
+                           ,(expand-file-name (concat org-directory "contacts-maman.org"))))
+(setq org-contacts-matcher
+      "N<>\"\"|EMAIL<>\"\"|ALIAS<>\"\"|PHONE<>\"\"|ADDRESS<>\"\"|BIRTHDAY<>\"\"")
 (add-load-path! "~/.config/doom/lisp/")
 (require 'gtd)
-
+(use-package! org-contacts
+  :commands org-contacts-agenda)
+;; (map!
+;;  :mode ( text-mode prog-mode )
+;;  :gi "TAB"   #'yasnippet-capf
+;;  :gi "<tab>" #'yasnippet-capf)
 (map!
- :mode ( text-mode prog-mode )
- :gi "TAB"   #'yasnippet-capf
- :gi "<tab>" #'yasnippet-capf)
+ :leader
+ :desc "Org contacts" "o c" #'org-contacts-agenda)
+
+;; Bind your key
+(map! :map notmuch-search-mode-map
+      :n "K" #'notmuch-tag-jump)
+(map! :map dired-mode-map
+      :n "K" #'dired-do-kill-lines)
+;; Optionally re-bind documentation to different key:
+(map! :nv "gK"  #'+lookup/documentation)
+(defhydra hydra-smartparens ()
+  "Smartparens"
+  ("q" nil)
+
+  ;; Wrapping
+  ("(" (lambda (_) (interactive "P") (sp-wrap-with-pair "(")))
+  ("{" (lambda (_) (interactive "P") (sp-wrap-with-pair "{")))
+  ("'" (lambda (_) (interactive "P") (sp-wrap-with-pair "'")))
+  ("\"" (lambda (_) (interactive "P") (sp-wrap-with-pair "\"")))
+
+  ("w" (lambda (_) (interactive "P") (sp-wrap-with-pair "(")) "wrap")
+  ("W" sp-unwrap-sexp)
+
+  ;; Movement
+  ("l" sp-next-sexp)
+  ("h" sp-backward-sexp)
+  ("j" sp-down-sexp)
+  ("k" sp-backward-up-sexp)
+
+  ("L" sp-forward-symbol)
+  ("H" sp-backward-symbol)
+
+  ("^" sp-beginning-of-sexp)
+  ("$" sp-end-of-sexp)
+
+  ("t" sp-transpose-sexp "transpose")
+  ("u" undo-tree-undo "undo")
+
+  ("y" sp-copy-sexp "copy")
+  ("d" sp-kill-sexp "delete")
+
+  ("s" sp-forward-slurp-sexp "slurp")
+  ("S" sp-backward-slurp-sexp)
+
+  ("b" sp-forward-barf-sexp "barf")
+  ("B" sp-backward-barf-sexp)
+
+  ("v" sp-select-next-thing "select")
+  ("V" sp-select-previous-thing))
+(map! :localleader
+        :mode writegood-mode
+        "g" #'writegood-grade-level
+        "r" #'writegood-reading-ease)
+
+(defun doom-project-commander (dir)
+  "Jump to a file in DIR (searched recursively).
+
+If DIR is not a project, it will be indexed (but not cached)."
+  (unless (file-directory-p dir)
+    (error "Directory %S does not exist" dir))
+  (unless (file-readable-p dir)
+    (error "Directory %S isn't readable" dir))
+  (projectile-commander))
+(setq! +workspaces-switch-project-function 'doom-project-commander)

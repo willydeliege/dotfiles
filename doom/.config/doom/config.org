@@ -1,8 +1,16 @@
-;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+#+title: Doom literate config
 
+* File Headline
+#+begin_src emacs-lisp :tangle yes
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
+#+end_src
+* User informations
+#+begin_src emacs-lisp :tangle yes
 (setq user-full-name "Frédéric Willem"
       user-mail-address "frederic.willem@gmail.com")
-
+#+end_src
+* Calendar/holidays
+#+begin_src emacs-lisp :tangle yes
 (setq calendar-location-name "Saint-Nicolas, BE"
       calendar-latitude 50.628
       calendar-longitude 5.516)
@@ -10,6 +18,11 @@
  '(holiday-bahai-holidays nil)
  '(holiday-hebrew-holidays nil)
  '(holiday-islamic-holidays nil))
+#+end_src
+
+
+* UI and appearance
+#+begin_src emacs-lisp :tangle yes
 
 (setq doom-font "FiraCode Nerd Font-12")
 ;; doom-symbol-font "Nerd Font Symbol")
@@ -21,7 +34,14 @@
 (setq display-line-numbers-type 'relative)
 
 (+global-word-wrap-mode +1)
+#+end_src
 
+#+RESULTS:
+: t
+
+* Org mode
+If you use `org' and don't want your org files in the default location below, change `org-directory'. It must be set before org loads!
+#+begin_src emacs-lisp :tangle yes
 (setq org-directory "~/org/")
 (setq org-agenda-files (list "~/org/gtd"))
 (setq denote-directory org-directory)
@@ -90,17 +110,33 @@
 (defvar org-gtd-archive-file "~/org/gtd/_gtd_archive_2024")
 (setq org-archive-location (concat org-gtd-archive-file "::datetree/"))
 (setq org-log-done 'time)
+#+end_src
 
+* General defaults
+#+begin_src emacs-lisp :tangle yes
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
 (setq bookmark-default-file "~/.config/doom/bookmarks" )
+#+end_src
 
+* Completions
+#+begin_src emacs-lisp :tangle yes
 (setq projectile-project-search-path '(( "~/Repos/" . 1 )))
 (after! orderless
   (add-to-list 'completion-styles 'flex t))
 (after! corfu
   (setq corfu-preselect 'directory))
-
+#+end_src
+* Mail config
+- [[https://github.com/gauteh/lieer][lieer]] is used to communicate with gmail
+  #+begin_src shell :tangle no
+paru -S lieer-git
+  #+end_src
+- [[https://gitlab.com/goobook/goobook][GooBook]] is used for contact management
+  #+begin_src shell :tangle no
+paru -S goobook
+  #+end_src
+#+begin_src emacs-lisp :tangle yes
 (require 'notmuch-mua)
 (global-set-key [remap compose-mail] #'+notmuch/compose)
 (after! notmuch
@@ -153,7 +189,13 @@
   (global-set-key [remap evil-collection-notmuch-tree-toggle-flagged] #'+notmuch/tree-flagged)
   (global-set-key [remap evil-collection-notmuch-show-toggle-flagged] #'+notmuch/show-flagged)
   (global-set-key [remap evil-collection-notmuch-search-toggle-flagged] #'+notmuch/search-flagged))
+#+end_src
+* Spelling
+Spelling: avoid tis
 
+https://github.com/minad/jinx/
+Faster and support multiple dictionaries out-of-the-box
+#+begin_src emacs-lisp :tangle yes
 (use-package! jinx
   :general ([remap ispell-word] #'jinx-correct)
   :init
@@ -163,7 +205,10 @@
   (setq jinx-languages "fr_FR en_US"))
 
 (add-hook! (prog-mode text-mode) #'jinx-mode )
+#+end_src
 
+* Evil
+#+begin_src emacs-lisp :tangle yes
 (after! evil
   (defun +evil-paste-above ()
     "Paste the line above."
@@ -180,7 +225,10 @@
    :map evil-normal-state-map
    "[ p" #'+evil-paste-above
    "] p" #'+evil-paste-below ))
+#+end_src
 
+* Org contacts
+#+begin_src emacs-lisp :tangle yes
 (setq org-contacts-files `(,(expand-file-name (concat org-directory "contacts.org"))
                            ,(expand-file-name (concat org-directory "contacts-maman.org"))))
 (setq org-contacts-matcher
@@ -196,6 +244,9 @@
 (map!
  :leader
  :desc "Org contacts" "o c" #'org-contacts-agenda)
+#+end_src
+
+#+begin_src emacs-lisp :tangle yes
 
 ;; Bind your key
 (map! :map notmuch-search-mode-map
@@ -247,3 +298,20 @@
         :mode writegood-mode
         "g" #'writegood-grade-level
         "r" #'writegood-reading-ease)
+#+end_src
+#+begin_src emacs-lisp :tangle yes
+
+(defun doom-project-commander (dir)
+  "Jump to a file in DIR (searched recursively).
+
+If DIR is not a project, it will be indexed (but not cached)."
+  (unless (file-directory-p dir)
+    (error "Directory %S does not exist" dir))
+  (unless (file-readable-p dir)
+    (error "Directory %S isn't readable" dir))
+  (projectile-commander))
+(setq! +workspaces-switch-project-function 'doom-project-commander)
+#+end_src
+
+#+RESULTS:
+: doom-project-commander
