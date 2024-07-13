@@ -309,6 +309,8 @@ Faster and support multiple dictionaries out-of-the-box
         "g" #'writegood-grade-level
         "r" #'writegood-reading-ease)
 #+end_src
+
+* Projects
 #+begin_src emacs-lisp :tangle yes
 
 (defun doom-project-commander (dir)
