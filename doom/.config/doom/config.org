@@ -104,6 +104,14 @@ If you use `org' and don't want your org files in the default location below, ch
          ((agenda "" nil)
           (todo "NEXT" nil))
          nil)))
+(add-to-list 'org-agenda-custom-commands
+             '("d" "Weekly review"
+               agenda ""
+               ((org-agenda-start-day "-14d")
+                (org-agenda-span 14)
+                (org-agenda-start-on-weekday 1)
+                (org-agenda-start-with-log-mode '(closed))
+                (org-agenda-skip-function))))
 (defvar org-gtd-archive-file "~/org/gtd/_gtd_archive_2024")
 (setq org-archive-location (concat org-gtd-archive-file "::datetree/"))
 (setq org-log-done 'time)
