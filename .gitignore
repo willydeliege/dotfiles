@@ -5,3 +5,4 @@
 /.local/share/user-places.xbel.tbcache
 /.local/share/zoxide/
 /.local/share/*.xbel
+/doom/.config/doom/config.el
