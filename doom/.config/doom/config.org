@@ -256,13 +256,20 @@ Faster and support multiple dictionaries out-of-the-box
  :desc "Org contacts" "o c" #'org-contacts-agenda)
 #+end_src
 
+* Dired related
+#+begin_src emacs-lisp :tangle yes
+(map! :map search-map
+      "g" #'fd-grep-dired
+      "n" #'fd-name-dired)
+(map! :map dired-mode-map
+      :n "K" #'dired-do-kill-lines)
+#+end_src
+
 #+begin_src emacs-lisp :tangle yes
 
 ;; Bind your key
 (map! :map notmuch-search-mode-map
       :n "K" #'notmuch-tag-jump)
-(map! :map dired-mode-map
-      :n "K" #'dired-do-kill-lines)
 ;; Optionally re-bind documentation to different key:
 (map! :nv "gK"  #'+lookup/documentation)
 (defhydra hydra-smartparens ()
