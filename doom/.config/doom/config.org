@@ -36,9 +36,6 @@
 (+global-word-wrap-mode +1)
 #+end_src
 
-#+RESULTS:
-: t
-
 * Org mode
 If you use `org' and don't want your org files in the default location below, change `org-directory'. It must be set before org loads!
 #+begin_src emacs-lisp :tangle yes
@@ -237,10 +234,6 @@ Faster and support multiple dictionaries out-of-the-box
 (require 'gtd)
 (use-package! org-contacts
   :commands org-contacts-agenda)
-;; (map!
-;;  :mode ( text-mode prog-mode )
-;;  :gi "TAB"   #'yasnippet-capf
-;;  :gi "<tab>" #'yasnippet-capf)
 (map!
  :leader
  :desc "Org contacts" "o c" #'org-contacts-agenda)
@@ -312,6 +305,3 @@ If DIR is not a project, it will be indexed (but not cached)."
   (projectile-commander))
 (setq! +workspaces-switch-project-function 'doom-project-commander)
 #+end_src
-
-#+RESULTS:
-: doom-project-commander
