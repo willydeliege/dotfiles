@@ -163,8 +163,17 @@ paru -S goobook
   (setq message-send-mail-function 'message-send-mail-with-sendmail)
   (require 'notmuch-address)
   (setq notmuch-address-command "~/.scripts/gook")
+
+  (setq notmuch-saved-searches
+        '((:name "inbox" :query "tag:inbox" :key "i")
+          (:name "unread" :query "tag:unread" :key "u")
+          (:name "flagged" :query "tag:flagged" :key "f")
+          (:name "sent" :query "tag:sent" :key "t")
+          (:name "drafts" :query "tag:draft" :key "d")
+          (:name "all" :query "not tag:trash and not tag:deleted and not tag:spam and not tag:sent" :key "a" :search-type tree)))
   (map!
    :map (notmuch-search-mode-map notmuch-tree-mode-map notmuch-show-mode-map)
+   :n "K" #'notmuch-tag-jump
    :nv [remap evil-undo] #'notmuch-tag-undo)
 
   (defun +notmuch/search-trash ()
@@ -268,8 +277,6 @@ Faster and support multiple dictionaries out-of-the-box
 #+begin_src emacs-lisp :tangle yes
 
 ;; Bind your key
-(map! :map notmuch-search-mode-map
-      :n "K" #'notmuch-tag-jump)
 ;; Optionally re-bind documentation to different key:
 (map! :nv "gK"  #'+lookup/documentation)
 (defhydra hydra-smartparens ()
