@@ -123,6 +123,23 @@ If you use `org' and don't want your org files in the default location below, ch
   (add-to-list 'completion-styles 'flex t))
 (after! corfu
   (setq corfu-preselect 'directory))
+
+(map! :map ctl-x-map
+      "p"  #'completion-at-point ;; capf
+      "t"  #'complete-tag        ;; etags
+      "d"  #'cape-dabbrev        ;; or dabbrev-completion
+      "h"  #'cape-history
+      ":"  #'cape-emoji
+      "f"  #'cape-file
+      "k"  #'cape-keyword
+      "s"  #'cape-symbol
+      "a"  #'cape-abbrev
+      "l"  #'cape-line
+      "y"  #'yasnippet-capf
+      "w"  #'cape-dict
+      "^"  #'cape-tex
+      "&"  #'cape-sgml
+      "r"  #'cape-rfc1345)
 #+end_src
 * Mail config
 - [[https://github.com/gauteh/lieer][lieer]] is used to communicate with gmail
