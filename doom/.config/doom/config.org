@@ -292,60 +292,77 @@ Faster and support multiple dictionaries out-of-the-box
 #+end_src
 
 #+begin_src emacs-lisp :tangle yes
-
 ;; Bind your key
 ;; Optionally re-bind documentation to different key:
 (map! :nv "gK"  #'+lookup/documentation)
-(defhydra hydra-smartparens ()
-  "Smartparens"
-  ("q" nil)
+(after! smartparens
+  (require 'hydra)
+  (defhydra hydra-smartparens (:hint nil)
+    "
+ Moving^^^^                       Slurp & Barf^^   Wrapping^^            Sexp juggling^^^^               Destructive
+------------------------------------------------------------------------------------------------------------------------
+ [_a_] beginning  [_n_] down      [_h_] bw slurp   [_R_]   rewrap        [_S_] split   [_t_] transpose   [_c_] change inner  [_w_] copy
+ [_e_] end        [_N_] bw down   [_H_] bw barf    [_u_]   unwrap        [_s_] splice  [_A_] absorb      [_C_] change outer
+ [_f_] forward    [_p_] up        [_l_] slurp      [_U_]   bw unwrap     [_r_] raise   [_E_] emit        [_k_] kill          [_g_] quit
+ [_b_] backward   [_P_] bw up     [_L_] barf       [_(__{__[_] wrap (){}[]   [_j_] join    [_o_] convolute   [_K_] bw kill       [_q_] quit"
+    ;; Moving
+    ("a" sp-beginning-of-sexp)
+    ("e" sp-end-of-sexp)
+    ("f" sp-forward-sexp)
+    ("b" sp-backward-sexp)
+    ("n" sp-down-sexp)
+    ("N" sp-backward-down-sexp)
+    ("p" sp-up-sexp)
+    ("P" sp-backward-up-sexp)
 
-  ;; Wrapping
-  ("(" (lambda (_) (interactive "P") (sp-wrap-with-pair "(")))
-  ("{" (lambda (_) (interactive "P") (sp-wrap-with-pair "{")))
-  ("'" (lambda (_) (interactive "P") (sp-wrap-with-pair "'")))
-  ("\"" (lambda (_) (interactive "P") (sp-wrap-with-pair "\"")))
+    ;; Slurping & barfing
+    ("h" sp-backward-slurp-sexp)
+    ("H" sp-backward-barf-sexp)
+    ("l" sp-forward-slurp-sexp)
+    ("L" sp-forward-barf-sexp)
 
-  ("w" (lambda (_) (interactive "P") (sp-wrap-with-pair "(")) "wrap")
-  ("W" sp-unwrap-sexp)
+    ;; Wrapping
+    ("R" sp-rewrap-sexp)
+    ("u" sp-unwrap-sexp)
+    ("U" sp-backward-unwrap-sexp)
+    ("(" sp-wrap-round)
+    ("{" sp-wrap-curly)
+    ("[" sp-wrap-square)
 
-  ;; Movement
-  ("l" sp-next-sexp)
-  ("h" sp-backward-sexp)
-  ("j" sp-down-sexp)
-  ("k" sp-backward-up-sexp)
+    ;; Sexp juggling
+    ("S" sp-split-sexp)
+    ("s" sp-splice-sexp)
+    ("r" sp-raise-sexp)
+    ("j" sp-join-sexp)
+    ("t" sp-transpose-sexp)
+    ("A" sp-absorb-sexp)
+    ("E" sp-emit-sexp)
+    ("o" sp-convolute-sexp)
 
-  ("L" sp-forward-symbol)
-  ("H" sp-backward-symbol)
+    ;; Destructive editing
+    ("c" sp-change-inner :exit t)
+    ("C" sp-change-enclosing :exit t)
+    ("k" sp-kill-sexp)
+    ("K" sp-backward-kill-sexp)
+    ("w" sp-copy-sexp)
 
-  ("^" sp-beginning-of-sexp)
-  ("$" sp-end-of-sexp)
-
-  ("t" sp-transpose-sexp "transpose")
-  ("u" undo-tree-undo "undo")
-
-  ("y" sp-copy-sexp "copy")
-  ("d" sp-kill-sexp "delete")
-
-  ("s" sp-forward-slurp-sexp "slurp")
-  ("S" sp-backward-slurp-sexp)
-
-  ("b" sp-forward-barf-sexp "barf")
-  ("B" sp-backward-barf-sexp)
-
-  ("v" sp-select-next-thing "select")
-  ("V" sp-select-previous-thing))
-(map! :localleader
-        :mode writegood-mode
-        "g" #'writegood-grade-level
-        "r" #'writegood-reading-ease)
+    ("q" nil)
+    ("g" nil)))
+(map! :map prog-mode-map
+      :nv "z p" #'hydra-smartparens/body)
+;; TODO:  add keybinds
+(after! magit
+  (setq magit-diff-refine-hunk 'all))
+(setq magit-todos-rg-extra-args '("--hidden"))
 #+end_src
 
-* Projects
 #+begin_src emacs-lisp :tangle yes
+(map!
+        :map corfu-map
+        :i "C-g" #'corfu-quit)
 
 (defun doom-project-commander (dir)
-  "Jump to a file in DIR (searched recursively).
+  "Open projectile-commander for projects in DIR.
 
 If DIR is not a project, it will be indexed (but not cached)."
   (unless (file-directory-p dir)
