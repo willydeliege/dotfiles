@@ -7,3 +7,9 @@
 /.local/share/*.xbel
 /doom/.config/doom/config.el
 /application/.local/share/zoxide/
+/application/.local/share/kpeople/
+/application/.local/share/rofimoji/
+/application/.local/share/sddm/
+*.xbel
+*.bak
+*.tbcache
