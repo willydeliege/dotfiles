@@ -447,8 +447,8 @@ window#waybar.empty #window {
     -gtk-icon-effect: highlight;
 }
 
-#custom-notification,
 #submap,
+#custom-notification,
 #custom-weather {
     background-color: @backgroundlight;
     font-size: 16px;
