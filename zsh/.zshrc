@@ -2,24 +2,28 @@ if [ ! -d ~/.oh-my-zsh/custom/plugins/exa-zsh ]; then
     git clone https://github.com/MohamedElashri/exa-zsh ~/.oh-my-zsh/custom/plugins/exa-zsh
 fi
 
-if [ ! -d ~/.oh-my-zsh/custom/plugins/alias-tips ] ; then
-git clone https://github.com/djui/alias-tips.git ~/.oh-my-zsh/custom/plugins/alias-tips
+if [ ! -d ~/.oh-my-zsh/custom/plugins/alias-tips ]; then
+    git clone https://github.com/djui/alias-tips.git ~/.oh-my-zsh/custom/plugins/alias-tips
 fi
 
-if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ] ; then
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ]; then
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 fi
-if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-autopair ] ; then
-git clone https://github.com/hlissner/zsh-autopair.git ~/.oh-my-zsh/custom/plugins/zsh-autopair
+
+if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-autopair ]; then
+    git clone https://github.com/hlissner/zsh-autopair.git ~/.oh-my-zsh/custom/plugins/zsh-autopair
 fi
-if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ] ; then
-git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+
+if [ ! -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ]; then
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 fi
-if [ ! -d ~/.oh-my-zsh/custom/plugins/fzf-tab  ] ; then
-git clone https://github.com/Aloxaf/fzf-tab ~/.oh-my-zsh/custom/plugins/fzf-tab
+
+if [ ! -d ~/.oh-my-zsh/custom/plugins/fzf-tab ]; then
+    git clone https://github.com/Aloxaf/fzf-tab ~/.oh-my-zsh/custom/plugins/fzf-tab
 fi
-if [ ! -d ~/.oh-my-zsh/custom/plugins/fzf-tab-source ] ; then
- git clone https://github.com/Freed-Wu/fzf-tab-source.git ~/.oh-my-zsh/custom/plugins/fzf-tab-source
+
+if [ ! -d ~/.oh-my-zsh/custom/plugins/fzf-tab-source ]; then
+    git clone https://github.com/Freed-Wu/fzf-tab-source.git ~/.oh-my-zsh/custom/plugins/fzf-tab-source
 fi
 export PATH="$PATH:/home/willefi/.local/bin:/home/willefi/.config/emacs/bin"
 
@@ -34,7 +38,7 @@ plugins=(
     archlinux
     globalias alias-tips
     fzf-tab-source
-    fzf-tab  fzf
+    fzf-tab fzf
     zsh-autopair
     zsh-syntax-highlighting zsh-autosuggestions
     cp fd
@@ -43,13 +47,10 @@ plugins=(
 )
 source /usr/share/doc/find-the-command/ftc.zsh
 
-
-
-
 source /home/willefi/.oh-my-zsh/oh-my-zsh.sh
 zstyle ':fzf-tab:sources' config-directory ~/.zsh-sources/
 zstyle ':fzf-tab:complete:-command-:*' fzf-preview \
-  ¦ '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}"'
+    ¦ '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}"'
 # Ctrl+Backspace: kill the word backward
 bindkey -M emacs '^H' backward-kill-word
 bindkey -M viins '^H' backward-kill-word
@@ -82,7 +83,6 @@ alias cat="bat"
 # yay is funnier to type
 alias yay="paru"
 
-
 alias yaconf='paru -P --stats'
 alias yaclean='paru -Sc'
 alias yaclr='paru -Scc'
@@ -112,5 +112,5 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # Created by `pipx`
 eval "$(register-python-argcomplete pipx)"
-gpg-connect-agent updatestartuptty /bye > /dev/null 
+gpg-connect-agent updatestartuptty /bye >/dev/null
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
