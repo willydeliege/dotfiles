@@ -37,7 +37,8 @@
         "custom/updates",
         "custom/notification",
         "clock",
-        "custom/weather"
+        "custom/weather",
+        "hyprland/submap"
     ],
 
     // Modules Right

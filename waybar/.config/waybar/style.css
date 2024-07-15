@@ -448,6 +448,7 @@ window#waybar.empty #window {
 }
 
 #custom-notification,
+#submap,
 #custom-weather {
     background-color: @backgroundlight;
     font-size: 16px;
