@@ -104,7 +104,7 @@
   (setq denote-directory org-directory))
 (map! :leader "n d" nil)
 (map! :leader
-      :prefix ("n d" . "Denote"))
+      :prefix ("n d" . "denote"))
 (map! :leader
       "n d d" #'denote)
 
@@ -117,23 +117,6 @@
   (add-to-list 'completion-styles 'flex t))
 (after! corfu
   (setq corfu-preselect 'directory))
-
-(map! :map ctl-x-map
-      "p"  #'completion-at-point ;; capf
-      "t"  #'complete-tag        ;; etags
-      "d"  #'cape-dabbrev        ;; or dabbrev-completion
-      "h"  #'cape-history
-      ":"  #'cape-emoji
-      "f"  #'cape-file
-      "k"  #'cape-keyword
-      "s"  #'cape-symbol
-      "a"  #'cape-abbrev
-      "l"  #'cape-line
-      "y"  #'yasnippet-capf
-      "w"  #'cape-dict
-      "^"  #'cape-tex
-      "&"  #'cape-sgml
-      "r"  #'cape-rfc1345)
 
 (require 'notmuch-mua)
 (global-set-key [remap compose-mail] #'+notmuch/compose)

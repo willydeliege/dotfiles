@@ -1,15 +1,1 @@
-/.local/share/fonts/
-/.local/share/sddm/
-/.local/share/user-places.xbel
-/.local/share/user-places.xbel.bak
-/.local/share/user-places.xbel.tbcache
-/.local/share/zoxide/
-/.local/share/*.xbel
-/doom/.config/doom/config.el
-/application/.local/share/zoxide/
-/application/.local/share/kpeople/
-/application/.local/share/rofimoji/
-/application/.local/share/sddm/
-*.xbel
-*.bak
-*.tbcache
+/application/.local/share/
