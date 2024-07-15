@@ -51,7 +51,9 @@
 
 (package! denote)
 (package! modus-themes)
+(package! ef-themes)
 (package! jinx)
 ;; needed by org-noter
 (package! nov)
 (package! djvu)
+(package! consult-denote)
