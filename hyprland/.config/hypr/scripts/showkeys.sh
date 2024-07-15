@@ -3,7 +3,7 @@
 # Format JSON proper;y
 JSON=$(hyprkeys --from-ctl --json | jq -r --slurp "[.[]][0]");
 
-USER_SELECTED=$(echo $JSON | jq -r 'range(0, length) as $i | "\($i) \(.[$i].mods) \(.[$i].key) \(.[$i].dispatcher) \(.[$i].arg)"' | rofi -dmenu -p 'Keybinds' -config ~/.config/rofi/config-compact.rasi | awk -F ' ' '{print $1}')
+USER_SELECTED=$(echo "$JSON" | jq -r 'range(0, length) as $i | "\($i) \(.[$i].mods) \(.[$i].key) \(.[$i].dispatcher) \(.[$i].arg)"' | rofi -dmenu -p 'Keybinds' -config ~/.config/rofi/config-compact.rasi | awk -F ' ' '{print $1}')
 
 if [ -z "$USER_SELECTED" ]; then
     exit 0;
