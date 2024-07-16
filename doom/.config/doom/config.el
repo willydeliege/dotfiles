@@ -22,7 +22,8 @@
 
 (+global-word-wrap-mode +1)
 ;; Colemak friendly au-keys
-(setq aw-keys '(?a ?r ?s ?t ?n ?e ?i ?o))
+(after! ace-window
+  (setq aw-keys '(?a ?r ?s ?t ?n ?e ?i ?o)))
 
 (setq org-directory "~/org/")
 (setq org-agenda-files (list "~/org/gtd"))
@@ -40,6 +41,9 @@
         '(
           (sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "|" "DONE(d)" "CNCLD(c@)")
           (sequence "PROJECT(p)" "|" "KILLED(k@)")))
+  (add-to-list 'org-todo-keyword-faces '("NEXT" . +org-todo-active))
+  (add-to-list 'org-todo-keyword-faces '("CNCLD" . +org-todo-cancel))
+  (add-to-list 'org-todo-keyword-faces '("KILLED" . +org-todo-cancel))
   (setq org-tag-alist '(("@work") ("@home") ("@phone") ("@computer") ("@online") ("@errand")))
   (setq org-gtd-inbox-file "~/org/gtd/0-inbox.org")
   (add-to-list 'org-capture-templates

@@ -58,6 +58,9 @@ If you use `org' and don't want your org files in the default location below, ch
         '(
           (sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "|" "DONE(d)" "CNCLD(c@)")
           (sequence "PROJECT(p)" "|" "KILLED(k@)")))
+  (add-to-list 'org-todo-keyword-faces '("NEXT" . +org-todo-active))
+  (add-to-list 'org-todo-keyword-faces '("CNCLD" . +org-todo-cancel))
+  (add-to-list 'org-todo-keyword-faces '("KILLED" . +org-todo-cancel))
   (setq org-tag-alist '(("@work") ("@home") ("@phone") ("@computer") ("@online") ("@errand")))
   (setq org-gtd-inbox-file "~/org/gtd/0-inbox.org")
   (add-to-list 'org-capture-templates
