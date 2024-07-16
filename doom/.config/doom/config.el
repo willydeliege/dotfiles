@@ -21,6 +21,8 @@
 (setq display-line-numbers-type 'relative)
 
 (+global-word-wrap-mode +1)
+;; Colemak friendly au-keys
+(setq aw-keys '(?a ?r ?s ?t ?n ?e ?i ?o))
 
 (setq org-directory "~/org/")
 (setq org-agenda-files (list "~/org/gtd"))
