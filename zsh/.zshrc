@@ -48,6 +48,7 @@ plugins=(
 source /usr/share/doc/find-the-command/ftc.zsh
 
 source /home/willefi/.oh-my-zsh/oh-my-zsh.sh
+zstyle ':completion:*' rehash true
 zstyle ':fzf-tab:sources' config-directory ~/.zsh-sources/
 zstyle ':fzf-tab:complete:-command-:*' fzf-preview \
     ¦ '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}"'
@@ -80,31 +81,8 @@ alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 # Better cat
 alias cat="bat"
 
-# yay is funnier to type
-alias yay="paru"
-
-alias yaconf='paru -P --stats'
-alias yaclean='paru -Sc'
-alias yaclr='paru -Scc'
-alias yaupg='paru -Syu'
-alias yasu='paru -Syu --noconfirm'
-alias yain='paru -S'
-alias yains='paru -U'
-alias yare='paru -R'
-alias yarem='paru -Rns'
-alias yarep='paru -Si'
-alias yareps='paru -Ss'
-alias yaloc='paru -Qi'
-alias yalocs='paru -Qs'
-alias yalst='paru -Qe'
-alias yaorph='paru -Qtd'
-alias yainsd='paru -S --asdeps'
-alias yamir='paru -Syy'
-alias yaupd="paru -Sy"
-alias zshrc="source ~/.zshrc"
 
 eval "$(zoxide init zsh)"
-eval "$(starship init zsh)"
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
@@ -114,3 +92,5 @@ export SDKMAN_DIR="$HOME/.sdkman"
 eval "$(register-python-argcomplete pipx)"
 gpg-connect-agent updatestartuptty /bye >/dev/null
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+
+eval "$(starship init zsh)"
