@@ -10,7 +10,7 @@ __      _| | ___   __ _  ___  _   _| |_
  --------------------------------------------------------
  * Import Pywal colors 
  * ----------------------------------------------------- */
-@import "../../.cache/wal/colors-wlogout.css";
+@import "/home/willefi/.cache/wal/colors-wlogout.css";
 
 /* -----------------------------------------------------
  * General 
@@ -49,9 +49,9 @@ button {
 button:focus,
 button:active,
 button:hover {
-	color: @color11;
+	color: @color14;
 	background-color: rgba(12, 12, 12, 0.5);
-	border: 3px solid @color11;
+	border: 3px solid @color14;
 }
 
 /* 
