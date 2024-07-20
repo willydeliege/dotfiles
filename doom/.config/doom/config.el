@@ -234,6 +234,9 @@
 ;; Bind your key
 ;; Optionally re-bind documentation to different key:
 (map! :nv "gK"  #'+lookup/documentation)
+(map! :leader
+      :desc "Diff with file" "b d" #'diff-buffer-with-file)
+
 (after! smartparens
   (require 'hydra)
   (defhydra hydra-smartparens (:hint nil)
