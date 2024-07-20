@@ -10,9 +10,7 @@
 # ----------------------------------------------------- 
 
 # Cache file for holding the current wallpaper
-wallpaper_folder="$HOME/wallpaper"
-echo $wallpaper_folder
-
+wallpaper_folder="/usr/share/backgrounds/wiki-loves-earth-wallpapers"
 cache_file="$HOME/.cache/current_wallpaper"
 blurred="$HOME/.cache/blurred_wallpaper.png"
 square="$HOME/.cache/square_wallpaper.png"
@@ -25,13 +23,13 @@ blur=$(cat $blur_file)
 # Create cache file if not exists
 if [ ! -f $cache_file ] ;then
     touch $cache_file
-    echo "$wallpaper_folder/default.jpg" > "$cache_file"
+    echo "$wallpaper_folder/archlinux.png" > "$cache_file"
 fi
 
 # Create rasi file if not exists
 if [ ! -f $rasi_file ] ;then
     touch $rasi_file
-    echo "* { current-image: url(\"$wallpaper_folder/default.jpg\", height); }" > "$rasi_file"
+    echo "* { current-image: url(\"$wallpaper_folder/archlinux.png\", height); }" > "$rasi_file"
 fi
 
 current_wallpaper=$(cat "$cache_file")
@@ -45,7 +43,7 @@ case $1 in
 	    wallpaper=$current_wallpaper
             wallust run -s $current_wallpaper
         else
-	    wallpaper=$wallpaper_folder/$(ls ~/wallpaper -1 | shuf -n 1)
+	    wallpaper=$wallpaper_folder/$(ls $wallpaper_folder -1 | shuf -n 1)
             wallust run -s $wallpaper
             
         fi
@@ -54,7 +52,7 @@ case $1 in
     # Select wallpaper with rofi
     "select")
         sleep 0.2
-        selected=$( find "$wallpaper_folder" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) -exec basename {} \; | sort -R | while read rfile
+        selected=$( find "$wallpaper_folder" -maxdepth 1 -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) -exec basename {} \; | sort -R | while read -r rfile
         do
             echo -en "$rfile\x00icon\x1f$wallpaper_folder/${rfile}\n"
         done | rofi -dmenu -i -replace -config ~/.config/rofi/config-wallpaper.rasi)
@@ -67,9 +65,9 @@ case $1 in
 	echo $wallpaper
     ;;
 
-    # Randomly select wallpaper 
+    # Randomly select wallpaper
     *)
-	wallpaper=$wallpaper_folder/$(ls ~/wallpaper -1 | shuf -n 1)
+	wallpaper=$wallpaper_folder/$(ls $wallpaper_folder -1 | shuf -n 1)
         wallust run -s $wallpaper
     ;;
 
