@@ -281,7 +281,7 @@ Faster and support multiple dictionaries out-of-the-box
       :n "K" #'dired-do-kill-lines)
 #+end_src
 
-* Keybinds
+* Keybindings
 #+begin_src emacs-lisp :tangle yes
 ;; Bind your key
 ;; Optionally re-bind documentation to different key:
