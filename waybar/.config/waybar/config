@@ -24,6 +24,8 @@
     // Modules Left
     "modules-left": [
         "custom/appmenuicon",
+        "custom/empty",
+        "custom/chatgpt",
         //   "wlr/taskbar",
         //    "group/quicklinks",
         "hyprland/workspaces#me",

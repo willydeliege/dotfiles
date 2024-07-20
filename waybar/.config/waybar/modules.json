@@ -45,7 +45,7 @@
   "hyprland/window": {
     "rewrite": {
       "(.*) - Vivaldi": "$1",
-      "(.*) - GNU.*": "$1",
+      "(.*)-.*": "$1",
       "(.*) - Vivaldi Search": "$1",
       "(.*) - Outlook": "$1",
       "(.*) Microsoft Teams": "$1"
@@ -56,24 +56,6 @@
   // Empty
   "custom/empty": {
     "format": ""
-  },
-
-  // Youtube Subscriber Count
-  "custom/youtube": {
-    "format": " {}",
-    "exec": "python ~/private/youtube.py",
-    "restart-interval": 600,
-    "on-click": "chromium https://studio.youtube.com",
-    "tooltip": false
-  },
-
-  // Cliphist
-  "custom/cliphist": {
-    "format": "",
-    "on-click": "sleep 0.1 && ~/dotfiles/scripts/cliphist.sh",
-    "on-click-right": "sleep 0.1 && ~/dotfiles/scripts/cliphist.sh d",
-    "on-click-middle": "sleep 0.1 && ~/dotfiles/scripts/cliphist.sh w",
-    "tooltip": false
   },
 
   "custom/updates": {
@@ -87,53 +69,10 @@
     "exec": "waybar-updates"
   },
 
-  // Wallpaper
-  "custom/wallpaper": {
-    "format": "",
-    "on-click": "~/dotfiles/hypr/scripts/wallpaper.sh select",
-    "on-click-right": "~/dotfiles/hypr/scripts/wallpaper.sh",
-    "tooltip": false
-  },
-
-  // Waybar Themes
-  "custom/waybarthemes": {
-    "format": "",
-    "on-click": "~/dotfiles/waybar/themeswitcher.sh",
-    "tooltip": false
-  },
-
-  // Settings
-  "custom/settings": {
-    "format": "",
-    "on-click": "~/dotfiles/apps/ML4W_Dotfiles_Settings-x86_64.AppImage",
-    "tooltip": false
-  },
-
-  // Keybindings
-  "custom/keybindings": {
-    "format": "",
-    "on-click": "~/dotfiles/hypr/scripts/keybindings.sh",
-    "tooltip": false
-  },
-
-  // Filemanager Launcher
-  "custom/filemanager": {
-    "format": "",
-    "on-click": "~/dotfiles/.settings/filemanager.sh",
-    "tooltip": false
-  },
-
-  // Browser Launcher
-  "custom/browser": {
-    "format": "",
-    "on-click": "~/dotfiles/.settings/browser.sh",
-    "tooltip": false
-  },
-
   // ChatGPT Launcher
   "custom/chatgpt": {
-    "format": " ",
-    "on-click": "chromium --app=https://chat.openai.com",
+    "format": "",
+    "on-click": "brave --app=https://chat.openai.com",
     "tooltip": false
   },
 
@@ -360,7 +299,7 @@
     "format-alt": "{alt}: {}",
     "format-alt-click": "click",
     "interval": 3600,
-    "on-click": "/opt/vivaldi-bin/vivaldi --profile-directory=Default --app-id=hoapclipmeehkajmdapfjpdlhncgpmhg",
+    "on-click": "brave --app=https://weather.com/fr-BE/temps/aujour/l/c3164722dddb06bb5a48f03bd0a57cd7663c30175f7d132c24295283174d6e0e",
     "return-type": "json",
     "exec": "~/.config/hypr/scripts/Weather.py",
     "tooltip": true
