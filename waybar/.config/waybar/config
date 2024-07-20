@@ -36,7 +36,6 @@
 
     // Modules Center
     "modules-center": [
-        "custom/updates",
         "custom/notification",
         "clock",
         "custom/weather",
