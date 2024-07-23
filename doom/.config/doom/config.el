@@ -106,13 +106,18 @@
 (use-package! denote
   :defer t
   :config
- (message "FEATURE LOADED")
+  (message "FEATURE LOADED")
   (setq denote-directory org-directory))
 (map! :leader "n d" nil)
 (map! :leader
       :prefix ("n d" . "denote"))
 (map! :leader
-      "n d d" #'denote)
+      "n d d" #'denote
+      :desc "Find in notes" "n d g" #'consult-denote-grep
+      :desc "Find by name" "n d n" #'consult-denote-find)
+(map! :map org-mode-map
+      :localleader
+      :ienmv "s e" #'denote-org-extras-extract-org-subtree)
 
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
