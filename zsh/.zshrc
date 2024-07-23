@@ -32,6 +32,7 @@ export ZOXIDE_CMD_OVERRIDE="cd"
 # ZSH_THEME="crunch"
 
 plugins=(
+    systemd
     sudo zoxide
     git
     emacs
