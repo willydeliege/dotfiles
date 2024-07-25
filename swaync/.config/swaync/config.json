@@ -72,7 +72,7 @@
         },
         {
           "label": "󰌾",
-          "command": "~/.config/hypr/scripts/LockScreen.sh"
+          "command": "/home/willefi/.config/hypr/scripts/lock.sh"
         },
         {
           "label": "󰍃",
@@ -80,7 +80,7 @@
         },
         {
           "label": "󰀝",
-          "command": "~/.config/hypr/scripts/AirplaneMode.sh"
+          "command": "/home/willefi/.config/hypr/scripts/airplane-mode.sh"
         },
         {
           "label": "󰕾",
