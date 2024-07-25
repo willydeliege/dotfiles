@@ -194,17 +194,17 @@ paru -S goobook
   (defun +notmuch/search-trash ()
     "Flag the message."
     (interactive)
-    (notmuch-search-remove-tag '("-inbox" "-unread"))
+    (notmuch-search-remove-tag '("-inbox" "-flagged" "-unread"))
     (evil-collection-notmuch-toggle-tag "trash" "search" #'notmuch-tree-next-message))
   (defun +notmuch/show-trash ()
     "Flag the message."
     (interactive)
-    (notmuch-show-remove-tag'("-inbox" "-unread"))
+    (notmuch-show-remove-tag'("-inbox" "-flagged" "-unread"))
     (evil-collection-notmuch-toggle-tag "trash" "show" #'notmuch-show-next-thread-show))
   (defun +notmuch/tree-trash ()
     "Flag the message."
     (interactive)
-    (notmuch-tree-remove-tag '("-inbox" "-unread"))
+    (notmuch-tree-remove-tag '("-inbox" "-flagged" "-unread"))
     (evil-collection-notmuch-toggle-tag "trash" "tree"))
   (global-set-key [remap evil-collection-notmuch-tree-toggle-delete] #'+notmuch/tree-trash)
   (global-set-key [remap evil-collection-notmuch-show-toggle-delete] #'+notmuch/show-trash)
