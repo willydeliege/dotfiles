@@ -13,8 +13,11 @@
 
 (setq doom-font "FiraCode Nerd Font-12")
 ;; doom-symbol-font "Nerd Font Symbol")
-
-(setq doom-theme 'modus-vivendi-tinted)
+(use-package! circadian
+  :config
+  (setq circadian-themes '((:sunrise . ef-light)
+                           (:sunset  . ef-dark)))
+  (circadian-setup))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.

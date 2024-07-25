@@ -57,3 +57,4 @@
 (package! nov)
 (package! djvu)
 (package! consult-denote)
+(package! circadian)
