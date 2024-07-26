@@ -64,6 +64,7 @@ bindkey -M viins '^[[3;5~' kill-word
 bindkey -M vicmd '^[[3;5~' kill-word
 
 export EDITOR=emacs
+export SUDO_EDITOR=nvim
 
 # Aliases
 alias ce='chezmoi edit'
