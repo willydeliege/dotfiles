@@ -126,7 +126,6 @@ If you use `org' and don't want your org files in the default location below, ch
 (use-package! denote
   :defer t
   :config
-  (message "FEATURE LOADED")
   (setq denote-directory org-directory))
 (map! :leader "n d" nil)
 (map! :leader
