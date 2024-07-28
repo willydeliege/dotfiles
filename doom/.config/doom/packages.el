@@ -48,9 +48,7 @@
 ;; (unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
-
 (package! denote)
-(package! modus-themes)
 (package! ef-themes)
 (package! jinx)
 ;; needed by org-noter
