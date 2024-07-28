@@ -10,13 +10,16 @@
  '(holiday-islamic-holidays nil)
  '(lsp-warn-no-matched-clients nil)
  '(notmuch-saved-searches
-   '((:name "inbox" :query "tag:inbox not tag:trash" :key "i")
+   '((:name "inbox" :query "tag:inbox" :key "i")
+     (:name "unread" :query "tag:unread" :key "u")
      (:name "flagged" :query "tag:flagged" :key "f")
-     (:name "sent" :query "tag:sent" :key "s")
+     (:name "sent" :query "tag:sent" :key "t")
      (:name "drafts" :query "tag:draft" :key "d")
-     (:name "all" :query " not tag:trash  and not tag:spam ")))
+     (:name "all" :query "not tag:trash and not tag:deleted and not tag:spam and not tag:sent" :key "a" :search-type tree)
+     (:name "trash" :query "tag:trash")
+     (:name "spam" :query "tag:spam")))
  '(org-agenda-files
-   '("~/org/gtd/_gtd_archive_2024" "/home/willefi/org/gtd/0-inbox.org" "/home/willefi/org/gtd/Débuter avec Orgzly.org" "/home/willefi/org/gtd/calendar.org" "/home/willefi/org/gtd/lists.org" "/home/willefi/org/gtd/projects.org" "/home/willefi/org/gtd/someday.org" "/home/willefi/org/gtd/tasks.org")))
+   '("~/org/gtd/_gtd_archive_2024" "/home/willefi/org/gtd/0-inbox.org" "/home/willefi/org/gtd/calendar.org" "/home/willefi/org/gtd/projects.org" "/home/willefi/org/gtd/tasks.org")))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -28,6 +28,20 @@
 (after! ace-window
   (setq aw-keys '(?a ?r ?s ?t ?n ?e ?i ?o)))
 
+(use-package! gtd
+  :load-path "~/.config/doom/lisp"
+  :after org
+  :config
+  (defvar org-gtd-archive-file "~/org/gtd/_gtd_archive_2024")
+  (setq org-gtd-inbox-file "~/org/gtd/0-inbox.org")
+  (setq org-archive-location (concat org-gtd-archive-file "::datetree/")))
+(map! :map org-mode-map :localleader
+      (:prefix ("G" . "gtd")
+       :desc "Single task" "s" #'gtd-single-task
+       :desc "Someday/Maybe" "m" #'gtd-sometimes-maybe
+       :desc "New task in project" "t" #'gtd-new-task-in-project
+       :desc "New project" "p" #'gtd-new-project))
+
 (setq org-directory "~/org/")
 (setq org-agenda-files (list "~/org/gtd"))
 (setq org-passwords-file "~/org/password.org.gpg")
@@ -41,14 +55,12 @@
   ;; needed by org-contacts
   (require 'ol)
   (setq org-todo-keywords
-        '(
-          (sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "|" "DONE(d)" "CNCLD(c@)")
+        '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "|" "DONE(d)" "CNCLD(c@)")
           (sequence "PROJECT(p)" "|" "KILLED(k@)")))
   (add-to-list 'org-todo-keyword-faces '("NEXT" . +org-todo-active))
   (add-to-list 'org-todo-keyword-faces '("CNCLD" . +org-todo-cancel))
   (add-to-list 'org-todo-keyword-faces '("KILLED" . +org-todo-cancel))
   (setq org-tag-alist '(("@work") ("@home") ("@phone") ("@computer") ("@online") ("@errand")))
-  (setq org-gtd-inbox-file "~/org/gtd/0-inbox.org")
   (add-to-list 'org-capture-templates
                '("i" "Inbox" entry
                  (file org-gtd-inbox-file)
@@ -103,13 +115,10 @@
                 (org-agenda-start-on-weekday 1)
                 (org-agenda-start-with-log-mode '(closed))
                 (org-agenda-skip-function))))
-(defvar org-gtd-archive-file "~/org/gtd/_gtd_archive_2024")
-(setq org-archive-location (concat org-gtd-archive-file "::datetree/"))
 (setq org-log-done 'time)
 (use-package! denote
   :defer t
   :config
-  (message "FEATURE LOADED")
   (setq denote-directory org-directory))
 (map! :leader "n d" nil)
 (map! :leader
@@ -126,11 +135,12 @@
           'executable-make-buffer-file-executable-if-script-p)
 (setq bookmark-default-file "~/.config/doom/bookmarks" )
 
+(map!
+        :map corfu-map
+        :i "C-g" #'corfu-quit)
 (setq projectile-project-search-path '(( "~/Repos/" . 1 )))
 (after! orderless
   (add-to-list 'completion-styles 'flex t))
-(after! corfu
-  (setq corfu-preselect 'directory))
 
 (require 'notmuch-mua)
 (global-set-key [remap compose-mail] #'+notmuch/compose)
@@ -226,7 +236,6 @@
 (setq org-contacts-matcher
       "N<>\"\"|EMAIL<>\"\"|ALIAS<>\"\"|PHONE<>\"\"|ADDRESS<>\"\"|BIRTHDAY<>\"\"")
 (add-load-path! "~/.config/doom/lisp/")
-(require 'gtd)
 (use-package! org-contacts
   :commands org-contacts-agenda)
 (map!
@@ -304,10 +313,6 @@
 (after! magit
   (setq magit-diff-refine-hunk 'all))
 (setq magit-todos-rg-extra-args '("--hidden"))
-
-(map!
-        :map corfu-map
-        :i "C-g" #'corfu-quit)
 
 (defun doom-project-commander (dir)
   "Open projectile-commander for projects in DIR.
