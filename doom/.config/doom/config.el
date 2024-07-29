@@ -64,7 +64,7 @@
   (add-to-list 'org-capture-templates
                '("i" "Inbox" entry
                  (file org-gtd-inbox-file)
-                 "* %?\n%i\n%a"))
+                 "* %?\nCaptured On: %U\n%i\n%a"))
   (add-to-list 'org-capture-templates
                '("p" "Protocol" entry (file org-gtd-inbox-file)
                  "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?") t)
