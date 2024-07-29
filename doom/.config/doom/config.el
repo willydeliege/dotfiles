@@ -108,7 +108,7 @@
           (todo "NEXT" nil))
          nil)))
 (add-to-list 'org-agenda-custom-commands
-             '("d" "Weekly review"
+             '("w" "Weekly review"
                agenda ""
                ((org-agenda-start-day "-14d")
                 (org-agenda-span 14)
