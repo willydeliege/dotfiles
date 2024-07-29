@@ -42,6 +42,7 @@
        :desc "New task in project" "t" #'gtd-new-task-in-project
        :desc "New project" "p" #'gtd-new-project))
 
+;; If you use `org' and don't want your org files in the default location below, change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 (setq org-agenda-files (list "~/org/gtd"))
 (setq org-passwords-file "~/org/password.org.gpg")
