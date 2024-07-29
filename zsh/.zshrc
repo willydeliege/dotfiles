@@ -25,7 +25,7 @@ fi
 if [ ! -d ~/.oh-my-zsh/custom/plugins/fzf-tab-source ]; then
     git clone https://github.com/Freed-Wu/fzf-tab-source.git ~/.oh-my-zsh/custom/plugins/fzf-tab-source
 fi
-export PATH="/home/willefi/.local/bin:/home/willefi/.config/emacs/bin:$PATH"
+export PATH="/home/willefi/.local/share/gem/ruby/3.0.0/bin:/home/willefi/.local/bin:/home/willefi/.config/emacs/bin:$PATH"
 
 export ZSH="$HOME/.oh-my-zsh"
 export ZOXIDE_CMD_OVERRIDE="cd"
