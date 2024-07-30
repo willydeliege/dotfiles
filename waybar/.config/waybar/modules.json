@@ -43,13 +43,17 @@
 
   // Hyprland Window
   "hyprland/window": {
+    "format": "{}",
     "rewrite": {
       "(.*) - Vivaldi": "$1",
       "(.*)-.*": "$1",
+      "(.*)–.*": "$1",
+      "(.*)|.*": "$1",
       "(.*) - Vivaldi Search": "$1",
       "(.*) - Outlook": "$1",
       "(.*) Microsoft Teams": "$1"
     },
+    "icon": true,
     "separate-outputs": true
   },
 
@@ -134,12 +138,9 @@
 
   // Clock
   "clock": {
-    "format": "{:%H:%M - %a %Od.%Om.%y}",
-    // "timezone": "America/New_York",
+    "format": "{:%H:%M - %a %Od/%Om/%y}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    // START CLOCK FORMAT
     "format-alt": "{:%Y-%m-%d}"
-    // END CLOCK FORMAT
   },
 
   // System
@@ -151,13 +152,13 @@
   // CPU
   "cpu": {
     "format": "/ C {usage}% ",
-    "on-click": "kity -e htop"
+    "on-click": "alacritty --class update -e htop"
   },
 
   // Memory
   "memory": {
     "format": "/ M {}% ",
-    "on-click": "alacritty -e htop"
+    "on-click": "alacritty --class update -e htop"
   },
 
   // Harddisc space used
@@ -165,7 +166,7 @@
     "interval": 30,
     "format": "D {percentage_used}% ",
     "path": "/",
-    "on-click": "alacritty -e htop"
+    "on-click": "alacritty --class update -e htop"
   },
 
   "hyprland/language": {
