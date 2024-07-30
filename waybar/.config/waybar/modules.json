@@ -1,14 +1,4 @@
-//  __  __           _       _
-// |  \/  | ___   __| |_   _| | ___  ___
-// | |\/| |/ _ \ / _` | | | | |/ _ \/ __|
-// | |  | | (_) | (_| | |_| | |  __/\__ \
-// |_|  |_|\___/ \__,_|\__,_|_|\___||___/
-//
-// by Stephan Raabe (2023)
-// -----------------------------------------------------
-//
 {
-  // Workspaces
   "hyprland/workspaces": {
     "on-click": "activate",
     "active-only": false,
@@ -24,24 +14,6 @@
     }
   },
 
-  // Taskbar
-  "wlr/taskbar": {
-    "format": "{icon}",
-    "icon-size": 18,
-    "tooltip-format": "{title}",
-    "on-click": "activate",
-    "on-click-middle": "close",
-    "ignore-list": ["Alacritty"],
-    "app_ids-mapping": {
-      "firefoxdeveloperedition": "firefox-developer-edition"
-    },
-    "rewrite": {
-      "Firefox Web Browser": "Firefox",
-      "Foot Server": "Terminal"
-    }
-  },
-
-  // Hyprland Window
   "hyprland/window": {
     "format": "{}",
     "rewrite": {
@@ -57,7 +29,6 @@
     "separate-outputs": true
   },
 
-  // Empty
   "custom/empty": {
     "format": ""
   },
@@ -73,38 +44,31 @@
     "exec": "waybar-updates"
   },
 
-  // ChatGPT Launcher
   "custom/chatgpt": {
     "format": "",
     "on-click": "brave --app=https://chat.openai.com",
     "tooltip": false
   },
 
-  // Calculator
   "custom/calculator": {
     "format": "",
     "on-click": "qalculate-gtk",
     "tooltip": false
   },
 
-  // Windows VM
   "custom/windowsvm": {
     "format": "",
     "on-click": "~/dotfiles/scripts/launchvm.sh",
     "tooltip": false
   },
 
-  // Rofi Application Launcher
   "custom/appmenu": {
-    // START APPS LABEL
     "format": "Apps",
-    // END APPS LABEL
     "on-click": "sleep 0.2;rofi -show drun -replace",
     "on-click-right": "~/dotfiles/hypr/scripts/keybindings.sh",
     "tooltip": false
   },
 
-  // Rofi Application Launcher
   "custom/appmenuicon": {
     "format": "",
     "on-click": "rofi -show drun -replace",
@@ -112,14 +76,12 @@
     "tooltip": false
   },
 
-  // Power Menu
   "custom/exit": {
     "format": "⏻",
     "on-click": "wlogout",
     "tooltip": false
   },
 
-  // Keyboard State
   "keyboard-state": {
     "numlock": true,
     "capslock": true,
@@ -130,38 +92,32 @@
     }
   },
 
-  // System tray
   "tray": {
     "icon-size": 21,
     "spacing": 10
   },
 
-  // Clock
   "clock": {
     "format": "{:%H:%M - %a %Od/%Om/%y}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format-alt": "{:%Y-%m-%d}"
   },
 
-  // System
   "custom/system": {
     "format": "",
     "tooltip": false
   },
 
-  // CPU
   "cpu": {
     "format": "/ C {usage}% ",
     "on-click": "alacritty --class update -e htop"
   },
 
-  // Memory
   "memory": {
     "format": "/ M {}% ",
     "on-click": "alacritty --class update -e htop"
   },
 
-  // Harddisc space used
   "disk": {
     "interval": 30,
     "format": "D {percentage_used}% ",
@@ -173,7 +129,6 @@
     "format": "/ K {short}"
   },
 
-  // Group Hardware
   "group/hardware": {
     "orientation": "inherit",
     "drawer": {
@@ -184,13 +139,11 @@
     "modules": ["custom/system", "disk", "cpu", "memory"]
   },
 
-  // Group Settings
   "group/links": {
     "orientation": "horizontal",
     "modules": ["custom/chatgpt", "custom/empty"]
   },
 
-  // Group Settings
   "group/settings": {
     "orientation": "inherit",
     "drawer": {
@@ -206,13 +159,11 @@
     ]
   },
 
-  // Group Quicklinks
   "group/quicklinks": {
     "orientation": "horizontal",
     "modules": ["custom/browser", "custom/filemanager"]
   },
 
-  // Network
   "network": {
     "format": "{ifname}",
     "format-wifi": "   {signalStrength}%",
@@ -226,10 +177,8 @@
     "on-click": "nm-connection-editor"
   },
 
-  // Battery
   "battery": {
     "states": {
-      // "good": 95,
       "warning": 30,
       "critical": 15
     },
@@ -242,7 +191,6 @@
     "format-icons": [" ", " ", " ", " ", " "]
   },
 
-  // Pulseaudio
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
     "format": "{icon}   {volume}%",
@@ -263,7 +211,6 @@
     "on-click": "pavucontrol"
   },
 
-  // Bluetooth
   "bluetooth": {
     "format": " {num_connections}",
     "tooltip": true,
@@ -276,14 +223,12 @@
     "format-no-controller": ""
   },
 
-  // Other
   "user": {
     "format": "{user}",
     "interval": 60,
     "icon": false
   },
 
-  // Idle Inhibator
   "idle_inhibitor": {
     "format": "{icon}",
     "tooltip": true,
