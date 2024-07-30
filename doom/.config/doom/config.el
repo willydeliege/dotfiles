@@ -144,6 +144,8 @@
   (add-to-list 'completion-styles 'flex t))
 
 (require 'notmuch-mua)
+(require 'notmuch-address)
+(setq notmuch-address-command "~/.scripts/goobook.sh")
 (global-set-key [remap compose-mail] #'+notmuch/compose)
 (after! notmuch
   (set-popup-rule! "^\\*notmuch-hello" :ignore t)
@@ -153,8 +155,6 @@
   (setq message-sendmail-extra-arguments '("send" "--quiet" "-t" "-C" "~/.mail"))
   (setq send-mail-function 'sendmail-send-it)
   (setq message-send-mail-function 'message-send-mail-with-sendmail)
-  (require 'notmuch-address)
-  (setq notmuch-address-command "~/.scripts/goobook.sh")
 
   (setq notmuch-saved-searches
         '((:name "inbox" :query "tag:inbox" :key "i")
