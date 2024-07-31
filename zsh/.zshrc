@@ -83,6 +83,12 @@ alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 # Better cat
 alias cat="bat"
 
+# Globalias cam bn used anywhere in the command line
+alias -g G='| rg'
+alias -g B='| bat'
+alias -g W='| wc -l'
+
+
 
 eval "$(zoxide init zsh)"
 
