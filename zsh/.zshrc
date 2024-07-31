@@ -42,7 +42,7 @@ plugins=(
     fzf-tab fzf
     zsh-autopair
     zsh-syntax-highlighting zsh-autosuggestions
-    cp fd
+    cp
     exa-zsh
     colored-man-pages
 )
