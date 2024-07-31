@@ -54,7 +54,6 @@
   ;; for org capture extension
   (require 'org-protocol)
   ;; needed by org-contacts
-  (require 'ol)
   (setq org-todo-keywords
         '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "|" "DONE(d)" "CNCLD(c@)")
           (sequence "PROJECT(p)" "|" "KILLED(k@)")))
@@ -251,6 +250,7 @@
    "[ p" #'+evil-paste-above
    "] p" #'+evil-paste-below ))
 
+(require 'ol)
 (setq org-contacts-files `(,(expand-file-name (concat org-directory "contacts.org"))
                            ,(expand-file-name (concat org-directory "contacts-maman.org"))))
 (setq org-contacts-matcher

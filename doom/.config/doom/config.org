@@ -72,7 +72,6 @@
   ;; for org capture extension
   (require 'org-protocol)
   ;; needed by org-contacts
-  (require 'ol)
   (setq org-todo-keywords
         '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "|" "DONE(d)" "CNCLD(c@)")
           (sequence "PROJECT(p)" "|" "KILLED(k@)")))
@@ -301,6 +300,7 @@ Faster and support multiple dictionaries out-of-the-box
 
 * Org contacts
 #+begin_src emacs-lisp :tangle yes
+(require 'ol)
 (setq org-contacts-files `(,(expand-file-name (concat org-directory "contacts.org"))
                            ,(expand-file-name (concat org-directory "contacts-maman.org"))))
 (setq org-contacts-matcher
@@ -312,6 +312,9 @@ Faster and support multiple dictionaries out-of-the-box
  :leader
  :desc "Org contacts" "o c" #'org-contacts-agenda)
 #+end_src
+
+#+RESULTS:
+: org-contacts-agenda
 
 * Dired related
 #+begin_src emacs-lisp :tangle yes
