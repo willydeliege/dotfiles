@@ -1,5 +1,5 @@
 import = [
-    "/usr/lib/node_modules/alacritty-themes/themes/Hyper.toml"
+    "~/.config/alacritty/colors.toml"
 ]
 [env]
 TERM = "xterm-256color"
