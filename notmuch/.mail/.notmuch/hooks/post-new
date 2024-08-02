@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+notmuch tag -unread -inbox -- tag:spam
+notmuch tag -new -- tag:new
