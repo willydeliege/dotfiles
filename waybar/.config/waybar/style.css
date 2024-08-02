@@ -435,8 +435,11 @@ window#waybar.empty #window {
  * ----------------------------------------------------- */
 
 #tray {
+    background-color: @backgroundlight;
+    font-size: 16px;
     color: @textcolor2;
-    padding: 0px 15px 0px 0px;
+    border-radius: 15px;
+    opacity: 0.9;
 }
 
 #tray > .passive {
