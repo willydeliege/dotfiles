@@ -1,16 +1,16 @@
 #!/bin/bash
-#                _ _                              
-# __      ____ _| | |_ __   __ _ _ __   ___ _ __  
-# \ \ /\ / / _` | | | '_ \ / _` | '_ \ / _ \ '__| 
-#  \ V  V / (_| | | | |_) | (_| | |_) |  __/ |    
-#   \_/\_/ \__,_|_|_| .__/ \__,_| .__/ \___|_|    
-#                   |_|         |_|               
-#  
-# by Stephan Raabe (2023) 
-# ----------------------------------------------------- 
+#                _ _
+# __      ____ _| | |_ __   __ _ _ __   ___ _ __
+# \ \ /\ / / _` | | | '_ \ / _` | '_ \ / _ \ '__|
+#  \ V  V / (_| | | | |_) | (_| | |_) |  __/ |
+#   \_/\_/ \__,_|_|_| .__/ \__,_| .__/ \___|_|
+#                   |_|         |_|
+#
+# by Stephan Raabe (2023)
+# -----------------------------------------------------
 
 # Cache file for holding the current wallpaper
-wallpaper_folder="/usr/share/backgrounds/wiki-loves-earth-wallpapers"
+wallpaper_folder="$HOME/wallpaper"
 cache_file="$HOME/.cache/current_wallpaper"
 blurred="$HOME/.cache/blurred_wallpaper.png"
 square="$HOME/.cache/square_wallpaper.png"
@@ -36,7 +36,7 @@ current_wallpaper=$(cat "$cache_file")
 
 case $1 in
 
-    # Load wallpaper from .cache of last session 
+    # Load wallpaper from .cache of last session
     "init")
         sleep 1
         if [ -f $cache_file ]; then
@@ -45,7 +45,7 @@ case $1 in
         else
 	    wallpaper=$wallpaper_folder/$(ls $wallpaper_folder -1 | shuf -n 1)
             wallust run -s $wallpaper
-            
+
         fi
     ;;
 
@@ -76,17 +76,17 @@ esac
 
 echo ":: Wallpaper: $wallpaper"
 
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 # get wallpaper image name
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 newwall=$(echo $wallpaper | sed "s|$wallpaper_folder/||g")
 
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 # Reload waybar with new colors
 # -----------------------------------------------------
 ~/.config/waybar/launch.sh
 swaync-client -rs
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 # Set the new wallpaper
 # -----------------------------------------------------
 # transition_type="wipe"
@@ -102,17 +102,17 @@ transition_type="random"
         --transition-type=$transition_type \
         --transition-duration=0.5 \
         --transition-pos "$( hyprctl cursorpos )"
-   
+
 
 if [ "$1" == "init" ] ;then
     echo ":: Init"
 else
     sleep 1
     notify-send "Changing wallpaper ..." "with image $newwall" -h int:value:25
-    
+
 fi
 
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 # Created blurred wallpaper
 # -----------------------------------------------------
 if [ "$1" == "init" ] ;then
@@ -128,26 +128,26 @@ if [ ! "$blur" == "0x0" ] ;then
     echo ":: Blurred"
 fi
 
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 # Created quare wallpaper
 # -----------------------------------------------------
 if [ "$1" == "init" ] ;then
     echo ":: Init"
 else
-    echo "Creating square version ..." "with image $newwall" 
+    echo "Creating square version ..." "with image $newwall"
 fi
 magick $wallpaper -gravity Center -extent 1:1 $square
 echo ":: Square version created"
 
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 # Write selected wallpaper into .cache files
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 echo "$wallpaper" > "$cache_file"
 echo "* { current-image: url(\"$blurred\", height); }" > "$rasi_file"
 
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 # Send notification
-# ----------------------------------------------------- 
+# -----------------------------------------------------
 
 if [ "$1" == "init" ] ;then
     echo ":: Init"
