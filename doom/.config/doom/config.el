@@ -44,6 +44,7 @@
 
 ;; If you use `org' and don't want your org files in the default location below, change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
+(setq org-log-into-drawer t)
 (setq org-agenda-files (list "~/org/gtd"))
 (setq org-passwords-file "~/org/password.org.gpg")
 (map!
