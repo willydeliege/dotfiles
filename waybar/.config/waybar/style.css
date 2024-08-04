@@ -37,8 +37,8 @@ window#waybar {
 
 #workspaces {
     background: @workspacesbackground1;
-    margin: 2px 1px 3px 1px;
-    padding: 0px 1px;
+    padding: 2px 10px 0px 10px;
+    margin: 5px 15px 5px 0px;
     border-radius: 15px;
     border: 0px;
     font-weight: bold;
@@ -170,7 +170,11 @@ window#waybar.empty #window {
 }
 
 #custom-system {
-    margin-right: 15px;
+    padding: 2px 10px 0px 10px;
+    margin: 5px 15px 5px 0px;
+    border: 3px solid @bordercolor;
+    border-radius: 15px;
+    background-color: @backgrounddark;
 }
 
 #custom-wallpaper {
@@ -211,7 +215,11 @@ window#waybar.empty #window {
  * ----------------------------------------------------- */
 
 #idle_inhibitor {
-    margin-right: 15px;
+    background-color: @backgrounddark;
+    border: 3px solid @bordercolor;
+    border-radius: 15px;
+    padding: 2px 10px 0px 10px;
+    margin: 5px 15px 5px 0px;
     font-size: 22px;
     font-weight: bold;
     opacity: 0.8;
@@ -236,8 +244,8 @@ window#waybar.empty #window {
     font-size: 16px;
     color: @textcolor1;
     border-radius: 15px;
-    padding: 0px 10px 0px 10px;
-    margin: 3px 15px 3px 14px;
+    padding: 2px 10px 0px 10px;
+    margin: 5px 15px 5px 0px;
     opacity: 0.8;
     border: 3px solid @bordercolor;
 }
@@ -247,10 +255,12 @@ window#waybar.empty #window {
  * ----------------------------------------------------- */
 
 #custom-exit {
-    margin: 0px 20px 0px 0px;
-    padding: 0px;
+    border-radius: 15px;
+    border: 3px solid @bordercolor;
+    padding: 2px 10px 0px 10px;
+    margin: 5px 15px 5px 0px;
     font-size: 20px;
-    color: @iconcolor;
+    color: @bordercolor;
 }
 
 /* -----------------------------------------------------
@@ -306,40 +316,15 @@ window#waybar.empty #window {
     margin: 0px;
     padding: 0px;
     font-size: 16px;
-    color: @iconcolor;
+    padding: 2px 10px 0px 10px;
+    margin: 5px 15px 5px 0px;
+    background-color: @backgrounddark;
+    border-radius: 15px;
+    color: @textcolor2;
 }
 
 #language {
     margin-right: 10px;
-}
-
-/* -----------------------------------------------------
- * Clock
- * ----------------------------------------------------- */
-
-#clock {
-    background-color: @backgrounddark;
-    font-size: 16px;
-    color: @textcolor1;
-    border-radius: 15px;
-    padding: 1px 10px 0px 10px;
-    margin: 3px 15px 3px 0px;
-    opacity: 0.8;
-    border: 3px solid @bordercolor;
-}
-
-/* -----------------------------------------------------
- * Pulseaudio
- * ----------------------------------------------------- */
-
-#pulseaudio {
-    background-color: @backgroundlight;
-    font-size: 16px;
-    color: @textcolor2;
-    border-radius: 15px;
-    padding: 2px 10px 0px 10px;
-    margin: 5px 15px 5px 0px;
-    opacity: 0.8;
 }
 
 #pulseaudio.muted {
@@ -439,6 +424,8 @@ window#waybar.empty #window {
     font-size: 16px;
     color: @textcolor2;
     border-radius: 15px;
+    padding: 2px 10px 0px 10px;
+    margin: 5px 15px 5px 0px;
     opacity: 0.9;
 }
 
@@ -448,6 +435,35 @@ window#waybar.empty #window {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
+}
+
+/* -----------------------------------------------------
+ * Pulseaudio
+ * ----------------------------------------------------- */
+
+#pulseaudio {
+    background-color: @backgroundlight;
+    font-size: 16px;
+    color: @textcolor2;
+    border-radius: 15px;
+    padding: 2px 10px 0px 10px;
+    margin: 5px 15px 5px 0px;
+    opacity: 0.8;
+}
+
+/* -----------------------------------------------------
+ * Clock
+ * ----------------------------------------------------- */
+
+#clock {
+    background-color: @backgrounddark;
+    font-size: 16px;
+    color: @textcolor1;
+    border-radius: 15px;
+    padding: 2px 10px 0px 10px;
+    margin: 5px 15px 5px 0px;
+    opacity: 0.8;
+    border: 3px solid @bordercolor;
 }
 
 #submap,
@@ -467,8 +483,8 @@ window#waybar.empty #window {
     font-size: 16px;
     color: @textcolor1;
     border-radius: 15px;
-    padding: 0px 10px 0px 10px;
-    margin: 3px 15px 3px 14px;
+    padding: 2px 10px 0px 10px;
+    margin: 5px 15px 5px 0px;
     opacity: 0.8;
     border: 3px solid @bordercolor;
 }
