@@ -1,2 +1,3 @@
 /application/.local/share/
 /doom/.config/doom/bookmarks
+/applications/.local/share/applications/*.cache

@@ -3,5 +3,5 @@ Type=Application
 # Terminal=true
 Name=Arch-Update
 Icon=arch-update
-Exec=alacritty --class update -e arch-update
+Exec=kitty --app-id update arch-update
 Categories=Utility
