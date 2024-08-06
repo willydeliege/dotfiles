@@ -109,12 +109,12 @@
   },
 
   "cpu": {
-    "format": "/ C {usage}% ",
+    "format": "C {usage}% ",
     "on-click": "kitty --app-id update  htop"
   },
 
   "memory": {
-    "format": "/ M {}% ",
+    "format": "M {}% ",
     "on-click": "kitty --app-id update  htop"
   },
 
@@ -126,7 +126,7 @@
   },
 
   "hyprland/language": {
-    "format": "/ K {short}"
+    "format": "K {short}"
   },
 
   "group/hardware": {
