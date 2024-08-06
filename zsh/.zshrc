@@ -64,7 +64,8 @@ bindkey -M viins '^[[3;5~' kill-word
 bindkey -M vicmd '^[[3;5~' kill-word
 
 export EDITOR=emacs
-export SUDO_EDITOR=nvim
+export SUDO_EDITOR=vim
+export SYSTEMD_EDITOR=vim
 
 # Aliases
 alias ce='chezmoi edit'
@@ -87,8 +88,6 @@ alias cat="bat"
 alias -g G='| rg'
 alias -g B='| bat'
 alias -g W='| wc -l'
-
-
 
 eval "$(zoxide init zsh)"
 
