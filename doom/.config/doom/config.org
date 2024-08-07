@@ -28,7 +28,7 @@
 ;; doom-symbol-font "Nerd Font Symbol")
 (use-package! circadian
   :config
-  (setq circadian-themes '((:sunrise . ef-light)
+  (setq circadian-themes '((:sunrise . ef-maris-dark)
                            (:sunset  . ef-dark)))
   (circadian-setup))
 
