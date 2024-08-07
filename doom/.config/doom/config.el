@@ -27,6 +27,8 @@
 ;; Colemak friendly au-keys
 (after! ace-window
   (setq aw-keys '(?a ?r ?s ?t ?n ?e ?i ?o)))
+(after! doom-modeline
+  (setq! doom-modeline-persp-name t))
 
 (use-package! gtd
   :load-path "~/.config/doom/lisp"

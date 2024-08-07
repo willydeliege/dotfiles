@@ -40,6 +40,8 @@
 ;; Colemak friendly au-keys
 (after! ace-window
   (setq aw-keys '(?a ?r ?s ?t ?n ?e ?i ?o)))
+(after! doom-modeline
+  (setq! doom-modeline-persp-name t))
 #+end_src
 * Gtd
 #+begin_src emacs-lisp :tangle yes
