@@ -36,7 +36,6 @@ plugins=(
     sudo zoxide
     git
     emacs
-    archlinux
     globalias alias-tips
     fzf-tab-source
     fzf-tab fzf
@@ -68,8 +67,6 @@ export SUDO_EDITOR=vim
 export SYSTEMD_EDITOR=vim
 
 # Aliases
-alias ce='chezmoi edit'
-alias ca='chezmoi apply'
 # Get the error messages from journalctl
 alias jctl="journalctl -p 3 -xb"
 # Safer remove
@@ -83,6 +80,8 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 # Better cat
 alias cat="bat"
+# yay is funnier to type
+alias yay="paru"
 
 # Globalias cam bn used anywhere in the command line
 alias -g G='| rg'
@@ -94,10 +93,5 @@ eval "$(zoxide init zsh)"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# Created by `pipx`
-eval "$(register-python-argcomplete pipx)"
-gpg-connect-agent updatestartuptty /bye >/dev/null
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 
 eval "$(starship init zsh)"
