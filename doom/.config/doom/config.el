@@ -74,6 +74,9 @@
   (add-to-list 'org-capture-templates
                '("L" "Protocol Link" entry (file org-gtd-inbox-file)
                  "* %? [[%:link][%:description]] \nCaptured On: %U") t)
+  (add-to-list 'org-capture-templates
+               '("P" "password" entry (file "~/org/password.org.gpg")
+                 "* %^{Title}\n  %^{URL}p %^{USERNAME}p %^{PASSWORD}p"))
 
   (delete '("p" "Templates for projects")
           org-capture-templates)
