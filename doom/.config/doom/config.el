@@ -279,6 +279,8 @@
 (map! :nv "gK"  #'+lookup/documentation)
 (map! :leader
       :desc "Diff with file" "b d" #'diff-buffer-with-file)
+(after! avy
+  (setq avy-keys '(?a ?r ?s ?t ?g ?m ?n ?e ?i)))
 
 (after! smartparens
   (require 'hydra)
