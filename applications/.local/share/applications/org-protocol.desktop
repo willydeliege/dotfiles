@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=org-protocol
-Exec=emacsclient %u
+Exec=/usr/local/bin/org-protocol-capture %u
 Type=Application
 Terminal=false
 Categories=System;

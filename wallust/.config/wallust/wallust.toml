@@ -1,6 +1,6 @@
 # wallust 3.0 beta.*
 
-backend = "wal"
+backend = "kmeans"
 color_space = "lab"
 
 # NOTE: All filters will fill 16 colors (from color0 to color15), 16 color
@@ -25,7 +25,7 @@ palette = "harddarkcomp16"
 #  2 - 10     Perceptible at a glance.
 #  11 - 49    Colors are more similar than opposite
 #  100        Colors are exact opposite
-# threshold = 30
+threshold = 10
 
 [templates]
 hypr.template = 'colors-hyprland.conf'
@@ -36,7 +36,7 @@ rofi.template = 'colors-rofi.rasi'
 rofi.target = '~/.cache/wal/colors-rofi-pywal.rasi'
 rofi.pywal = true
 
-waybar.template = 'colors-waybar.css'
+waybar.template = 'templates/colors-waybar.css'
 waybar.target = '~/.cache/wal/colors-waybar.css'
 waybar.pywal = true
 
