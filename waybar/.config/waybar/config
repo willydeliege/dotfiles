@@ -55,7 +55,6 @@
         "backlight",
         "pulseaudio",
         "battery",
-        "network",
         "tray",
         "custom/power"
     ],
