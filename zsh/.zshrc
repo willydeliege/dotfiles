@@ -80,8 +80,6 @@ alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
 # Better cat
 alias cat="bat"
-# yay is funnier to type
-alias yay="paru"
 
 # Globalias cam bn used anywhere in the command line
 alias -g G='| rg'
