@@ -233,17 +233,17 @@ bindsym $mod+x mode "$mode_launcher"
 mode "$mode_launcher" {
     bindsym f exec dolphin
     # Launch emacs
-    bindsym e exec emacsclient -c -a=
+    bindsym e exec emacsclient -c -a= ; mode "default"
     # Launch the browser
-    bindsym b  workspace 2 ; exec brave
+    bindsym b  workspace 2 ; exec brave ; mode "default"
     # Connect to vpn
-    bindsym v exec rofi-nordvpn
+    bindsym v exec rofi-nordvpn ; mode "default"
     # Launch the calculator
     bindsym c exec galculator
     # Notifications
-    bindsym n exec swaync-client -t
+    bindsym n exec swaync-client -t ; mode "default"
     # capture
-    bindsym x exec org-capture
+    bindsym x exec org-capture ; mode "default"
 
     bindsym Escape mode "default"
     bindsym Return mode "default"
