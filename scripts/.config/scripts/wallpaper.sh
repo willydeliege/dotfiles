@@ -82,7 +82,7 @@ newwall=$(echo $wallpaper | sed "s|$wallpaper_folder/||g")
 # -----------------------------------------------------
 # Reload waybar with new colors
 # -----------------------------------------------------
-~/.config/waybar/launch.sh
+swaymsg reload
 swaync-client -rs
 # -----------------------------------------------------
 # Set the new wallpaper
