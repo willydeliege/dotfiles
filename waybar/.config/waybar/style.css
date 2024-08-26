@@ -5,11 +5,10 @@
  * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
  *
  * =========================================================================== */
- 
+
 /* -----------------------------------------------------------------------------
  * Keyframes
  * -------------------------------------------------------------------------- */
-
 
 /*
 Polar Night
@@ -37,7 +36,7 @@ nord15 #b48ead
 /* -----------------------------------------------------------------------------
  * Base styles
  * -------------------------------------------------------------------------- */
- 
+
 /* Reset all styles */
 
 * {
@@ -45,16 +44,16 @@ nord15 #b48ead
     border: 1px;
     border-radius: 5px;
     padding: 0 0;
-    font-family:JetBrainsMono, SymbolsNerdFont;
+    font-family: JetBrainsMono, SymbolsNerdFont;
     font-size: 15px;
     margin-right: 2px;
     margin-left: 2px;
-    padding-bottom:2px;
-   }
+    padding-bottom: 2px;
+}
 
 window#waybar {
-    background:#2e3440;
-    background-color:rgba(43, 45, 50, 0.6);
+    background: #2e3440;
+    background-color: rgba(0, 0, 00, 0.6);
 }
 
 #workspaces button {
@@ -63,7 +62,7 @@ window#waybar {
     color: #eceff4;
     border-color: #d8dee9;
     border-style: solid;
-    margin-top:2px;
+    margin-top: 2px;
 }
 
 #workspaces button.focused {
@@ -93,49 +92,49 @@ window#waybar {
     padding: 2px 8px;
     border: 1px;
     border-bottom: 2px;
+    background-color: #000000;
     border-style: solid;
     border-radius: 5px;
     margin-top: 1px;
 }
 
- 
 /* -----------------------------------------------------------------------------
  * Module styles
  * -------------------------------------------------------------------------- */
 
-
 #custom-launcher {
     border-style: hidden;
-    margin-top:2px;
-}
-    
-#mode{
-    margin-bottom:3px;
+    margin-top: 2px;
 }
 
-#window{
+#mode {
+    margin-bottom: 3px;
+}
+
+#window {
     border-style: hidden;
-    margin-top:1px;
+    margin-top: 1px;
 }
 
 #network {
-    color:#81a1c1;
+    color: #81a1c1;
 }
 
-#network.disabled,#network.disconnected {
-    color:#bf616a;
+#network.disabled,
+#network.disconnected {
+    color: #bf616a;
 }
 
-#custom-updates{
-	color: #ebcb8b;
+#custom-updates {
+    color: #ebcb8b;
 }
 
-#custom-weather{
-   color:#d08770;
+#custom-weather {
+    color: #d08770;
 }
 
 #cpu {
-    color:#a3be8c;
+    color: #a3be8c;
 }
 
 #temperature {
@@ -151,7 +150,7 @@ window#waybar {
 }
 
 #idle_inhibitor {
-   color: #81a1c1;
+    color: #81a1c1;
 }
 
 #backlight {
@@ -192,13 +191,13 @@ window#waybar {
 }
 
 #clock {
- color: #a3be8c;
+    color: #a3be8c;
 }
 
 #tray {
 }
 
-#custom-power{
+#custom-power {
     border-style: hidden;
-    margin-top:2px;
+    margin-top: 2px;
 }
