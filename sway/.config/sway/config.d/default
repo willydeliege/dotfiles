@@ -19,7 +19,7 @@ set $launcher fuzzel
 # Application menu
 set $menu nwg-drawer
 
-set $powermenu nwgbar
+set $powermenu nwg-bar
 
 ### Idle configuration
 exec swayidle -w\
@@ -138,8 +138,6 @@ bindsym $mod+v splitv
 bindsym $mod+Shift+v splith
 
 # Switch the current container between different layout styles
-bindsym $mod+Shift+s layout stacking
-bindsym $mod+Shift+w layout tabbed
 bindsym $mod+Shift+e layout toggle split
 
 # Make the current focus fullscreen
@@ -256,6 +254,13 @@ bindsym $mod+Ctrl+v exec cliphist list | fuzzel -d -w 90 -l 30 -p "Select an ent
 # Delete an entry from the clipboard manager
 bindsym $mod+Ctrl+x exec cliphist list | fuzzel -d -w 90 -l 30 -t cc9393ff -S cc9393ff -p "Select an entry to delete it from cliphist:"| cliphist delete
 # Note: you can clear all cliphist entries by running `cliphist wipe`
+
+#
+# Wallpaper change
+
+bindsym $mod+Shift+w exec ~/.config/scripts/wallpaper.sh
+bindsym $mod+Ctrl+w exec ~/.config/scripts/wallpaper.sh select
+
 
 #
 # Screenshots
