@@ -36,7 +36,7 @@ rofi.template = 'colors-rofi.rasi'
 rofi.target = '~/.cache/wal/colors-rofi-pywal.rasi'
 rofi.pywal = true
 
-waybar.template = 'templates/colors-waybar.css'
+waybar.template = 'colors-waybar.css'
 waybar.target = '~/.cache/wal/colors-waybar.css'
 waybar.pywal = true
 
