@@ -237,7 +237,7 @@ mode "$mode_launcher" {
     # Connect to vpn
     bindsym v exec rofi-nordvpn ; mode "default"
     # Launch the calculator
-    bindsym c exec galculator
+    bindsym c exec gnome-calculator
     # Notifications
     bindsym n exec swaync-client -t ; mode "default"
     # capture
