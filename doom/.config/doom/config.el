@@ -137,6 +137,9 @@
       :localleader
       :ienmv "s e" #'denote-org-extras-extract-org-subtree)
 
+(set-frame-parameter nil 'alpha-background 90)
+
+(add-to-list 'default-frame-alist '(alpha-background . 90))
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
 (setq bookmark-default-file "~/.config/doom/bookmarks" )
