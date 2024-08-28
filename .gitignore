@@ -1,3 +1,4 @@
 /application/.local/share/
 /doom/.config/doom/bookmarks
 /applications/.local/share/applications/*.cache
+/applications/.local/share/applications/jetbrains-idea-ce.desktop
