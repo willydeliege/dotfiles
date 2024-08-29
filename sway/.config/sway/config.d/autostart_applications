@@ -42,6 +42,6 @@ exec_always nwg-drawer -r -c 7 -is 90 -mb 10 -ml 50 -mr 50 -mt 10
 
 # Wallpapers
 exec swww-daemon
-
+exec ~/.config/scripts/on-ac-power-state-change ~/.config/scripts/auto-brightness.sh
 # swayrd
 exec_always swayrd

@@ -1,0 +1,106 @@
+#!/bin/bash
+
+# on-ac-power-state-change
+# Copyright 2019 Mike Peralta
+# Released under the MIT license (https://opensource.org/licenses/MIT)
+# Check out my music https://www.MikePeralta.com
+# This script will execute a command each time the power state is changed (ie: laptop power unplugged or plugged back in)
+# Pass your desired command to execute as arguments to this script
+# Example:
+# $ on-ac-power-state-change echo "My power state has changed!"
+# Written and tested with acpi version 1.7
+# Enjoy!
+# (Note: Use with caution; It will execute any parameters received verbatim)
+
+#
+COMMANDS_FOR_STATE_CHANGE="$@"
+CHECKED_AT_LEAST_ONCE="0"
+LAST_KNOWN_PLUGGED_IN_STATE=""
+CURRENT_PLUGGED_IN_STATE=""
+
+#
+do_log()
+{
+	logger "[on-ac-power-state-change] $1"
+	echo "[on-ac-power-state-change] $1"
+}
+do_complaint()
+{
+	logger -s "[on-ac-power-state-change] $1"
+}
+do_die()
+{
+	do_complaint "Fatal: $1"
+	exit 1
+}
+
+#
+demand_acpi()
+{
+	which acpi > /dev/null
+	if [ $? -ne 0 ];then
+		do_die "acpi doesn't seem to be installed"
+	fi
+}
+
+#
+is_ac_connected()
+{
+	#	Grab output of acpi
+	demand_acpi
+	ACPI=$(acpi -a)
+	
+	#
+	echo "$ACPI" | grep "on-line" > /dev/null
+	if [ $? -eq 0 ];then
+		#echo "Power seems to be plugged in"
+		echo "1"
+	fi
+	echo "$ACPI" | grep "off-line" > /dev/null
+	if [ $? -eq 0 ];then
+		#echo "Power seems to be unplugged"
+		echo "0"
+	fi
+}
+
+#
+handle_acpi_state_change()
+{
+	#
+	CURRENT_PLUGGED_IN_STATE=$(is_ac_connected)
+	
+	#
+	if [ "$CHECKED_AT_LEAST_ONCE" = "1" ];then
+		if [ "$CURRENT_PLUGGED_IN_STATE" != "$LAST_KNOWN_PLUGGED_IN_STATE" ];then
+			do_log "Power state has changed!"
+			do_log "Executing commands: $COMMANDS_FOR_STATE_CHANGE"
+			eval "$COMMANDS_FOR_STATE_CHANGE"
+		fi
+	else
+		CHECKED_AT_LEAST_ONCE="1"
+	fi
+	
+	#
+	LAST_KNOWN_PLUGGED_IN_STATE="$CURRENT_PLUGGED_IN_STATE"
+}
+
+#
+main_loop()
+{
+	#
+	do_log "Begin main loop"
+	while [ true ];do
+		handle_acpi_state_change
+		sleep 1
+	done
+	do_log "Done with main loop"
+}
+
+
+do_log "Begin"
+main_loop
+
+
+do_log "Exiting"
+
+
