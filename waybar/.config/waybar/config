@@ -43,7 +43,6 @@
 
 // Configuration - modules-center
     "modules-center": [
-        "custom/updates",
         "clock",
         "custom/weather",
     ],
@@ -178,9 +177,8 @@
     "custom/weather": {
         "format": "{}",
         "format-alt": "{alt}: {}",
-        "format-alt-click": "click",
         "interval": 3600,
-        "on-click": "vivaldi --app=https://weather.com/fr-BE/temps/aujour/l/c3164722dddb06bb5a48f03bd0a57cd7663c30175f7d132c24295283174d6e0e",
+        "on-click-right": "vivaldi --app=https://weather.com/fr-BE/temps/aujour/l/c3164722dddb06bb5a48f03bd0a57cd7663c30175f7d132c24295283174d6e0e",
         "return-type": "json",
         "exec": "~/.config/waybar/scripts/Weather.py",
         "tooltip": true
