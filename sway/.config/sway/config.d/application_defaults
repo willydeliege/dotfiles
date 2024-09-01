@@ -11,6 +11,7 @@ for_window [app_id="^vivaldi.*Default$"] floating enable
 for_window [class="Xsane" instance="xsane"] floating enable
 for_window [app_id="pavucontrol" ] floating enable, resize set width 50 ppt height 50 ppt
 for_window [class="qt5ct" instance="qt5ct"] floating enable, resize set width 60 ppt height 50 ppt
+for_window [app_id="qt6ct"] floating enable, resize set width 60 ppt height 50 ppt
 for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
 for_window [class="Lxappearance"] floating enable, resize set width 60 ppt height 50 ppt
 for_window [app_id="garuda-welcome"] floating enable, resize set width 60 ppt height 60 ppt
