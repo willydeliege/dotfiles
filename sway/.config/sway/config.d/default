@@ -247,7 +247,7 @@ mode "$mode_launcher" {
     # Launch emacs
     bindsym e exec emacsclient -c -a= ; mode "default"
     # Launch the browser
-    bindsym b  workspace 2 ; exec brave ; mode "default"
+    bindsym b  workspace 2 ; exec vivaldi; mode "default"
     # Connect to vpn
     bindsym v exec rofi-nordvpn ; mode "default"
     # Launch the calculator
