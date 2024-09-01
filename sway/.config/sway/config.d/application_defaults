@@ -7,6 +7,7 @@ for_window [title="doom-capture"] floating enable
 # set floating (nontiling) for special apps:
 for_window [app_id="calamares"] floating enable
 for_window [app_id="^brave.*Default$"] floating enable
+for_window [app_id="^vivaldi.*Default$"] floating enable
 for_window [class="Xsane" instance="xsane"] floating enable
 for_window [app_id="pavucontrol" ] floating enable, resize set width 50 ppt height 50 ppt
 for_window [class="qt5ct" instance="qt5ct"] floating enable, resize set width 60 ppt height 50 ppt
