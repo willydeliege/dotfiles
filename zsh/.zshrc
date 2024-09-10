@@ -46,7 +46,6 @@ plugins=(
     exa-zsh
     colored-man-pages
 )
-source /usr/share/doc/find-the-command/ftc.zsh quiet noupdate
 
 source /home/willefi/.oh-my-zsh/oh-my-zsh.sh
 zstyle ':completion:*' rehash true
