@@ -170,7 +170,7 @@
     },
     "custom/power": {
         "format": "⏻",
-        "on-click": "nwgbar",
+        "on-click": "nwg-bar",
         "tooltip": false
     },
 
