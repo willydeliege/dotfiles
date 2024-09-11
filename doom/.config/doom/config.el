@@ -12,6 +12,7 @@
  '(holiday-islamic-holidays nil))
 
 (setq doom-font "FiraCode Nerd Font-12")
+(setq doom-theme 'modus-vivendi)
 ;; doom-symbol-font "Nerd Font Symbol")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
