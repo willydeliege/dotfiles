@@ -25,6 +25,11 @@ fi
 if [ ! -d ~/.oh-my-zsh/custom/plugins/fzf-tab-source ]; then
     git clone https://github.com/Freed-Wu/fzf-tab-source.git ~/.oh-my-zsh/custom/plugins/fzf-tab-source
 fi
+
+if [ ! -d ~/.oh-my-zsh/custom/plugins/fedora ]; then
+ git clone https://github.com/gmifflen/zsh-fedora-plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fedora
+fi
+
 export PATH="/home/willefi/.local/share/gem/ruby/3.0.0/bin:/home/willefi/.local/bin:/home/willefi/.config/emacs/bin:$PATH"
 
 export ZSH="$HOME/.oh-my-zsh"
@@ -32,6 +37,7 @@ export ZOXIDE_CMD_OVERRIDE="cd"
 # ZSH_THEME="crunch"
 
 plugins=(
+    fedora
     extract
     systemd
     sudo zoxide
@@ -78,8 +84,6 @@ alias cp='cp -iv'
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 # Cleanup orphaned packages
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
-# Better cat
-alias cat="bat"
 
 # Globalias cam bn used anywhere in the command line
 alias -g G='| rg'
