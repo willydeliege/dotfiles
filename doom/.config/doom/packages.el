@@ -49,6 +49,6 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 (package! denote)
-(package! ef-themes)
+(package! modus-themes)
 (package! jinx)
 (package! consult-denote)
