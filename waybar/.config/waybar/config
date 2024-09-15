@@ -68,18 +68,6 @@
         "on-click": "footclient -T waybar_nmtui -e nmtui",
         "interval": 2
     },
-    "custom/updates": {
-        "format": "{} {icon}",
-        "return-type": "json",
-        "format-icons": {
-            "has-updates": "",
-            "updated": ""
-        },
-        "exec-if": "which waybar-module-pacman-updates",
-        "exec": "waybar-module-pacman-updates",
-        "on-click": "footclient -T waybar_garuda-update -e bash -c 'garuda-update && (read -p \"Update complete. Press Enter to exit.\" && exit 0) || (read -p \"Update failed. Press Enter to exit.\" && exit 1)'",
-        "on-click-right": "footclient -T waybar_pacseek -e pacseek"
-    },
     "custom/keyboard-layout": {
         "exec": "i=$(swaymsg -t get_inputs); echo \"\"; echo \"$i\" | grep -m1 'xkb_active_layout_name' | cut -d '\"' -f4",
         // Interval set only as a fallback, as the value is updated by signal
@@ -147,8 +135,6 @@
     "clock": {
         "format": " {:%H:%M}",
         "on-click": "footclient -T waybar_calcurse -e calcurse",
-        // Uncomment to enable right-click calcurse-caldav sync (you need to set it up in calcurse config)
-        //"on-click-right": "notify-send \"Running calcurse-caldav...\" \"$(calcurse-caldav)\"",
         "tooltip-format": " {:%A %m/%d}\n\n<tt><small>{calendar}</small></tt>",
         "calendar": {
             "on-scroll": 1,
@@ -170,7 +156,7 @@
     },
     "custom/power": {
         "format": "⏻",
-        "on-click": "nwg-bar",
+        "on-click": "wlogout",
         "tooltip": false
     },
 
