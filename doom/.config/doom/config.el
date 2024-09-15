@@ -65,10 +65,7 @@
                  (file org-gtd-inbox-file)
                  "* %?\nCaptured On: %U\n%i\n%a"))
   (add-to-list 'org-capture-templates
-               '("p" "Protocol" entry (file org-gtd-inbox-file)
-                 "* %^{Title}\nSource: %u, %c\n #+BEGIN_QUOTE\n%i\n#+END_QUOTE\n\n\n%?") t)
-  (add-to-list 'org-capture-templates
-               '("L" "Protocol Link" entry (file org-gtd-inbox-file)
+               '("x" "Protocol Link" entry (file org-gtd-inbox-file)
                  "* %? [[%:link][%:description]] \nCaptured On: %U") t)
   (add-to-list 'org-capture-templates
                '("P" "password" entry (file "~/org/password.org.gpg")
