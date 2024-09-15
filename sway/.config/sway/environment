@@ -1,1 +1,2 @@
 export PATH=$HOME/.cargo/bin:$HOME/.config/emacs/bin:$PATH
+export QT_QPA_PLATFORMTHEME=qt5ct
