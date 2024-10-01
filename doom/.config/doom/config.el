@@ -11,7 +11,7 @@
  '(holiday-hebrew-holidays nil)
  '(holiday-islamic-holidays nil))
 
-(setq doom-font "FiraCode Nerd Font-12")
+(setq doom-font "FiraCode Nerd Font")
 (setq doom-theme 'modus-vivendi-tinted)
 ;; doom-symbol-font "Nerd Font Symbol")
 
