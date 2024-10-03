@@ -1,1 +1,1 @@
-text/html; vivaldi --new-window %s; nametemplate=%s.html
+text/html; brave --new-window %s; nametemplate=%s.html
