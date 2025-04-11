@@ -20,9 +20,6 @@
 (setq display-line-numbers-type 'relative)
 
 (+global-word-wrap-mode +1)
-;; Colemak friendly au-keys
-(after! ace-window
-  (setq aw-keys '(?a ?r ?s ?t ?n ?e ?i ?o)))
 (after! doom-modeline
   (setq! doom-modeline-persp-name t))
 
@@ -30,7 +27,7 @@
   :load-path "~/.config/doom/lisp"
   :after org
   :config
-  (defvar org-gtd-archive-file "~/org/gtd/_gtd_archive_2024")
+  (defvar org-gtd-archive-file "~/org/gtd/_gtd_archive.org")
   (setq org-gtd-inbox-file "~/org/gtd/0-inbox.org")
   (setq org-archive-location (concat org-gtd-archive-file "::datetree/")))
 (map! :map org-mode-map :localleader
@@ -42,16 +39,18 @@
 
 ;; If you use `org' and don't want your org files in the default location below, change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
-(setq org-log-into-drawer t)
-(setq org-agenda-files (list "~/org/gtd"))
+;; (setq org-log-into-drawer t)
+
+(add-hook 'org-agenda-mode-hook 'org-agenda-entry-text-mode)
 (setq org-passwords-file "~/org/password.org.gpg")
 (map!
  :leader
  :desc "Org passwords" "o p" #'org-passwords)
 (setq org-hide-emphasis-markers t)
+(add-hook 'org-agenda-mode-hook 'org-agenda-entry-text-mode)
 (after! org
   ;; for org capture extension
-  (require 'org-protocol)
+  ;; (require 'org-protocol)
   ;; needed by org-contacts
   (setq org-todo-keywords
         '((sequence "TODO(t)" "NEXT(n)" "WAIT(w)" "|" "DONE(d)" "CNCLD(c@)")
@@ -60,47 +59,16 @@
   (add-to-list 'org-todo-keyword-faces '("CNCLD" . +org-todo-cancel))
   (add-to-list 'org-todo-keyword-faces '("KILLED" . +org-todo-cancel))
   (setq org-tag-alist '(("@work") ("@home") ("@phone") ("@computer") ("@online") ("@errand")))
-  (add-to-list 'org-capture-templates
-               '("i" "Inbox" entry
-                 (file org-gtd-inbox-file)
-                 "* %?\nCaptured On: %U\n%i\n%a"))
-  (add-to-list 'org-capture-templates
-               '("x" "Protocol Link" entry (file org-gtd-inbox-file)
-                 "* %? [[%:link][%:description]] \nCaptured On: %U") t)
-  (add-to-list 'org-capture-templates
-               '("P" "password" entry (file "~/org/password.org.gpg")
-                 "* %^{Title}\n  %^{URL}p %^{USERNAME}p %^{PASSWORD}p"))
 
-  (delete '("p" "Templates for projects")
-          org-capture-templates)
-  (delete '("pn" "Project-local notes" entry
-            (file+headline +org-capture-project-notes-file "Inbox")
-            "* %U %?\n%i\n%a" :prepend t)
-          org-capture-templates)
-  (delete '("n" "Personal notes" entry
-            (file+headline +org-capture-notes-file "Inbox")
-            "* %u %?\n%i\n%a" :prepend t)
-          org-capture-templates)
-  (delete '("pt" "Project-local todo" entry
-            (file+headline +org-capture-project-todo-file "Inbox")
-            "* TODO %?\n%i\n%a" :prepend t)
-          org-capture-templates)
-  (delete '("oc" "Project changelog" entry #'+org-capture-central-project-changelog-file "* %U %?\n %i\n %a" :heading "Changelog" :prepend t)
-          org-capture-templates)
-  (delete '("on" "Project notes" entry #'+org-capture-central-project-notes-file "* %U %?\n %i\n %a" :heading "Notes" :prepend t)
-          org-capture-templates)
-  (delete '("o" "Centralized templates for projects")
-          org-capture-templates)
-  (delete '("t" "Personal todo" entry
-            (file+headline +org-capture-todo-file "Inbox")
-            "* [ ] %?\n%i\n%a" :prepend t)
-          org-capture-templates)
-  (delete  '("pc" "Project-local changelog" entry
-             (file+headline +org-capture-project-changelog-file "Unreleased")
-             "* %U %?\n%i\n%a" :prepend t)
-           org-capture-templates)
-  (delete '("ot" "Project todo" entry #'+org-capture-central-project-todo-file "* TODO %?\n %i\n %a" :heading "Tasks" :prepend nil)
-          org-capture-templates))
+  (setq! org-capture-templates
+         '(("f" "Fleeting note"
+            entry
+            (file+headline org-gtd-inbox-file "Notes")
+            "* %?")
+           ("t" "New task" entry
+            (file+headline org-gtd-inbox-file "Tasks")
+            "* TODO %i%?")
+	   )))
 (setq org-agenda-custom-commands
       '(("n" "Agenda and all NEXT tasks"
          ((agenda "" nil)
@@ -118,17 +86,90 @@
 (use-package! denote
   :defer t
   :config
-  (setq denote-directory org-directory))
-(map! :leader "n d" nil)
+  (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
+  (setq denote-directory "~/org/roam"))
+;; (map! :leader "n d" nil)
+;; (map! :leader
+;;       :prefix ("n d" . "denote"))
+;; (map! :leader
+;;       "n d d" #'denote
+;;       :desc "Find in notes" "n d g" #'consult-notes-search-in-all-notes
+;;       :desc "Find by name" "n d n" #'consult-notes)
+;; (map! :map org-mode-map
+;;       :localleader
+;; :ienmv "s e" #'denote-org-extras-extract-org-subtree)
+
+;; (setq org-roam-capture-templates
+;;       '(("d" "default" plain "%?"
+;;          :target
+;;          (file+head "%<%Y%m%dT%H%M%S>--${slug}.org"
+;;                     ":PROPERTIES:\n:ID: %<%Y%m%dT%H%M%S>\n:END:\n#+title: ${title}\n#+date: [%<%Y-%m-%d %a %H:%S>]\n#+filetags: \n#+identifier: %<%Y%m%dT%H%M%S>\n\n* ${title}\n")
+;;          :immediate-finish t
+;;          :unnarrowed t)))
+(setq! +org-roam-auto-backlinks-buffer t)
 (map! :leader
-      :prefix ("n d" . "denote"))
-(map! :leader
-      "n d d" #'denote
-      :desc "Find in notes" "n d g" #'consult-denote-grep
-      :desc "Find by name" "n d n" #'consult-denote-find)
-(map! :map org-mode-map
+      :desc "Open graph" "n r g" #'org-roam-ui-open
+      :desc "Random by tag" "n r A" #'my/org-roam-random-node-by-tag)
+
+(map! :after org
+      :map org-mode-map
       :localleader
-      :ienmv "s e" #'denote-org-extras-extract-org-subtree)
+      :prefix ("m" . "org-roam")
+      "g" #'org-roam-ui-open
+      "x" #'denote-rename-file-using-front-matter)
+(setq org-roam-capture-templates
+      `(("d" "default" plain "%?"
+         :target (file+head "%(my/org-roam-filename \"${title}\")"
+                            "%(my/org-roam-template)")
+         :immediate-finish t
+         :unnarrowed t)))
+
+(defun my/org-roam-filename (title)
+  (let ((id (denote-get-identifier (current-time)))
+        (tags (completing-read-multiple "New note KEYWORDS: "
+                                        (org-roam-tag-completions))))
+    (setq my/org-roam-capture-id id
+          my/org-roam-capture-title title
+          my/org-roam-capture-tags tags)
+    (denote--keywords-add-to-history tags)
+    (thread-first
+      (denote-format-file-name "/" id tags title ".org" nil)
+      (substring 1))))
+
+(defun my/org-roam-template ()
+  (let* ((filetags (if my/org-roam-capture-tags
+                       (concat ":" (mapconcat #'identity my/org-roam-capture-tags ":") ":")))
+         (front-matter (concat ":PROPERTIES:\n"
+                               ":ID:        " my/org-roam-capture-id "\n"
+                               ":END:\n"
+                               "#+title:    " my/org-roam-capture-title "\n"
+                               "#+filetags: " filetags "\n\n"
+                               "* " my/org-roam-capture-title
+                               "\n* Related")))
+    (setq my/org-roam-capture-id nil
+          my/org-roam-capture-title nil
+          my/org-roam-capture-tags nil)
+    front-matter))
+(defun my/org-roam-random-node-by-tag ()
+  "Prompt for a tag with completion and open a random Org-roam node that has that tag."
+  (interactive)
+  (require 'org-roam)
+
+  ;; Gather all tags used in org-roam
+  (let* ((all-tags (delete-dups (flatten-tree
+                                 (mapcar (lambda (node)
+                                           (org-roam-node-tags node))
+                                         (org-roam-node-list)))))
+         ;; Prompt for a tag with completion
+         (chosen-tag (completing-read "Choose a tag: " all-tags nil t))
+         ;; Filter nodes by tag
+         (filtered-nodes (seq-filter (lambda (node)
+                                       (member chosen-tag (org-roam-node-tags node)))
+                                     (org-roam-node-list))))
+    (if filtered-nodes
+        ;; Pick a random node from filtered list and visit it
+        (org-roam-node-visit (nth (random (length filtered-nodes)) filtered-nodes))
+      (message "No nodes found with tag: %s" chosen-tag))))
 
 (set-frame-parameter nil 'alpha-background 90)
 
@@ -140,90 +181,8 @@
 (map!
         :map corfu-map
         :i "C-g" #'corfu-quit)
-(setq projectile-project-search-path '(( "~/Repos/" . 1 )))
 (after! orderless
   (add-to-list 'completion-styles 'flex t))
-
-(require 'notmuch-mua)
-(require 'notmuch-address)
-(setq notmuch-address-command "~/.scripts/goobook.sh")
-(global-set-key [remap compose-mail] #'+notmuch/compose)
-(after! notmuch
-  (set-popup-rule! "^\\*notmuch-hello" :ignore t)
-  (setq notmuch-multipart/alternative-discouraged '("text/plain" "multipart/related"))
-  (setq +notmuch-mail-folder "~/.mail/")
-  (setq sendmail-program "gmi")
-  (setq message-sendmail-extra-arguments '("send" "--quiet" "-t" "-C" "~/.mail"))
-  (setq send-mail-function 'sendmail-send-it)
-  (setq message-send-mail-function 'message-send-mail-with-sendmail)
-
-  (setq notmuch-saved-searches
-        '((:name "inbox" :query "tag:inbox" :key "i")
-          (:name "unread" :query "tag:unread" :key "u")
-          (:name "flagged" :query "tag:flagged" :key "f")
-          (:name "sent" :query "tag:sent" :key "t")
-          (:name "drafts" :query "tag:draft" :key "d")
-          (:name "all" :query "not tag:trash and not tag:deleted and not tag:spam and not tag:sent" :key "a" :search-type tree)))
-  (map!
-   :map (notmuch-search-mode-map notmuch-tree-mode-map notmuch-show-mode-map)
-   :n "K" #'notmuch-tag-jump
-   :nv [remap evil-undo] #'notmuch-tag-undo)
-
-  (defun +notmuch/search-trash ()
-    "Flag the message."
-    (interactive)
-    (notmuch-search-remove-tag '("-inbox" "-flagged" "-unread"))
-    (evil-collection-notmuch-toggle-tag "trash" "search" #'notmuch-tree-next-message))
-  (defun +notmuch/show-trash ()
-    "Flag the message."
-    (interactive)
-    (notmuch-show-remove-tag'("-inbox" "-flagged" "-unread"))
-    (evil-collection-notmuch-toggle-tag "trash" "show" #'notmuch-show-next-thread-show))
-  (defun +notmuch/tree-trash ()
-    "Flag the message."
-    (interactive)
-    (notmuch-tree-remove-tag '("-inbox" "-flagged" "-unread"))
-    (evil-collection-notmuch-toggle-tag "trash" "tree"))
-  (global-set-key [remap evil-collection-notmuch-tree-toggle-delete] #'+notmuch/tree-trash)
-  (global-set-key [remap evil-collection-notmuch-show-toggle-delete] #'+notmuch/show-trash)
-  (global-set-key [remap evil-collection-notmuch-search-toggle-delete] #'+notmuch/search-trash)
-  (defun +notmuch/search-flagged ()
-    "Flag the message."
-    (interactive)
-    (notmuch-search-remove-tag '("-inbox" "-unread"))
-    (evil-collection-notmuch-toggle-tag "flagged" "search" #'notmuch-tree-next-message))
-  (defun +notmuch/show-flagged ()
-    "Flag the message."
-    (interactive)
-    (notmuch-show-remove-tag'("-inbox" "-unread"))
-    (evil-collection-notmuch-toggle-tag "flagged" "show" #'notmuch-show-next-thread-show))
-  (defun +notmuch/tree-flagged ()
-    "Flag the message."
-    (interactive)
-    (notmuch-tree-remove-tag '("-inbox" "-unread"))
-    (evil-collection-notmuch-toggle-tag "flagged" "tree"))
-  (global-set-key [remap evil-collection-notmuch-tree-toggle-flagged] #'+notmuch/tree-flagged)
-  (global-set-key [remap evil-collection-notmuch-show-toggle-flagged] #'+notmuch/show-flagged)
-  (global-set-key [remap evil-collection-notmuch-search-toggle-flagged] #'+notmuch/search-flagged)
-
-  (defun my-notmuch-mua-empty-subject-check ()
-    "Request confirmation before sending a message with empty subject"
-    (when (and (null (message-field-value "Subject"))
-               (not (y-or-n-p "Subject is empty, send anyway? ")))
-      (error "Sending message cancelled: empty subject.")))
-  (add-hook 'message-send-hook 'notmuch-mua-attachment-check)
-  (add-hook 'message-send-hook 'my-notmuch-mua-empty-subject-check))
-(after! org-mime
-  (setq org-mime-export-options '(:with-latex dvipng
-                                  :section-numbers nil
-                                  :with-author nil
-                                  :with-toc nil))
-  (add-hook 'message-send-hook 'org-mime-confirm-when-no-multipart)
-  (map! :map notmuch-message-mode-map
-        :localleader
-        "m" #'org-mime-htmlize
-        "r" #'org-mime-revert-to-plain-text-mail
-        "o" #'org-mime-edit-mail-in-org-mode))
 
 (use-package! jinx
   :general ([remap ispell-word] #'jinx-correct)
@@ -275,8 +234,6 @@
 (map! :nv "gK"  #'+lookup/documentation)
 (map! :leader
       :desc "Diff with file" "b d" #'diff-buffer-with-file)
-(after! avy
-  (setq avy-keys '(?a ?r ?s ?t ?g ?m ?n ?e ?i)))
 
 (after! smartparens
   (require 'hydra)

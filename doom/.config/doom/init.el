@@ -139,7 +139,7 @@
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ; a language you can depend on
        ;;json              ; At least it ain't XML
-       (java +lsp)       ; the poster child for carpal tunnel syndrome
+       ;; (java +lsp)       ; the poster child for carpal tunnel syndrome
        ;;javascript        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
@@ -147,11 +147,11 @@
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
        ;;lua               ; one-based indices? one-based indices
-       markdown          ; writing docs for people to ignore
+       (markdown +grip)          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       (org +passwords +contacts +crypt +pandoc +present +pomodoro +pretty)   ; organize your plain life in ext
+       (org +passwords +contacts +crypt +pandoc +present +pomodoro +roam2 +noter +pretty)   ; organize your plain life in ext
        ;;php               ; perl's insecure younger brother
        plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
@@ -176,7 +176,7 @@
 
        :email
        ;;(mu4e +org +gmail)
-       (notmuch +org)
+       ;; (notmuch +org)
        ;;(wanderlust +gmail)
 
        :app

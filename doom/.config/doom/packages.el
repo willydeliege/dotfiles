@@ -51,4 +51,7 @@
 (package! denote)
 (package! modus-themes)
 (package! jinx)
-(package! consult-denote)
+(unpin! org-roam)
+(package! org-roam-ui)
+(package! djvu)
+(package! nov)
