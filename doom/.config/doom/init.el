@@ -105,6 +105,7 @@
        ;;tmux              ; an API for interacting with tmux
        tree-sitter       ; syntax and parsing, sitting in a tree...
        ;;upload            ; map local to remote projects via ssh/ftp
+       ;; (llm +magit)
 
        :os
        (:if (featurep :system 'macos) macos)  ; improve compatibility with macOS
@@ -151,7 +152,7 @@
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       (org +passwords +contacts +crypt +pandoc +present +pomodoro +roam2 +noter +pretty)   ; organize your plain life in ext
+       (org +journal +passwords +contacts +crypt +pandoc +present +pomodoro +roam2 +noter +pretty)   ; organize your plain life in ext
        ;;php               ; perl's insecure younger brother
        plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional

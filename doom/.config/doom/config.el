@@ -1,5 +1,17 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
+(setq doom-font "FiraCode Nerd Font-12")
+(setq doom-theme 'doom-homage-black)
+;; doom-symbol-font "Nerd Font Symbol")
+
+;; This determines the style of line numbers in effect. If set to `nil', line
+;; numbers are disabled. For relative line numbers, set this to `relative'.
+(setq display-line-numbers-type 'relative)
+
+(+global-word-wrap-mode +1)
+(after! doom-modeline
+  (setq! doom-modeline-persp-name t))
+
 (setq user-full-name "Frédéric Willem"
       user-mail-address "frederic.willem@gmail.com")
 
@@ -11,43 +23,21 @@
  '(holiday-hebrew-holidays nil)
  '(holiday-islamic-holidays nil))
 
-(setq doom-font "FiraCode Nerd Font")
-(setq doom-theme 'modus-vivendi-tinted)
-;; doom-symbol-font "Nerd Font Symbol")
-
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
-(setq display-line-numbers-type 'relative)
-
-(+global-word-wrap-mode +1)
-(after! doom-modeline
-  (setq! doom-modeline-persp-name t))
-
-(use-package! gtd
-  :load-path "~/.config/doom/lisp"
-  :after org
-  :config
-  (defvar org-gtd-archive-file "~/org/gtd/_gtd_archive.org")
-  (setq org-gtd-inbox-file "~/org/gtd/0-inbox.org")
-  (setq org-archive-location (concat org-gtd-archive-file "::datetree/")))
-(map! :map org-mode-map :localleader
-      (:prefix ("G" . "gtd")
-       :desc "Single task" "s" #'gtd-single-task
-       :desc "Someday/Maybe" "m" #'gtd-sometimes-maybe
-       :desc "New task in project" "t" #'gtd-new-task-in-project
-       :desc "New project" "p" #'gtd-new-project))
-
 ;; If you use `org' and don't want your org files in the default location below, change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
+(setq org-gtd-inbox-file "~/org/gtd/0-inbox.org")
+(defvar org-gtd-archive-file "~/org/gtd/_gtd_archive.org")
+(setq org-archive-location (concat org-gtd-archive-file "::datetree/"))
 ;; (setq org-log-into-drawer t)
 
-(add-hook 'org-agenda-mode-hook 'org-agenda-entry-text-mode)
+(require 'org-agenda)
+(setq org-agenda-entry-text-maxlines 3) ;; show up to 3 lines
+(setq org-agenda-entry-text-leaders "    ") ;; indentation for the text
 (setq org-passwords-file "~/org/password.org.gpg")
 (map!
  :leader
  :desc "Org passwords" "o p" #'org-passwords)
 (setq org-hide-emphasis-markers t)
-(add-hook 'org-agenda-mode-hook 'org-agenda-entry-text-mode)
 (after! org
   ;; for org capture extension
   ;; (require 'org-protocol)
@@ -82,31 +72,15 @@
                 (org-agenda-start-on-weekday 1)
                 (org-agenda-start-with-log-mode '(closed))
                 (org-agenda-skip-function))))
+(map! :map org-agenda-mode-map :n "g x" 'org-agenda-entry-text-mode)
+;; (map! :map org-agenda-mode-map :localleader "E" 'org-agenda-entry-text-mode)
 (setq org-log-done 'time)
 (use-package! denote
   :defer t
   :config
   (add-hook 'dired-mode-hook #'denote-dired-mode-in-directories)
   (setq denote-directory "~/org/roam"))
-;; (map! :leader "n d" nil)
-;; (map! :leader
-;;       :prefix ("n d" . "denote"))
-;; (map! :leader
-;;       "n d d" #'denote
-;;       :desc "Find in notes" "n d g" #'consult-notes-search-in-all-notes
-;;       :desc "Find by name" "n d n" #'consult-notes)
-;; (map! :map org-mode-map
-;;       :localleader
-;; :ienmv "s e" #'denote-org-extras-extract-org-subtree)
 
-;; (setq org-roam-capture-templates
-;;       '(("d" "default" plain "%?"
-;;          :target
-;;          (file+head "%<%Y%m%dT%H%M%S>--${slug}.org"
-;;                     ":PROPERTIES:\n:ID: %<%Y%m%dT%H%M%S>\n:END:\n#+title: ${title}\n#+date: [%<%Y-%m-%d %a %H:%S>]\n#+filetags: \n#+identifier: %<%Y%m%dT%H%M%S>\n\n* ${title}\n")
-;;          :immediate-finish t
-;;          :unnarrowed t)))
-(setq! +org-roam-auto-backlinks-buffer t)
 (map! :leader
       :desc "Open graph" "n r g" #'org-roam-ui-open
       :desc "Random by tag" "n r A" #'my/org-roam-random-node-by-tag)
@@ -195,6 +169,8 @@
 (add-hook! (prog-mode text-mode) #'jinx-mode )
 
 (after! evil
+  (map! :map evil-org-agenda-mode-map
+        "g x" #'org-agenda-entry-text-mode)
   (defun +evil-paste-above ()
     "Paste the line above."
     (interactive)
@@ -228,6 +204,8 @@
       "n" #'fd-name-dired)
 (map! :map dired-mode-map
       :n "K" #'dired-do-kill-lines)
+(after! dired
+  (add-hook 'dired-mode-hook #'dired-hide-details-mode))
 
 ;; Bind your key
 ;; Optionally re-bind documentation to different key:
