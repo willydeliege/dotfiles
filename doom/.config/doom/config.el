@@ -1,6 +1,14 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 (setq doom-font "FiraCode Nerd Font-12")
+(setq shell-file-name (executable-find
+      "bash"))
+(setq-default vterm-shell
+      "/usr/bin/fish")
+(setq-default explicit-shell-file-name
+      "/usr/bin/fish")
+ (setq shell-file-name (executable-find
+      "bash"))
 (setq doom-theme 'doom-homage-black)
 ;; doom-symbol-font "Nerd Font Symbol")
 
