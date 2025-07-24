@@ -52,7 +52,3 @@
 (package! jinx)
 (unpin! org-roam)
 (package! org-roam-ui)
-(package! djvu)
-(package! nov)
-(package! org-download)
-(unpin! org-journal)
