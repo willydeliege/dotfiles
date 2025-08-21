@@ -199,10 +199,10 @@
 
         // https://github.com/chubin/wttr.in
 "custom/weather": {
-    "format": "{}",
+    "format": "{}°",
     "tooltip": true,
     "interval": 3600,
-    "exec": "waybar-wttr.py",
+    "exec": "wttrbar --location Montegnée --lang=fr",
     "return-type": "json"
 },
 }
