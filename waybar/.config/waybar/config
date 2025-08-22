@@ -197,12 +197,12 @@
                              }
   },
 
-        // https://github.com/chubin/wttr.in
-"custom/weather": {
-    "format": "{}°",
-    "tooltip": true,
-    "interval": 3600,
-    "exec": "wttrbar --location Montegnée --lang=fr",
-    "return-type": "json"
+ "custom/weather": {
+        "exec": "~/.config/waybar/weatther.sh",
+        "return-type": "json",  // For the advanced script
+        "format": "{}",
+        "interval": 1800,  // Update every 30 minutes
+        "tooltip": true
+    }
 },
 }
