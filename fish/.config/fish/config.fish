@@ -181,3 +181,7 @@ alias rip 'expac --timefmt="%Y-%m-%d %T" "%l\t%n %v" | sort | tail -200 | nl'
 # Zoxide: a better cd command
 zoxide init fish | source
 alias cd 'z'
+
+# FZF integration
+
+fzf --fish | source
