@@ -7,7 +7,7 @@
 
     // Choose the order of the modules
 
-    "modules-left": ["custom/launcher", "hyprland/workspaces", "hyprland/window"],
+    "modules-left": ["custom/launcher", "hyprland/workspaces", "hyprland/window", "hyprland/submap"],
     "modules-center": ["custom/updates", "custom/notification", "clock", "idle_inhibitor", "custom/weather"],
     "modules-right": ["temperature",  "cpu", "memory", "battery", "pulseaudio", "backlight", "power-profiles-daemon", "tray","custom/power"],
 
@@ -62,11 +62,11 @@
         "on-click": "~/.config/waybar/scripts/OCV",
     },
     "cpu": {
-        "format": "🖳{usage}%",
+        "format": " {usage}%",
         "on-click": "foot -e htop"
     },
     "memory": {
-        "format": "🖴 {: >3}%",
+        "format": " {: >3}%",
         "on-click": "foot -e htop"
     },
     "temperature": {
@@ -76,12 +76,17 @@
         "format-critical": "{temperatureC}°C ",
         "format": "{temperatureC}°C "
     },
+
+     "hyprland/submap": {
+          "format": "✌️ {}",
+          "tooltip": false
+     },
     "backlight": {
         // "device": "acpi_video1",
         "format": "{icon} {percent: >3}%",
         "format-icons": ["", ""],
-        "on-scroll-down": "brightnessctl -c backlight set 1%-",
-        "on-scroll-up": "brightnessctl -c backlight set +1%",
+        "on-scroll-down": "brightnessctl -c backlight set 10%-",
+        "on-scroll-up": "brightnessctl -c backlight set +10%",
         "on-click": "~/.config/waybar/scripts/backlight-hint.sh"
     },
     "battery": {
