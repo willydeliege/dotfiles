@@ -37,9 +37,14 @@
     },
     "hyprland/window": {
         "format": "{}",
+        "rewrite": {
+                     "(.*) - Opera": "🌐 $1"
+                },
 	"icon":true,
-	"icon-size" : 20
+    "max-length": 20,
+	"icon-size" : 20,
     },
+
     "idle_inhibitor": {
         "format": "{icon}",
        "format-icons": {
@@ -79,7 +84,8 @@
 
      "hyprland/submap": {
           "format": "✌️ {}",
-          "tooltip": false
+          "tooltip": false,
+          "expand": true
      },
     "backlight": {
         // "device": "acpi_video1",
