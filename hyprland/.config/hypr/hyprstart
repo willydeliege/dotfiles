@@ -7,13 +7,13 @@ export XCURSOR_SIZE=24
 
 # text editor
 export MICRO_TRUECOLOR=1
-export EDITOR=/usr/bin/micro
+export EDITOR=/usr/bin/emacs
 
 #browser
-export BROWSER=firedragon
+export BROWSER=vivaldi
 #terminal
 export TERM=foot
 #mail
 export MAIL=thunderbird
 
-# check /usr/local/bin/hyprstart 
+# check /usr/local/bin/hyprstart
