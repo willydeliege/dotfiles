@@ -1,17 +1,38 @@
 {
-    "layer": "top", // Waybar at top layer
-    "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 40,
-    "margin": "0 5 0 5",
-    "spacing":0,
+  "layer": "top", // Waybar at top layer
+  "position": "top", // Waybar position (top|bottom|left|right)
+  "height": 40,
+  "margin": "0 5 0 5",
+  "spacing": 0,
 
-    // Choose the order of the modules
+  // Choose the order of the modules
 
-    "modules-left": ["custom/launcher", "hyprland/workspaces", "hyprland/submap", "hyprland/window"],
-    "modules-center": ["custom/updates", "custom/notification", "clock", "idle_inhibitor", "custom/weather"],
-    "modules-right": ["temperature",  "cpu", "memory", "battery", "pulseaudio", "backlight", "power-profiles-daemon", "tray","custom/power"],
+  "modules-left": [
+    "custom/launcher",
+    "hyprland/workspaces",
+    "hyprland/submap",
+    "hyprland/window"
+  ],
+  "modules-center": [
+    "custom/updates",
+    "custom/notification",
+    "clock",
+    "idle_inhibitor",
+    "custom/weather"
+  ],
+  "modules-right": [
+    "temperature",
+    "cpu",
+    "memory",
+    "battery",
+    "pulseaudio",
+    "backlight",
+    "power-profiles-daemon",
+    "tray",
+    "custom/power"
+  ],
 
- // Modules configuration
+  // Modules configuration
 
   "hyprland/workspaces": {
     "format": "{icon}",
@@ -33,165 +54,165 @@
       "default": ""
     },
     "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1"
+  },
+  "hyprland/window": {
+    "format": "{}",
+    "rewrite": {
+      "(.*) - Opera": "🌐 $1"
     },
-    "hyprland/window": {
-        "format": "{}",
-        "rewrite": {
-                     "(.*) - Opera": "🌐 $1"
-                },
-	"icon":true,
+    "icon": true,
     "max-length": 20,
-	"icon-size" : 20,
-    },
+    "icon-size": 20
+  },
 
-    "idle_inhibitor": {
-        "format": "{icon}",
-       "format-icons": {
-            "activated": "",
-            "deactivated": "",
-        },
-        "on-click":"exec ~/.config/hypr/scripts/idle_inhibitor.sh",
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
     },
-    "tray": {
-        "icon-size": 20,
-        "spacing": 5
+    "on-click": "exec ~/.config/hypr/scripts/idle_inhibitor.sh"
+  },
+  "tray": {
+    "icon-size": 20,
+    "spacing": 5
+  },
+  "clock": {
+    "format": " {:%a %d %b  %H:%M}", //24 hour format
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{:%W}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
     },
- "clock": {
-                "format": " {:%a %d %b  %H:%M}",	//24 hour format
-                "tooltip-format": "<tt><small>{calendar}</small></tt>",
-                "calendar": {
-                     "mode"          : "year",
-                     "mode-mon-col"  : 3,
-                     "weeks-pos"     : "right",
-                     "on-scroll"     : 1,
-                     "on-click-right": "mode",
-                     "format": {
-                          "months":     "<span color='#ffead3'><b>{}</b></span>",
-                          "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                          "weeks":      "<span color='#99ffdd'><b>W{:%W}</b></span>",
-                          "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-                          "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
-                     }
-                },
-                "actions": {
-                     "on-click-right": "mode",
-                     "on-click-forward": "tz_up",
-                     "on-click-backward": "tz_down",
-                     "on-scroll-up": "shift_up",
-                     "on-scroll-down": "shift_down"
-                }
-           },
-    "cpu": {
-        "format": " {usage}%",
-        "on-click": "foot -e htop"
-    },
-    "memory": {
-        "format": " {: >3}%",
-        "on-click": "foot -e htop"
-    },
-    "temperature": {
-        "thermal-zone": 7,  // Check with: # cat /sys/class/hwmon/hwmon*/temp1_input
-        "hwmon-path": "/sys/class/hwmon/hwmon7/temp1_input",
-        "critical-threshold": 80,
-        "format-critical": "{temperatureC}°C ",
-        "format": "{temperatureC}°C "
-    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+  "cpu": {
+    "format": " {usage}%",
+    "on-click": "foot -e htop"
+  },
+  "memory": {
+    "format": " {: >3}%",
+    "on-click": "foot -e htop"
+  },
+  "temperature": {
+    "thermal-zone": 7, // Check with: # cat /sys/class/hwmon/hwmon*/temp1_input
+    "hwmon-path": "/sys/class/hwmon/hwmon7/temp1_input",
+    "critical-threshold": 80,
+    "format-critical": "{temperatureC}°C ",
+    "format": "{temperatureC}°C "
+  },
 
-     "hyprland/submap": {
-          "format": "✌️ {}",
-          "tooltip": false,
-          "expand": true
-     },
-    "backlight": {
-        // "device": "acpi_video1",
-        "format": "{icon} {percent: >3}%",
-        "format-icons": ["", ""],
-        "on-scroll-down": "brightnessctl -c backlight set 10%-",
-        "on-scroll-up": "brightnessctl -c backlight set +10%",
-        "on-click": "~/.config/waybar/scripts/backlight-hint.sh"
+  "hyprland/submap": {
+    "format": "✌️ {}",
+    "tooltip": false,
+    "expand": true
+  },
+  "backlight": {
+    // "device": "acpi_video1",
+    "format": "{icon} {percent: >3}%",
+    "format-icons": ["", ""],
+    "on-scroll-down": "brightnessctl -c backlight set 10%-",
+    "on-scroll-up": "brightnessctl -c backlight set +10%",
+    "on-click": "~/.config/waybar/scripts/backlight-hint.sh"
+  },
+  "battery": {
+    "states": {
+      // "good": 95,
+      "warning": 30,
+      "critical": 15
     },
-    "battery": {
-        "states": {
-            // "good": 95,
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{icon} {capacity: >3}%",
-        "format-icons": ["", "", "", "", ""]
-        // "format-good": "", // An empty format will hide the module
-        // "format-full": "",
-        //"format-icons": ["", "", "", "", "", "", "", "", "", ""]
-        //"format": "&#x202b;{icon}&#x202c; {capacity}%",
-        //"format-icons": ["ﱉ","ﱊ","ﱌ","ﱍ","ﱋ"]
+    "format": "{icon} {capacity: >3}%",
+    "format-icons": ["", "", "", "", ""]
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    //"format-icons": ["", "", "", "", "", "", "", "", "", ""]
+    //"format": "&#x202b;{icon}&#x202c; {capacity}%",
+    //"format-icons": ["ﱉ","ﱊ","ﱌ","ﱍ","ﱋ"]
+  },
+  "network": {
+    //"interface": "wlp0s20f3", // (Optional) To force the use of this interface  "format-wifi": "  {essid}",
+    "format": "⚠Disabled",
+    "format-wifi": "",
+    "format-ethernet": "",
+    "format-linked": "{ifname} (No IP)",
+    "format-disconnected": "⚠Disabled",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "family": "ipv4",
+    "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+    "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
+    //"min-length": 2,
+    //"max-length": 2,
+    "on-click": "nm-connection-editor"
+  },
+  "custom/updates": {
+    "format": "{} {icon}",
+    "return-type": "json",
+    "format-icons": {
+      "has-updates": "󱍷",
+      "updated": "󰂪"
     },
-      "network": {
-        //"interface": "wlp0s20f3", // (Optional) To force the use of this interface  "format-wifi": "  {essid}",
-        "format": "⚠Disabled",
-        "format-wifi": "",
-        "format-ethernet": "",
-        "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "⚠Disabled",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
-        "family": "ipv4",
-        "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
-        "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
-        //"min-length": 2,
-        //"max-length": 2,
-        "on-click": "nm-connection-editor"
+    "exec-if": "which waybar-module-pacman-updates",
+    "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 7200 --network-interval-seconds",
+    "on-click": "foot -e update"
+  },
+  "custom/power": {
+    "format": "⏻",
+    "on-click": "nwgbar",
+    "tooltip": false
+  },
+  "custom/keyboard-layout": {
+    "format": " Cheat", // Icon: keyboard
+    "on-click": "~/.local/bin/keyhint.sh"
+  },
+  "custom/launcher": {
+    "format": "    ",
+    "on-click": "exec nwg-drawer -c 7 -is 70 -spacing 23",
+    "tooltip": false
+  },
+  "custom/network_traffic": {
+    "exec": "~/.config/waybar/scripts/network_traffic.sh",
+    "return-type": "json",
+    "format-ethernet": "{icon} {ifname} ⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}" // optional
+  },
+  "pulseaudio": {
+    "scroll-step": 3, // %, can be a float
+    "format": "{icon} {volume}% {format_source}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    //"format-source": "{volume}% ",
+    //"format-source-muted": "",
+    "format-source": "",
+    "format-source-muted": "",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
     },
-   "custom/updates": {
-       "format": "{} {icon}",
-       "return-type": "json",
-       "format-icons": {
-           "has-updates": "󱍷",
-           "updated": "󰂪",
-       },
-       "exec-if": "which waybar-module-pacman-updates",
-       "exec": "waybar-module-pacman-updates --interval-seconds 5 --network-interval-seconds 7200 --network-interval-seconds",
-       "on-click": "foot -e update"
-   },
-    "custom/power": {
-      	"format":"⏻",
-       	"on-click": "nwgbar",
-      	"tooltip": false,
-   },
-   "custom/keyboard-layout": {
-      	"format": " Cheat", // Icon: keyboard
-        "on-click": "~/.local/bin/keyhint.sh",
-     },
-    "custom/launcher": {
-    "format":"    ",
-    	"on-click": "exec nwg-drawer -c 7 -is 70 -spacing 23",
-    	"tooltip": false,
-     },
-     "custom/network_traffic": {
-             "exec": "~/.config/waybar/scripts/network_traffic.sh",
-             "return-type": "json",
-             "format-ethernet": "{icon} {ifname} ⇣{bandwidthDownBytes} ⇡{bandwidthUpBytes}",    // optional
-},
-    "pulseaudio": {
-        "scroll-step": 3, // %, can be a float
-        "format": "{icon} {volume}% {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        //"format-source": "{volume}% ",
-        //"format-source-muted": "",
-        "format-source": "",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol",
-        "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
-        },
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+  },
   "custom/notification": {
     "tooltip": false,
     "format": "{icon}",
@@ -213,23 +234,22 @@
     "escape": true
   },
   "power-profiles-daemon": {
-             "format": "{icon}",
-             "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-             "tooltip": true,
-             "format-icons": {
-                             "default": "",
-                             "performance": "",
-                             "balanced": "",
-                             "power-saver": ""
-                             }
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
   },
 
-"custom/weather": {
+  "custom/weather": {
     "format": "{}°",
     "tooltip": true,
     "interval": 3600,
-    "exec": "wttrbar -l fr --location Montegnée   --custom-indicator \"{ICON}{temp_C}({FeelsLikeC})\"" ,
+    "exec": "wttrbar -l fr --location Montegnée   --custom-indicator \"{ICON}{temp_C}({FeelsLikeC})\"",
     "return-type": "json"
-},
-},
+  }
 }
