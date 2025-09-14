@@ -212,7 +212,7 @@
     "format": "{}°",
     "tooltip": true,
     "interval": 3600,
-    "exec": "wttrbar -l fr --location Montegnée",
+    "exec": "wttrbar -l fr --location Montegnée   --custom-indicator \"{ICON}{temp_C}({FeelsLikeC})\"" ,
     "return-type": "json"
 },
 },
