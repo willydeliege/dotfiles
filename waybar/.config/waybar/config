@@ -246,10 +246,10 @@
   },
 
   "custom/weather": {
-    "format": "{}°",
-    "tooltip": true,
-    "interval": 3600,
-    "exec": "wttrbar -l fr --location Montegnée   --custom-indicator \"{ICON}{temp_C}({FeelsLikeC})\" --observation-time",
-    "return-type": "json"
-  }
+        "exec": "~/.config/waybar/scripts/weather.py",
+        "return-type": "json",
+        "interval": 600,
+        "tooltip": true,
+        "on-click": "alacritty --title 'Météo Montegnée' -e sh -c 'curl -s \"wttr.in/Montegnée?lang=fr\" && echo \"\\nAppuyez sur Entrée pour fermer...\" && read'"
+    }
 }
