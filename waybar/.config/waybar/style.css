@@ -181,3 +181,41 @@ window#waybar {
 #custom-network_traffic{
    color:#d08770;
 }
+/* Styles pour le module météo dans style.css de Waybar */
+
+#custom-weather {
+    background-color: rgba(40, 40, 40, 0.8);
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 0 12px;
+    margin: 0 4px;
+    font-family: "Noto Sans", "Font Awesome 6 Free";
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+#custom-weather:hover {
+    background-color: rgba(60, 60, 60, 0.9);
+}
+
+#custom-weather.weather {
+    border-left: 3px solid #4CAF50;
+}
+
+#custom-weather.weather-error {
+    border-left: 3px solid #f44336;
+    color: #ffcccb;
+}
+
+/* Tooltip personnalisé */
+tooltip {
+    background-color: rgba(30, 30, 30, 0.95);
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 12px;
+    font-family: "Roboto Mono", monospace;
+    font-size: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
