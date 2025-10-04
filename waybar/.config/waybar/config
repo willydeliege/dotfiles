@@ -9,9 +9,8 @@
 
   "modules-left": [
     "custom/launcher",
-    "hyprland/workspaces",
-    "hyprland/submap",
-    "hyprland/window"
+    "sway/workspaces",
+    "sway/window"
   ],
   "modules-center": [
     "custom/updates",
