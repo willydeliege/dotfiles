@@ -139,6 +139,7 @@ xf86-video-ati
 xf86-video-nouveau
 xorg-server
 xorg-xinit
+xorg-xinput
 xorg-xrandr
 xorg-xwayland
 yad
