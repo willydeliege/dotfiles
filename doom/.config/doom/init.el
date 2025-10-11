@@ -152,7 +152,7 @@
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       (org +passwords +contacts +crypt +pandoc +roam2 +pretty)   ; organize your plain life in ext
+       (org +passwords +contacts +crypt +pandoc +roam +pretty)   ; organize your plain life in ext
        ;;php               ; perl's insecure younger brother
        plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
