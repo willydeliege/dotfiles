@@ -13,7 +13,6 @@
     "sway/window"
   ],
   "modules-center": [
-    "custom/updates",
     "custom/notification",
     "clock",
     "idle_inhibitor",
@@ -252,7 +251,7 @@
   },
 
   "custom/weather": {
-        "exec": "~/.config/waybar/scripts/weather.py",
+        "exec": "wttrbar --location Montegnée --lang fr",
         "return-type": "json",
         "interval": 600,
         "tooltip": true,
