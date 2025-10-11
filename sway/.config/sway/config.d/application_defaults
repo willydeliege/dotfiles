@@ -32,5 +32,11 @@ for_window [title="waybar_calcurse-caldav"] floating enable, move position curso
 for_window [title="sway_config"] floating enable, resize set width 80 ppt height 80 ppt
 
 # Inhibit idle
-for_window [app_id="librewolf"] inhibit_idle fullscreen
-for_window [app_id="Chromium"] inhibit_idle fullscreen
+# for_window [app_id="librewolf"] inhibit_idle fullscreen
+# for_window [app_id="Chromium"] inhibit_idle fullscreen
+
+# Workspace assignment
+
+assign [app_id="vivaldi-stable"] workspace number 2
+for_window [app_id="vivaldi-stable"] focus
+
