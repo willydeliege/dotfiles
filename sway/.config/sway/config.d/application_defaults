@@ -1,3 +1,4 @@
+focus_on_window_activation focus
 # set floating (nontiling)
 for_window [class="Yad" instance="yad"] floating enable
 for_window [app_id="yad"] floating enable
