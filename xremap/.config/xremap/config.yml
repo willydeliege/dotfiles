@@ -1,0 +1,7 @@
+modmap:
+  - name: Space as Super when held
+    remap:
+      Space:
+        held: Super_L
+        alone: Space
+        alone_timeout_millis: 200  # default is 1000ms

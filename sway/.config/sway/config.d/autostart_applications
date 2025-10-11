@@ -46,3 +46,6 @@ exec kdeconnect-indicator
 
 # Visual comfort
 exec wlsunset -L 5.51 -l 50.66
+
+# map space as meta
+exec xremap  ~/.config/xremap/config.yml
