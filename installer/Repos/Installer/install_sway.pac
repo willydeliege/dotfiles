@@ -88,6 +88,7 @@ python-pillow-heif
 python-pillow-jpegxl-plugin
 qt5ct
 qt6ct
+reflector
 ripgrep
 rustup
 shfmt
@@ -115,6 +116,8 @@ ttf-nerd-fonts-symbols-mono
 ttf-ubuntu-font-family
 ugrep
 vim
+vivaldi
+vivaldi-ffmpeg-codecs
 vulkan-intel
 vulkan-nouveau
 vulkan-radeon
