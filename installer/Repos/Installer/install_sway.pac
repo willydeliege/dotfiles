@@ -1,4 +1,5 @@
 acpi
+arch-update
 autotiling
 awesome-terminal-fonts
 azote
@@ -13,6 +14,8 @@ btop
 btrfs-progs
 calibre
 chafa
+chaotic-keyring
+chaotic-mirrorlist
 cliphist
 cmake
 cronie
@@ -20,9 +23,12 @@ dex
 efibootmgr
 egl-wayland
 emacs-wayland
+expac
 eza
+fastfetch-git
 fd
 file-roller
+find-the-command
 fish
 foot
 fuzzel
@@ -60,6 +66,7 @@ kdeconnect
 kvantum
 less
 libpulse
+libreoffice-fresh
 libva-intel-driver
 libvterm
 linux
@@ -71,11 +78,13 @@ nano
 neovim
 network-manager-applet
 networkmanager
+nordvpn-bin
 npm
 nwg-drawer
 nwg-look
 obsidian
 pamixer
+pandoc-bin
 pavucontrol
 pipewire
 pipewire-alsa
@@ -91,6 +100,7 @@ qt6ct
 reflector
 ripgrep
 rustup
+shellcheck-bin
 shfmt
 slurp
 smartmontools
@@ -103,12 +113,14 @@ swaybg
 swayidle
 swaylock
 swaync
+swayr
 sysstat
 thunar
 thunar-archive-plugin
 thunar-volman
 timeshift
 ttf-firacode-nerd
+ttf-font-awesome-4
 ttf-jetbrains-mono
 ttf-jetbrains-mono-nerd
 ttf-nerd-fonts-symbols
@@ -143,5 +155,6 @@ xorg-xinput
 xorg-xrandr
 xorg-xwayland
 yad
+yay
 zoxide
 zram-generator
