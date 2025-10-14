@@ -92,7 +92,6 @@ pipewire-jack
 pipewire-pulse
 pkgfile
 polkit-gnome
-power-profiles-daemon
 python-pillow-heif
 python-pillow-jpegxl-plugin
 qt5ct
@@ -119,6 +118,8 @@ thunar
 thunar-archive-plugin
 thunar-volman
 timeshift
+tlp
+tlpui
 ttf-firacode-nerd
 ttf-font-awesome-4
 ttf-jetbrains-mono
