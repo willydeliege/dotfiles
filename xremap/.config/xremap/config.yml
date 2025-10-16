@@ -4,4 +4,5 @@ modmap:
       Space:
         held: Super_L
         alone: Space
-        alone_timeout_millis: 200  # default is 1000ms
+        alone_timeout_millis: 100  # default is 1000ms
+
