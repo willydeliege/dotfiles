@@ -23,10 +23,12 @@ dex
 efibootmgr
 egl-wayland
 emacs-wayland
+evince
 expac
 eza
-fastfetch-git
+fastfetch
 fd
+ffmpeg4.4
 file-roller
 find-the-command
 fish
@@ -95,6 +97,7 @@ polkit-gnome
 python-pillow-heif
 python-pillow-jpegxl-plugin
 qt5ct
+qt6-tools
 qt6ct
 reflector
 ripgrep
@@ -103,6 +106,7 @@ shellcheck-bin
 shfmt
 slurp
 smartmontools
+sshfs
 starship
 stow
 swappy
