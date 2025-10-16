@@ -69,6 +69,7 @@ kvantum
 less
 libpulse
 libreoffice-fresh
+librewolf
 libva-intel-driver
 libvterm
 linux
