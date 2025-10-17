@@ -25,7 +25,8 @@
     "battery",
     "pulseaudio",
     "backlight",
-    "tray"
+    "tray",
+    "power-profiles-daemon"
   ],
 
   // Modules configuration
