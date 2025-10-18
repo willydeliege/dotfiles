@@ -108,6 +108,7 @@ shellcheck-bin
 shfmt
 slurp
 smartmontools
+spotify-adblock-git
 sshfs
 starship
 stow
