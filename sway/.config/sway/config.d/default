@@ -223,6 +223,8 @@ bindsym {
     $mod+t exec emacsclient -c -a=
     # Launch the calculator
     $mod+c exec galculator
+    # change wallpaper
+    $mod+w exec azote
     # Launch the clipboard manager
     $mod+Ctrl+v exec cliphist list | fuzzel -d -w 90 -l 30 -p "Select an entry to copy it to your clipboard buffer:"| cliphist decode | wl-copy
     # Delete an entry from the clipboard manager
