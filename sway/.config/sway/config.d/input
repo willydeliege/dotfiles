@@ -16,8 +16,9 @@ bindgesture {
     swipe:down scratchpad show
 }
 
-# Enable numlock by default
-input type:keyboard xkb_numlock enabled
+# Disable numlock by default
+input type:keyboard xkb_numlock disabled
+
 
 # Set keyboard layout and variant based on current system settings
 exec_always {
