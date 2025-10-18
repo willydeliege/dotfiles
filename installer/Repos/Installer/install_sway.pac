@@ -133,8 +133,6 @@ ttf-nerd-fonts-symbols-mono
 ttf-ubuntu-font-family
 ugrep
 vim
-vivaldi
-vivaldi-ffmpeg-codecs
 vulkan-intel
 vulkan-nouveau
 vulkan-radeon
