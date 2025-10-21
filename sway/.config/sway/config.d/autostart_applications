@@ -48,4 +48,7 @@ exec kdeconnect-indicator
 exec wlsunset -L 5.51 -l 50.66
 
 # map space as meta
-exec xremap  ~/.config/xremap/config.yml
+exec_always xremap  ~/.config/xremap/config.yml
+
+# Arch update
+exec arch-update --tray

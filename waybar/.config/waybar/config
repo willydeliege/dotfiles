@@ -223,6 +223,6 @@
         "return-type": "json",
         "interval": 600,
         "tooltip": true,
-        "on-click": "alacritty --title 'Météo Montegnée' -e sh -c 'curl -s \"wttr.in/Montegnée?lang=fr\" && echo \"\\nAppuyez sur Entrée pour fermer...\" && read'"
+        "on-click": "alacritty --title 'weather' -e sh -c 'curl -s \"wttr.in/Montegnée?lang=fr\" && echo \"\\nAppuyez sur Entrée pour fermer...\" && read'"
     }
 }
