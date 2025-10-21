@@ -1,4 +1,5 @@
 acpi
+alacritty
 arch-update
 autotiling
 awesome-terminal-fonts
