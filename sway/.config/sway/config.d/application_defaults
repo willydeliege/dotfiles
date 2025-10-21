@@ -15,7 +15,7 @@ for_window [window_type="menu"] floating enable
 for_window [window_role="About"] floating enable
 for_window [title="File Operation Progress"] floating enable, border pixel 1, sticky enable, resize set width 40 ppt height 30 ppt
 for_window [app_id="floating_shell_portrait"] floating enable, border pixel 1, sticky enable, resize set width 30 ppt height 40 ppt
-for_window [title="^Picture-in-Picture$"] {
+for_window [title="^Picture in picture$"] {
     floating enable
     sticky enable
     border pixel 2
@@ -37,13 +37,13 @@ for_window [title="waybar_calcurse-caldav"] floating enable, move position curso
 for_window [title="sway_config"] floating enable, resize set width 80 ppt height 80 ppt
 
 # Inhibit idle
-for_window [app_id="librewolf"] inhibit_idle fullscreen
+# for_window [app_id="librewolf"] inhibit_idle fullscreen
 # for_window [app_id="Chromium"] inhibit_idle fullscreen
 
 # Workspace assignment
 
-assign [app_id="librewolf"] workspace number 2
-for_window [app_id="librewolf"] focus
+assign [app_id="microsoft-edge-beta"] workspace number 2
+for_window [app_id="microsoft-edge-beta"] focus
 
 # Open app when calling
 
