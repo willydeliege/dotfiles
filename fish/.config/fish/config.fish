@@ -115,7 +115,7 @@ end
 
 
 # Replace some more things with better alternatives
-alias cat 'bat --style header --style snip --style changes --style header'
+# alias cat 'bat --style header --style snip --style changes --style header'
 if not test -x /usr/bin/yay; and test -x /usr/bin/paru
     alias yay 'paru'
 end
@@ -178,7 +178,7 @@ alias cd 'z'
 # FZF integration
 
 fzf --fish | source
-# source /home/willeefi/.config/fish/conf.d/fifc.fish
+source /home/willeefi/.config/fish/conf.d/fifc.fish
 # set -U fifc_fd_opts --hidden
 # # Bind fzf completions to ctrl-x
 # set -U fifc_keybinding \cx
