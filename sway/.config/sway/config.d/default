@@ -229,7 +229,9 @@ bindsym {
     # Launch the file explorer
     $mod+e exec thunar
     # Launch the browser
-    $mod+b exec microsoft-edge-beta
+    $mod+b exec librewolf
+    # Launch the browser in private mode
+    $mod++Shift+b exec librewolf --private-window
     # Launch the text editor
     $mod+t exec emacsclient -c -a=
     # Launch the calculator
