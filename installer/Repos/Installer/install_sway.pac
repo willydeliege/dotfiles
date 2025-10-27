@@ -34,6 +34,7 @@ file-roller
 find-the-command
 fish
 foot
+freetube
 fuzzel
 fzf
 galculator
@@ -136,8 +137,6 @@ ttf-ubuntu-font-family
 ugrep
 vim
 vulkan-intel
-vulkan-nouveau
-vulkan-radeon
 waybar
 wayland-protocols
 wget
