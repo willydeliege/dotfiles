@@ -45,7 +45,7 @@ bindsym {
     $mod+Shift+d exec $menu
 
     # Switch to the last recently used window
-    Alt+Tab exec swayr  next-window current-workspace
+    Alt+Tab exec swayr switch-to-urgent-or-lru-window
 
     # Lock screen
     $mod+f1 exec gtklock
