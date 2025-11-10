@@ -46,7 +46,6 @@ greetd
 greetd-regreet
 grim
 gst-plugin-pipewire
-gtk-engine-murrine
 gtklock
 gtklock-powerbar-module
 gtklock-userinfo-module
@@ -63,6 +62,7 @@ hunspell-fr
 imagemagick
 intel-media-driver
 intel-ucode
+interception-tools
 iwd
 jdk-openjdk
 jq
@@ -72,8 +72,8 @@ kvantum
 less
 libpulse
 libreoffice-fresh
-librewolf
 libva-intel-driver
+libva-utils
 libvterm
 linux
 linux-firmware
@@ -98,7 +98,7 @@ pipewire-jack
 pipewire-pulse
 pkgfile
 polkit-gnome
-power-profiles-daemon
+powertop
 python-pillow-heif
 python-pillow-jpegxl-plugin
 qt5ct
@@ -111,6 +111,7 @@ shellcheck-bin
 shfmt
 slurp
 smartmontools
+speedtest-cli
 spotify-adblock-git
 sshfs
 starship
@@ -128,6 +129,8 @@ thunar
 thunar-archive-plugin
 thunar-volman
 timeshift
+tlp
+tlp-rdw
 ttf-firacode-nerd
 ttf-font-awesome-4
 ttf-jetbrains-mono
@@ -161,5 +164,6 @@ xorg-xrandr
 xorg-xwayland
 yad
 yay
+yt-dlp
 zoxide
 zram-generator
