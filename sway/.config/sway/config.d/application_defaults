@@ -43,8 +43,8 @@ for_window [title="sway_config"] floating enable, resize set width 80 ppt height
 
 # Workspace assignment
 
-assign [app_id="librewolf"] workspace number 2
-for_window [app_id="librewolf"] focus
+assign [app_id="chromium"] workspace number 2
+for_window [app_id="chromium"] focus
 
 # Open app when calling
 

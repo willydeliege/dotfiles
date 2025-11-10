@@ -17,6 +17,7 @@ calibre
 chafa
 chaotic-keyring
 chaotic-mirrorlist
+chromium
 cliphist
 cmake
 cronie
