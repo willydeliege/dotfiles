@@ -30,6 +30,8 @@ set {
 bindsym {
     # Launch the terminal
     $mod+Return exec $term
+    # Toggle dropdown terminal
+    $mod+Shift+Return exec --no-startup-id sway-scratchpad -t -mt -atc -d 60%x60% -- $term
 
     # Open the power menu
     Ctrl+Alt+Delete exec $powermenu
