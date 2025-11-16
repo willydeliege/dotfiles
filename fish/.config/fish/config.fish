@@ -178,7 +178,7 @@ alias cd 'z'
 # FZF integration
 
 fzf --fish | source
-source /home/willeefi/.config/fish/conf.d/fifc.fish
+source /home/willefi/.config/fish/conf.d/fifc.fish
 # set -U fifc_fd_opts --hidden
 # # Bind fzf completions to ctrl-x
 # set -U fifc_keybinding \cx
