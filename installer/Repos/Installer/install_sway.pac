@@ -139,6 +139,7 @@ ttf-nerd-fonts-symbols-mono
 ttf-ubuntu-font-family
 ugrep
 vim
+vivaldi
 vulkan-intel
 waybar
 wayland-protocols
