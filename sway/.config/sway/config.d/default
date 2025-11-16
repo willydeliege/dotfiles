@@ -231,9 +231,9 @@ bindsym {
     # Launch the file explorer
     $mod+e exec thunar
     # Launch the browser
-    $mod+b exec chromium
+    $mod+b exec vivaldi
     # Launch the browser in private mode
-    $mod++Shift+b exec chromium --incognito
+    $mod++Shift+b exec vivaldi --incognito
     # Launch the text editor
     $mod+t exec emacsclient -c -a=
     # Launch the calculator
