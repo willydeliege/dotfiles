@@ -1,6 +1,7 @@
 acpi
 alacritty
 arch-update
+archlinux-wallpaper
 autotiling
 awesome-terminal-fonts
 azote
@@ -45,6 +46,8 @@ graphviz
 greetd
 greetd-regreet
 grim
+grub
+grub-btrfs
 gst-plugin-pipewire
 gtklock
 gtklock-powerbar-module
@@ -60,6 +63,7 @@ hunspell
 hunspell-en_us
 hunspell-fr
 imagemagick
+inotify-tools
 intel-media-driver
 intel-ucode
 interception-tools
@@ -78,6 +82,7 @@ libvterm
 linux
 linux-firmware
 linux-headers
+linux-lts
 man-db
 man-pages
 nano
@@ -158,6 +163,7 @@ xf86-video-amdgpu
 xf86-video-ati
 xf86-video-nouveau
 xorg-server
+xorg-xhost
 xorg-xinit
 xorg-xinput
 xorg-xrandr
