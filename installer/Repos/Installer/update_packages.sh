@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
-yay -Qqem >install_sway.aur
-yay -Qqen >install_sway.pac
+paru -Qqem >install_sway.aur
+paru -Qqen >install_sway.pac

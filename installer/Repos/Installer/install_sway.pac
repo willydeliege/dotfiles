@@ -2,6 +2,7 @@ acpi
 alacritty
 arch-update
 archlinux-wallpaper
+auto-cpufreq
 autotiling
 awesome-terminal-fonts
 azote
@@ -76,6 +77,7 @@ kvantum
 less
 libpulse
 libreoffice-fresh
+librewolf
 libva-intel-driver
 libva-utils
 libvterm
@@ -96,6 +98,7 @@ nwg-look
 obsidian
 pamixer
 pandoc-bin
+paru
 pavucontrol
 pipewire
 pipewire-alsa
@@ -103,7 +106,6 @@ pipewire-jack
 pipewire-pulse
 pkgfile
 polkit-gnome
-power-profiles-daemon
 powertop
 python-pillow-heif
 python-pillow-jpegxl-plugin
@@ -145,6 +147,7 @@ ttf-ubuntu-font-family
 ugrep
 vim
 vivaldi
+vivaldi-ffmpeg-codecs
 vulkan-intel
 waybar
 wayland-protocols
@@ -169,7 +172,6 @@ xorg-xinput
 xorg-xrandr
 xorg-xwayland
 yad
-yay
 yt-dlp
 zoxide
 zram-generator
