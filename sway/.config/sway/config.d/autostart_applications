@@ -10,10 +10,10 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 
 # Idle configuration
 exec swayidle idlehint 1
-exec_always swayidle -w before-sleep "gtklock -d"
-
-# Desktop notifications
-# exec mako
+exec_always swayidle -w \
+	timeout 300 'gtklock -d' \
+	timeout 600 'systemctl suspend' \
+	before-sleep 'gtklock -d'
 
 # Start foot server
 exec_always --no-startup-id foot --server
