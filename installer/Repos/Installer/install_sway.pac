@@ -2,7 +2,6 @@ acpi
 alacritty
 arch-update
 archlinux-wallpaper
-auto-cpufreq
 autotiling
 awesome-terminal-fonts
 azote
@@ -19,7 +18,7 @@ calibre
 chafa
 chaotic-keyring
 chaotic-mirrorlist
-chromium
+cheese
 cliphist
 cmake
 cronie
@@ -36,6 +35,7 @@ ffmpeg4.4
 file-roller
 find-the-command
 fish
+flatpak
 foot
 freetube
 fuzzel
@@ -107,6 +107,7 @@ pipewire-pulse
 pkgfile
 polkit-gnome
 powertop
+python-dbus
 python-pillow-heif
 python-pillow-jpegxl-plugin
 qt5ct
@@ -124,6 +125,7 @@ spotify-adblock-git
 sshfs
 starship
 stow
+strace
 swappy
 sway
 sway-contrib
@@ -137,6 +139,8 @@ thunar
 thunar-archive-plugin
 thunar-volman
 timeshift
+tlp
+tlp-rdw
 ttf-firacode-nerd
 ttf-font-awesome-4
 ttf-jetbrains-mono
