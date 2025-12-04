@@ -14,7 +14,7 @@ set {
     $term footclient
 
     # Application launcher
-    $launcher fuzzel
+    $launcher rofi -show drun
     
     # Power Menu
     $powermenu ~/.config/sway/scripts/power_menu.sh
@@ -59,7 +59,7 @@ bindsym {
     $mod+Shift+Tab exec swayr switch-workspace-or-window
 
     # Open this file in a floating window
-    $mod+Shift+i exec $term -T sway_config -e micro ~/.config/sway/config.d/default
+    $mod+Shift+i exec $term -T sway_config -e emacs ~/.config/sway/config.d/default
 
     # Reload the configuration file
     $mod+Shift+c reload
@@ -136,14 +136,8 @@ bindsym {
 #
 bindsym {
     # Set how the current window will be split
-    # Split the window vertically
-    $mod+v splitv
-    # Split the window horizontally
-    $mod+Shift+v splith
 
     # Switch the current container between different layout styles
-    $mod+Shift+s layout stacking
-    $mod+Shift+w layout tabbed
     $mod+Shift+e layout toggle split
 
     # Make the current focus fullscreen
@@ -154,9 +148,6 @@ bindsym {
 
     # Swap focus between the tiling area and the floating area
     $mod+Shift+space focus mode_toggle
-
-    # Move focus to the parent container
-    $mod+a focus parent
 }
 
 #
@@ -240,10 +231,12 @@ bindsym {
     $mod+c exec galculator
     # change wallpaper
     $mod+w exec azote
+    # Select a window
+    $mod+a exec rofi -show window
     # Launch the clipboard manager
-    $mod+Ctrl+v exec cliphist list | fuzzel -d -w 90 -l 30 -p "Select an entry to copy it to your clipboard buffer:"| cliphist decode | wl-copy
+    $mod+Ctrl+v exec cliphist list | rofi -dmenu --width 90 -lines 30 -p "Select an entry to copy it to your clipboard buffer:"| cliphist decode | wl-copy
     # Delete an entry from the clipboard manager
-    $mod+Ctrl+x exec cliphist list | fuzzel -d -w 90 -l 30 -t cc9393ff -S cc9393ff -p "Select an entry to delete it from cliphist:"| cliphist delete
+    $mod+Ctrl+x exec cliphist list | rofi -dmenu -width 90 -lines 30 -t cc9393ff -S cc9393ff -p "Select an entry to delete it from cliphist:"| cliphist delete
     # Note: you can clear all cliphist entries by running `cliphist wipe`
 }
 

@@ -73,11 +73,11 @@ jdk-openjdk
 jq
 kanshi
 kdeconnect
+keyd
 kvantum
 less
 libpulse
 libreoffice-fresh
-librewolf
 libva-intel-driver
 libva-utils
 libvterm
@@ -85,6 +85,7 @@ linux
 linux-firmware
 linux-headers
 linux-lts
+logseq-desktop
 man-db
 man-pages
 nano
@@ -92,6 +93,7 @@ neovim
 network-manager-applet
 networkmanager
 nordvpn-bin
+noto-fonts-emoji
 npm
 nwg-drawer
 nwg-look
@@ -106,7 +108,6 @@ pipewire-jack
 pipewire-pulse
 pkgfile
 polkit-gnome
-powertop
 python-dbus
 python-pillow-heif
 python-pillow-jpegxl-plugin
@@ -115,6 +116,9 @@ qt6-tools
 qt6ct
 reflector
 ripgrep
+rofi
+rofi-emoji
+rofimoji
 rustup
 shellcheck-bin
 shfmt
@@ -140,9 +144,9 @@ thunar-archive-plugin
 thunar-volman
 timeshift
 tlp
+tlp-pd-git
 tlp-rdw
 ttf-firacode-nerd
-ttf-font-awesome-4
 ttf-jetbrains-mono
 ttf-jetbrains-mono-nerd
 ttf-nerd-fonts-symbols
@@ -161,7 +165,8 @@ wireplumber
 wl-clipboard
 wlsunset
 wmenu
-wofi
+woff2-font-awesome
+wtype
 xdg-desktop-portal-wlr
 xdg-user-dirs
 xdg-utils
