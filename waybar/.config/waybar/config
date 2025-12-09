@@ -13,6 +13,7 @@
     "sway/window"
   ],
   "modules-center": [
+    "power-profiles-daemon",
     "custom/notification",
     "clock",
     "idle_inhibitor",
@@ -25,8 +26,7 @@
     "battery",
     "pulseaudio",
     "backlight",
-    "tray",
-    "power-profiles-daemon"
+    "tray"
   ],
 
   // Modules configuration
