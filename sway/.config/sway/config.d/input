@@ -32,7 +32,7 @@ exec_always {
 input "type:keyboard" {
     xkb_layout "us"
     xkb_variant "altgr-intl"
-    xkb_options "caps:swapescape"
+    # xkb_options "caps:swapescape"
 }
 #
 # # Assign the same binding to "pkill -RTMIN+1 waybar" to send signal to the Waybar keyboard module.
