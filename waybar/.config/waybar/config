@@ -9,13 +9,14 @@
 
   "modules-left": [
     "custom/launcher",
-    "sway/workspaces",
-    "sway/window"
+    "river/tags",
+    "river/window"
   ],
   "modules-center": [
     "power-profiles-daemon",
     "custom/notification",
     "clock",
+    "custom/audio_idle_inhibitor",
     "idle_inhibitor",
     "custom/weather"
   ],
@@ -30,8 +31,25 @@
   ],
 
   // Modules configuration
-
-
+  "river/tags": {
+                "hide-vacant": true
+   },
+   "river/window": {
+                "format": "{}",
+                "max-length": 20
+   },
+	"custom/audio_idle_inhibitor": {
+		"format": "{icon}",
+		"exec": "sway-audio-idle-inhibit --dry-print-both-waybar",
+		"exec-if": "which sway-audio-idle-inhibit",
+		"return-type": "json",
+		"format-icons": {
+			"output": "",
+			"input": "",
+			"output-input": "  ",
+			"none": ""
+		}
+	},
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
