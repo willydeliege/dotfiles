@@ -11,7 +11,7 @@ set {
     $right l
 
     # Default terminal emulator
-    $term footclient
+    $term kitty
 
     # Application launcher
     $launcher rofi -show drun
@@ -40,29 +40,23 @@ bindsym {
 	$mod+Backspace kill
 	$mod+q kill
 
-    # Start your launcher
-    $mod+d exec $launcher
+  # Start your launcher
+  $mod+d exec $launcher
 
-    # Menu
-    $mod+Shift+d exec $menu
+  # Switch to the last recently used window
+  Alt+Tab exec swayr switch-to-urgent-or-lru-window
 
-    # Switch to the last recently used window
-    Alt+Tab exec swayr switch-to-urgent-or-lru-window
+  # Lock screen
+  $mod+f1 exec gtklock
 
-    # Lock screen
-    $mod+f1 exec gtklock
+  # Activities
+  $mod+Tab workspace next
 
-    # Activities
-    $mod+Tab workspace next
+  # Activities and workspaces
+  $mod+Shift+Tab exec swayr switch-workspace-or-window
 
-    # Activities and workspaces
-    $mod+Shift+Tab exec swayr switch-workspace-or-window
-
-    # Open this file in a floating window
-    $mod+Shift+i exec $term -T sway_config -e emacs ~/.config/sway/config.d/default
-
-    # Reload the configuration file
-    $mod+Shift+c reload
+  # Reload the configuration file
+  $mod+Shift+c reload
 }
 
 #
@@ -136,9 +130,6 @@ bindsym {
 #
 bindsym {
     # Set how the current window will be split
-
-    # Switch the current container between different layout styles
-    $mod+Shift+e layout toggle split
 
     # Make the current focus fullscreen
     $mod+f fullscreen
@@ -222,17 +213,11 @@ bindsym {
     # Launch the file explorer
     $mod+e exec thunar
     # Launch the browser
-    $mod+b exec vivaldi
+    $mod+b exec brave
     # Launch the browser in private mode
-    $mod++Shift+b exec vivaldi --incognito
-    # Launch the text editor
-    $mod+t exec emacsclient -c -a=
-    # Launch the calculator
-    $mod+c exec galculator
-    # change wallpaper
-    $mod+w exec azote
+    $mod++Shift+b exec brave --incognito
     # Select a window
-    $mod+a exec rofi -show window
+    $mod+Shift+a exec rofi -show window
     # Launch the clipboard manager
     $mod+Ctrl+v exec cliphist list | rofi -dmenu --width 90 -lines 30 -p "Select an entry to copy it to your clipboard buffer:"| cliphist decode | wl-copy
     # Delete an entry from the clipboard manager
