@@ -53,5 +53,6 @@ exec_always xremap  ~/.config/xremap/config.yml
 # Arch update
 exec arch-update --tray
 
-# Emacs
-exec emacs --daemon
+# Power management
+
+exec_always "cat /sys/class/power_supply/AC*/online | grep -q 1 && brightnessctl set 60% || brightnessctl set 30%"
