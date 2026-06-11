@@ -19,23 +19,15 @@ bindgesture {
 # Disable numlock by default
 input type:keyboard xkb_numlock disabled
 
-
-# Set keyboard layout and variant based on current system settings
-exec_always {
-    'swaymsg input type:keyboard xkb_layout "$(localectl status | grep "X11 Layout" | sed -e "s/^.*X11 Layout://")"'
-    'swaymsg input type:keyboard xkb_variant "$(localectl status | grep "X11 Variant" | sed -e "s/^.*X11 Variant://")"'
-}
-
 # # Uncomment below to toggle between keyboard layouts.
-# # The commented example has the "us" and "gb" keyboard layouts, and uses Alt+Shift to toggle between them.
-#
+# Querty us keyboard with french accent with altgr + (letters|letters around)
 input "type:keyboard" {
-    xkb_layout "us"
-    xkb_variant "altgr-intl"
+    xkb_layout "fr"
+    xkb_variant "us"
     # xkb_options "caps:swapescape"
 }
 #
 # # Assign the same binding to "pkill -RTMIN+1 waybar" to send signal to the Waybar keyboard module.
 # # The signal refreshes the module. The commented example uses Alt + left Shift.
-#
+#    
 # bindsym Alt+Shift_L exec "pkill -RTMIN+1 waybar"
