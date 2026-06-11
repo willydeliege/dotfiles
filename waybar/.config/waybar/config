@@ -4,13 +4,11 @@
   "height": 40,
   "margin": "0 5 0 5",
   "spacing": 0,
-
   // Choose the order of the modules
-
   "modules-left": [
     "custom/launcher",
-    "river/tags",
-    "river/window"
+    "sway/workspaces",
+    "sway/window"
   ],
   "modules-center": [
     "power-profiles-daemon",
@@ -21,35 +19,25 @@
     "custom/weather"
   ],
   "modules-right": [
-    "temperature",
-    "cpu",
     "memory",
     "battery",
     "pulseaudio",
     "backlight",
     "tray"
   ],
-
   // Modules configuration
-  "river/tags": {
-                "hide-vacant": true
-   },
-   "river/window": {
-                "format": "{}",
-                "max-length": 20
-   },
-	"custom/audio_idle_inhibitor": {
-		"format": "{icon}",
-		"exec": "sway-audio-idle-inhibit --dry-print-both-waybar",
-		"exec-if": "which sway-audio-idle-inhibit",
-		"return-type": "json",
-		"format-icons": {
-			"output": "",
-			"input": "",
-			"output-input": "  ",
-			"none": ""
-		}
-	},
+  "custom/audio_idle_inhibitor": {
+    "format": "{icon}",
+    "exec": "pipewire-audio-idle-inhibit --waybar",
+    "exec-if": "which pipewire-audio-idle-inhibit",
+    "return-type": "json",
+    "format-icons": {
+      "output": "🔊",
+      "input": "🎤",
+      "output-input": "🔊🎤",
+      "none": ""
+    }
+  },
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
@@ -102,7 +90,6 @@
     "format-critical": "{temperatureC}°C ",
     "format": "{temperatureC}°C "
   },
-
   "hyprland/submap": {
     "format": "✌️ {}",
     "tooltip": false,
@@ -111,26 +98,26 @@
   "backlight": {
     // "device": "acpi_video1",
     "format": "{icon} {percent: >3}%",
-    "format-icons": ["", ""],
+    "format-icons": [
+      "",
+      ""
+    ],
     "on-scroll-down": "brightnessctl -c backlight set 10%-",
     "on-scroll-up": "brightnessctl -c backlight set +10%",
     "on-click": "~/.config/waybar/scripts/backlight-hint.sh"
   },
-
   "battery": {
     "format": "{icon} {capacity}%",
-    "format-charging": " {capacity}%",     // lightning bolt when charging
-    "format-plugged": " {capacity}%",      // plug icon when plugged in
+    "format-charging": " {capacity}%", // lightning bolt when charging
+    "format-plugged": " {capacity}%", // plug icon when plugged in
     "format-alt": "{time} {icon}",
-
     "format-icons": [
-      "",  // 0–20%
-      "",  // 20–40%
-      "",  // 40–60%
-      "",  // 60–80%
-      ""   // 80–100%
+      "", // 0–20%
+      "", // 20–40%
+      "", // 40–60%
+      "", // 60–80%
+      "" // 80–100%
     ],
-
     "states": {
       // "good": 95,
       "warning": 20,
@@ -199,7 +186,11 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""]
+      "default": [
+        "",
+        "",
+        ""
+      ]
     },
     "on-click": "pavucontrol",
     "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
@@ -235,12 +226,11 @@
       "power-saver": ""
     }
   },
-
   "custom/weather": {
-        "exec": "wttrbar --location Montegnée --lang fr",
-        "return-type": "json",
-        "interval": 600,
-        "tooltip": true,
-        "on-click": "alacritty --title 'weather' -e sh -c 'curl -s \"wttr.in/Montegnée?lang=fr\" && echo \"\\nAppuyez sur Entrée pour fermer...\" && read'"
-    }
+    "exec": "wttrbar --location Montegnée --lang fr",
+    "return-type": "json",
+    "interval": 600,
+    "tooltip": true,
+    "on-click": "alacritty --title 'weather' -e sh -c 'curl -s \"wttr.in/Montegnée?lang=fr\" && echo \"\\nAppuyez sur Entrée pour fermer...\" && read'"
+  }
 }
