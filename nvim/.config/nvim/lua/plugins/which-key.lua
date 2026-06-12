@@ -1,0 +1,137 @@
+---@diagnostic disable: undefined-field
+-- =============================================================================
+-- plugins/which-key.lua — Key binding popup and group labels
+-- =============================================================================
+-- which-key shows a popup with available key bindings when you pause mid-chord.
+-- Groups organise mappings into labelled sections visible in the popup.
+--
+-- Section layout:
+--   <leader>f  → Find / Files
+--   <leader>s  → Search
+--   <leader>t  → Toggle
+--   <leader>q  → Quit
+-- =============================================================================
+
+return {
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy", -- Load after startup so it doesn't slow down init
+    version = "*",
+
+    opts = {
+      -- ── Popup appearance ──────────────────────────────────────────────────────
+      preset = "helix", -- "classic" | "modern" | "helix"
+      delay = 500, -- Milliseconds before the popup appears (matches timeoutlen)
+
+      -- ── Layout ───────────────────────────────────────────────────────────────
+      layout = {
+        width = { min = 20 },
+        spacing = 3,
+      },
+
+      -- ── Filters: hide mappings that clutter the popup ─────────────────────────
+      filter = function(mapping)
+        -- Show only mappings that have a description
+        return mapping.desc and mapping.desc ~= ""
+      end,
+
+      -- ── Plugin-specific display ───────────────────────────────────────────────
+      show_help = true,
+      show_keys = true,
+      disable = {
+        -- Disable which-key inside these filetypes
+      },
+    },
+
+    config = function(_, opts)
+      local wk = require("which-key")
+      wk.setup(opts)
+
+      -- ── Group labels ───────────────────────────────────────────────────────────
+      -- These labels appear as section headers in the which-key popup.
+      wk.add({
+        -- ── Windows ────────────────────────────────────────────────────────────
+        -- ── Find / Files ───────────────────────────────────────────────────────
+        { "<leader>b", group = "Buffers" },
+        { "<leader>f", group = "Find / Files" },
+        { "<leader>g", group = "Git" },
+        { "<leader>gh", group = "Hunks" },
+        { "<leader>h", group = "Help" },
+        { "<leader>o", group = "Obsidian" },
+
+        -- ── Search ─────────────────────────────────────────────────────────────
+        { "<leader>s", group = "Search" },
+        -- ── Windows ────────────────────────────────────────────────────────────
+        { "<leader>w", proxy = "<c-w>", group = "windows" }, -- proxy to window mappings
+
+        -- ── Toggle ─────────────────────────────────────────────────────────────
+        { "<leader>t", group = "Toggle", icon = { icon = "󰔡 ", color = "green" } },
+        {
+          "<leader>ts",
+          function()
+            vim.opt.spell = not vim.opt.spell:get()
+            vim.notify("Spell check: " .. (vim.opt.spell:get() and "ON" or "OFF"))
+          end,
+          desc = "Spell check",
+        },
+        {
+          "<leader>tw",
+          function()
+            vim.opt.wrap = not vim.opt.wrap:get()
+            vim.notify("Line wrap: " .. (vim.opt.wrap:get() and "ON" or "OFF"))
+          end,
+          desc = "Word wrap",
+        },
+        {
+          "<leader>tn",
+          function()
+            if vim.opt.number:get() and vim.opt.relativenumber:get() then
+              vim.opt.relativenumber = false
+            elseif vim.opt.number:get() then
+              vim.opt.number = false
+            else
+              vim.opt.number = true
+              vim.opt.relativenumber = true
+            end
+          end,
+          desc = "Cycle line numbers",
+        },
+        {
+          "<leader>th",
+          function()
+            vim.opt.hlsearch = not vim.opt.hlsearch:get()
+          end,
+          desc = "Search highlight",
+        },
+        {
+          "<leader>tc",
+          function()
+            local enabled = vim.opt.colorcolumn:get()[1] ~= ""
+            vim.opt.colorcolumn = enabled and "" or "80"
+            vim.notify("Colorcolumn: " .. (enabled and "OFF" or "ON"))
+          end,
+          desc = "Colorcolumn",
+        },
+        {
+          "<leader>ti",
+          function()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
+          end,
+          desc = "Inlay hints",
+        },
+
+        -- ── Quit ───────────────────────────────────────────────────────────────
+        { "<leader>q", group = "Quit", icon = { icon = "󰩈 ", color = "red" } },
+        { "<leader>qr", "<cmd>restart<CR>", desc = "Resart" },
+        { "<leader>qq", "<cmd>qall<CR>", desc = "Quit all" },
+        { "<leader>qQ", "<cmd>qall!<CR>", desc = "Quit all (force)" },
+        { "<leader>qs", "<cmd>wqall<CR>", desc = "Save all and quit" },
+        { "<leader>qb", "<cmd>bdelete<CR>", desc = "Close buffer" },
+        { "<leader>qB", "<cmd>bdelete!<CR>", desc = "Close buffer (force)" },
+
+        -- ── Code (LSP) ─────────────────────────────────────────────────
+        { "<leader>c", group = "Code", icon = { icon = " ", color = "orange" } },
+      })
+    end,
+  },
+}
