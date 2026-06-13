@@ -36,8 +36,7 @@ return {
     config = function(_, opts)
       local note_name = { note_id_func = require("obsidian.builtin").title_id }
       local new_opts = vim.tbl_extend("force", opts, note_name)
-      local obsidian = require("obsidian")
-      obsidian.setup(new_opts)
+      require("obsidian").setup(new_opts)
     end,
   },
   -- For `plugins/markview.lua` users.
