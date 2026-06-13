@@ -5,11 +5,7 @@
   "margin": "0 5 0 5",
   "spacing": 0,
   // Choose the order of the modules
-  "modules-left": [
-    "custom/launcher",
-    "sway/workspaces",
-    "sway/window"
-  ],
+  "modules-left": ["custom/launcher", "sway/workspaces", "sway/window"],
   "modules-center": [
     "power-profiles-daemon",
     "custom/notification",
@@ -18,13 +14,7 @@
     "idle_inhibitor",
     "custom/weather"
   ],
-  "modules-right": [
-    "memory",
-    "battery",
-    "pulseaudio",
-    "backlight",
-    "tray"
-  ],
+  "modules-right": ["memory", "battery", "pulseaudio", "backlight", "tray"],
   // Modules configuration
   "custom/audio_idle_inhibitor": {
     "format": "{icon}",
@@ -98,10 +88,7 @@
   "backlight": {
     // "device": "acpi_video1",
     "format": "{icon} {percent: >3}%",
-    "format-icons": [
-      "",
-      ""
-    ],
+    "format-icons": ["", ""],
     "on-scroll-down": "brightnessctl -c backlight set 10%-",
     "on-scroll-up": "brightnessctl -c backlight set +10%",
     "on-click": "~/.config/waybar/scripts/backlight-hint.sh"
@@ -122,7 +109,7 @@
       // "good": 95,
       "warning": 20,
       "critical": 15
-    },
+    }
   },
   "network": {
     //"interface": "wlp0s20f3", // (Optional) To force the use of this interface  "format-wifi": "  {essid}",
@@ -186,11 +173,7 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": [
-        "",
-        "",
-        ""
-      ]
+      "default": ["", "", ""]
     },
     "on-click": "pavucontrol",
     "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
@@ -226,6 +209,7 @@
       "power-saver": ""
     }
   },
+
   "custom/weather": {
     "exec": "wttrbar --location Montegnée --lang fr",
     "return-type": "json",
