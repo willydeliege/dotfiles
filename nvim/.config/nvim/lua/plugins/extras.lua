@@ -96,48 +96,14 @@ return {
       vim.ui.input = require("mini.input")
       require("mini.statusline").setup()
       require("mini.indentscope").setup()
+      require("mini.diff").setup({ view = { style = "sign" } })
+      vim.keymap.set("n", "go", function()
+        require("mini.diff").toggle_overlay(0)
+      end, { desc = "Diff overlay" })
     end,
   },
 
-  -- ── Git signs in the gutter ───────────────────────────────────────────────────
-  {
-    "lewis6991/gitsigns.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    opts = {
-      on_attach = function(bufnr)
-        local gs = package.loaded.gitsigns
-        local map = function(mode, l, r, desc)
-          vim.keymap.set(mode, l, r, { buffer = bufnr, desc = "Git: " .. desc })
-        end
-
-        -- Navigation between hunks
-        map("n", "]h", function()
-          gs.nav_hunk("next")
-        end, "Next hunk")
-        map("n", "[h", function()
-          gs.nav_hunk("prev")
-        end, "Prev hunk")
-
-        -- Hunk actions
-        map({ "n", "v" }, "<leader>ghs", "<cmd>Gitsigns stage_hunk<CR>", "Stage hunk")
-        map({ "n", "v" }, "<leader>ghr", "<cmd>Gitsigns reset_hunk<CR>", "Reset hunk")
-        map("n", "<leader>ghS", gs.stage_buffer, "Stage buffer")
-        map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo stage hunk")
-        map("n", "<leader>ghR", gs.reset_buffer, "Reset buffer")
-        map("n", "<leader>ghp", gs.preview_hunk, "Preview hunk")
-        map("n", "<leader>ghb", function()
-          gs.blame_line({ full = true })
-        end, "Blame line")
-        map("n", "<leader>ghd", gs.diffthis, "Diff this")
-        map("n", "<leader>ghD", function()
-          gs.diffthis("~")
-        end, "Diff this ~")
-
-        -- Text object: ih → inside hunk
-        map({ "o", "x" }, "ih", "<cmd>Gitsigns select_hunk<CR>", "Select hunk")
-      end,
-    },
-  },
+  -- ── Git workglow  ──────────────────────────────────────────────────────────────
   {
     "kdheepak/lazygit.nvim",
     lazy = true,
