@@ -7,6 +7,10 @@
 --   3. config/lazy      – bootstrap lazy.nvim and load all plugins
 -- =============================================================================
 
+-- Enable ui12 features
+require("vim._core.ui2").enable({
+  pager = { height = 15 },
+})
 require("config.options")
 require("config.keymaps")
 require("config.autocmds")
