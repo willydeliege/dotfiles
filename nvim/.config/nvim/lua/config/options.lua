@@ -23,8 +23,8 @@ opt.splitright = true -- Vertical splits open to the right
 
 -- ── Editing ───────────────────────────────────────────────────────────────────
 opt.expandtab = true -- Convert tabs to spaces
-opt.tabstop = 4 -- A <Tab> counts for 4 spaces
-opt.shiftwidth = 4 -- Indentation width for << / >>
+opt.tabstop = 2 -- A <Tab> counts for 4 spaces
+opt.shiftwidth = 2 -- Indentation width for << / >>
 opt.softtabstop = 4 -- <Tab> in insert mode inserts 4 spaces
 opt.smartindent = true -- Auto-indent new lines
 opt.breakindent = true -- Wrapped lines preserve indentation
@@ -58,7 +58,7 @@ opt.foldlevel = 99 -- Start with all folds open
 
 -- ── Misc ─────────────────────────────────────────────────────────────────────
 opt.mouse = "a" -- Enable mouse in all modes
-opt.conceallevel = 2 -- Hide markup characters (useful for Markdown)
+-- opt.conceallevel = 2 -- Hide markup characters (useful for Markdown)
 opt.list = true -- Show invisible characters
 opt.listchars = { tab = ">> ", trail = ".", nbsp = "~" }
 opt.confirm = true
