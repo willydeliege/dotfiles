@@ -58,9 +58,7 @@ opt.foldlevel = 99 -- Start with all folds open
 
 -- ── Misc ─────────────────────────────────────────────────────────────────────
 opt.mouse = "a" -- Enable mouse in all modes
--- opt.conceallevel = 2 -- Hide markup characters (useful for Markdown)
 opt.list = true -- Show invisible characters
 opt.listchars = { tab = ">> ", trail = ".", nbsp = "~" }
 opt.confirm = true
-
-vim.diagnostic.config({ virtual_lines = { current_line = true } })
+vim.diagnostic.config({ virtual_text = { current_line = true } })
