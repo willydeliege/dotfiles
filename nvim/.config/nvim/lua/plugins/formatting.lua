@@ -17,8 +17,8 @@ return {
   {
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
-    cmd   = { "ConformInfo", "Format" },
-    keys  = {
+    cmd = { "ConformInfo", "Format" },
+    keys = {
       {
         "<leader>cf",
         function()
@@ -35,24 +35,24 @@ return {
       -- Use a sub-table { … } to run formatters sequentially.
       -- -----------------------------------------------------------------------
       formatters_by_ft = {
-        lua        = { "stylua" },
-        markdown   = { "prettierd", "prettier", stop_after_first = true },
-        sh         = { "shfmt" },
-        bash       = { "shfmt" },
-        json       = { "prettierd", "prettier", stop_after_first = true },
-        jsonc      = { "prettierd", "prettier", stop_after_first = true },
-        yaml       = { "prettierd", "prettier", stop_after_first = true },
-        toml       = { "taplo" },
+        lua = { "stylua" },
+        markdown = { "prettierd", "prettier", stop_after_first = true },
+        sh = { "shfmt" },
+        bash = { "shfmt" },
+        json = { "prettierd", "prettier", stop_after_first = true },
+        jsonc = { "prettierd", "prettier", stop_after_first = true },
+        yaml = { "prettierd", "prettier", stop_after_first = true },
+        toml = { "taplo" },
         -- Fallback: for any filetype not listed, try the LSP formatter
-        ["*"]      = { "injected" },  -- format embedded code blocks
+        ["*"] = { "injected" }, -- format embedded code blocks
       },
 
       -- -----------------------------------------------------------------------
       -- Format on save
       -- -----------------------------------------------------------------------
       format_on_save = {
-        timeout_ms   = 500,    -- abort if formatting takes longer than 500 ms
-        lsp_fallback = true,   -- fall back to LSP formatting if no formatter found
+        timeout_ms = 500, -- abort if formatting takes longer than 500 ms
+        lsp_fallback = true, -- fall back to LSP formatting if no formatter found
       },
 
       -- -----------------------------------------------------------------------
@@ -84,14 +84,14 @@ return {
         if args.count ~= -1 then
           local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)
           range = {
-            start   = { args.line1, 0 },
+            start = { args.line1, 0 },
             ["end"] = { args.line2, #end_line[1] },
           }
         end
         require("conform").format({
-          async        = true,
+          async = true,
           lsp_fallback = true,
-          range        = range,
+          range = range,
         })
       end, { range = true, desc = "Format buffer or selection with conform.nvim" })
     end,
