@@ -23,7 +23,7 @@ return {
             stat_file = true, -- vérifie que le fichier existe toujours sur le disque
           })
         end,
-        desc = "Re ent files (cwd only)",
+        desc = "Recent files (cwd only)",
       },
       { "<leader>fR", "<cmd>FzfLua oldfiles<CR>", desc = "All recent files" },
       { "<leader>fb", "<cmd>FzfLua buffers<CR>", desc = "Find buffers" },
