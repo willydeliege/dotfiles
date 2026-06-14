@@ -51,7 +51,7 @@ return {
       -- Format on save
       -- -----------------------------------------------------------------------
       format_on_save = {
-        timeout_ms = 500, -- abort if formatting takes longer than 500 ms
+        timeout_ms = 10000, -- abort if formatting takes longer than 10000 ms
         lsp_fallback = true, -- fall back to LSP formatting if no formatter found
       },
 
