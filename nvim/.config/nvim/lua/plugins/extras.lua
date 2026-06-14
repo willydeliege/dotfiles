@@ -94,4 +94,25 @@ return {
       vim.g.suda_smart_edit = 1
     end,
   },
+
+  -- ── Built-in undotree  ──────────────────────────────────────────────────────────────
+  {
+    -- We provide a placeholder name since it doesn't pull from GitHub
+    "nvim.undotree",
+    virtual = true, -- Tells lazy.nvim this is a system/built-in package
+    keys = {
+      {
+        "<leader>U",
+        function()
+          -- Load the built-in module safely if it hasn't been loaded yet
+          if not pcall(require, "undotree") then
+            vim.cmd("packadd nvim.undotree")
+          end
+          -- Open the undotree window split
+          require("undotree").open()
+        end,
+        desc = "Toggle Built-in UndoTree",
+      },
+    },
+  },
 }
