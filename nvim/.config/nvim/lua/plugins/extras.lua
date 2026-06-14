@@ -81,4 +81,17 @@ return {
       { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
     },
   },
+  {
+    "lambdalisue/vim-suda",
+    -- Charge le plugin immédiatement ou à l'appel d'une commande
+    cmd = { "SudaRead", "SudaWrite" },
+    keys = {
+      { "<leader>fSr", "<cmd>SudaRead<CR>", desc = "Suda Read (sudo)" },
+      { "<leader>fSw", "<cmd>SudaWrite<CR>", desc = "Suda Write (sudo)" },
+    },
+    init = function()
+      -- Gère de manière transparente les fichiers sans droits en lecture/écriture
+      vim.g.suda_smart_edit = 1
+    end,
+  },
 }

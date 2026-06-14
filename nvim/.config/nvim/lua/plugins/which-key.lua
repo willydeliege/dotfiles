@@ -54,6 +54,7 @@ return {
         -- ── Find / Files ───────────────────────────────────────────────────────
         { "<leader>b", group = "Buffers" },
         { "<leader>f", group = "Find / Files" },
+        { "<leader>fS", group = "Suda" },
         { "<leader>g", group = "Git" },
         { "<leader>gh", group = "Hunks" },
         { "<leader>h", group = "Help" },
