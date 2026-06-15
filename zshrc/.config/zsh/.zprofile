@@ -13,7 +13,7 @@ export EDITOR="nvim"
 export SUDO_EDITOR="nvim"
 export VISUAL="nvim"
 
-# ---------- Pager ----------
+# ---------- Colored man pages ----------
 if command -v bat >/dev/null 2>&1; then
   export MANPAGER="bat -l man -p"
 elif command -v batcat >/dev/null 2>&1; then
@@ -22,9 +22,6 @@ fi
 
 # ---------- GPG ----------
 export GPG_TTY=$(tty)
-
-# ---------- Starship ----------
-export STARSHIP_CONFIG="$ZDOTDIR/starship.toml"
 
 # ---------- PATH ----------
 # Personal binaries/scripts
