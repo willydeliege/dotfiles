@@ -9,17 +9,6 @@ fi
 # Author: Radley E. Sidwell-Lewis
 # GitHub: https://www.github.com/radleylewis/zsh
 #
-# Uses:
-#   Plugins:      fast-syntax-highlighting, zsh-autosuggestions,
-#                 zsh-history-substring-search, zsh-vi-mode
-#   Prompt:       starship
-#   Navigation:   zoxide, fzf, fd
-#   CLI tools:    eza, bat, nvim, ripgrep
-#   Node:         nvm
-# If not in tmux, start tmux.
-if [[ -z ${TMUX+X}${ZSH_SCRIPT+X}${ZSH_EXECUTION_STRING+X} ]]; then
-  exec tmux
-fi
 # =========================================================
 # History
 # =========================================================
@@ -115,3 +104,4 @@ export NVM_DIR="$HOME/.nvm"
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+
