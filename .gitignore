@@ -1,2 +1,4 @@
 /zshrc/.config/plugins
 /zshrc/.config/zsh/plugins
+/zshrc/.config/zsh/.zsh_plugins.zsh
+/zshrc/.config/zsh/.zcompdump

@@ -20,6 +20,7 @@ ohmyzsh/ohmyzsh path:lib
 # Now, let's pick our Oh My Zsh utilty plugins
 ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/zoxide
+ohmyzsh/ohmyzsh path:plugins/sudo
 
 # Add some programmer plugins
 ohmyzsh/ohmyzsh path:plugins/git
@@ -30,3 +31,7 @@ zsh-users/zsh-completions path:src kind:fpath
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-history-substring-search
 zdharma-continuum/fast-syntax-highlighting
+romkatv/powerlevel10k
+zsh-users/zsh-completions
+Aloxaf/fzf-tab
+Freed-Wu/fzf-tab-source
