@@ -1,17 +1,6 @@
 -- =============================================================================
 -- plugins/formatting.lua — conform.nvim (code formatter)
 -- =============================================================================
--- conform.nvim runs formatters asynchronously on save (or on demand).
--- Formatters are installed separately (e.g. via Mason or your system package
--- manager); conform only dispatches to them.
---
--- Formatters configured here:
---   lua       — stylua
---   markdown  — prettier (or prettierd for speed)
---   bash / sh — shfmt
---   json      — prettier
---   yaml      — prettier
--- =============================================================================
 
 return {
   {
