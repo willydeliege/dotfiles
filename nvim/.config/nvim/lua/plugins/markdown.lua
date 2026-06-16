@@ -12,6 +12,7 @@ return {
       { "<leader>ot", "<cmd>Obsidian today<cr>", desc = "Obsidian today" },
       { "<leader>ox", "capture", desc = "Obsidian capture" },
     },
+    dependencies = { "ibhagwan/fzf-lua" },
     opts = {
       legacy_commands = false, -- this will be removed in 4.0.0
       workspaces = {
