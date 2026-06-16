@@ -1,3 +1,4 @@
+---@diagnostic disable: unused-function, unused-local
 return {
   {
     "obsidian-nvim/obsidian.nvim",
@@ -55,8 +56,6 @@ return {
           vim.notify("Capture canceled or empty")
         end
       end
-
-      vim.keymap.set("n", "<leader>ox", capture, { desc = "Capture in today" })
     end,
   },
   -- For `plugins/markview.lua` users.
