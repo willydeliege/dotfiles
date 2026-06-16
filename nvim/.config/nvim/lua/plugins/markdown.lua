@@ -1,8 +1,7 @@
----@diagnostic disable: unused-function, unused-local
 return {
   {
     "obsidian-nvim/obsidian.nvim",
-    cmd = { "Obsidian" },
+    cmd = { "Obsidian", "ObsidianCapture" },
     keys = {
       { "<leader>of", "<cmd>Obsidian quick_switch<cr>", desc = "Obsidian find files" },
       { "<leader>ob", "<cmd>Obsidian backlinks<cr>", desc = "Obsidian backlinks" },
@@ -10,7 +9,7 @@ return {
       { "<leader>on", "<cmd>Obsidian new<cr>", desc = "Obsidian new note" },
       { "<leader>oT", "<cmd>Obsidian tags<cr>", desc = "Obsidian tags" },
       { "<leader>ot", "<cmd>Obsidian today<cr>", desc = "Obsidian today" },
-      { "<leader>ox", "capture", desc = "Obsidian capture" },
+      { "<leader>ox", "<cmd>ObsidianCapture<cr>", desc = "Obsidian capture" },
     },
     dependencies = { "ibhagwan/fzf-lua" },
     opts = {
@@ -40,7 +39,7 @@ return {
       local new_opts = vim.tbl_extend("force", opts, note_name)
       require("obsidian").setup(new_opts)
 
-      local capture = function()
+      vim.api.nvim_create_user_command("ObsidianCapture", function()
         -- On récupère la note du jour via Obsidian.nvim
         local today_note = require("obsidian.daily").today()
 
@@ -55,7 +54,7 @@ return {
         else
           vim.notify("Capture canceled or empty")
         end
-      end
+      end, {})
     end,
   },
   -- For `plugins/markview.lua` users.
