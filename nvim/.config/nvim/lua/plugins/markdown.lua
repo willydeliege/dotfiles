@@ -1,4 +1,3 @@
----@diagnostic disable: missing-fields
 return {
   {
     "obsidian-nvim/obsidian.nvim",
@@ -51,9 +50,9 @@ return {
         if status and input_text and input_text ~= "" then
           -- Insertion sécurisée dans Obsidian
           today_note:insert_text("- " .. input_text, { placement = "bot", section = nil })
-          print("Texte ajouté à la note du jour !")
+          vim.notify("Added to today's note")
         else
-          print("Saisie annulée ou vide.")
+          vim.notify("Capture canceled or empty")
         end
       end
 
