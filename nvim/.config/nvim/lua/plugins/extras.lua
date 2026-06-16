@@ -1,20 +1,13 @@
 -- =============================================================================
 -- plugins/extras.lua — Small utility plugins
 -- =============================================================================
--- This file groups minor plugins that don't warrant their own file:
---   • mini.pairs   — Auto-close brackets/quotes
---   • mini.surround — Surround text objects
---   • mini.comment  — Smart commenting (gcc / gc)
---   • gitsigns     — Git hunks in the gutter
---   • todo-comments — Highlight TODO/FIXME/NOTE comments
--- =============================================================================
-
 return {
   -- ── mini.nvim collection ─────────────────────────────────────────────────────
   {
     "echasnovski/mini.nvim",
     event = "VeryLazy",
     config = function()
+      require("mini.splitjoin").setup()
       require("mini.jump2d").setup()
       require("mini.jump").setup()
       require("mini.icons").setup()
