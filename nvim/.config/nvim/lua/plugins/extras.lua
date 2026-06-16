@@ -28,7 +28,7 @@ return {
       -- sa{motion}{char} → add | sd{char} → delete | sr{old}{new} → replace
       require("mini.surround").setup({
         mappings = {
-          ad = "gsa",
+          add = "gsa",
           delete = "gsd",
           find = "gsf",
           find_left = "gsF",
