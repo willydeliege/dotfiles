@@ -38,6 +38,7 @@ return {
         lua = { "stylua" },
         markdown = { "prettierd", "prettier", stop_after_first = true },
         sh = { "shfmt" },
+        zsh = { "shfmt" },
         bash = { "shfmt" },
         json = { "prettierd", "prettier", stop_after_first = true },
         jsonc = { "prettierd", "prettier", stop_after_first = true },
