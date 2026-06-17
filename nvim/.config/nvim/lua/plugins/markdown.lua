@@ -26,8 +26,7 @@ return {
       },
       -- note_id_func =
       checkbox = {
-        enabled = true,
-        create_new = false,
+        create_new = true,
         order = { " ", "x" },
       },
       daily_notes = {

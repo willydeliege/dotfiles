@@ -33,7 +33,7 @@ return {
     -- the floating window scaling factor. 1 means 100%, 0.9 means 90%, etc.
     floating_window_scaling_factor = 0.8,
     keymaps = {
-      show_help = "<f1>",
+      show_help = "<C-h>",
     },
   },
 }
