@@ -49,7 +49,10 @@ return {
         -- Si l'utilisateur valide avec du texte
         if status and input_text and input_text ~= "" then
           -- Insertion sécurisée dans Obsidian
-          today_note:insert_text("- " .. input_text, { placement = "bot", section = nil })
+          today_note:insert_text(
+            "- " .. input_text,
+            { placement = "bot", on_section_missing = "create", section = { level = 2, header = "Inbox" } }
+          )
           vim.notify("Added to today's note")
         else
           vim.notify("Capture canceled or empty")
