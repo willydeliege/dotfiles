@@ -56,27 +56,6 @@ return {
 
   -- ── Git workflow  ──────────────────────────────────────────────────────────────
   {
-    "NeogitOrg/neogit",
-    lazy = false,
-    dependencies = {
-      -- Only one of these is needed.
-      "sindrets/diffview.nvim", -- optional
-
-      -- For a custom log pager
-      "m00qek/baleia.nvim", -- optional
-
-      -- Only one of these is needed.
-      "ibhagwan/fzf-lua", -- optional
-    },
-    cmd = "Neogit",
-    opts = {
-      integrations = { diffview = true, fzf_lua = true },
-    },
-    keys = {
-      { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
-    },
-  },
-  {
     "kdheepak/lazygit.nvim",
     cmd = {
       "LazyGit",
@@ -92,7 +71,7 @@ return {
     -- setting the keybinding for LazyGit with 'keys' is recommended in
     -- order to load the plugin when the command is run for the first time
     keys = {
-      { "<leader>gG", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+      { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
     },
   },
   {
