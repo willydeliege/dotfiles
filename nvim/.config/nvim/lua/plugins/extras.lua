@@ -45,7 +45,6 @@ return {
       -- Fancy input
       require("mini.input").setup()
       vim.ui.input = require("mini.input")
-      require("mini.statusline").setup()
       require("mini.indentscope").setup()
       require("mini.diff").setup({ view = { style = "sign" } })
       vim.keymap.set("n", "go", function()
