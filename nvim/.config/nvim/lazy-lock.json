@@ -2,6 +2,7 @@
   "blink.cmp": { "branch": "main", "commit": "26ec6f0a1a8101eb134f8b8568d6099be015fe70" },
   "blink.lib": { "branch": "main", "commit": "bf67998a314236cfba50fe311d60ef03d15d9426" },
   "conform.nvim": { "branch": "master", "commit": "619363c30309d29ffa631e67c8183f2a72caa373" },
+  "emoji.nvim": { "branch": "main", "commit": "23ec48aff9c344ed57af78a48916a23de24151b0" },
   "flash.nvim": { "branch": "main", "commit": "fcea7ff883235d9024dc41e638f164a450c14ca2" },
   "friendly-snippets": { "branch": "main", "commit": "6cd7280adead7f586db6fccbd15d2cac7e2188b9" },
   "fzf-lua": { "branch": "main", "commit": "267f5db2aa2202b9f6cc7a50783f0ccd2121766c" },

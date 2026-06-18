@@ -73,9 +73,9 @@ return {
       { "<leader>ho", "<cmd>FzfLua nvim_options<CR>", desc = "Options" },
       -- ── Git ─────────────────────────────────────────────────────────────────
       { "<leader>gs", "<cmd>FzfLua git_status<cr>", desc = "Git status" },
-      { "<leader>gb", "<cmd>FzfLua git_branches<cr>", desc = "Git branches" },
+      { "<leader>gB", "<cmd>FzfLua git_branches<cr>", desc = "Git branches" },
       { "<leader>gc", "<cmd>FzfLua git_commits<cr>", desc = "Git commits" },
-      { "<leader>gt", "<cmd>FzfLua git_tags<cr>", desc = "Git tags" },
+      { "<leader>gT", "<cmd>FzfLua git_tags<cr>", desc = "Git tags" },
       -- ── Git ─────────────────────────────────────────────────────────────────
       { "<leader>f<space>", "<cmd>FzfLua<cr>", desc = "FzfLua" },
     },
@@ -115,5 +115,15 @@ return {
       })
       fzf.register_ui_select()
     end,
+  },
+  {
+    "Allaman/emoji.nvim",
+    dependencies = { "ibhagwan/fzf-lua" }, -- ensures fzf-lua loads first
+    opts = {
+      enable_cmp = false, -- Set to true if using nvim-cmp
+    },
+    keys = {
+      { "<leader>se", "<cmd>Emoji<cr>", desc = "Search Emojis" },
+    },
   },
 }

@@ -81,22 +81,21 @@ return {
         end, "Previous git hunk")
 
         -- Staging / resetting hunks
-        map("n", "<leader>gs", gs.stage_hunk, "Git stage hunk")
-        map("v", "<leader>gs", function()
+        map("n", "<leader>ghs", gs.stage_hunk, "Git un/stage hunk")
+        map("v", "<leader>ghs", function()
           gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
         end, "Git stage hunk (selection)")
 
-        map("n", "<leader>gr", gs.reset_hunk, "Git reset hunk")
-        map("v", "<leader>gr", function()
+        map("n", "<leader>ghr", gs.reset_hunk, "Git reset hunk")
+        map("v", "<leader>ghr", function()
           gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
         end, "Git reset hunk (selection)")
 
-        map("n", "<leader>gS", gs.stage_buffer, "Git stage buffer")
-        map("n", "<leader>gR", gs.reset_buffer, "Git reset buffer")
-        map("n", "<leader>gu", gs.stage_hunk, "Git undo stage hunk")
+        map("n", "<leader>ghS", gs.stage_buffer, "Git stage buffer")
+        map("n", "<leader>ghR", gs.reset_buffer, "Git reset buffer")
 
         -- Inspecting changes
-        map("n", "<leader>gp", gs.preview_hunk, "Git preview hunk")
+        map("n", "<leader>ghp", gs.preview_hunk, "Git preview hunk")
         map("n", "<leader>gb", function()
           gs.blame_line({ full = true })
         end, "Git blame line")

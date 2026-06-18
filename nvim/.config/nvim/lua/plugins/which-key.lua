@@ -57,6 +57,7 @@ return {
         { "<leader>fS", group = "Suda" },
         { "<leader>g", group = "Git" },
         { "<leader>gh", group = "Hunks" },
+        { "<leader>gt", group = "Git toggle" },
         { "<leader>h", group = "Help" },
         { "<leader>o", group = "Obsidian" },
 
@@ -98,13 +99,6 @@ return {
           desc = "Cycle line numbers",
         },
         {
-          "<leader>th",
-          function()
-            vim.opt.hlsearch = not vim.opt.hlsearch:get()
-          end,
-          desc = "Search highlight",
-        },
-        {
           "<leader>tc",
           function()
             local enabled = vim.opt.colorcolumn:get()[1] ~= ""
@@ -131,7 +125,7 @@ return {
         { "<leader>qB", "<cmd>bdelete!<CR>", desc = "Close buffer (force)" },
 
         -- ── Code (LSP) ─────────────────────────────────────────────────
-        { "<leader>c", group = "Code", icon = { icon = " ", color = "orange" } },
+        { "<leader>c", group = "Code" },
       })
     end,
   },
