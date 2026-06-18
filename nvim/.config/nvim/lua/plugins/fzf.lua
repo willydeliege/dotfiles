@@ -8,6 +8,7 @@
 -- =============================================================================
 
 return {
+  { "nvim-tree/nvim-web-devicons", opts = {} },
   {
     "ibhagwan/fzf-lua",
     -- Load on demand; keymaps and which-key trigger the load
