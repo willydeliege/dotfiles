@@ -46,7 +46,6 @@ return {
       require("mini.input").setup()
       vim.ui.input = require("mini.input")
       require("mini.indentscope").setup()
-      require("mini.diff").setup({ view = { style = "sign" } })
       vim.keymap.set("n", "go", function()
         require("mini.diff").toggle_overlay(0)
       end, { desc = "Diff overlay" })
@@ -54,25 +53,6 @@ return {
   },
 
   -- ── Git workflow  ──────────────────────────────────────────────────────────────
-  {
-    "kdheepak/lazygit.nvim",
-    cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
-    },
-    -- optional for floating window border decoration
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    -- setting the keybinding for LazyGit with 'keys' is recommended in
-    -- order to load the plugin when the command is run for the first time
-    keys = {
-      { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-    },
-  },
   {
     "lambdalisue/vim-suda",
     -- Charge le plugin immédiatement ou à l'appel d'une commande
