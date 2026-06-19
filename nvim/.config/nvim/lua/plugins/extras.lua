@@ -107,6 +107,9 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*", -- Ensures you use stable releases
     cmd = { "ToggleTerm" },
+    keys = {
+      { "<leader>tt", "<cmd>ToggleTerm direction=float<cr>", desc = "ToggleTerm" },
+    },
     config = function()
       require("toggleterm").setup({
         -- Use <C-\> as the global shortcut to toggle the terminal
