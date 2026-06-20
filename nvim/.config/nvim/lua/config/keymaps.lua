@@ -52,12 +52,6 @@ map("n", "<C-u>", "<C-u>zz", opts)
 map("n", "n", "nzzzv", opts)
 map("n", "N", "Nzzzv", opts)
 
--- Permet de se déplacer dans toutes les directions avec Ctrl en mode Insertion
-vim.keymap.set("i", "<C-h>", "<Left>", { desc = "Déplacer à gauche" })
-vim.keymap.set("i", "<C-j>", "<Down>", { desc = "Déplacer en bas" })
-vim.keymap.set("i", "<C-k>", "<Up>", { desc = "Déplacer en haut" })
-vim.keymap.set("i", "<C-l>", "<Right>", { desc = "Déplacer à droite" })
-
 -- ── Window resizing ───────────────────────────────────────────────────────────
 map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Increase window height" })
 map("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Decrease window height" })
