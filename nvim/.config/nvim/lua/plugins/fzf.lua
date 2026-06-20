@@ -42,7 +42,7 @@ return {
               row = 1.0,
               ---@diagnostic disable-next-line: missing-fields
               preview = {
-                hidden = true,
+                hidden = false,
               },
             },
           })
