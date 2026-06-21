@@ -3,3 +3,4 @@
 /zshrc/.config/zsh/.zsh_plugins.zsh
 /zshrc/.config/zsh/.zcompdump
 /zshrc/.config/zsh/.antidote
+/tmux/.config/tmux/plugins
