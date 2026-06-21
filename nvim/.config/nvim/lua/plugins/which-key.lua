@@ -17,11 +17,11 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy", -- Load after startup so it doesn't slow down init
     version = "*",
-
+    debug = true,
     opts = {
       -- ── Popup appearance ──────────────────────────────────────────────────────
       preset = "helix", -- "classic" | "modern" | "helix"
-      delay = 500, -- Milliseconds before the popup appears (matches timeoutlen)
+      delay = 300, -- Milliseconds before the popup appears (matches timeoutlen)
 
       -- ── Layout ───────────────────────────────────────────────────────────────
       layout = {
