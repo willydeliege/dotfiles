@@ -119,6 +119,7 @@ return {
         { "<leader>q", group = "Quit", icon = { icon = "󰩈 ", color = "red" } },
         { "<leader>qr", "<cmd>restart<CR>", desc = "Resart" },
         { "<leader>qq", "<cmd>qall<CR>", desc = "Quit all" },
+        { "<leader>qc", "<cmd>close<CR>", desc = "Close window" },
         { "<leader>qQ", "<cmd>qall!<CR>", desc = "Quit all (force)" },
         { "<leader>qs", "<cmd>wqall<CR>", desc = "Save all and quit" },
         { "<leader>qb", "<cmd>bdelete<CR>", desc = "Close buffer" },
