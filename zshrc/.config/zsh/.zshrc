@@ -30,7 +30,7 @@ setopt HIST_FIND_NO_DUPS
 
 setopt AUTOCD
 setopt NOBEEP
-setopt NUMERIC_GLOB_SORT  # sort file10 after file9, not after file1
+setopt NUMERIC_GLOB_SORT # sort file10 after file9, not after file1
 
 # =========================================================
 # Smart directory navigation & lf
@@ -40,7 +40,7 @@ setopt NUMERIC_GLOB_SORT  # sort file10 after file9, not after file1
 # export LF_ICONS
 
 # Initialize zoxide
-eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --cmd cd)"
 
 # =========================================================
 # Completion
@@ -57,7 +57,7 @@ zstyle ':completion:*' menu select
 
 # Make completion case-insensitive
 # Example: "doc" can complete to "Documents"
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'  # lowercase input matches upper and lower
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' # lowercase input matches upper and lower
 
 # =========================================================
 # Fuzzy finder
@@ -104,4 +104,3 @@ export NVM_DIR="$HOME/.nvm"
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
-

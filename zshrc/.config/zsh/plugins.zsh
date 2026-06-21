@@ -22,5 +22,4 @@ zinit wait lucid for \
   zsh-users/zsh-autosuggestions \
   Aloxaf/fzf-tab \
   Freed-Wu/fzf-tab-source
-
 zinit light romkatv/powerlevel10k

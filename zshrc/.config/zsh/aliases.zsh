@@ -16,16 +16,16 @@ alias df='df -h'
 # Navigation
 # =========================================================
 
-alias -- -='cd -'  # -- prevents - being parsed as a flag; cd - jumps to previous directory
+alias -- -='cd -' # -- prevents - being parsed as a flag; cd - jumps to previous directory
 
 lf() { # zsh follow lf navigation
-    tmp=$(mktemp)
-    command lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir=$(cat "$tmp")
-        rm -f "$tmp"
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
+  tmp=$(mktemp)
+  command lf -last-dir-path="$tmp" "$@"
+  if [ -f "$tmp" ]; then
+    dir=$(cat "$tmp")
+    rm -f "$tmp"
+    [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
+  fi
 }
 
 # =========================================================
@@ -38,9 +38,10 @@ alias vim='nvim'
 # Git
 # =========================================================
 
-alias glog='PAGER="less -F -X" git log'                              # -F quit if one screen, -X no clear on exit
+alias glog='PAGER="less -F -X" git log' # -F quit if one screen, -X no clear on exit
 alias gadog='PAGER="less -F -X" git log --all --decorate --oneline --graph'
-alias dotfiles='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias dotfiles='git --git-dir=$HOME/dotfiles --work-tree=$HOME'
+alias lg='lazygit'
 
 # =========================================================
 # Video
@@ -66,3 +67,4 @@ alias pkill='pkill -c'
 # =========================================================
 alias md='mkdir -p'
 alias rmf='rm -rf'
+alias cp='cp -iv'
