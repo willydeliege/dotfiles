@@ -83,6 +83,9 @@ fi
 source "$ZDOTDIR/fzf.zsh"
 
 # Aliases
+source "$ZDOTDIR/functions.zsh"
+
+# Aliases
 source "$ZDOTDIR/aliases.zsh"
 
 # Custom keybindings

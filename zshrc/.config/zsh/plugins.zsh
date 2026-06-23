@@ -14,9 +14,9 @@ autoload -Uz _zinit
 # Load Oh My Zsh plugins
 zinit snippet OMZL::git.zsh
 zinit wait lucid for \
+  OMZP::extract \
   OMZP::git \
   OMZP::sudo \
-  OMZP::extract \
   zsh-users/zsh-syntax-highlighting \
   zsh-users/zsh-autosuggestions \
   Aloxaf/fzf-tab \
