@@ -17,6 +17,7 @@ zinit wait lucid for \
   OMZP::extract \
   OMZP::git \
   OMZP::sudo \
+  OMZP::fzf \
   zsh-users/zsh-syntax-highlighting \
   zsh-users/zsh-autosuggestions \
   Aloxaf/fzf-tab \
