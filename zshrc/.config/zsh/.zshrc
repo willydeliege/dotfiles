@@ -40,7 +40,7 @@ setopt NUMERIC_GLOB_SORT # sort file10 after file9, not after file1
 # export LF_ICONS
 
 # Initialize zoxide
-eval "$(zoxide init zsh --cmd cd)"
+eval "$(zoxide init zsh --cmd j)"
 
 # =========================================================
 # Completion
