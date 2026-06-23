@@ -15,7 +15,6 @@ opt.laststatus = 3 -- Single global status line (Neovim 0.7+)
 opt.cmdheight = 0 -- Command-line height
 opt.pumheight = 10 -- Maximum number of items in the popup menu
 opt.pumborder = "rounded" -- mini floats like completions
--- opt.winborder = "rounded" -- windows border
 opt.scrolloff = 8 -- Keep 8 lines visible above/below the cursor
 opt.sidescrolloff = 8 -- Keep 8 columns visible left/right of the cursor
 opt.splitbelow = true -- Horizontal splits open below

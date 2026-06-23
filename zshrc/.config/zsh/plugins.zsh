@@ -11,7 +11,7 @@ source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 ((${+_comps})) && _comps[zinit]=_zinit
 
-# Load Oh My Zsh plugins
+# Load Oh My Zsh librairies
 zinit snippet OMZL::git.zsh
 zinit wait lucid for \
   OMZP::extract \
