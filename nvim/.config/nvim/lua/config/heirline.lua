@@ -84,6 +84,15 @@ local FileName = {
   end,
   hl = { bold = true },
 }
+local FileModified = {
+  provider = function()
+    -- Check if the current buffer has unsaved changes
+    if vim.bo.modified then
+      return " [●]" -- You can replace this with any icon, e.g., "●"
+    end
+  end,
+  hl = { fg = "orange" }, -- Customize the highlight color here
+}
 
 --------------------------------------------------
 -- Git Branch
@@ -265,6 +274,8 @@ local StatusLine = {
   { provider = " │ " },
 
   FileName,
+
+  FileModified,
 
   Align,
 
