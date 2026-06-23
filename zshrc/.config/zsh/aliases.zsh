@@ -1,7 +1,7 @@
 # general use aliases updated for eza
 alias ls='eza'                                         # Basic replacement for ls with eza
 alias l='eza --long -bF'                               # Extended details with binary sizes and type indicators
-alias ll='eza --long a'                                # Long format
+alias ll='eza --long -a'                               # Long format
 alias llm='eza --long -a --sort=modified'              # Long format, including hidden files, sorted by modification date
 alias la='eza -a --group-directories-first'            # Show all files, with directories listed first
 alias lx='eza -a --group-directories-first --extended' # Show all files and extended attributes, directories first
@@ -59,12 +59,6 @@ alias glog='PAGER="less -F -X" git log' # -F quit if one screen, -X no clear on 
 alias gadog='PAGER="less -F -X" git log --all --decorate --oneline --graph'
 alias dotfiles='git --git-dir=$HOME/dotfiles --work-tree=$HOME'
 alias lg='lazygit'
-
-# =========================================================
-# Video
-# =========================================================
-
-alias stream='mpv av://v4l2:/dev/video4 --fullscreen --demuxer-lavf-o=input_format=mjpeg,framerate=30 --profile=low-latency --untimed'
 
 # =========================================================
 # Processes
