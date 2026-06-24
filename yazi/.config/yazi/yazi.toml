@@ -1,0 +1,8 @@
+[mgr]
+show_hidden = true
+[opener]
+# Forces Yazi to use Kitty's protocol for image previews
+[preview]
+image_preview_delay = 15
+wrap_mode           = "chop"
+skip_unsupported    = false
