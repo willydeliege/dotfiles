@@ -47,6 +47,7 @@ eval "$(zoxide init zsh --cmd j)"
 # =========================================================
 
 # Load completion system
+fpath=(~/.zsh/completions $fpath)
 autoload -Uz compinit
 
 # Initialize completion with cached metadata file
