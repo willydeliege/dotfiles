@@ -38,14 +38,14 @@ exec_always nwg-drawer -r -c 7 -is 90 -mb 10 -ml 50 -mr 50 -mt 10
 exec swayrd
 
 # Sway Fader
-exec python3 ~/.config/sway/scripts/swayfader.py     
+exec python3 ~/.config/sway/scripts/swayfader.py
 
 # Kdeconnect
 exec kdeconnectd
 exec kdeconnect-indicator
 
 # Visual comfort
-exec wlsunset -L 5.51 -l 50.66
+exec wlsunset -S 05:00 -s 19:00
 
 # map space as meta
 exec_always xremap  ~/.config/xremap/config.yml
