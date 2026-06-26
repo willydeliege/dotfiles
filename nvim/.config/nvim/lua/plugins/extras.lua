@@ -17,7 +17,24 @@ return {
     "folke/flash.nvim",
     event = "VeryLazy",
     ---@type Flash.Config
-    opts = {},
+    opts = {
+      highlight = {
+        backdrop = true,
+        groups = {
+          match = "FlashMatch",
+          current = "FlashCurrent",
+          label = "FlashLabel",
+        },
+      },
+    },
+    config = function(_, opts)
+      -- Apply custom colors using Neovim's highlight API
+      vim.api.nvim_set_hl(0, "FlashMatch", { bg = "#4A47A3", fg = "#B8B5FF" })
+      vim.api.nvim_set_hl(0, "FlashCurrent", { bg = "#456268", fg = "#D0E8F2" })
+      vim.api.nvim_set_hl(0, "FlashLabel", { bg = "#A25772", fg = "#EEF5FF", bold = true })
+      local flash = require("flash")
+      flash.setup(opts)
+    end,
     keys = {
       {
         "s",
