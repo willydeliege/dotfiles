@@ -46,36 +46,8 @@ return {
       -- Servers that Mason will install automatically
       ensure_installed = {
         "lua_ls", -- Lua
-        "marksman", -- Markdown
         "bashls", -- Bash / Shell
       },
-
-      -- Neovim 0.12 + mason-lspconfig automatically executes `vim.lsp.enable()`
-      -- for servers installed via Mason without needing nvim-lspconfig boilerplate.
-      -- handlers = {
-      --   function(server_name)
-      --     -- Fetch blink.cmp capabilities to feed natively into the LSP client
-      --     local capabilities = require("blink.cmp").get_lsp_capabilities()
-      --
-      --     -- Configure natively using Neovim 0.12 core API
-      --     vim.lsp.config(server_name, {
-      --       capabilities = capabilities,
-      --     })
-      --   end,
-      --
-      --   -- Custom target override for LuaLS to let lazydev handle settings
-      --   ["lua_ls"] = function()
-      --     local capabilities = require("blink.cmp").get_lsp_capabilities()
-      --     vim.lsp.config("lua_ls", {
-      --       capabilities = capabilities,
-      --       settings = {
-      --         Lua = {
-      --           workspace = { checkThirdParty = false },
-      --         },
-      --       },
-      --     })
-      --   end,
-      -- },
       automatic_enable = true,
     },
   },
@@ -89,4 +61,16 @@ return {
       "williamboman/mason-lspconfig.nvim",
     },
   },
+  {
+    "nvimdev/lspsaga.nvim",
+    event = "LspAttach",
+    config = function()
+      require("lspsaga").setup({})
+    end,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter", -- optional
+      "nvim-tree/nvim-web-devicons", -- optional
+    },
+  },
+  { "j-hui/fidget.nvim", event = "LspAttach", opts = {} },
 }

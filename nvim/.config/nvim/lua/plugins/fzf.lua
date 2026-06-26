@@ -113,7 +113,6 @@ return {
           ignore_current_line = true,
         },
       })
-      fzf.register_ui_select()
     end,
   },
   {
