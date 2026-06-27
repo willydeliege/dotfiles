@@ -47,12 +47,9 @@ exec kdeconnect-indicator
 # Visual comfort
 exec wlsunset -S 05:00 -s 19:00
 
-# map space as meta
-exec_always xremap  ~/.config/xremap/config.yml
-
-# Arch update
-exec arch-update --tray
-
 # Power management
-
 exec_always "cat /sys/class/power_supply/AC*/online | grep -q 1 && brightnessctl set 60% || brightnessctl set 30%"
+
+
+# Sway Osd
+exec swayosd-server
