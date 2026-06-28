@@ -4,8 +4,6 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    bigfile = { enabled = true },
-    dashboard = { enabled = true },
     explorer = { enabled = true },
     indent = {
       indent = { enabled = false },
@@ -22,18 +20,20 @@ return {
       -- Global picker setting for hidden files
       sources = {
         files = { hidden = true },
+        grep = { hidden = true },
+      },
+      win = {
+        input = {
+          keys = {
+            ["<c-h>"] = { "toggle_help_list", mode = "i" },
+          },
+        },
       },
     },
     quickfile = { enabled = true },
     scope = { enabled = true },
-    scroll = { enabled = true },
     statuscolumn = { enabled = true },
     words = { enabled = true },
-    styles = {
-      notification = {
-        -- wo = { wrap = true } -- Wrap notifications
-      },
-    },
   },
   keys = {
     -- Top Pickers & Explorer
