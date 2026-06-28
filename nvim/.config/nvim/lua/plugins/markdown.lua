@@ -11,7 +11,6 @@ return {
       { "<leader>ot", "<cmd>Obsidian today<cr>", desc = "Obsidian today" },
       { "<leader>ox", "<cmd>ObsidianCapture<cr>", desc = "Obsidian capture" },
     },
-    dependencies = { "ibhagwan/fzf-lua" },
     opts = {
       legacy_commands = false, -- this will be removed in 4.0.0
       workspaces = {
@@ -22,7 +21,7 @@ return {
       },
       ui = { enable = false },
       picker = {
-        name = "fzf-lua",
+        name = "snacks.picker",
       },
       -- note_id_func =
       checkbox = {
@@ -61,16 +60,17 @@ return {
   },
   -- For `plugins/markview.lua` users.
   {
-    "OXY2DEV/markview.nvim",
-    lazy = false,
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown" },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
+    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
     opts = {
-      markdown = {
-        enable = true,
-        list_items = {
-          marker_minus = {
-            add_padding = false,
-          },
-        },
+      heading = {
+        position = "overlay",
+        border = true,
       },
     },
   },

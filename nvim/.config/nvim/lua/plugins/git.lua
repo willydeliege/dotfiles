@@ -96,41 +96,13 @@ return {
 
         -- Inspecting changes
         map("n", "<leader>ghp", gs.preview_hunk, "Git preview hunk")
-        map("n", "<leader>gb", function()
-          gs.blame_line({ full = true })
-        end, "Git blame line")
         map("n", "<leader>gtb", gs.toggle_current_line_blame, "Git toggle line blame")
         map("n", "<leader>gtd", gs.preview_hunk_inline, "Git toggle deleted lines")
         map("n", "<leader>gtw", gs.toggle_word_diff, "Git toggle word diff")
 
-        -- Diffing
-        map("n", "<leader>gd", gs.diffthis, "Git diff this")
-        map("n", "<leader>gD", function()
-          gs.diffthis("~")
-        end, "Git diff this (~)")
-
         -- Hunk text object, e.g. `dih` deletes the current hunk
         map({ "o", "x" }, "ih", gs.select_hunk, "Git select hunk")
       end,
-    },
-  },
-  {
-    "kdheepak/lazygit.nvim",
-    cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
-    },
-    -- optional for floating window border decoration
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    -- setting the keybinding for LazyGit with 'keys' is recommended in
-    -- order to load the plugin when the command is run for the first time
-    keys = {
-      { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
     },
   },
 }
