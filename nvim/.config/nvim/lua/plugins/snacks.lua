@@ -7,9 +7,10 @@ return {
     bigfile = { enabled = true },
     dashboard = { enabled = true },
     explorer = { enabled = true },
-    -- indent = {
-    --   enabled = true,
-    -- },
+    indent = {
+      indent = { enabled = false },
+      scope = { enabled = true },
+    },
     input = { enabled = true },
     git = { enable = true },
     notifier = {
