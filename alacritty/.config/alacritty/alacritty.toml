@@ -1,0 +1,5 @@
+[general]
+import = ["~/.config/alacritty/github_dark_high_contrast.toml"]
+[font]
+normal = { family = "JetBrainsMono" }
+size = 12

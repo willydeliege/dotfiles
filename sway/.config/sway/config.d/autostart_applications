@@ -15,9 +15,6 @@ exec_always swayidle -w \
 	timeout 600 'systemctl suspend' \
 	before-sleep 'gtklock -d'
 
-# Start foot server
-exec_always --no-startup-id foot --server
-
 # Autotiling
 exec autotiling
 
@@ -34,7 +31,7 @@ exec kanshi
 # nwg-drawer
 exec_always nwg-drawer -r -c 7 -is 90 -mb 10 -ml 50 -mr 50 -mt 10
 
-# swayrd
+# swayrd for better navifation between windows and workspaces
 exec swayrd
 
 # Sway Fader
@@ -50,6 +47,8 @@ exec wlsunset -S 05:00 -s 19:00
 # Power management
 exec_always "cat /sys/class/power_supply/AC*/online | grep -q 1 && brightnessctl set 60% || brightnessctl set 30%"
 
+# Start alacritty daemon
+exec alacritty --daemon
 
 # Sway Osd
 exec swayosd-server

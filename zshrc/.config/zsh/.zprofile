@@ -14,11 +14,7 @@ export SUDO_EDITOR="nvim"
 export VISUAL="nvim"
 
 # ---------- Colored man pages ----------
-if command -v bat >/dev/null 2>&1; then
-  export MANPAGER="bat -l man -p"
-elif command -v batcat >/dev/null 2>&1; then
-  export MANPAGER="batcat -l man -p"
-fi
+export MANPAGER="bat -l man -p"
 
 # ---------- GPG ----------
 export GPG_TTY=$(tty)
@@ -26,3 +22,8 @@ export GPG_TTY=$(tty)
 # ---------- PATH ----------
 # Personal binaries/scripts
 export PATH="$HOME/.local/bin:$PATH"
+
+# Automatically start Sway when logging into TTY1
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  exec dbus-run-session sway
+fi
