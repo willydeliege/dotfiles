@@ -29,12 +29,13 @@ return {
   {
     "folke/lazydev.nvim",
     ft = "lua",
+    cmd = "LazyDev",
     opts = {
       library = {
-        -- Load luvit types when the `vim.uv` word is found
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-        -- Load the Neovim runtime (vim.*) types automatically
-        { path = "lazy.nvim" },
+        { path = "snacks.nvim", words = { "Snacks" } },
+        { path = "lazy.nvim", words = { "LazyVim" } },
+        { path = "nvim-lspconfig", words = { "lspconfig.settings" } },
       },
     },
   },
