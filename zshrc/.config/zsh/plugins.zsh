@@ -20,6 +20,8 @@ zinit wait lucid for \
   OMZP::fzf \
   zsh-users/zsh-syntax-highlighting \
   zsh-users/zsh-autosuggestions \
+  zsh-users/zsh-history-substring-search \
   Aloxaf/fzf-tab \
-  Freed-Wu/fzf-tab-source
+  Freed-Wu/fzf-tab-source \
+  jeffreytse/zsh-vi-mode
 zinit light romkatv/powerlevel10k
