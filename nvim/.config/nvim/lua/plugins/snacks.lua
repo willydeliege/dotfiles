@@ -487,6 +487,24 @@ return {
       end,
       desc = "Delete Buffer",
     },
+    { "<leader>ca", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "x" } },
+    { "<leader>ccc", vim.lsp.codelens.run, desc = "Run Codelens", mode = { "n", "x" } },
+    {
+      "<leader>ccC",
+      function()
+        vim.lsp.codelens.enable(true)
+      end,
+      desc = "Refresh & Display Codelens",
+      mode = { "n" },
+    },
+    {
+      "<leader>ccd",
+      function()
+        vim.lsp.codelens.enable(false)
+      end,
+      desc = "Cleat Codelens",
+      mode = { "n" },
+    },
     {
       "<leader>cR",
       function()
