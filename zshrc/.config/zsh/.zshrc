@@ -95,9 +95,6 @@ source "$ZDOTDIR/bindings.zsh"
 # Plugins and plugin manager
 source "$ZDOTDIR/plugins.zsh"
 
-# Ensure emacs keybindings
-bindkey -e
-
 # =========================================================
 # Node / NVM
 # =========================================================
