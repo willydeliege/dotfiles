@@ -1,6 +1,6 @@
 # general use aliases updated for eza
 alias ls='eza'                                         # Basic replacement for ls with eza
-alias l='eza --long -bF'                               # Extended details with binary sizes and type indicators
+alias l='eza --long -bF auto'                          # Extended details with binary sizes and type indicators
 alias ll='eza --long -a'                               # Long format
 alias llm='eza --long -a --sort=modified'              # Long format, including hidden files, sorted by modification date
 alias la='eza -a --group-directories-first'            # Show all files, with directories listed first
