@@ -70,6 +70,7 @@ return {
           else
             gs.nav_hunk("next")
           end
+
         end, "Next Hunk")
         map("n", "[h", function()
           if vim.wo.diff then
