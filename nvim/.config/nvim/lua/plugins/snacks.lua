@@ -72,13 +72,6 @@ return {
       end,
       desc = "Notification History",
     },
-    {
-      "<leader>e",
-      function()
-        Snacks.explorer()
-      end,
-      desc = "File Explorer",
-    },
     -- find
     {
       "<leader>fb",
@@ -567,6 +560,6 @@ return {
   },
   config = function(_, opts)
     require("snacks").setup(opts)
-    require("config.snacks-sessions")
+    require("utils.snacks-sessions")
   end,
 }
