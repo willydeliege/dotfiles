@@ -62,16 +62,5 @@ return {
       "williamboman/mason-lspconfig.nvim",
     },
   },
-  {
-    "nvimdev/lspsaga.nvim",
-    event = "LspAttach",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter", -- optional
-      "nvim-tree/nvim-web-devicons", -- optional
-    },
-    opts = {
-      lightbulb = { enable = false },
-    },
-  },
   { "j-hui/fidget.nvim", event = "LspAttach", opts = {} },
 }
