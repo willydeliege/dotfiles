@@ -69,50 +69,13 @@ return {
         -- ── Toggle ─────────────────────────────────────────────────────────────
         { "<leader>t", group = "Toggle", icon = { icon = "󰔡 ", color = "green" } },
         {
-          "<leader>ts",
-          function()
-            vim.opt.spell = not vim.opt.spell:get()
-            vim.notify("Spell check: " .. (vim.opt.spell:get() and "ON" or "OFF"))
-          end,
-          desc = "Spell check",
-        },
-        {
-          "<leader>tw",
-          function()
-            vim.opt.wrap = not vim.opt.wrap:get()
-            vim.notify("Line wrap: " .. (vim.opt.wrap:get() and "ON" or "OFF"))
-          end,
-          desc = "Word wrap",
-        },
-        {
-          "<leader>tn",
-          function()
-            if vim.opt.number:get() and vim.opt.relativenumber:get() then
-              vim.opt.relativenumber = false
-            elseif vim.opt.number:get() then
-              vim.opt.number = false
-            else
-              vim.opt.number = true
-              vim.opt.relativenumber = true
-            end
-          end,
-          desc = "Cycle line numbers",
-        },
-        {
-          "<leader>tc",
+          "<leader>tC",
           function()
             local enabled = vim.opt.colorcolumn:get()[1] ~= ""
             vim.opt.colorcolumn = enabled and "" or "80"
             vim.notify("Colorcolumn: " .. (enabled and "OFF" or "ON"))
           end,
           desc = "Colorcolumn",
-        },
-        {
-          "<leader>ti",
-          function()
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
-          end,
-          desc = "Inlay hints",
         },
 
         -- ── Quit ───────────────────────────────────────────────────────────────
@@ -127,6 +90,7 @@ return {
 
         -- ── Code (LSP) ─────────────────────────────────────────────────
         { "<leader>c", group = "Code" },
+        { "<leader>cc", group = "Code lens" },
       })
     end,
   },
