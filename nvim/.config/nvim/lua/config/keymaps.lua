@@ -97,7 +97,12 @@ map("n", "]q", "<cmd>cnext<CR>", { desc = "Next quickfix item" })
 map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
 
--- Toggle autoformat for the current buffer only
+-- ── Windows ──────────────────────────────────────────────────────────────────
+map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
+map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
+map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
+
+-- ──  Toggle autoformat for the current buffer only
 vim.keymap.set("n", "<leader>bf", function()
   if vim.b.disable_autoformat then
     vim.b.disable_autoformat = false
