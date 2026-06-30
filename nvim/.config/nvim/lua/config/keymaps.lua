@@ -96,3 +96,24 @@ map("n", "]q", "<cmd>cnext<CR>", { desc = "Next quickfix item" })
 -- ── Indenting in visual mode keeps selection ─────────────────────────────────
 map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
+
+-- Toggle autoformat for the current buffer only
+vim.keymap.set("n", "<leader>bf", function()
+  if vim.b.disable_autoformat then
+    vim.b.disable_autoformat = false
+    print("Autoformat ENABLED for this buffer")
+  else
+    vim.b.disable_autoformat = true
+    print("Autoformat DISABLED for this buffer")
+  end
+end, { desc = "Toggle autoformat for buffer" })
+-- Toggle autoformat globally
+vim.keymap.set("n", "<leader>tf", function()
+  if vim.g.disable_autoformat then
+    vim.g.disable_autoformat = false
+    print("Autoformat ENABLED")
+  else
+    vim.g.disable_autoformat = true
+    print("Autoformat DISABLED")
+  end
+end, { desc = "Toggle autoformat" })
