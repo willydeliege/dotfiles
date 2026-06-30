@@ -91,6 +91,9 @@ return {
         -- ── Code (LSP) ─────────────────────────────────────────────────
         { "<leader>c", group = "Code" },
         { "<leader>cc", group = "Code lens" },
+
+        -- ── Trouble  ─────────────────────────────────────────────────
+        { "<leader>x", group = "Trouble" },
       })
     end,
   },
