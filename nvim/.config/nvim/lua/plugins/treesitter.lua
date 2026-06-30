@@ -6,22 +6,60 @@
 --   • Indentation
 --   • Text objects (select/move by function, class, etc.)
 -- =============================================================================
-
 return {
-  {
-    "romus204/tree-sitter-manager.nvim",
-    event = "VeryLazy",
-    dependencies = {}, -- tree-sitter CLI must be installed system-wide
-    config = function()
-      require("tree-sitter-manager").setup({
-        -- Default Options
-        ensure_installed = "all", -- list of parsers to install at the start of a neovim session. If set to "all", install all parsers.
-        -- ensure_installed = { "lua", "markdown", "markdown_inline", "bash", "json", "toml" }, -- list of parsers to install at the start of a neovim session. If set to "all", install all parsers.
-        -- border = nil, -- border style for the window (e.g. "rounded", "single"), if nil, use the default border style defined by 'vim.o.winborder'. See :h 'winborder' for more info.
-        auto_install = true, -- if enabled, install missing parsers when editing a new file
-        -- highlight = true, -- treesitter highlighting is enabled by default
-        -- languages = {}, -- override or add new parser sources
-      })
-    end,
+  "echasnovski/mini.ai",
+  event = "VeryLazy",
+  dependencies = {
+    -- parser support
+    "nvim-treesitter/nvim-treesitter",
+
+    -- only provides textobject queries
+    "nvim-treesitter/nvim-treesitter-textobjects",
   },
+  opts = function()
+    local ai = require("mini.ai")
+    local ts = ai.gen_spec.treesitter
+
+    return {
+      n_lines = 500,
+
+      -- Better than the default in most cases
+      search_method = "cover",
+
+      custom_textobjects = {
+        f = ts({
+          a = "@function.outer",
+          i = "@function.inner",
+        }),
+
+        c = ts({
+          a = "@class.outer",
+          i = "@class.inner",
+        }),
+
+        o = ts({
+          a = {
+            "@conditional.outer",
+            "@loop.outer",
+            "@block.outer",
+          },
+          i = {
+            "@conditional.inner",
+            "@loop.inner",
+            "@block.inner",
+          },
+        }),
+
+        a = ts({
+          a = "@parameter.outer",
+          i = "@parameter.inner",
+        }),
+
+        C = ts({
+          a = "@call.outer",
+          i = "@call.inner",
+        }),
+      },
+    }
+  end,
 }
