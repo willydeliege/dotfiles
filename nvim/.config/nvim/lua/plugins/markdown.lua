@@ -25,7 +25,6 @@ return {
       picker = {
         name = "snacks.picker",
       },
-      -- note_id_func =
       checkbox = {
         create_new = true,
         order = { " ", "x" },
