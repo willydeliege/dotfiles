@@ -11,6 +11,8 @@ return {
       { "<leader>ot", "<cmd>Obsidian today<cr>", desc = "Obsidian today" },
       { "<leader>ox", "<cmd>ObsidianCapture<cr>", desc = "Obsidian capture" },
     },
+    ---@module 'obsidian'
+    ---@type obsidian.config
     opts = {
       legacy_commands = false, -- this will be removed in 4.0.0
       workspaces = {
@@ -30,6 +32,11 @@ return {
       },
       daily_notes = {
         folder = "Daily",
+        template = "daily_note.md",
+      },
+      ---@diagnostic disable-next-line: missing-fields
+      templates = {
+        folder = "Templates/",
       },
     },
     config = function(_, opts)
