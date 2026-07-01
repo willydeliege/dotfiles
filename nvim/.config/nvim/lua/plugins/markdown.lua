@@ -45,15 +45,12 @@ return {
       require("obsidian").setup(new_opts)
 
       vim.api.nvim_create_user_command("ObsidianCapture", function()
-        -- On récupère la note du jour via Obsidian.nvim
         local today_note = require("obsidian.daily").today()
 
         -- Utilisation de vim.fn.input (synchrone, insensible aux conflits d'UI)
         local status, input_text = pcall(vim.fn.input, "Capture : ")
 
-        -- Si l'utilisateur valide avec du texte
         if status and input_text and input_text ~= "" then
-          -- Insertion sécurisée dans Obsidian
           today_note:insert_text(
             "- " .. input_text,
             { placement = "bot", on_section_missing = "create", section = { level = 2, header = "Inbox" } }
