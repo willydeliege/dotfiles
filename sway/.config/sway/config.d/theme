@@ -5,11 +5,11 @@ exec_always ~/.config/sway/scripts/import-gsettings
 gaps inner 5
 gaps outer 2
 
-# Hide titlebar on windows: 
+# Hide titlebar on windows:
 default_border pixel 2
 
 # Default Font
-font pango:JetBrainsMono 10
+font pango:JetBrainsMono 12
 
 # Thin borders:
 smart_borders on
