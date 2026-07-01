@@ -5,7 +5,7 @@ return {
     lazy = false,
     ---@type snacks.Config
     opts = {
-      explorer = { enabled = true },
+      explorer = { enabled = false },
       indent = {
         indent = { enabled = false },
         scope = { enabled = true },
