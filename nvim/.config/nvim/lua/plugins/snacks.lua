@@ -26,7 +26,7 @@ return {
         win = {
           input = {
             keys = {
-              ["<f1>"] = { "toggle_help_list", mode = "i" },
+              ["<f1>"] = { "toggle_help_list", mode = { "i", "n" } },
             },
           },
         },
