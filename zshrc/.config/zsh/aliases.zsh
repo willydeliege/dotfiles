@@ -68,6 +68,11 @@ alias pgrep='pgrep -a'
 alias pkill='pkill -c'
 
 # =========================================================
+# Nixos
+# ======j===================================================
+alias nixconf='sudo -E nvim /etc/nixos/configuration.nix'
+alias nixbuild='sudo nixos-rebuild switch'
+# =========================================================
 # Utils
 # =========================================================
 alias md='mkdir -p'
