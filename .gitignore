@@ -4,3 +4,5 @@
 /zshrc/.config/zsh/.zcompdump
 /zshrc/.config/zsh/.antidote
 /tmux/.config/tmux/plugins
+/tmux/.config/systemd/user/graphical-session.target.wants/swaync.service
+/tmux/.config/systemd/user/swaync.service
