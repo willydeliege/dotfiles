@@ -17,19 +17,14 @@ return {
   -- ── blink.cmp ────────────────────────────────────────────────────────────────
   {
     "saghen/blink.cmp",
+    version = "1.*",
     -- lazy = false, -- Load at startup so LSP capabilities are set early
     event = "VeryLazy",
     dependencies = {
-      "saghen/blink.lib",
       -- optional: provides snippets for the snippet source
       "rafamadriz/friendly-snippets",
     },
 
-    build = function()
-      -- build the fuzzy matcher, optionally add a timeout to `pwait(timeout_ms)`
-      -- you can use `gb` in `:Lazy` to rebuild the plugin as needed
-      require("blink.cmp").build():pwait()
-    end,
     ---@module "blink.cmp"
     ---@type blink.cmp.Config
     opts = {
@@ -50,6 +45,8 @@ return {
         ["<C-e>"] = { "hide", "fallback" },
         ["jk"] = { "hide" },
       },
+
+      fuzzy = { implementation = "prefer_rust_with_warning" },
 
       -- ── Appearance ────────────────────────────────────────────────────────────
       appearance = {
@@ -89,7 +86,6 @@ return {
       },
 
       -- ── Completion menu ───────────────────────────────────────────────────────
-      fuzzy = { implementation = "rust" },
       completion = {
         accept = {
           -- Expand snippets on accept
