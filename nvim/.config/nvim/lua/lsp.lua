@@ -12,6 +12,7 @@ return {
   -- ── Mason: LSP server installer ─────────────────────────────────────────────
   {
     "williamboman/mason.nvim",
+    enabled=false,
     cmd = "Mason",
     keys = { { "<leader>M", "<cmd>Mason<CR>", desc = "Open Mason" } },
     opts = {
@@ -42,7 +43,8 @@ return {
   -- ── Mason <-> lspconfig bridge ───────────────────────────────────────────────
   {
     "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim" },
+    -- enabled=false,
+    -- dependencies = { "williamboman/mason.nvim" },
     opts = {
       -- Servers that Mason will install automatically
       ensure_installed = {
@@ -57,10 +59,6 @@ return {
   {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-    },
   },
   { "j-hui/fidget.nvim", event = "LspAttach", opts = {} },
 }
