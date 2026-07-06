@@ -104,13 +104,13 @@ vim.api.nvim_create_autocmd("FileType", {
 -- ---------------------------------------------------------------------------
 
 -- Define languages you want to target
-local ts_languages = { "lua", "markdown", "mardkown_inline" }
+local ts_languages = { "lua", "markdown", "mardkown_inline", "nix" }
 
 -- Enable native Tree-sitter highlighting when a file loads
 vim.api.nvim_create_autocmd("FileType", {
   pattern = ts_languages,
   callback = function(args)
-    -- Ensure Neovim 0.12 safely veriies a parser exists before starting
+    -- Ensure Neovim 0.12 safely verifies a parser exists before starting
     if vim.treesitter.get_parser(args.buf) then
       vim.treesitter.start(args.buf)
     end

@@ -33,6 +33,7 @@ return {
         jsonc = { "prettierd", "prettier", stop_after_first = true },
         yaml = { "prettierd", "prettier", stop_after_first = true },
         toml = { "taplo" },
+        nix = { "nixfmt" },
         -- Fallback: for any filetype not listed, try the LSP formatter
         ["*"] = { "injected" }, -- format embedded code blocks
       },
