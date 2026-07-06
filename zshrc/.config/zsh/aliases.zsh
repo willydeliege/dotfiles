@@ -49,8 +49,8 @@ alias -- -='cd -' # -- prevents - being parsed as a flag; cd - jumps to previous
 # Editor
 # =========================================================
 
-alias vim='nvim'
-alias vi='nvim'
+# alias vim='nvim'
+# alias vi='nvim'
 # =========================================================
 # Git
 # =========================================================

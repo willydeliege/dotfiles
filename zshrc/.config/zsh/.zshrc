@@ -13,7 +13,6 @@ fi
 # History
 # =========================================================
 
-HISTFILE="$XDG_STATE_HOME/zsh/history"
 HISTSIZE=100000
 SAVEHIST=100000
 
@@ -81,7 +80,7 @@ fi
 # =========================================================
 
 # fzf configuration
-source "$ZDOTDIR/fzf.zsh"
+# source "$ZDOTDIR/fzf.zsh"
 
 # Aliases
 source "$ZDOTDIR/functions.zsh"
