@@ -45,13 +45,15 @@
   untracked = red
   updated = green bold
 [credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+	helper =
+  helper = !/etc/profiles/per-user/willefi/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+	helper =
+	helper = !/etc/profiles/per-user/willefi/bin/gh auth git-credential
 [user]
 	email = frederic.willem@gmail.com
 	name = Frédérix Willem
 [init]
 	defaultBranch = master
+[credential]
+	helper = /etc/profiles/per-user/willefi/bin/gh auth git-credential
