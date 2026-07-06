@@ -1,33 +1,19 @@
-### Input configuration
-#
-# Read `man 5 sway-input` for more information about this section.
-
-# Touchpad configuration
-input type:touchpad {
-    dwt enabled
-    tap enabled
-    natural_scroll enabled
+### Input configuration Read `man 5 sway-input` for more information about this section. Touchpad configuration
+input "type:touchpad" {
+  dwt enabled
+tap enabled
+natural_scroll enabled
 }
-
-bindgesture {
-    swipe:right workspace prev
-    swipe:left exec ~/.config/sway/scripts/advance_workspace.sh
-    swipe:up move scratchpad
-    swipe:down scratchpad show
-}
-
 # Disable numlock by default
 input type:keyboard xkb_numlock disabled
 
-# # Uncomment below to toggle between keyboard layouts.
-# Querty us keyboard with french accent with altgr + (letters|letters around)
 input "type:keyboard" {
     xkb_layout "fr"
     xkb_variant "us"
-    # xkb_options "caps:swapescape"
+    xkb_options "caps:swapescape"
 }
 #
 # # Assign the same binding to "pkill -RTMIN+1 waybar" to send signal to the Waybar keyboard module.
 # # The signal refreshes the module. The commented example uses Alt + left Shift.
-#    
+#
 # bindsym Alt+Shift_L exec "pkill -RTMIN+1 waybar"

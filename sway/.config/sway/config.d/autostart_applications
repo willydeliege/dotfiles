@@ -1,5 +1,5 @@
 # Auth with polkit-gnome:
-exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Import environment variables for user systemd service manager
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
@@ -13,7 +13,7 @@ exec swayidle idlehint 1
 exec_always swayidle -w \
 	timeout 300 'saylock -d' \
 	timeout 600 'systemctl suspend' \
-	before-sleep 'gtklock -d'
+	before-sleep 'swaylock'
 
 # Autotiling
 exec autotiling
@@ -46,8 +46,8 @@ exec wlsunset -S 05:00 -s 19:00
 # Power management
 exec_always "cat /sys/class/power_supply/AC*/online | grep -q 1 && brightnessctl set 60% || brightnessctl set 30%"
 
-# Start alacritty daemon
-exec alacritty --daemon
-
 # Sway Osd
 exec swayosd-server
+
+# Bluettoo
+exec blueman-applet
