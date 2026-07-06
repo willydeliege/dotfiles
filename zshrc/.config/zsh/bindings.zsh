@@ -2,6 +2,8 @@
 # Keybindings
 # =========================================================
 
+# Instant react
+export KEYTIMEOUT=1
 # Cursor shape per vi mode
 ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BEAM
 ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLOCK
@@ -21,10 +23,6 @@ bindkey '^[[1;5D' backward-word
 # Ctrl+\ -> toggle autosuggestions (useful for screen recordings)
 bindkey '^\' autosuggest-toggle
 
-# Up/Down -> history search by substring (^[[A/^[[B are up/down arrow escape codes)
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
 # sesh
 function sesh-sessions() {
   {
@@ -42,3 +40,8 @@ zle -N sesh-sessions
 bindkey -M emacs '\es' sesh-sessions
 bindkey -M vicmd '\es' sesh-sessions
 bindkey -M viins '\es' sesh-sessions
+
+function zvm_after_init() {
+  zvm_bindkey viins '^R' fzf-history-widget
+  zvm_bindkey viins '^T' fzf-file-widget
+}

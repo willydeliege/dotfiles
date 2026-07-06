@@ -14,14 +14,12 @@ autoload -Uz _zinit
 # Load Oh My Zsh librairies
 zinit snippet OMZL::git.zsh
 zinit wait lucid for \
+  jeffreytse/zsh-vi-mode \
   OMZP::extract \
   OMZP::git \
   OMZP::sudo \
-  OMZP::fzf \
   zsh-users/zsh-syntax-highlighting \
   zsh-users/zsh-autosuggestions \
-  zsh-users/zsh-history-substring-search \
   Aloxaf/fzf-tab \
-  Freed-Wu/fzf-tab-source \
-  jeffreytse/zsh-vi-mode
+  Freed-Wu/fzf-tab-source
 zinit light romkatv/powerlevel10k
