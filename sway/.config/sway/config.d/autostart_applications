@@ -11,15 +11,14 @@ exec hash dbus-update-activation-environment 2>/dev/null && \
 # Idle configuration
 exec swayidle idlehint 1
 exec_always swayidle -w \
-	timeout 300 'gtklock -d' \
+	timeout 300 'saylock -d' \
 	timeout 600 'systemctl suspend' \
 	before-sleep 'gtklock -d'
 
 # Autotiling
 exec autotiling
 
-# Launch all Sway applications in autostart directories
-exec dex -a -e sway
+exec foot --server
 
 # cliphist
 exec wl-paste --type text --watch cliphist store
