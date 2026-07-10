@@ -122,3 +122,38 @@ vim.keymap.set("n", "<leader>tf", function()
     print("Autoformat DISABLED")
   end
 end, { desc = "Toggle autoformat" })
+
+local function copy_markdown_code_block()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  -- Ligne actuelle (index 0 pour tree-sitter)
+  local row = cursor[1] - 1
+
+  -- Recherche du nœud Tree-sitter sous le curseur
+  local node = vim.treesitter.get_node({ bufnr = bufnr, pos = { row, cursor[2] } })
+
+  while node do
+    if node:type() == "fenced_code_block" then
+      -- Récupère le texte complet du bloc de code
+      local text = vim.treesitter.get_node_text(node, bufnr)
+
+      -- Enlève les lignes de backticks au début et à la fin pour garder uniquement le code
+      local lines = vim.split(text, "\n")
+      if #lines > 2 then
+        table.remove(lines, 1) -- Enlève le ```langage
+        table.remove(lines, #lines) -- Enlève le dernier ```
+        text = table.concat(lines, "\n")
+      end
+
+      -- Copie dans le presse-papiers système
+      vim.fn.setreg("+", text)
+      vim.notify("Bloc de code copié dans le presse-papiers !", vim.log.levels.INFO)
+      return
+    end
+    node = node:parent()
+  end
+  vim.notify("Aucun bloc de code trouvé sous le curseur.", vim.log.levels.WARN)
+end
+
+-- Création d'un raccourci clavier en mode Normal (ex: <leader>yc pour "Yank Code")
+vim.keymap.set("n", "<leader>yc", copy_markdown_code_block, { desc = "Copier le bloc de code Markdown" })

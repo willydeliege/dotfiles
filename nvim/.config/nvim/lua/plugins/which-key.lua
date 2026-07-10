@@ -66,6 +66,7 @@ return {
         { "<leader>gt", group = "Git toggle" },
         { "<leader>h", group = "Help" },
         { "<leader>o", group = "Obsidian" },
+        { "<leader>y", group = "Yank" },
 
         -- ── Search ─────────────────────────────────────────────────────────────
         { "<leader>s", group = "Search" },
