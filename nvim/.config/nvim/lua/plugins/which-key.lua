@@ -29,6 +29,11 @@ return {
         spacing = 3,
       },
 
+      plugins = {
+        spelling = {
+          enabled = true, -- Enable spelling suggestions in which-key
+        },
+      },
       -- ── Filters: hide mappings that clutter the popup ─────────────────────────
       filter = function(mapping)
         -- Show only mappings that have a description
@@ -46,13 +51,6 @@ return {
     config = function(_, opts)
       local wk = require("which-key")
       wk.setup(opts)
-      require("which-key").add({
-        plugins = {
-          spelling = {
-            enabled = true, -- Enable spelling suggestions in which-key
-          },
-        },
-      })
       -- ── Group labels ───────────────────────────────────────────────────────────
       -- These labels appear as section headers in the which-key popup.
       wk.add({
