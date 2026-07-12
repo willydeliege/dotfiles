@@ -6,3 +6,4 @@
 /tmux/.config/tmux/plugins
 /tmux/.config/systemd/user/graphical-session.target.wants/swaync.service
 /tmux/.config/systemd/user/swaync.service
+/tmux/.config/systemd/user/tray.target
