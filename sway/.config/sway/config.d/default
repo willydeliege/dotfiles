@@ -31,7 +31,7 @@ bindsym {
     # Launch the terminal
     $mod+Return exec $term sesh connect /home/willefi/
     # Toggle dropdown terminal
-    $mod+Shift+Return exec --no-startup-id sway-scratchpad -t -mt -atc -d 60%x60% -- $term
+    $mod+Shift+Return exec --no-startup-id bash /home/willefi/.config/sway/scripts/sway-scratchpad -t -mt -atc -d 60%x60% -- $term
 
     # Open the power menu
     Ctrl+Alt+Delete exec $powermenu
