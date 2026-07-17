@@ -157,3 +157,16 @@ end
 
 -- Création d'un raccourci clavier en mode Normal (ex: <leader>yc pour "Yank Code")
 vim.keymap.set("n", "<leader>yc", copy_markdown_code_block, { desc = "Copier le bloc de code Markdown" })
+local function delete_file_and_buffer()
+  -- Prompt for confirmation
+  local confirm = vim.fn.confirm("Delete file and close buffer?", "&Yes\n&No", 2)
+  if confirm == 1 then
+    -- Delete the file from the filesystem
+    vim.fn.delete(vim.fn.expand("%"))
+    -- Close the buffer
+    vim.api.nvim_buf_delete(0, { force = true })
+  end
+end
+
+-- Map to a key combination, e.g., <leader>df
+vim.keymap.set("n", "<leader>fD", delete_file_and_buffer, { desc = "Delete file and buffer" })
