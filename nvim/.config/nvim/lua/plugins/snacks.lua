@@ -185,7 +185,7 @@ return {
       {
         "<leader>gg",
         function()
-          Snacks.lazygit()
+          Snacks.lazygit.open()
         end,
       },
       {
