@@ -2,6 +2,8 @@
 # managed by nixos
 # exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
+exec --no-startup-id ${pkgs.gnome-keyring}/bin/gnome-keyring-daemon --start --components=secrets
+
 # Import environment variables for user systemd service manager
 exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 
