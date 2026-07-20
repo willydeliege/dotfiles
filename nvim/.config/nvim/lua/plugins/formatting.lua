@@ -35,6 +35,10 @@ return {
         toml = { "taplo" },
         nix = { "nixfmt" },
         -- Fallback: for any filetype not listed, try the LSP formatter
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        javascriptreact = { "prettier" },
+        typescriptreact = { "prettier" },
         ["*"] = { "injected" }, -- format embedded code blocks
       },
 
