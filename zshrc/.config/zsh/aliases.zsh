@@ -70,8 +70,9 @@ alias pkill='pkill -c'
 # =========================================================
 # Nixos
 # ======j===================================================
-alias nconf='sudo -E nvim /etc/nixos/configuration.nix'
-alias nrc='sudo nixos-rebuild switch'
+alias nfu='nix flake update'
+alias nrf='sudo nixos-rebuild switch --flake .#nixos'
+alias ncg='sudo nix-collect-garbage -d'
 # =========================================================
 # Utils
 # =========================================================
