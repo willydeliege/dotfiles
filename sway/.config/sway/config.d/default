@@ -11,7 +11,8 @@ set {
     $right l
 
     # Default terminal emulator
-    $term footclient
+    # $term footclient
+    $term alacritty msg create-window
 
     # Application launcher
     $launcher rofi -show drun
@@ -29,7 +30,7 @@ set {
 #
 bindsym {
     # Launch the terminal
-    $mod+Return exec $term sesh connect /home/willefi/
+    $mod+Return exec $term #sesh connect /home/willefi/
     # Toggle dropdown terminal
     $mod+Shift+Return exec --no-startup-id bash /home/willefi/.config/sway/scripts/sway-scratchpad -t -mt -atc -d 60%x60% -- $term
 

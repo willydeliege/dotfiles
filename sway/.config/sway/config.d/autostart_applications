@@ -21,7 +21,9 @@ exec_always swayidle -w \
 # Autotiling
 exec autotiling
 
-exec foot --server
+# Terminal
+# exec foot --server
+exec alacritty --daemon
 
 # cliphist
 exec wl-paste --type text --watch cliphist store
